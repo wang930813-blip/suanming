@@ -1,1 +1,3 @@
 /*.sql
+/docker/db-init/*.sql
+.env

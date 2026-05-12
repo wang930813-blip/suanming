@@ -1,0 +1,46 @@
+version: "2.4"
+
+services:
+  web:
+    build: .
+    container_name: suanming-web
+    depends_on:
+      db:
+        condition: service_healthy
+    environment:
+      APP_URL: ${APP_URL:-http://localhost:8080/}
+      DB_HOST: db
+      DB_PORT: 3306
+      DB_NAME: ${MYSQL_DATABASE:-565656sql}
+      DB_USER: ${MYSQL_USER:-suanming}
+      DB_PASS: ${MYSQL_PASSWORD:-suanming_pass}
+    ports:
+      - "${APP_PORT:-8080}:80"
+    volumes:
+      - ./:/var/www/html
+    restart: unless-stopped
+
+  db:
+    image: mysql:5.6
+    container_name: suanming-db
+    command: --character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci --sql-mode="" --max_allowed_packet=256M
+    environment:
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD:-root_pass}
+      MYSQL_DATABASE: ${MYSQL_DATABASE:-565656sql}
+      MYSQL_USER: ${MYSQL_USER:-suanming}
+      MYSQL_PASSWORD: ${MYSQL_PASSWORD:-suanming_pass}
+      TZ: Asia/Shanghai
+    ports:
+      - "${MYSQL_PORT:-3307}:3306"
+    volumes:
+      - db_data:/var/lib/mysql
+      - ./docker/db-init:/docker-entrypoint-initdb.d:ro
+    healthcheck:
+      test: ["CMD-SHELL", "mysqladmin ping -h 127.0.0.1 -uroot -p$${MYSQL_ROOT_PASSWORD} --silent"]
+      interval: 10s
+      timeout: 5s
+      retries: 10
+    restart: unless-stopped
+
+volumes:
+  db_data:

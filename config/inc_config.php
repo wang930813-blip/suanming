@@ -19,7 +19,7 @@ define('PATH_DM_CONFIG', PATH_CONFIG . '/dm_config');
 define('COOKIE_DOMAIN', '');
 define('PHP_ERROR_LOG', false);//正式线上要改为false
 //主应用URL
-define('URL', 'https://cs.400110.cn/');
+define('URL', getenv('APP_URL') ? getenv('APP_URL') : 'https://cs.400110.cn/');
 
 
 define('FILTER_KEYWORD', '115');//过滤词库  115 orther all
@@ -62,14 +62,17 @@ $GLOBALS['config']['cache'] = array(
 
 //MySql配置
 //slave数据库从库可以使用多个
+$db_host = getenv('DB_HOST') ? getenv('DB_HOST') : '127.0.0.1';
+$db_port = getenv('DB_PORT') ? getenv('DB_PORT') : '3366';
+$db_address = $db_host . ':' . $db_port;
 $GLOBALS['config']['db'] = array( 
         'host'    => array(
-                        'master'  => '127.0.0.1:3366',
-                        'slave' => array('127.0.0.1:3366')
+                        'master'  => $db_address,
+                        'slave' => array($db_address)
                      ),
-        'user'    => 'root',
-        'pass'    => 'su3DlCqLP8',
-        'name'    => '565656sql',
+        'user'    => getenv('DB_USER') ? getenv('DB_USER') : 'root',
+        'pass'    => getenv('DB_PASS') ? getenv('DB_PASS') : 'su3DlCqLP8',
+        'name'    => getenv('DB_NAME') ? getenv('DB_NAME') : '565656sql',
         'charset' => 'utf8mb4',
 );
 

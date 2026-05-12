@@ -1,0 +1,7 @@
+.git
+.env
+*.log
+/*.sql
+/docker/db-init/*.sql
+/data/cache/*
+/data/log/*
