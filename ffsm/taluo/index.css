@@ -1,0 +1,941 @@
+.indexWrap {
+	position: relative;
+	width: 100%;
+	height: 12.85rem;
+	float: left;
+	background: #1c1b27 url(../images/indexWrap.jpg)no-repeat;
+	background-size: 100% auto;
+	min-height: 100vh;
+}
+.indexLight {
+	position: absolute;
+	left: 1.45rem;
+	top: 3.8rem;
+	width: 5.73rem;
+	height: 9.03rem;
+	background: url(../images/light.png)no-repeat;
+	background-size: 100% 100%;
+	opacity: 0;
+	animation: shiny 1s linear infinite alternate;
+	-webkit-animation: shiny 1s linear infinite alternate;
+}
+.indexBtn {
+	display: block;
+	width: 1.47rem;
+	height: .78rem;
+	position: absolute;
+	top: 9.5rem;
+	left: 3rem;
+	background: url(../images/indexBtn.png)no-repeat;
+	background-size: 100% 100%;
+	z-index: 1;
+	animation: zoom 1s linear infinite alternate;
+	-webkit-animation: zoom 1s linear infinite alternate;
+}
+@keyframes zoom {
+	0% {}
+	100% {
+		transform: scale(.8);
+	}
+}
+@-webkit-keyframes zoom {
+	0% {}
+	100% {
+		transform: scale(.8);
+	}
+}
+@keyframes shiny {
+	0% {}
+	100% {
+		opacity: 1;
+	}
+}
+.stepWrap {
+	width: 100%;
+	float: left;
+	padding: 0 0 2.3rem 0;
+	background-color: #23233f;
+	min-height: 100vh;
+}
+.main {
+	width: 100%;
+	float: left;
+	padding: 0 .2rem;
+}
+.bigbox {
+	width: 100%;
+	float: left;
+	margin: .3rem 0 0 0;
+	padding: .2rem;
+	border-radius: .1rem;
+	text-align: justify;
+	background-color: #343458;
+	color: #fff;
+}
+.bigbox .col {
+	color: #d08cff;
+}
+.stepTab {
+	width: 100%;
+	float: left;
+	display: flex;
+	justify-content: space-around;
+	flex-wrap: wrap;
+}
+.stepTab li {
+	width: 1.7rem;
+	margin: .3rem 0 0 0;
+	line-height: .64rem;
+	border-radius: .2rem;
+	text-align: center;
+	border: solid .01rem #6969aa;
+	cursor: pointer;
+}
+.stepTab li.cur {
+	background-color: #cc5252;
+	border: none;
+}
+.stepTip {
+	width: 100%;
+	float: left;
+	margin: .3rem 0 0 0;
+	padding-bottom: .3rem;
+	border-bottom: .01rem dashed #88abda;
+}
+.stepTip span {
+	float: left;
+	color: #9a9acd;
+}
+.stepTip em {
+	float: right;
+	cursor: pointer;
+}
+.stepTip em img {
+	display: inline-block;
+	width: .46rem;
+	margin: -.1rem .15rem 0 0;
+	vertical-align: middle;
+}
+.stepDoubt {
+	width: 100%;
+	float: left;
+}
+.stepDoubt li {
+	width: 100%;
+	line-height: .78rem;
+	border-radius: .1rem;
+	padding: 0 .2rem;
+	margin: .2rem 0 0 0;
+	background-color: #43436d;
+}
+.stepIpt {
+	position: fixed;
+	bottom: 0;
+	width: 7.5rem;
+	padding: .2rem;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	background-color: #343458;
+}
+.stepIpt input {
+	width: 5.6rem;
+	display: block;
+	line-height: .8rem;
+	outline: none;
+	text-indent: .3rem;
+	border-radius: .4rem;
+	border: solid .01rem #7979b5;
+	background-color: #23233f;
+	color: #fff;
+}
+.stepIpt input::placeholder {
+	color: #8484b3;
+}
+.stepIpt a {
+	display: block;
+	width: 1.2rem;
+	line-height: .6rem;
+	text-align: center;
+	border-radius: .1rem;
+	background-color: #cc5252;
+	color: #fff;
+}
+.stepHist {
+	width: 100%;
+	float: left;
+}
+.stepProb {
+	float: right;
+	margin: .3rem 0 0 0;
+	padding: 0 .2rem;
+	line-height: .68rem;
+	border-radius: .1rem;
+	background-color: #6244e3;
+	color: #fff;
+}
+.stepSelect {
+	width: 7.5rem;
+	float: left;
+	position: fixed;
+	bottom: 0;
+	padding: 0 .2rem .3rem .2rem;
+	background-color: #23233f;
+}
+.stepBtn {
+	display: block;
+	width: 100%;
+	line-height: .98rem;
+	border-radius: .49rem;
+	text-align: center;
+	font-size: .38rem;
+	color: #fff;
+	background-color: #7839df;
+}
+.stepBtn img {
+	display: inline-block;
+	width: .4rem;
+	vertical-align: middle;
+	margin: -.1rem 0 0 0;
+}
+.stepReset {
+	display: block;
+	width: 100%;
+	margin: .2rem 0 0 0;
+	text-align: center;
+	color: #fff;
+}
+.midWrap {
+	width: 100%;
+	float: left;
+	padding: 2rem 0 1.5rem 0;
+	min-height: 100vh;
+	background: #0c0a17 url(../images/middleWrap.jpg)no-repeat;
+	background-size: 100% auto;
+}
+.stepBox {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	width: 100%;
+	height: 6rem;
+	transition: .9s linear;
+	-webkit-transition: .9s linear;
+}
+.stepBox .tarot, .stepBox div {
+	position: absolute;
+	width: 1.3rem;
+	transition: .9s linear;
+	-webkit-transition: .9s linear;
+}
+.stepBox .tarot img, .stepBox div img {
+	display: block;
+	width: 100%;
+}
+.stepBox .tarot.paipai1 {
+	z-index: 1021;
+	transform-origin: 50% 200%;
+	-webkit-transform-origin: 50% 200%;
+	transition: transform 500ms ease-out 0ms;
+	-webkit-transition: transform 500ms ease-out 0ms;
+	transform: translate(0%, -50%) rotate(50deg);
+	-webkit-transform: translate(0%, -50%) rotate(50deg);
+}
+.stepBox .tarot.paipai2 {
+	z-index: 1020;
+	transform-origin: 50% 200%;
+	-webkit-transform-origin: 50% 200%;
+	transition: transform 500ms ease-out 0ms;
+	-webkit-transition: transform 500ms ease-out 0ms;
+	transform: translate(0%, -50%) rotate(45.2381deg);
+	-webkit-transform: translate(0%, -50%) rotate(45.2381deg);
+}
+.stepBox .tarot.paipai3 {
+	z-index: 1019;
+	transform-origin: 50% 200%;
+	-webkit-transform-origin: 50% 200%;
+	transition: transform 500ms ease-out 0ms;
+	-webkit-transition: transform 500ms ease-out 0ms;
+	transform: translate(0%, -50%) rotate(40.4762deg);
+	-webkit-transform: translate(0%, -50%) rotate(40.4762deg);
+}
+.stepBox .tarot.paipai4 {
+	z-index: 1018;
+	transform-origin: 50% 200%;
+	-webkit-transform-origin: 50% 200%;
+	transition: transform 500ms ease-out 0ms;
+	-webkit-transition: transform 500ms ease-out 0ms;
+	transform: translate(0%, -50%) rotate(35.7143deg);
+	-webkit-transform: translate(0%, -50%) rotate(35.7143deg);
+}
+.stepBox .tarot.paipai5 {
+	z-index: 1017;
+	transform-origin: 50% 200%;
+	-webkit-transform-origin: 50% 200%;
+	transition: transform 500ms ease-out 0ms;
+	-webkit-transition: transform 500ms ease-out 0ms;
+	transform: translate(0%, -50%) rotate(30.9524deg);
+	-webkit-transform: translate(0%, -50%) rotate(30.9524deg);
+}
+.stepBox .tarot.paipai6 {
+	z-index: 1016;
+	transform-origin: 50% 200%;
+	-webkit-transform-origin: 50% 200%;
+	transition: transform 500ms ease-out 0ms;
+	-webkit-transition: transform 500ms ease-out 0ms;
+	transform: translate(0%, -50%) rotate(26.1905deg);
+	-webkit-transform: translate(0%, -50%) rotate(26.1905deg);
+}
+.stepBox .tarot.paipai7 {
+	z-index: 1015;
+	transform-origin: 50% 200%;
+	-webkit-transform-origin: 50% 200%;
+	transition: transform 500ms ease-out 0ms;
+	-webkit-transition: transform 500ms ease-out 0ms;
+	transform: translate(0%, -50%) rotate(21.4286deg);
+	-webkit-transform: translate(0%, -50%) rotate(21.4286deg);
+}
+.stepBox .tarot.paipai8 {
+	z-index: 1014;
+	transform-origin: 50% 200%;
+	-webkit-transform-origin: 50% 200%;
+	transition: transform 500ms ease-out 0ms;
+	-webkit-transition: transform 500ms ease-out 0ms;
+	transform: translate(0%, -50%) rotate(16.6667deg);
+	-webkit-transform: translate(0%, -50%) rotate(16.6667deg);
+}
+.stepBox .tarot.paipai9 {
+	z-index: 1013;
+	transform-origin: 50% 200%;
+	-webkit-transform-origin: 50% 200%;
+	transition: transform 500ms ease-out 0ms;
+	-webkit-transition: transform 500ms ease-out 0ms;
+	transform: translate(0%, -50%) rotate(11.9048deg);
+	-webkit-transform: translate(0%, -50%) rotate(11.9048deg);
+}
+.stepBox .tarot.paipai10 {
+	z-index: 1012;
+	transform-origin: 50% 200%;
+	-webkit-transform-origin: 50% 200%;
+	transition: transform 500ms ease-out 0ms;
+	-webkit-transition: transform 500ms ease-out 0ms;
+	transform: translate(0%, -50%) rotate(7.14286deg);
+	-webkit-transform: translate(0%, -50%) rotate(7.14286deg);
+}
+.stepBox .tarot.paipai11 {
+	z-index: 1011;
+	transform-origin: 50% 200%;
+	-webkit-transform-origin: 50% 200%;
+	transition: transform 500ms ease-out 0ms;
+	-webkit-transition: transform 500ms ease-out 0ms;
+	transform: translate(0%, -50%) rotate(2.38095deg);
+	-webkit-transform: translate(0%, -50%) rotate(2.38095deg);
+}
+.stepBox .tarot.paipai12 {
+	z-index: 1010;
+	transform-origin: 50% 200%;
+	-webkit-transform-origin: 50% 200%;
+	transition: transform 500ms ease-out 0ms;
+	-webkit-transition: transform 500ms ease-out 0ms;
+	transform: translate(0%, -50%) rotate(-2.38095deg);
+	-webkit-transform: translate(0%, -50%) rotate(-2.38095deg);
+}
+.stepBox .tarot.paipai13 {
+	z-index: 1009;
+	transform-origin: 50% 200%;
+	-webkit-transform-origin: 50% 200%;
+	transition: transform 500ms ease-out 0ms;
+	-webkit-transition: transform 500ms ease-out 0ms;
+	transform: translate(0%, -50%) rotate(-7.14286deg);
+	-webkit-transform: translate(0%, -50%) rotate(-7.14286deg);
+}
+.stepBox .tarot.paipai14 {
+	z-index: 1008;
+	transform-origin: 50% 200%;
+	-webkit-transform-origin: 50% 200%;
+	transition: transform 500ms ease-out 0ms;
+	-webkit-transition: transform 500ms ease-out 0ms;
+	transform: translate(0%, -50%) rotate(-11.9048deg);
+	-webkit-transform: translate(0%, -50%) rotate(-11.9048deg);
+}
+.stepBox .tarot.paipai15 {
+	z-index: 1007;
+	transform-origin: 50% 200%;
+	-webkit-transform-origin: 50% 200%;
+	transition: transform 500ms ease-out 0ms;
+	-webkit-transition: transform 500ms ease-out 0ms;
+	transform: translate(0%, -50%) rotate(-16.6667deg);
+	-webkit-transform: translate(0%, -50%) rotate(-16.6667deg);
+}
+.stepBox .tarot.paipai16 {
+	z-index: 1006;
+	transform-origin: 50% 200%;
+	-webkit-transform-origin: 50% 200%;
+	transition: transform 500ms ease-out 0ms;
+	-webkit-transition: transform 500ms ease-out 0ms;
+	transform: translate(0%, -50%) rotate(-21.4286deg);
+	-webkit-transform: translate(0%, -50%) rotate(-21.4286deg);
+}
+.stepBox .tarot.paipai17 {
+	z-index: 1005;
+	transform-origin: 50% 200%;
+	-webkit-transform-origin: 50% 200%;
+	transition: transform 500ms ease-out 0ms;
+	-webkit-transition: transform 500ms ease-out 0ms;
+	transform: translate(0%, -50%) rotate(-26.1905deg);
+	-webkit-transform: translate(0%, -50%) rotate(-26.1905deg);
+}
+.stepBox .tarot.paipai18 {
+	z-index: 1004;
+	transform-origin: 50% 200%;
+	-webkit-transform-origin: 50% 200%;
+	transition: transform 500ms ease-out 0ms;
+	-webkit-transition: transform 500ms ease-out 0ms;
+	transform: translate(0%, -50%) rotate(-30.9524deg);
+	-webkit-transform: translate(0%, -50%) rotate(-30.9524deg);
+}
+.stepBox .tarot.paipai19 {
+	z-index: 1003;
+	transform-origin: 50% 200%;
+	-webkit-transform-origin: 50% 200%;
+	transition: transform 500ms ease-out 0ms;
+	-webkit-transition: transform 500ms ease-out 0ms;
+	transform: translate(0%, -50%) rotate(-35.7143deg);
+	-webkit-transform: translate(0%, -50%) rotate(-35.7143deg);
+}
+.stepBox .tarot.paipai20 {
+	z-index: 1002;
+	transform-origin: 50% 200%;
+	-webkit-transform-origin: 50% 200%;
+	transition: transform 500ms ease-out 0ms;
+	-webkit-transition: transform 500ms ease-out 0ms;
+	transform: translate(0%, -50%) rotate(-40.4762deg);
+	-webkit-transform: translate(0%, -50%) rotate(-40.4762deg);
+}
+.stepBox .tarot.paipai21 {
+	z-index: 1001;
+	transform-origin: 50% 200%;
+	-webkit-transform-origin: 50% 200%;
+	transition: transform 500ms ease-out 0ms;
+	-webkit-transition: transform 500ms ease-out 0ms;
+	transform: translate(0%, -50%) rotate(-45.2381deg);
+	-webkit-transform: translate(0%, -50%) rotate(-45.2381deg);
+}
+.stepBox .tarot.paipai22 {
+	z-index: 1000;
+	transform-origin: 50% 200%;
+	-webkit-transform-origin: 50% 200%;
+	transition: transform 500ms ease-out 0ms;
+	-webkit-transition: transform 500ms ease-out 0ms;
+	transform: translate(0%, -50%) rotate(-50deg);
+	-webkit-transform: translate(0%, -50%) rotate(-50deg);
+}
+.stepBox div.current {
+	transition: 1s linear;
+	-webkit-transition: 1s linear;
+	transform: scale(1.5);
+	z-index: 1500;
+	animation: tarotClick .5s linear 1s forwards;
+	-webkit-animation: tarotClick .5s linear 1s forwards;
+}
+.stepBox div.cur {
+	transition: 1s linear;
+	-webkit-transition: 1s linear;
+	transform: scale(1.5);
+	z-index: 1500;
+	animation: tarotCl .5s linear 1s forwards;
+	-webkit-animation: tarotCl .5s linear 1s forwards;
+}
+@keyframes tarotCl {
+	0% {}
+	100% {
+		display: none;
+		transform: scale(1);
+		opacity: 0;
+	}
+}
+@-webkit-keyframes tarotCl {
+	0% {}
+	100% {
+		display: none;
+		transform: scale(1);
+		opacity: 0;
+	}
+}
+@keyframes tarotClick {
+	0% {}
+	100% {
+		transform: rotateY(90deg);
+		display: none;
+	}
+}
+@-webkit-keyframes tarotClick {
+	0% {}
+	100% {
+		transform: rotateY(90deg);
+		display: none;
+	}
+}
+.middleCards {
+	position: relative;
+	display: flex;
+	justify-content: space-around;
+	float: left;
+	width: 100%;
+}
+.middleCards dl {
+	width: 1.3rem;
+}
+.middleCards dl dt {
+	display: block;
+	width: 100%;
+	height: 2.05rem;
+}
+.middleCards dl dt span {
+	position: absolute;
+	width: 1.3rem;
+	height: 2.05rem;
+	opacity: 0;
+}
+.middleCards dl dt span img {
+	display: block;
+	width: 100%;
+	height: 100%;
+}
+.middleCards dl dt span img.niwei {
+	transform: rotate(180deg);
+}
+.middleCards dl dd {
+	display: block;
+	width: 100%;
+	margin: .1rem 0 0 0;
+	line-height: .45rem;
+	color: #fff;
+	text-align: center;
+	opacity: 0;
+}
+.middleCards dl:nth-child(1) dd {
+	color: #fbacbf;
+}
+.middleCards dl:nth-child(2) dd {
+	color: #63bbf9;
+}
+.midTip {
+	width: 100%;
+	float: left;
+	margin: -1.3rem 0 0 0;
+	text-align: center;
+	color: #fff;
+}
+.midTip span {
+	color: #fcea93;
+}
+.middleCards dl:nth-child(1) dt span {
+	top: 0;
+	left: 1.12rem;
+}
+.middleCards dl:nth-child(2) dt span {
+	top: 0;
+	left: 4.68rem;
+}
+.middleCards dl dt span.default {
+	top: -4rem;
+	left: 2.92rem;
+	z-index: 3000;
+}
+.middleCards dl dt span.move {
+	animation: tarotMove .5s linear forwards;
+	-webkit-animation: tarotMove .5s linear forwards;
+	transition: all 1.5s;
+	-webkit-transition: all 1.5s;
+	z-index: 3000;
+}
+.middleCards dl dt span.moves {
+	animation: tarotMoves .5s linear forwards;
+	-webkit-animation: tarotMoves .5s linear forwards;
+	transition: all 1.5s;
+	-webkit-transition: all 1.5s;
+	z-index: 3000;
+}
+@keyframes tarotMoves {
+	0% {
+		transform: scale(1.5);
+		opacity: 0;
+	}
+	100% {
+		transform: scale(1);
+		opacity: 1;
+	}
+}
+@-webkit-keyframes tarotMoves {
+	0% {
+		transform: scale(1.5);
+		opacity: 0;
+	}
+	100% {
+		transform: scale(1);
+		opacity: 1;
+	}
+}
+@keyframes tarotMove {
+	0% {
+		transform: scale(1.5) rotateY(-90deg);
+		opacity: 0;
+	}
+	100% {
+		transform: scale(1) rotate(0);
+		opacity: 1;
+	}
+}
+@-webkit-keyframes tarotMove {
+	0% {
+		transform: scale(1.5) rotateY(-90deg);
+		opacity: 0;
+	}
+	100% {
+		transform: scale(1) rotate(0);
+		opacity: 1;
+	}
+}
+.midTxt {
+	width: 100%;
+	float: left;
+	margin: .4rem 0 0 0;
+	text-align: center;
+	color: #57548a;
+}
+.midMenu {
+	position: fixed;
+	bottom: 0;
+	width: 7.5rem;
+	display: flex;
+	color: #fff;
+	text-align: center;
+	height: 1.2rem;
+	z-index: 999;
+}
+.midMenu li {
+	cursor: pointer;
+}
+.midMenu li:nth-child(1) {
+	flex: .55;
+	font-size: .3rem;
+	padding: .15rem 0 0 0;
+	background-color: #343458;
+}
+.midMenu li:nth-child(1) em {
+	width: 2.6rem;
+	line-height: .4rem;
+	font-size: .26rem;
+	border: .01rem solid #a5d5fe;
+	color: #a5d5fe;
+}
+.midMenu li:nth-child(2) {
+	flex: .45;
+	font-size: .35rem;
+	line-height: 1.2rem;
+	background-color: #7841e2;
+}
+.midMenu li img {
+	display: inline-block;
+	width: .21rem;
+	vertical-align: middle;
+}
+.popMask {
+	position: fixed;
+	width: 100%;
+	height: 100%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-direction: column;
+	background: rgba(78, 78, 78, 1);
+	max-width: 7.5rem;
+	z-index: 9990;
+}
+.midpop {
+	width: 6.3rem;
+	border-radius: .1rem;
+	padding: 0 0 .3rem 0;
+	overflow: hidden;
+	background-color: #fff;
+}
+.midpop_hid {
+	width: 100%;
+	float: left;
+	padding: .2rem;
+	font-size: .35rem;
+	color: #000;
+	background: linear-gradient( #d589fc, #efceff);
+}
+.midpop_hid b {
+	color: #6920ba;
+}
+.midpop_card {
+	width: 100%;
+	float: left;
+	display: flex;
+	justify-content: space-around;
+	margin: .3rem 0 0 0;
+}
+.midpop_card li {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+.midpop_card li img {
+	display: block;
+	width: 1.7rem;
+	height: 2.46rem;
+	margin: .2rem 0 0 0;
+}
+.midpop_card li img.niwei {
+	transform: rotate(180deg);
+}
+.midpop_card li em {
+	display: block;
+	width: 1.6rem;
+	margin: .2rem 0 0 0;
+	text-align: center;
+	border-radius: .21rem;
+	line-height: .42rem;
+	font-size: .28rem;
+}
+.midpop_card li:nth-child(1) em {
+	background-color: #addfff;
+}
+.midpop_card li:nth-child(2) em {
+	background-color: #feb1c5;
+}
+.midpop_tip {
+	width: 100%;
+	float: left;
+	padding: .2rem;
+	margin: .3rem 0 0 0;
+	border-radius: .1rem;
+	text-align: center;
+	border: .01rem solid #fdbcbc;
+	background-color: #fbdede;
+}
+.midpop_tip a {
+	display: block;
+	width: 4.7rem;
+	margin: .2rem auto 0 auto;
+	line-height: .86rem;
+	border-radius: .43rem;
+	text-align: center;
+	font-size: .35rem;
+	background-color: #7838df;
+	color: #fff;
+}
+.midpop_tip a img {
+	display: inline-block;
+	width: .29rem;
+	margin: -.12rem 0 0 0;
+	vertical-align: middle;
+}
+.midClose {
+	width: 100%;
+	float: left;
+	margin: .2rem 0 0 0;
+}
+.midClose a {
+	display: block;
+	width: .46rem;
+	height: .46rem;
+	margin: 0 auto;
+	background: url(../images/close.png)no-repeat;
+	background-size: 100% 100%;
+}
+.resultWrap {
+	width: 100%;
+	float: left;
+	padding: .3rem 0 1.5rem 0;
+	background-color: #23233f;
+	min-height: 100vh;
+}
+.resultTit {
+	width: 100%;
+	float: left;
+	text-align: center;
+	line-height: 1rem;
+	border-bottom: .01rem dashed #5c6c95;
+}
+.resultCard {
+	width: 100%;
+	float: left;
+	display: flex;
+	justify-content: space-around;
+	margin: .3rem 0 0 0;
+	padding: 0 0 .2rem 0;
+}
+.resultCard li {
+	text-align: center;
+}
+.resultCard li img {
+	display: block;
+	width: 1.7rem;
+	margin: .2rem 0 0 0;
+}
+.resultCard li img.niwei {
+	transform: rotate(180deg);
+}
+.resultCard li:nth-child(1) em {
+	color: #fbacbf;
+}
+.resultCard li:nth-child(2) em {
+	color: #63bbf9;
+}
+.resultTip {
+	width: 1.7rem;
+	float: right;
+	margin: -.6rem 0 0 0;
+	line-height: .6rem;
+	border-radius: .3rem;
+	text-align: center;
+	background-color: #c94141;
+}
+.bigbox.rst {
+	margin: .6rem 0 0 0;
+	padding: .3rem .2rem .2rem .2rem;
+}
+.bigbox.rst span {
+	color: #f6d887;
+}
+.resultAnaly {
+	width: 100%;
+	float: left;
+	margin: .4rem 0 0 0;
+}
+.resultAnaly li {
+	position: relative;
+	float: left;
+	cursor: pointer;
+	color: #fff;
+}
+.resultAnaly li:nth-child(1) {
+	width: 3.2rem;
+	height: .63rem;
+	line-height: .63rem;
+	margin: 0 .2rem 0 0;
+	padding: 0 0 0 .3rem;
+	border-radius: .2rem;
+	background-color: #6244e3;
+}
+.resultAnaly li em {
+	overflow: hidden;
+	position: absolute;
+	top: .11rem;
+	left: .36rem;
+	width: .18rem;
+	height: .25rem;
+	border-radius: .1rem;
+}
+.resultAnaly li em::after {
+	content: '';
+	position: absolute;
+	bottom: -115%;
+	left: 0;
+	width: .19rem;
+	height: .25rem;
+	border-radius: .1rem;
+	background-image: linear-gradient(to bottom, transparent, rgba(255, 255, 255, 0.6), transparent);
+	/* transform: skew(-30deg); */
+}
+.resultAnaly li em.cur::after {
+	animation: showLg .5s linear infinite;
+	-webkit-animation: showLg .5s linear infinite;
+}
+@keyframes showLg {
+	0% {}
+	100% {
+		bottom: 115%;
+	}
+}
+@-webkit-keyframes showLg {
+	0% {}
+	100% {
+		bottom: 115%;
+	}
+}
+.resultAnaly li em img {
+	display: block;
+	width: 100%;
+}
+.resultAnaly li:nth-child(1) img {
+	display: inline-block;
+	width: .3rem;
+	vertical-align: middle;
+	margin: -.1rem 0 0 0;
+}
+.resultAnaly li:nth-child(2) {
+	width: 1.91rem;
+	line-height: .63rem;
+	padding: 0 0 0 .18rem;
+	text-align: center;
+	background: url(../images/result_bg.png)no-repeat;
+	background-size: 100% 100%;
+}
+.resultAnswer {
+	width: 100%;
+	float: left;
+	margin: .4rem 0 0 0;
+	padding: .2rem;
+	border-radius: .1rem;
+	text-align: justify;
+	color: #9194d9;
+	border: 1px solid #9194d9;
+}
+.resultRecom {
+	width: 100%;
+	float: left;
+	margin: .4rem 0 0 0;
+	padding: .3rem .2rem;
+	border-radius: .1rem;
+	background-color: #3f1d63;
+	color: #fff;
+}
+.resultRecom b {
+	width: 100%;
+	float: left;
+	text-align: center;
+}
+.resultRecom_prd {
+	width: 100%;
+	float: left;
+}
+.resultRecom_prd a {
+	width: 100%;
+	float: left;
+	margin: .3rem 0 0 0;
+}
+.resultRecom_prd a img {
+	display: block;
+	width: 100%;
+}
+.resultRecom_btn {
+	width: 7.5rem;
+	position: fixed;
+	bottom: 0;
+	display: flex;
+	padding: .1rem .2rem;
+	justify-content: space-between;
+	margin: .3rem 0 0 0;
+	z-index: 9999;
+	background-color: #23233f;
+}
+.resultRecom_btn li {
+	width: 3.3rem;
+	line-height: 1rem;
+	border-radius: .5rem;
+	text-align: center;
+	cursor: pointer;
+	font-size: .35rem;
+	color: #fff;
+}
+.resultRecom_btn li:nth-child(1) {
+	background-color: #7833dd;
+}
+.resultRecom_btn li:nth-child(2) {
+	background: linear-gradient(#6747d9, #095bbd);
+}

@@ -1,0 +1,203 @@
+
+<?php
+if( !defined('CORE') ) exit('Request Error!');
+/**
+ * 首页控制器
+ *
+ * @version 2013.07.05
+ */
+class ctl_index
+{
+	
+    public static $userinfo;
+    public static $control;
+    public $cache_enable = true;//缓存开关,调试时可设为false
+    public $cachetime    = 7200;//缓存时间,秒(注意:内容页缓存是单独的在video_view中设置)
+    public $cache_prefix = 'www.bygoukai.com';
+    public $cache_key    = 'index/index';
+    public $str_where_ext = '`status`!=9';
+
+    public function __construct()
+    {
+		
+		if (empty($this->items))
+        {
+			
+            $this->items = new items();
+			
+        }
+		
+		tpl::assign('web_url',URL);
+		
+		$pid = mod_topic::get_p_id();//获取一级栏目
+		
+		tpl::assign('pid',$pid);
+		
+		//获取广告
+		//$this->getAd();
+		$public_hand_data_cache = cache::get($this->cache_prefix,'public_hand_data');
+
+		if($public_hand_data_cache==''){
+			$public_hand_data = mod_index::get_public_hand();//获取公用部分手动数据
+			cache::set($this->cache_prefix,'public_hand_data',$public_hand_data,$this->cachetime); //写缓存
+		}else{
+			$public_hand_data = $public_hand_data_cache;//获取公用部分手动数据
+		}
+		
+		
+		tpl::assign('public_hand_data',$public_hand_data);
+        if(isset($_SERVER['REQUEST_URI']) && false !== stripos($_SERVER['REQUEST_URI'],'clearcache')){
+            $this->cache_enable = false;
+        }
+        
+    }
+	/**
+     * 获取广告
+     */
+    private function getAd()
+    {
+		$ad = cache::get($this->cache_prefix,'public_ad');
+		if(empty($ad)){
+        //后台广告,根据页面获得
+		
+			$ad = $this->items->getAdCodeTypeArr(array('common'));
+			cache::set($this->cache_prefix,'public_ad',$ad,$this->cachetime); //写缓存
+		}
+        tpl::assign('ad', $ad);
+    }
+	
+	public function get_url(){
+		$headers = get_headers('https://www.yiabs.com/');
+		var_dump($headers);
+	}
+	
+	
+	/**
+    *首页
+    */
+    public function index()
+    {
+
+        $content      = array();
+        if($this->cache_enable)
+        {
+            $content = cache::get($this->cache_prefix,'index');
+        }
+
+        if(empty($content))
+        {
+			$hand_type_arr = array('index_test');//手动数据
+			$handtype_arr = $this->items->getHandTypeId($hand_type_arr);
+			$mixdata = $this->items->get_attay_hand_data($handtype_arr);
+            tpl::assign('m', $mixdata);//<--END 手动数据
+			
+			$zgjm_new_data = mod_index::get_data('zgjm_data','',1,18);
+			tpl::assign('zgjm_new_data',$zgjm_new_data);
+			
+			$seo['title'] = '免费的算命网站_免费算命_生辰八字算命_八字算命_周易算命_算卦在线算命丨开运算命网';
+			$seo['keywords'] = '免费算命,开运算命网,算命网,算命街,周易算命,八字算命,免费的算命网站';
+			$seo['description'] = '免费的算命网站-开运算命网提供:免费算命,姓名测试,周易,生辰八字算命,四柱算命预测,算卦,黄道吉日查询,抽签算命,生肖算命,在线排盘和趣味测试等在线免费算命内容！';
+			tpl::assign('seo',$seo);
+         	$self_tid = mod_topic::get_selftid(344);
+			foreach($self_tid as $k=>$v){
+				$self_tid[$k]['data_list']['img'] = mod_index::get_news_data($v['id'],1,4,'',1);
+				foreach($self_tid[$k]['data_list']['img'] as $ks=>$vs){
+					$notid[] = $vs['id'];
+				}
+				$self_tid[$k]['data_list']['list'] = mod_index::get_news_data($v['id'],1,16,'','',$notid);
+				unset($notid);
+			}
+			tpl::assign('self_tid',$self_tid);
+			$tpl     = 'index/index.tpl';
+            $content = tpl::fetch($tpl);
+            cache::set($this->cache_prefix,'index',$content,$this->cachetime); //写缓存
+            //cache::set_cache_list($this->cache_prefix,'index');
+            
+        }
+		
+        exit($content);
+    }
+	
+	public function html404(){
+		$tpl     = 'index/404.tpl';
+        $content = tpl::fetch($tpl);
+		exit($content);
+	}
+	
+	/**
+	 * 用户登录
+	 */
+	public function login() {
+		if(req::item('reg', '')==1){
+			$this->registered();
+		}else{
+			$accctl = cls_access::get_instance();
+			$rs = 0;
+			$errmsg = '';
+			$gourl = req::item('gourl', '');
+			if (req::item('username', '') != '' && req::item('password', '') != '') {
+				try {
+					$rs = $accctl->check_user(req::item('username'), req::item('password'));
+					if ($rs == 1) {
+						$jumpurl = empty($gourl) ? '/acs/?ct=index&ac=index' : $gourl;
+						cls_access::show_message('成功登录', '成功登录，正在重定向到后台管理', $jumpurl);
+						exit();
+					}
+				} catch (Exception $e) {
+					$errmsg = 'Error：' . $e->getMessage();
+				} 
+			}
+			tpl::assign('gourl', $gourl);
+			tpl::assign('errmsg', $errmsg);
+			tpl::display('index/index.tpl');
+			exit();
+		}
+	}
+	
+	/**
+	 * 用户注册
+	 */
+	public function registered() {
+		$gourl = req::item('gourl', '');
+		$jumpurl = empty($gourl) ? '?ct=index&ac=login' : $gourl;
+		if ( req::item('yzm', '') != $_COOKIE['scode'] ) {
+			cls_access::show_message('注册失败', '验证码错误,请重新填写', $jumpurl);	
+			exit();
+		}
+		if ( req::item('password', '')!= '' && req::item('password', '') != req::item('password2', '') ) {
+			cls_access::show_message('注册失败', '两次输入的密码不一致，请重新输入', $jumpurl);
+			exit();
+		}
+		
+		$accctl = cls_access::get_instance();
+		$rs = 0;
+		$errmsg = '';
+		
+		if (req::item('username', '') != '' && req::item('password', '') != '' &&  req::item('password2', '')!= '' && req::item('email', '')!= '' && req::item('nickname', '')!= '' ) {
+			try {
+				$sql1 = "SELECT * FROM `users` WHERE user_name ='".req::item('username', '')."'";
+				$rsid = db::fetch_one(db::query($sql1));
+				if($rsid['uid']>=1){
+					cls_access::show_message('注册失败', '该账号已注册，请重新输入', $jumpurl);
+					exit();
+				}
+				$info=array('user_name'=>req::item('username', ''),'nickname'=>req::item('nickname', ''),'userpwd'=>md5(req::item('password', '')),'email'=>req::item('email', ''),'pools'=>'admin','groups'=>'admin_test','regtime'=>time(),'dl_tcbl'=>'50');
+				$insertid=db::insert('users',$info);
+				$jumpurl = empty($gourl) ? '?ct=index&ac=login' : $gourl;
+				cls_access::show_message('成功注册', '成功注册，正在跳转登录页面', $jumpurl);
+				exit();
+			} catch (Exception $e) {
+				$errmsg = 'Error：' . $e->getMessage();
+			} 
+		}else{
+			cls_access::show_message('注册失败', '填写信息不完整请重新输入', $jumpurl);
+			exit();
+		}
+		tpl::assign('gourl', $gourl);
+		tpl::assign('errmsg', $errmsg);
+		tpl::display('index/index.tpl');
+		exit();
+	}
+	
+}
+

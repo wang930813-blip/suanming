@@ -1,0 +1,157 @@
+
+
+/**** 支付模块2020 ****/
+.payMent2020 { width:100%; float:left; background:#fff; border-radius:.1rem; padding:.3rem; line-height:1.5; margin:.4rem 0 0 0; }
+.payMent2020 .close { width:100%; float:left; }
+.payMent2020 .close a { width:.5rem; float:right; }
+.payMent2020 .close a img { width:.3rem; display:block; margin:0 auto; }
+/*.payMent2020 .yuanjia { width:100%; float:left; font-size:.28rem; color:#808080; }*/
+.payMent2020 .tehui { width:100%; float:left; border-bottom:dotted .02rem #e2e2e2; padding:0 0 .1rem 0; line-height:.5rem; }
+.payMent2020 .tehui .zuo { width:50%; float:left; font-size:.28rem; /*color:#d30132; font-weight:bold;*/ text-align:center; }
+.payMent2020 .tehui .zuo span { width:100%; float: left; background:#ff9; color:#d30132; text-align:center; }
+.payMent2020 .tehui .zuo del { color:#333; }
+.payMent2020 .tehui .zuo b { font-size:.45rem; }
+.payMent2020 .tehui .you { width:auto; float:right; padding:.1rem 0 0 0; font-size:.28rem; font-weight:bold; }
+.payMent2020 .tehui .you b { color:#4c4c4c; }
+.payMent2020 .tehui .you span { color:#d30132; }
+.payMent2020 .payway { width:100%; float:left; }
+.payMent2020 .payway a { width:100%; float:left; border-bottom:solid 1px #b3b3b3; padding:.2rem 0; line-height:.6rem; font-size:.32rem; }
+.payMent2020 .payway a:last-child { border:none; }
+.payMent2020 .payway a img { width:.55rem; vertical-align:middle; margin:-.05rem 0 0 0; }
+.payMent2020 .payway a span { width:1.6rem; float:right; background:#d30132; border-radius:.3rem; color:#fff; text-align:center; }
+.payMent2020 .tips { width:100%; float:left; font-size:.24rem; color:#999; margin:.2rem 0 0 0; }
+.payMent2020 .tips a { color:#dd6572; }
+.payMent2020Link { width:100%; float:left; font-size:.24rem; margin:.1rem 0 0 0; }
+.payMent2020Link a { color:#dd6572; }
+.payMent2020Link a i { width:.3rem; float:left; height:.3rem; background:#dd6572; border-radius:50%; line-height:.3rem; font-size:.2rem; color: #fff; text-align:center; margin:.02rem .1rem 0 0; }
+.payPopbg {
+  width: 100%;
+  height: 100%;
+  float: left;
+  background: #000;
+  opacity: .85;
+  position: fixed;
+  top: 0;
+  max-width: 7.5rem;
+  z-index:9;
+}
+/**** 支付模块2020 ****/
+
+
+
+
+/** 弹窗 **/
+.popbg {
+  width: 100%;
+  height: 100%;
+  float: left;
+  background: #000;
+  opacity: .85;
+  position: fixed;
+  top: 0;
+  left: 0;
+  /*max-width: 7.5rem;*/
+  z-index:9999;
+}
+.popBox {
+  width: 6rem;
+  background: #fff;
+  border-radius: .1rem;
+  padding: .3rem;
+  position: fixed;
+  left: 50%;
+  top: 25%;
+  margin: 0 0 0 -3rem;
+  z-index: 9999;
+}
+.popBox .title {
+  width: 100%;
+  float: left;
+  border-bottom: solid .02rem #cfcfcf;
+  padding: 0 0 .2rem 0;
+  font-size: .38rem;
+  color: #000;
+  font-weight: bold;
+  text-align: center;
+  position: relative;
+  margin: 0 0 .2rem 0;
+}
+.popBox .title a {
+  width: .5rem;
+  height: .5rem;
+  position: absolute;
+  right: 0;
+  top: .16rem;
+}
+.popBox .title a img {
+  width: .25rem;
+  display: block;
+  margin: 0 auto;
+}
+.popBox .title a.txtLink {
+  width: 1.9rem;
+  position: absolute;
+  left: 0;
+  top: .16rem;
+  font-size: .24rem;
+  color: #ee2848;
+}
+.popBox .txt {
+  width: 100%;
+  float: left;
+  font-size: .28rem;
+  color: #333;
+  font-weight: bold;
+  text-align: center;
+}
+.popBox .btn {
+  width: 100%;
+  float: left;
+  padding: 0 1rem;
+  margin: .2rem 0 0 0;
+}
+.popBox .btn a {
+  width: 100%;
+  float: left;
+  background: #80101d;
+ /* background-image: linear-gradient(#ffc926, #ff9b15);*/
+  border-radius: .5rem;
+  line-height: .7rem;
+  font-size: .28rem;
+  color: #fff;
+  text-align: center;
+}
+/*.popBox .btn a.one {
+  width: 2.5rem;
+  display: block;
+  margin: 0 auto;
+}
+.popBox .btn a.two {
+  float: left;
+  background: #b8b8b8;
+}
+.popBox .btn a.three {
+  float: right;
+}*/
+.popBox .link {
+  width: 100%;
+  float: left;
+  font-size: .28rem;
+  text-align: center;
+  margin: .2rem 0 0 0;
+}
+.popBox .link a {
+	color: #999;
+}
+/** 弹窗 **/
+
+
+
+
+
+
+
+
+
+
+

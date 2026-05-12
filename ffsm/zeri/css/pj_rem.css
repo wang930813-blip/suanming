@@ -1,0 +1,97 @@
+﻿@charset "utf-8";
+/* CSS Document */
+/*body { min-width:320px;	max-width:700px; margin:0 auto !important; background:#fff; overflow-x:hidden; font-family:"Microsoft YaHei",Helvetica; color:#333; }
+body,section,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre,form,p,th,td,input,textarea,select,img { margin:0; padding:0; border:0; }  
+ul,ol,li { margin:0px; padding:0px; list-style:none; }
+h1,h2,h3,h4,h5,h6 { font-size:inherit; font-weight:lighter; }
+table { border-collapse:collapse; border-spacing:0; }
+em,i { display:inline-block; font-weight:normal; font-style:normal; }
+textarea,select,input { font-family:"Microsoft Yahei"; font-size:.3rem; color:#666; }
+b { font-weight:bold; }
+img { margin:0; padding:0; border:0; }
+a { color:#333; text-decoration:none; }
+a:hover { color:#333; text-decoration:none; }
+a.wnl_history_btn:hover{color: #ffffff !important;}
+input[type="text"],input[type="password"],input[type="button"],input[type="submit"],button,textarea { -webkit-appearance:none; }
+.cfx:after,nav.mini:after,.h:after,.hn:after,.PH:after { content:' '; clear:both; display:block; height:0; visibility:hidden; line-height:0; }
+* { box-sizing:border-box; }
+.fl { float:left; }
+.fr { float:right; }*/
+
+
+/***rem版评价***/
+.remyouxpinjbox { width:100%; float:left; border:solid .2rem #fefde7; background:#fff; border-radius:5px; padding:.3rem .2rem; margin:.2rem 0 0 0; }
+
+.remmailbox { width:100%; float:left; margin:0 0 .4rem 0; }
+.remmailbox_title { width:100%; float:left; background:url(../../zeri/image/title_bg.png) no-repeat center; background-size:100% auto; line-height:.45rem; font-size:.32rem; text-align:center; font-weight:bold; }
+.remmailbox_txt { width:100%; float:left; line-height:.4rem; font-size:.3rem; color:#a3a3a3; margin:.3rem 0 0 0; }
+.remmailbox_output { width:100%; float:left; border:solid 1px #a9a9a9; border-radius:5px; padding:.1rem; margin:.3rem 0 0 0; }
+.remmailbox_output_txt { width:.7rem; float:left; line-height:.4rem; font-size:.3rem; }
+.remmailbox_output_input { overflow:hidden; }
+.remmailbox_output_input input { width:100%; float:left; border:none; background:none; outline:none; height:.4rem; color:#a3a3a3; }
+.remmailbox_btn { width:100%; float:left; margin:.3rem 0 0 0; }
+.remmailbox_btn a { width:100%; float:left; background:#228fee; border-radius:5px; line-height:.8rem; font-size:.35rem; color:#fff; text-align:center; }
+
+.remvaluation { width:100%; float:left; }
+.remvaluation_title { width:100%; float:left; background:url(../../zeri/image/title_bg.png) no-repeat center; background-size:100% auto; line-height:.45rem; font-size:.32rem; text-align:center; font-weight:bold; }
+.remvaluation_name { width:100%; float:left; margin:.3rem 0 0 0; }
+.remvaluation_name_l { width:auto; float:left; line-height:.4rem; font-size:.3rem; }
+.remvaluation_name_l input { width:2.6rem; height:.4rem; border:solid 1px #a3a3a3; border-radius:5px; color:#a3a3a3; text-indent:.05rem; }
+.remvaluation_name_r { width:auto; float:left; line-height:.4rem; font-size:.3rem; margin:0 0 0 .3rem; }
+.remvaluation_name_r label { display:block; }
+.remvaluation_score { width:100%; float:left; margin:.3rem 0 0 0; }
+.remvaluation_score_l { width:auto; float:left; line-height:.4rem; font-size:.3rem; }
+.remvaluation_score_l img { width:.4rem; vertical-align:middle; margin:-.07rem 0 0 0; }
+.remvaluation_score_r { width:auto; float:left; margin:0 0 0 .2rem; border-radius:5px; padding:0 .15rem; line-height:.4rem; font-size:.3rem; color:#fff; }
+.remvaluation_score_r img { width:.3rem; vertical-align:middle; margin:-.05rem 0 0 0; }
+.remvaluation_score_r.bg5 { background:#ff9900; }
+.remvaluation_score_r.bg4 { background:#ffac30; }
+.remvaluation_score_r.bg3 { background:#ffca7a; opacity:.8; }
+.remvaluation_score_r.bg2 { background:#a3a3a3; }
+.remvaluation_score_r.bg1 { background:#bebebe; opacity:.8; }
+.remvaluation_area { width:100%; float:left; margin:.3rem 0 0 0; }
+.remvaluation_area textarea { width:100%; float:left; height:2rem; background:#fbf8fb; border:solid 1px #d9d9d9; border-radius:5px; padding:.1rem; line-height:.45rem; font-size:.3rem; color:#a3a3a3; text-align:justify; }
+.remvaluation_btn { width:100%; float:left; margin:.3rem 0 0 0; }
+.remvaluation_btn a { width:100%; float:left; background:#ff8e04; border-radius:5px; line-height:.8rem; font-size:.35rem; color:#fff; text-align:center; }
+/***rem版评价***/
+
+/*热门测算*/
+#mk_rmcs{width: 100%;font-size: .3rem;}
+#mk_rmcs .topTilte{background: #d0612a;color: #ffffff;font-size: .34rem;font-weight: bold;text-align: center;height: .8rem;line-height: .8rem;}
+#mk_rmcs .csBg{background-color: #fffaef;padding: .3rem 0;}
+#mk_rmcs .csBg table{width: 100%;text-align: center;}
+#mk_rmcs .csBg table img{width: 1.04rem;height: 1.04rem;}
+#mk_rmcs .csBg table td{width: 25%;}
+#mk_rmcs .csBg table div{text-align: center;}
+#mk_rmcs .csBg table a{display: block;margin: .4rem 0;}
+/*热门测算*/
+
+/**** 邮箱弹窗 ****/
+.mailpop { width:7rem; background:#fff; border:solid 1px #ccc; position:fixed; left:50%; top:25%; margin:0 0 0 -3.5rem; z-index:999; }
+.mailpop_title { width:100%; float:left; background:#f1f1f1; border-bottom:solid 1px #ccc; line-height:.8rem; font-size:.34rem; text-align:center; }
+.mailpop_txt { width:100%; float:left; padding:.3rem; line-height:.5rem; font-size:.3rem; text-align:justify; }
+.mailpop_txt span { color:#f00; }
+.mailpop_btn { width:100%; float:left; padding:0 .3rem; margin:0 0 .3rem 0; }
+.mailpop_btn a { width:46%; border-radius:8px; line-height:.75rem; font-size:.3rem; text-align:center; color:#fff; }
+.mailpop_btn a:first-child { float:left; background:#7f7f7f; }
+.mailpop_btn a:last-child { float:right; background:#48aa30; }
+/**** 邮箱弹窗 ****/
+
+.refloatbtn { width:100%; float:left; position:fixed; bottom:0; max-width:700px; z-index:99; }
+.refloatbtn a { width:100%; float:left; background:#FF6502; border-radius:8px; line-height:.8rem; font-size:.3rem; color:#fff; text-align:center; }
+.popbg { width:100%; height:100%; float:left; background:#000; opacity:.85; position:fixed; top:0; max-width:700px; }
+
+
+/**** 弹窗模板 ****/
+#tcTemp .mask{position: fixed;top: 0;left: 0;right: 0;bottom: 0;background: rgba(0,0,0,.7);z-index: 888888;}
+#tcTemp .tcTemp_child {position: fixed;z-index: 888889;top: 1.08rem;left: 0.48rem;right: 0.48rem;bottom: 2.05333rem;margin: 0;overflow-y: auto;font-size: .32rem;-webkit-overflow-scrolling: touch;max-width: 570px;margin: 0 auto;}
+#tcTemp .tcTemp_child .tc1{background: #ffffff;font-size: .32rem;line-height: 1.6;overflow: hidden;border-radius: 0.2rem;}
+#tcTemp .tcTemp_child .tc1 .title{background: #cb7530;text-align: center;position: relative;color: #ffffff;font-size: 0.34rem;padding: .2rem 0;}
+#tcTemp .tcTemp_child .tc1 .title span{}
+#tcTemp .tcTemp_child .tc1 .title img.tcTempClose{position: absolute;width: 0.6rem;height: 0.6rem;top: 0.12rem;right: 0.12rem;}
+#tcTemp .tcTemp_child .tc1 .content{padding: .2rem .3rem .4rem .3rem;}
+#tcTemp .tcTemp_child .tc1 .content .hang1{}
+#tcTemp .tcTemp_child .tc1 .content .hang2{border-top: 1px dotted #ccc;margin: .4rem 0 0 0;text-align: center;padding: .3rem 0;font-size: 0.4rem;color: #ff5959;}
+#tcTemp .tcTemp_child .tcBtn{width: 80%;margin: 0 auto;text-align: center;background: #e04c4c;color: #ffffff;border-radius: .1rem;padding: .2rem;display: block;}
+ /**** 弹窗模板 ****/
+

@@ -1,0 +1,164 @@
+<?php /* Smarty version 2.6.25, created on 2025-12-05 16:12:33
+         compiled from admin/upload.image.html */ ?>
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>上传图片</title>
+    <link rel="stylesheet" href="/ffsm/statics/ffsm/kmmb/layui/css/layui.css">
+    <style>
+        body { padding: 20px; background: #f5f5f5; }
+        .upload-container { background: white; padding: 30px; border-radius: 5px; }
+        .preview-area { margin-top: 20px; text-align: center; }
+        .preview-area img { max-width: 100%; max-height: 400px; border: 1px solid #e6e6e6; padding: 10px; }
+        .tip { color: #999; font-size: 12px; margin-top: 10px; }
+    </style>
+<?php echo $this->_tpl_vars['page_meta']; ?>
+
+</head>
+<body>
+    <div class="upload-container">
+        <h3>上传图片</h3>
+        
+        <div class="layui-form">
+            <div class="layui-form-item">
+                <label class="layui-form-label">选择图片</label>
+                <div class="layui-input-block">
+                    <button type="button" class="layui-btn" id="selectFile">
+                        <i class="layui-icon layui-icon-upload"></i> 选择文件
+                    </button>
+                    <input type="file" id="fileInput" accept="image/*" style="display:none;">
+                    <div class="tip">支持JPG、PNG、GIF格式，大小不超过5MB</div>
+                </div>
+            </div>
+            
+            <div class="layui-form-item">
+                <label class="layui-form-label">图片路径</label>
+                <div class="layui-input-block">
+                    <input type="text" id="imagePath" class="layui-input" placeholder="上传后自动生成" readonly>
+                </div>
+            </div>
+            
+            <div class="layui-form-item">
+                <div class="layui-input-block">
+                    <button type="button" class="layui-btn layui-btn-normal" id="uploadBtn" disabled>
+                        <i class="layui-icon layui-icon-upload-circle"></i> 开始上传
+                    </button>
+                    <button type="button" class="layui-btn layui-btn-primary" onclick="parent.layer.closeAll();">
+                        <i class="layui-icon layui-icon-close"></i> 取消
+                    </button>
+                </div>
+            </div>
+        </div>
+        
+        <div class="preview-area" id="previewArea" style="display:none;">
+            <h4>图片预览：</h4>
+            <img id="previewImage" src="" alt="预览">
+        </div>
+    </div>
+
+    <script src="/ffsm/statics/ffsm/kmmb/layui/layui.js"></script>
+    <script>
+    layui.use(['layer', 'upload'], function(){
+        var layer = layui.layer;
+        var $ = layui.jquery;
+        
+        var selectedFile = null;
+        var field = '<?php echo $this->_tpl_vars['field']; ?>
+';
+        
+        // 选择文件按钮
+        $('#selectFile').click(function(){
+            $('#fileInput').click();
+        });
+        
+        // 文件选择
+        $('#fileInput').on('change', function(){
+            var file = this.files[0];
+            
+            if (!file) {
+                return;
+            }
+            
+            // 验证文件类型
+            if (!file.type.match('image.*')) {
+                layer.msg('请选择图片文件！', {icon: 2});
+                return;
+            }
+            
+            // 验证文件大小（5MB）
+            if (file.size > 5 * 1024 * 1024) {
+                layer.msg('图片太大，请选择小于5MB的图片！', {icon: 2});
+                return;
+            }
+            
+            selectedFile = file;
+            
+            // 显示预览
+            var reader = new FileReader();
+            reader.onload = function(e) {
+                $('#previewImage').attr('src', e.target.result);
+                $('#previewArea').show();
+                $('#uploadBtn').prop('disabled', false);
+            };
+            reader.readAsDataURL(file);
+        });
+        
+        // 上传按钮
+        $('#uploadBtn').click(function(){
+            if (!selectedFile) {
+                layer.msg('请先选择图片！', {icon: 2});
+                return;
+            }
+            
+            var loadingIndex = layer.load(2, {shade: 0.3});
+            
+            // 读取文件为Base64
+            var reader = new FileReader();
+            reader.onload = function(e) {
+                var base64Data = e.target.result;
+                
+                // 发送到服务器
+                $.ajax({
+                    url: '?ct=upload&ac=base64',
+                    type: 'POST',
+                    dataType: 'json',
+                    data: {
+                        imageData: base64Data
+                    },
+                    success: function(response) {
+                        layer.close(loadingIndex);
+                        
+                        console.log('上传响应：', response);
+                        
+                        if (response.error_code == 0 || response.error_code === 0) {
+                            var imagePath = '/static/upload/' + response.data;
+                            $('#imagePath').val(imagePath);
+                            
+                            layer.msg('上传成功！', {icon: 1});
+                            
+                            // 回调父页面
+                            setTimeout(function(){
+                                if (typeof parent.receiveImage === 'function') {
+                                    parent.receiveImage(field, imagePath);
+                                }
+                                parent.layer.closeAll();
+                            }, 1000);
+                        } else {
+                            var errorMsg = response.error_message || response.msg || '上传失败';
+                            layer.msg('上传失败：' + errorMsg, {icon: 2});
+                        }
+                    },
+                    error: function(xhr, status, error) {
+                        layer.close(loadingIndex);
+                        console.error('上传错误：', xhr.responseText);
+                        layer.msg('上传出错：' + error, {icon: 2});
+                    }
+                });
+            };
+            reader.readAsDataURL(selectedFile);
+        });
+    });
+    </script>
+</body>
+</html>

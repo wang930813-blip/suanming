@@ -1,0 +1,123 @@
+<{include file="admin/header.html"}>
+
+<div class="layui-fluid" style="padding: 20px;">
+    <div class="layui-card">
+        <div class="layui-card-header">
+            <div style="display: flex; justify-content: space-between; align-items: center;">
+                <h3 style="margin: 0;">测算项目管理</h3>
+                <div>
+                    <button type="button" class="layui-btn layui-btn-normal" onclick="location.href='?ct=test_list&ac=item_form'">
+                        <i class="layui-icon layui-icon-add-1"></i> 添加测算项目
+                    </button>
+                    <button type="button" class="layui-btn layui-btn-primary" onclick="location.href='?ct=test_list&ac=category'">
+                        <i class="layui-icon layui-icon-template-1"></i> 分类管理
+                    </button>
+                </div>
+            </div>
+        </div>
+        
+        <!-- 筛选 -->
+        <div class="layui-card-body" style="padding: 15px; border-bottom: 1px solid #f0f0f0;">
+            <form method="get" class="layui-form">
+                <input type="hidden" name="ct" value="test_list">
+                <input type="hidden" name="ac" value="index">
+                <div class="layui-inline">
+                    <label class="layui-form-label" style="width: 60px;">分类：</label>
+                    <div class="layui-input-inline" style="width: 150px;">
+                        <select name="category_id" lay-filter="category" onchange="this.form.submit()">
+                            <option value="0">全部分类</option>
+                            <{foreach from=$categories item=cat}>
+                            <option value="<{$cat.id}>" <{if $category_id == $cat.id}>selected<{/if}>><{$cat.name}></option>
+                            <{/foreach}>
+                        </select>
+                    </div>
+                </div>
+            </form>
+        </div>
+
+        <div class="layui-card-body">
+            <table class="layui-table" lay-skin="line">
+                <thead>
+                    <tr>
+                        <th width="80">ID</th>
+                        <th width="100">分类</th>
+                        <th>标题</th>
+                        <th>描述</th>
+                        <th width="100">图片</th>
+                        <th>链接</th>
+                        <th width="100">测算人次</th>
+                        <th width="80">好评率</th>
+                        <th width="80">排序</th>
+                        <th width="80">状态</th>
+                        <th width="200">操作</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <{if isset($list) && is_array($list)}>
+                    <{foreach from=$list item=v}>
+                    <tr>
+                        <td><{$v.id}></td>
+                        <td><span class="layui-badge layui-bg-blue"><{$v.category_name}></span></td>
+                        <td><{$v.title}></td>
+                        <td style="max-width: 300px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;" title="<{$v.description}>"><{$v.description}></td>
+                        <td>
+                            <{if $v.image}>
+                            <img src="/ffsm/<{$v.image}>" style="max-width: 80px; max-height: 50px; border-radius: 4px;">
+                            <{/if}>
+                        </td>
+                        <td style="max-width: 120px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;" title="<{$v.link}>"><{$v.link}></td>
+                        <td><{$v.test_count}></td>
+                        <td><{$v.rate}></td>
+                        <td><{$v.sort}></td>
+                        <td>
+                            <{if $v.status == 1}>
+                            <span class="layui-badge layui-bg-green">显示</span>
+                            <{else}>
+                            <span class="layui-badge layui-bg-gray">隐藏</span>
+                            <{/if}>
+                        </td>
+                        <td>
+                            <button class="layui-btn layui-btn-xs" onclick="location.href='?ct=test_list&ac=item_form&id=<{$v.id}>'">
+                                <i class="layui-icon layui-icon-edit"></i> 编辑
+                            </button>
+                            <button class="layui-btn layui-btn-xs layui-btn-danger" onclick="deleteItem(<{$v.id}>)">
+                                <i class="layui-icon layui-icon-delete"></i> 删除
+                            </button>
+                        </td>
+                    </tr>
+                    <{/foreach}>
+                    <{else}>
+                    <tr>
+                        <td colspan="11" style="text-align: center; padding: 50px; color: #999;">
+                            <i class="layui-icon layui-icon-face-cry" style="font-size: 60px;"></i>
+                            <p style="margin-top: 10px;">暂无数据</p>
+                        </td>
+                    </tr>
+                    <{/if}>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+<script>
+// 确保element模块被初始化（侧边栏需要）
+layui.use(['layer', 'element'], function(){
+    var layer = layui.layer;
+    var element = layui.element;
+});
+
+function deleteItem(id) {
+    layui.use('layer', function(){
+        var layer = layui.layer;
+        layer.confirm('确定要删除这个测算项目吗？', {
+            icon: 3,
+            title: '删除确认',
+            btn: ['确定删除', '取消']
+        }, function(index){
+            window.location.href = '?ct=test_list&ac=index&action=delete&id=' + id;
+        });
+    });
+}
+</script>
+

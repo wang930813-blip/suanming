@@ -1,0 +1,449 @@
+@charset "utf-8";
+
+/* CSS Document */
+
+body {
+
+}
+body, section, div, dl, dt, dd, ul, ol, li, h1, h2, h3, h4, h5, h6, pre, form, p, th, td, input, textarea, select, img {
+	margin: 0;
+	padding: 0;
+	border: 0;
+}
+ul, ol, li {
+	margin: 0px;
+	padding: 0px;
+	list-style: none;
+}
+h1, h2, h3, h4, h5, h6 {
+	font-size: inherit;
+	font-weight: lighter;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+em, i {
+	display: inline-block;
+	font-weight: normal;
+	font-style: normal;
+}
+textarea, select, input {
+	font-family: "Microsoft Yahei";
+	font-size: .32rem;
+	color: #666;
+}
+b {
+	font-weight: bold;
+}
+img {
+	margin: 0;
+	padding: 0;
+	border: 0;
+}
+a {
+	color: #333;
+	text-decoration: none;
+}
+a:hover {
+	/*color:#333; */
+	text-decoration: none;
+}
+input[type="text"], input[type="password"], input[type="button"], input[type="submit"], button, textarea {
+	-webkit-appearance: none;
+}
+.cfx:after, nav.mini:after, .h:after, .hn:after, .PH:after {
+	content: ' ';
+	clear: both;
+	display: block;
+	height: 0;
+	visibility: hidden;
+	line-height: 0;
+}
+* {
+	box-sizing: border-box;
+}
+.fl {
+	float: left;
+}
+.fr {
+	float: right;
+}
+
+/**** 公共css ****/
+
+
+/**** 首页 ****/
+
+.wrapper {
+	float: left;
+	width: 100%;
+	background: #a12619 url(../images/2wrap-bg.png) no-repeat;
+	background-size: 100% auto;
+	color: #510532;
+}
+
+/*banner图动画*/
+
+.indexBann {
+	position: relative;
+	float: left;
+	width: 100%;
+	height: 5.15rem;
+	overflow: hidden;
+}
+.indexBann ul li {
+	position: absolute;
+}
+.indexBann ul li img {
+	float: left;
+	width: 100%;
+}
+.indexBann ul li:nth-child(1) {
+	left: 0;
+	top: 0;
+	width: 100%;
+}
+.indexBann ul li:nth-child(2) {
+	left: 0;
+	top: 2.4rem;
+	width: 100%;
+}
+.indexBann ul li:nth-child(3) {
+left: 0.95rem;
+    top: 1.03rem;
+    width: 1.85rem;
+	animation: lightZoom 7s linear infinite;
+	-moz-animation: lightZoom 7s linear infinite;
+	-webkit-animation: lightZoom 7s linear infinite;
+	-o-animation: lightZoom 7s linear infinite;
+}
+@keyframes lightZoom {
+	from {}
+	to {
+		opacity: .1;
+		transform: scale(1.4);
+	}
+}
+@-moz-keyframes lightZoom {
+	from {}
+	to {
+		opacity: .1;
+		transform: scale(1.4);
+	}
+}
+@-webkit-keyframes lightZoom {
+	from {}
+	to {
+		opacity: .1;
+		transform: scale(1.4);
+	}
+}
+@-o-keyframes lightZoom {
+	from {}
+	to {
+		opacity: .1;
+		transform: scale(1.4);
+	}
+}
+.indexBann ul li:nth-child(4) {
+	left: 1.91rem;
+	top: 3.28rem;
+	width: 3.67rem;
+}
+.indexBann ul li:nth-child(5) {
+right: -1.08rem;
+    /* right: 0; */
+    top: 1.72rem;
+    width: 2.29rem;
+	animation: boyMove 10s linear infinite;
+	-moz-animation: boyMove 10s linear infinite;
+	-webkit-animation: boyMove 10s linear infinite;
+	-o-animation: boyMove 10s linear infinite;
+}
+@keyframes boyMove {
+	from {}
+	33.33%, to {
+		transform: translateX(-.9rem);
+	}
+}
+@-moz-keyframes boyMove {
+	from {}
+	33.33%, to {
+		transform: translateX(-.9rem);
+	}
+}
+@-webkit-keyframes boyMove {
+	from {}
+	33.33%, to {
+		transform: translateX(-.9rem);
+	}
+}
+@-o-keyframes boyMove {
+	from {}
+	33.33%, to {
+		transform: translateX(-.9rem);
+	}
+}
+.indexBann ul li:nth-child(6) {
+    left: -0.8rem;
+    /* left: 0; */
+    top: 2.08rem;
+    width: 2.15rem;
+	animation: girlMove 10s linear infinite;
+	-moz-animation: girlMove 10s linear infinite;
+	-webkit-animation: girlMove 10s linear infinite;
+	-o-animation: girlMove 10s linear infinite;
+}
+@keyframes girlMove {
+	from {}
+	33.33%, to {
+		transform: translateX(.8rem);
+	}
+}
+@-moz-keyframes girlMove {
+	from {}
+	33.33%, to {
+		transform: translateX(.8rem);
+	}
+}
+@-webkit-keyframes girlMove {
+	from {}
+	33.33%, to {
+		transform: translateX(.8rem);
+	}
+}
+@-o-keyframes girlMove {
+	from {}
+	33.33%, to {
+		transform: translateX(.8rem);
+	}
+}
+.indexBann ul li:nth-child(7) {
+left: -0.8rem;
+    /* left: 0; */
+    top: 2.08rem;
+    width: 2.15rem;
+	animation: girlHide 10s linear infinite;
+	-moz-animation: girlHide 10s linear infinite;
+	-webkit-animation: girlHide 10s linear infinite;
+	-o-animation: girlHide 10s linear infinite;
+}
+@keyframes girlHide {
+	from {}
+	33.33% {
+		transform: translateX(.8rem);
+		opacity: 1;
+	}
+	34% {
+		opacity: 0;
+	}
+	to {
+		transform: translateX(.8rem);
+		opacity: 0;
+	}
+}
+@-moz-keyframes girlHide {
+	from {}
+	33.33% {
+		transform: translateX(.8rem);
+		opacity: 1;
+	}
+	34% {
+		opacity: 0;
+	}
+	to {
+		transform: translateX(.8rem);
+		opacity: 0;
+	}
+}
+@-webkit-keyframes girlHide {
+	from {}
+	33.33% {
+		transform: translateX(.8rem);
+		opacity: 1;
+	}
+	34% {
+		opacity: 0;
+	}
+	to {
+		transform: translateX(.8rem);
+		opacity: 0;
+	}
+}
+@-o-keyframes girlHide {
+	from {}
+	33.33% {
+		transform: translateX(.8rem);
+		opacity: 1;
+	}
+	34% {
+		opacity: 0;
+	}
+	to {
+		transform: translateX(.8rem);
+		opacity: 0;
+	}
+}
+.indexBann ul li:nth-child(8) {
+    left: 0.32rem;
+    top: 2.33rem;
+    width: 0.8rem;
+	opacity: 0;
+	animation: birdShow 10s linear 3s infinite;
+	-moz-animation: birdShow 10s linear 3s infinite;
+	-webkit-animation: birdShow 10s linear 3s infinite;
+	-o-animation: birdShow 10s linear 3s infinite;
+}
+@keyframes birdShow {
+	from {}
+	33.33%, 66.66% {
+		opacity: 1;
+	}
+	66.66%, to {
+		opacity: 0;
+	}
+}
+@-moz-keyframes birdShow {
+	from {}
+	33.33%, 66.66% {
+		opacity: 1;
+	}
+	66.66%, to {
+		opacity: 0;
+	}
+}
+@-webkit-keyframes birdShow {
+	from {}
+	33.33%, 66.66% {
+		opacity: 1;
+	}
+	66.66%, to {
+		opacity: 0;
+	}
+}
+@-o-keyframes birdShow {
+	from {}
+	33.33%, 66.66% {
+		opacity: 1;
+	}
+	66.66%, to {
+		opacity: 0;
+	}
+}
+.indexBann ul li:nth-child(9) {
+    left: 2.5rem;
+    top: 3.7rem;
+    width: 0.8rem;
+    opacity: 0;
+	animation: birdShow 10s linear 3s infinite;
+	-moz-animation: birdShow 10s linear 3s infinite;
+	-webkit-animation: birdShow 10s linear 3s infinite;
+	-o-animation: birdShow 10s linear 3s infinite;
+}
+.indexBann ul li:nth-child(10) {
+    left: 1.1rem;
+    top: 2.66rem;
+    width: 2.33rem;
+	opacity: 0;
+	animation: lineShow 10s linear 3.5s infinite;
+	-moz-animation: lineShow 10s linear 3.5s infinite;
+	-webkit-animation: lineShow 10s linear 3.5s infinite;
+	-o-animation: lineShow 10s linear 3.5s infinite;
+}
+@keyframes lineShow {
+	from {}
+	33.33%, 66.66% {
+		opacity: 1;
+	}
+	66.66%, to {
+		opacity: 0;
+	}
+}
+@-moz-keyframes lineShow {
+	from {}
+	33.33%, 66.66% {
+		opacity: 1;
+	}
+	66.66%, to {
+		opacity: 0;
+	}
+}
+@-webkit-keyframes lineShow {
+	from {}
+	33.33%, 66.66% {
+		opacity: 1;
+	}
+	66.66%, to {
+		opacity: 0;
+	}
+}
+@-o-keyframes lineShow {
+	from {}
+	33.33%, 66.66% {
+		opacity: 1;
+	}
+	66.66%, to {
+		opacity: 0;
+	}
+}
+
+/*banner图动画*/
+
+.main {
+	float: left;
+	width: 100%;
+	padding: 0 .15rem .5rem .15rem;
+}
+.main.index {
+	position: relative;
+	margin: -1.75rem 0 0 0;
+}
+.main.free {
+	position: relative;
+	margin: -.3rem 0 0 0;
+}
+.main.free div:first-child.picTitle {
+	margin-top: 0;
+}
+.bigbox {
+	float: left;
+	width: 100%;
+}
+.bigbox.marg30 {
+	margin: .3rem 0 0 0;
+}
+.bigbox .top {
+	float: left;
+	width: 100%;
+	height: .85rem;
+	background: url(../images/big-top.png) no-repeat;
+	background-size: 100% 100%;
+}
+.bigbox .down {
+	float: left;
+	width: 100%;
+	height: .85rem;
+	background: url(../images/big-down.png) no-repeat;
+	background-size: 100% 100%;
+}
+.bigbox .mid {
+	float: left;
+	width: 100%;
+	padding: 0 .4rem;
+	margin: -.01rem 0;
+	background: url(../images/big-mid.png) no-repeat;
+	background-size: 100% 100%;
+}
+.bigbox .con {
+	position: relative;
+	float: left;
+	width: 100%;
+	margin: .15rem 0 -.4rem 0;
+}
+.bigbox .con div:first-child.freeMohu, .bigbox .con div:first-child.freeTxt, .bigbox .con div:first-child.freeKey {
+	margin: 0;
+}
+
+/** 资料输入版块 **/
+

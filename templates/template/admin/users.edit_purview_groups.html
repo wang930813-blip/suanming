@@ -1,0 +1,128 @@
+<{include file="admin/header.html"}>
+<div class="app-content flex-column-fluid py-3 py-lg-6">
+    
+    
+    <div class="app-container container-fluid">
+        <div class="card">
+            <div class="card-header">
+                <div class="card-title">
+                    <h2>组权限管理 -- 所有组</h2>
+                </div>
+                <{if request('even')==''}>
+                <!--<div class="card-toolbar">-->
+                <!--    <button type="button" class="btn btn-sm btn-light btn-active-primary"onclick="group_add();">增加用户组</button>-->
+                <!--</div>-->
+                <{else}>
+                <div class="card-toolbar">
+                    <a class="btn btn-sm btn-light btn-active-primary" href="/acs/?ct=users&ac=edit_purview_groups&_t=1722858819049">返回</a>
+                </div>
+                <{/if}>
+            </div>
+            <div class="card-body pb-5">
+
+
+<form name="form1" action="?ct=users&ac=edit_purview_groups&even=saveedit" method="POST" enctype="multipart/form-data">
+<div id="contents">
+<{if request('even')==''}>
+
+	<div class="d-flex flex-stack">
+		<div class="text-gray-700 fw-semibold fs-3 me-2">管理员组</div>
+		<div class="d-flex align-items-senter">
+			<div class="d-flex align-items-center">
+				<a class="fs-2 me-3 pt-2  text-primary link-primary  opacity-75-hover fw-bold d-block" href='?ct=users&ac=index&gp=admin_admin'>成员列表</a>
+				<span class="fw-semibold fs-2 text-gray-600 mx-1 pt-1 me-4">/</span>
+				<span class="text-gray-600 fw-semibold fs-2 me-3 pt-2">开放所有权限</span>
+			</div>
+		</div>
+	</div>
+	<div class="separator separator-dashed my-3"></div>
+
+
+
+	<{foreach from=$access_groups.pools.admin.private key=k item=v}>
+	<{if $k != 'admin' }>
+	<div class="d-flex flex-stack">
+		<div class="text-gray-700 fw-semibold fs-3 me-2"><{$v.name}></div>
+		<div class="d-flex align-items-senter">
+			<div class="d-flex align-items-center">
+				<a class="fs-2 me-3 pt-2  text-primary link-primary  opacity-75-hover fw-bold d-block" href='?ct=users&ac=index&gp=<{$k}>'>成员列表</a>
+				<span class="fw-semibold fs-2 text-gray-600 mx-1 pt-1 me-4">/</span>
+				<a class="fs-2 me-3 pt-2  text-primary link-primary  opacity-75-hover fw-bold d-block" href='?ct=users&ac=edit_purview_groups&even=edit&group=admin_<{$k}>&pools=admin'>开放所有权限</a>
+			</div>
+		</div>
+	</div>
+	<div class="separator separator-dashed my-3"></div>
+	<{/if}>
+	<{/foreach}>
+<{else}>
+
+
+
+
+<{foreach from=$config_apps key=k item=v}>
+<div style='padding-left:10px;'>
+    <div class='title' style='line-height:28px;border-bottom:1px dashed #ccc;font-weight:bold;'>
+        <input type='checkbox' class="form-check-input"  name='groups[]' value='<{$k}>-*'<{if $groups.allow=='*' || in_array('*', $groups.allow.$k) }> checked='checked'<{/if}>/>
+        <{$v.app_name}>
+    </div>
+    <div style='line-height:28px;width:90%;padding-top:10px;'>
+       <{foreach from=$v key=kk item=vv name=foo}>
+       <{if $kk != 'app_name'  }>
+       <{if $smarty.foreach.foo.index > 1 and $smarty.foreach.foo.index-1 mod 4 eq 0}><br /><{/if}>
+       <span style="display:-moz-inline-box; display:inline-block; width:200px;"><input type='checkbox' class="form-check-input"  name='groups[]' value='<{$k}>-<{$kk}>'<{if in_array($kk, $groups.allow.$k) }> checked='checked'<{/if}><{if in_array('*', $groups.allow.$k)}>disabled="disabled"<{/if}>/> <{$vv}>
+       </span>
+       <{/if}>
+       <{/foreach}>
+    </div>
+</div>
+<br />
+<{/foreach}>
+<div class="submit">
+    <input type='hidden' name='group' value='<{$request.group}>' />
+</div>
+<{/if}>
+</div>
+
+<div id="bottom">
+    <div class="fl">
+        <{if request('even')=='edit'}><button  type="submit" class="btn btn-sm btn-primary mb-2">确定保存</button>&nbsp;<{/if}>
+    </div>
+</div>
+</form>
+            </div>
+        </div>
+    </div>
+	
+</div>
+
+<script>
+function group_add() {
+    layui.use('layer', function(){
+        var layer = layui.layer;
+        var content = '<form class="layui-form" style="margin-top:10px; padding:15px;">';
+        content += '<div class="layui-form-item">';
+        content += '<label class="layui-form-label">组中文名称：</label>';
+        content += '<div class="layui-input-block"><input type="text" class="layui-input" name="groupname_cn" required /></div>';
+        content += '</div>';
+        content += '<div class="layui-form-item">';
+        content += '<label class="layui-form-label">组英文标识：</label>';
+        content += '<div class="layui-input-block"><input type="text" class="layui-input" name="groupname" required /></div>';
+        content += '</div>';
+        content += '<input type="hidden" name="ct" value="users" />';
+        content += '<input type="hidden" name="ac" value="addgroups" />';
+        content += '<div class="layui-form-item">';
+        content += '<div class="layui-input-block">';
+        content += '<button type="submit" class="layui-btn layui-btn-normal">确定增加</button>';
+        content += '</div></div></form>';
+        
+        layer.open({
+            type: 1,
+            title: '增加用户组',
+            area: ['500px', '300px'],
+            content: content
+        });
+    });
+}
+</script>
+
+<{include file='admin/footer.html'}>

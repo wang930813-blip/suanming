@@ -1,0 +1,69 @@
+<{include file="admin/header.html"}>
+
+
+<div class="app-content flex-column-fluid py-3 py-lg-6">
+	<div class="layui-container">
+		<div class="layui-card">
+			<div class="layui-card-header align-items-center py-5 gap-2 gap-md-5">
+				<div class="layui-card-title">
+                    <h2><{$web_title}> </h2>
+                </div>
+			</div>
+			<div class="layui-card-body pt-0" style="padding: 2rem 2.25rem 0rem 2.25rem;">
+				<table class="layui-table" lay-skin="line fs-6 gy-5">
+					<thead>
+						<tr class="text-start text-gray-500 fw-bold fs-7 text-uppercase gs-0">
+            				<th>
+								<div class="form-check form-check-sm form-check-custom form-check-solid me-3">
+									<input class="" type="checkbox" name="checkbox" value="" rel="parent"/>
+								</div>
+							</th>
+            				<th> 搜索关键词 </th>
+                            <th> ip</th>
+            				<th> 添加时间</th>
+            				<th> 操作 </th>
+						</tr>
+					</thead>
+					<tbody class="fw-semibold text-gray-600">
+            			<{lurd_list item='v'}>
+            			<tr>
+            				<td> 
+								<div class="form-check form-check-sm form-check-custom form-check-solid me-3">
+									<input class="" type="checkbox" name="id[]" value="<{$v.id}>" rel="child" />
+								</div>
+            				</td>
+            				<td> <{$v.title}> </td>
+                            <td> <{$v.ip}> </td>
+            				<td> <{$v.createtime|date_format:'%Y-%m-%d %H:%M:%S'}> </td>
+            				<td>
+                                <div class="menu-item">
+                                    <a onclick="do_delete_one('<{$v.id}>')" class="menu-link px-3" data-kt-ecommerce-product-filter="delete_row">删除</a>
+                                </div>
+            				</td>
+            			</tr>
+            			<{/lurd_list}>
+					</tbody>
+				</table>
+				<{$lurd_pagination}>
+			</div>
+		</div>
+	</div>
+</div>
+
+<script>
+function do_delete_one(id) {
+    layui.use('layer', function(){
+        var layer = layui.layer;
+        layer.confirm('确定要删除这条搜索记录吗？', {
+            icon: 3,
+            title: '删除确认',
+            btn: ['确定删除', '取消']
+        }, function(index){
+            layer.msg('正在删除...', {icon: 16, shade: 0.3});
+            window.location.href = "?ct=search&ac=log&even=delete&tb=search&id[]=" + id;
+        });
+    });
+}
+</script>
+
+<{include file='admin/footer.html'}>

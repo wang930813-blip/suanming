@@ -1,0 +1,118 @@
+<{include file="admin/header.html"}>
+
+<div class="layui-fluid" style="padding: 20px;">
+    <div class="layui-card">
+        <div class="layui-card-header">
+            <div style="display: flex; justify-content: space-between; align-items: center;">
+                <h3 style="margin: 0;">精品推荐管理</h3>
+                <button type="button" class="layui-btn layui-btn-normal" onclick="addItem()">
+                    <i class="layui-icon layui-icon-add-1"></i> 添加推荐
+                </button>
+            </div>
+        </div>
+        <div class="layui-card-body">
+            <table class="layui-table" lay-skin="line">
+                <thead>
+                    <tr>
+                        <th width="60">ID</th>
+                        <th width="120">图片</th>
+                        <th>标题</th>
+                        <th>描述</th>
+                        <th width="80">测算人次</th>
+                        <th width="80">好评率</th>
+                        <th width="80">类型</th>
+                        <th width="60">排序</th>
+                        <th width="60">状态</th>
+                        <th width="180">操作</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <{if isset($list) && is_array($list)}>
+                    <{foreach from=$list item=v}>
+                    <tr>
+                        <td><{$v.id}></td>
+                        <td>
+                            <img src="/ffsm/<{$v.image}>" style="max-width: 120px; max-height: 60px;">
+                        </td>
+                        <td><{$v.title}></td>
+                        <td><{$v.description}></td>
+                        <td><{$v.test_count}></td>
+                        <td><{$v.rate}></td>
+                        <td>
+                            <{if $v.type == 1}>
+                            <span class="layui-badge layui-bg-blue">精品推荐</span>
+                            <{else}>
+                            <span class="layui-badge layui-bg-orange">新品尝鲜</span>
+                            <{/if}>
+                        </td>
+                        <td><{$v.sort}></td>
+                        <td>
+                            <{if $v.status == 1}>
+                            <span class="layui-badge layui-bg-green">启用</span>
+                            <{else}>
+                            <span class="layui-badge layui-bg-gray">禁用</span>
+                            <{/if}>
+                        </td>
+                        <td>
+                            <button class="layui-btn layui-btn-xs" onclick="editItem(<{$v.id}>)">
+                                <i class="layui-icon layui-icon-edit"></i> 编辑
+                            </button>
+                            <button class="layui-btn layui-btn-xs layui-btn-danger" onclick="deleteItem(<{$v.id}>)">
+                                <i class="layui-icon layui-icon-delete"></i> 删除
+                            </button>
+                        </td>
+                    </tr>
+                    <{/foreach}>
+                    <{else}>
+                    <tr>
+                        <td colspan="10" style="text-align: center; padding: 50px;">暂无数据</td>
+                    </tr>
+                    <{/if}>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+<script>
+function addItem() {
+    layui.use('layer', function(){
+        var layer = layui.layer;
+        layer.open({
+            type: 2,
+            title: '添加精品推荐',
+            shade: 0.3,
+            area: ['700px', '90%'],
+            content: '?ct=home_content&ac=recommend_form'
+        });
+    });
+}
+
+function editItem(id) {
+    layui.use('layer', function(){
+        var layer = layui.layer;
+        layer.open({
+            type: 2,
+            title: '编辑精品推荐',
+            shade: 0.3,
+            area: ['700px', '90%'],
+            content: '?ct=home_content&ac=recommend_form&id=' + id
+        });
+    });
+}
+
+function deleteItem(id) {
+    layui.use('layer', function(){
+        var layer = layui.layer;
+        layer.confirm('确定要删除这个推荐吗？', {
+            icon: 3,
+            title: '删除确认',
+            btn: ['确定删除', '取消']
+        }, function(index){
+            window.location.href = '?ct=home_content&ac=recommend&action=delete&id=' + id;
+        });
+    });
+}
+</script>
+
+<{include file='admin/footer.html'}>

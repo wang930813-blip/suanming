@@ -1,0 +1,270 @@
+@-webkit-keyframes fadeIn-data-v-f342396e {
+0% {
+    opacity: 0;
+}
+100% {
+    opacity: 1;
+}
+}
+@keyframes fadeIn-data-v-f342396e {
+0% {
+    opacity: 0;
+}
+100% {
+    opacity: 1;
+}
+}
+.main[data-v-f342396e] {
+  padding-bottom: 2.4rem;
+}
+.main .payLucky[data-v-f342396e] {
+  height: 5.33333rem;
+  background: url(https://s.xymlcs.com/bzzs/img/1_bg_top.4549c940.png) no-repeat;
+  background-size: 100% 100%;
+  width: 100%;
+}
+.main .payLucky .item11[data-v-f342396e] {
+  padding-top: 0.1rem;
+  color: #fff;
+  line-height: 0.90667rem;
+}
+.main .payLucky .PayLuckyMain[data-v-f342396e] {
+  background-color: #894b30;
+}
+.main .payLucky .PayLuckyMain .title[data-v-f342396e] {
+  -webkit-animation: linear fadeIn-data-v-f342396e 1.5s forwards;
+          animation: linear fadeIn-data-v-f342396e 1.5s forwards;
+}
+.main .payLucky .PayLuckyMain .OrderPay[data-v-f342396e] {
+  margin: 0.26667rem 0.4rem 0;
+  background-color: #ffeec6;
+  border-radius: 0.21333rem;
+  padding: 0.4rem 0;
+  overflow: hidden;
+}
+.main .payLucky .PayLuckyMain .OrderPay .OrderPayTitle[data-v-f342396e] {
+  margin: 0 0.3rem;
+}
+.main .payLucky .PayLuckyMain .OrderPay .OrderPayTitle img[data-v-f342396e] {
+  width: 90%;
+}
+.main .payLucky .PayLuckyMain .OrderPay .OpcTop[data-v-f342396e] {
+  padding-top: 0.1rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.main .payLucky .PayLuckyMain .OrderPay .OpcTop .OpcLeft[data-v-f342396e] {
+  font-size: 0.4rem;
+}
+.main .payLucky .PayLuckyMain .OrderPay .OpcTop .OpcLeft .money[data-v-f342396e] {
+  background-color: #da3c2e;
+  color: #fff;
+  height: 0.85333rem;
+  line-height: 0.88rem;
+  border-top-right-radius: 0.43333rem;
+  border-bottom-right-radius: 0.43333rem;
+  padding: 0 0.78667rem 0 0.55rem;
+}
+.main .payLucky .PayLuckyMain .OrderPay .OpcTop .OpcLeft .money .MoneyXsyh[data-v-f342396e] {
+  font-size: 0.42667rem;
+}
+.main .payLucky .PayLuckyMain .OrderPay .OpcTop .OpcLeft .money .MoneyNum[data-v-f342396e] {
+  font-size: 0.53333rem;
+  font-weight: 700;
+}
+.main .payLucky .PayLuckyMain .OrderPay .OpcTop .OpcLeft p[data-v-f342396e] {
+  color: #999;
+  padding-left: 0.15rem;
+  line-height: 0.90667rem;
+  width: 2.13333rem;
+  text-decoration: line-through;
+  font-size: 0.36rem;
+}
+.main .payLucky .PayLuckyMain .OrderPay .OpcTop .OpcRight[data-v-f342396e] {
+  text-align: center;
+  padding-right: 0.15rem;
+  color: #333;
+}
+.main .payLucky .PayLuckyMain .OrderPay .OpcTop .OpcRight .van-count-down[data-v-f342396e] {
+  color: #da3c2e;
+  font-weight: 700;
+}
+.main .payLucky .PayLuckyMain .OrderPay .OrderPayCon[data-v-f342396e] {
+  color: #333;
+  font-size: 0.37333rem;
+  text-align: left;
+  margin: 0.23333rem 0.31rem 0.42667rem;
+  border: 0.02667rem solid #d5bb7e;
+  border-radius: 0.27333rem;
+  background-color: #fffcf4;
+}
+.main .payLucky .PayLuckyMain .OrderPay .OrderPayCon .OpcBottom[data-v-f342396e] {
+  overflow: hidden;
+  padding: 0 0.26667rem;
+}
+.main .payLucky .PayLuckyMain .OrderPay .OrderPayCon .OpcBottom > span[data-v-f342396e] {
+  color: #ea2929;
+}
+.main .payLucky .PayLuckyMain .OrderPay .PublicPayBox[data-v-f342396e] {
+  position: relative;
+  padding: 0 0.1rem 0.08rem;
+}
+.main .payLucky .PayLuckyMain .OrderPay .PublicPayBox .weixin[data-v-f342396e] {
+  position: relative;
+  background-color: #64ab35;
+}
+.main .payLucky .PayLuckyMain .OrderPay .PublicPayBox .weixin img[data-v-f342396e] {
+  position: absolute;
+  top: 0.24rem;
+  left: 2.74667rem;
+  height: 0.66667rem;
+  line-height: 0.66667rem;
+}
+.main .payLucky .PayLuckyMain .OrderPay .PublicPayBox .alipay[data-v-f342396e] {
+  position: relative;
+  background-color: #4088c0;
+}
+.main .payLucky .PayLuckyMain .OrderPay .PublicPayBox .alipay img[data-v-f342396e] {
+  position: absolute;
+  top: 0.24rem;
+  left: 2.74667rem;
+  height: 0.66667rem;
+  line-height: 0.66667rem;
+}
+.main .payLucky .PayLuckyMain .OrderPay .PublicPayBox div[data-v-f342396e] {
+  display: block;
+  height: 1.14667rem;
+  line-height: 0.4rem;
+  text-align: center;
+  margin: 0.42rem 0.21rem 0;
+  border-radius: 0.26333rem;
+  text-indent: -9999em;
+  border-width: 0.02667rem;
+}
+.main .payLucky .PayLuckyMain .OrderPay .PublicPayTip[data-v-f342396e] {
+  text-align: center;
+  color: red;
+  padding: 0 0 0.1rem;
+  font-size: 0.37333rem;
+}
+.main .OrderLock[data-v-f342396e] {
+  margin: 5.7rem 0.36667rem 0;
+  background-color: #ffeec6;
+  border-radius: 0.26667rem;
+  padding: 0.26667rem 0.37333rem 0.53333rem;
+  overflow: hidden;
+}
+.main .OrderLock .OrderLockTitle[data-v-f342396e] {
+  text-align: center;
+  color: #b65344;
+  font-size: 0.66667rem;
+  height: 1.6rem;
+  line-height: 1.6rem;
+  font-weight: 700;
+}
+.main .OrderLock .olBox[data-v-f342396e] {
+  position: relative;
+  margin-top: 0.2rem;
+  padding-top: 0.77333rem;
+  background: url(https://s.xymlcs.com/bzzs/img/1_bg_mask.47556262.png) no-repeat top center;
+  background-size: 100% auto;
+}
+.main .OrderLock .olBox .olBoxTitle[data-v-f342396e] {
+  position: absolute;
+  top: 0.05333rem;
+  left: 50%;
+  -webkit-transform: translateX(-50%);
+          transform: translateX(-50%);
+  background: url(./2023/orderzf3.png) no-repeat;
+  width: 5.36rem;
+  height: 1.01333rem;
+  line-height: 1.01333rem;
+  background-size: 100% 100%;
+  color: #fff;
+  text-align: center;
+  font-size: 0.50667rem;
+  font-weight: 700;
+  z-index: 0;
+}
+.main .OrderLock .olBox .OlBoxCon[data-v-f342396e] {
+  margin: 0 0.07333rem;
+  background-color: #fff;
+  padding: 0.22667rem 0;
+  box-shadow: 0 0.08rem 0.08rem #d7cdb4;
+  line-height: 0.58667rem;
+  margin-bottom: 0.66667rem;
+  color: #000;
+}
+.main .OrderLock .olBox .OlBoxCon div[data-v-f342396e] {
+  padding: 0.34667rem 0.26667rem 0 0.4rem;
+  text-align: left;
+  line-height: 0.69333rem;
+  font-size: 0.37333rem;
+}
+.main .OrderLock .olBox .OlBoxCon .m-img[data-v-f342396e] {
+  display: block;
+  width: 100%;
+}
+.main .OrderLock .olBox .OlBoxCon .btn[data-v-f342396e] {
+  background: url(./2023/orderzf4.png) no-repeat;
+  width: 3.73333rem;
+  height: 0.85333rem;
+  background-size: 100% 100%;
+  display: block;
+  margin: 0.26667rem auto 0;
+}
+.main .OrderLock .olBox .OlBoxCon .red[data-v-f342396e] {
+  color: #ef2b16;
+  font-weight: 700;
+}
+
+@-webkit-keyframes btnMove-data-v-6b61d2a3 {
+0% {
+    -webkit-transform: scale(1.1);
+            transform: scale(1.1);
+}
+50% {
+    -webkit-transform: scale(1);
+            transform: scale(1);
+}
+100% {
+    -webkit-transform: scale(1.1);
+            transform: scale(1.1);
+}
+}
+@keyframes btnMove-data-v-6b61d2a3 {
+0% {
+    -webkit-transform: scale(1.1);
+            transform: scale(1.1);
+}
+50% {
+    -webkit-transform: scale(1);
+            transform: scale(1);
+}
+100% {
+    -webkit-transform: scale(1.1);
+            transform: scale(1.1);
+}
+}
+.btn[data-v-6b61d2a3] {
+  max-width: 10.02667rem;
+  margin: auto;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: rgba(0, 0, 0, 0.3);
+  box-sizing: border-box;
+  padding: 0.26667rem;
+  z-index: 10;
+}
+.btn img[data-v-6b61d2a3] {
+  width: 90%;
+  -webkit-animation: btnMove-data-v-6b61d2a3 2s linear infinite;
+          animation: btnMove-data-v-6b61d2a3 2s linear infinite;
+}
+
+.payMain[data-v-716b612a] {
+  background-color: #864a30;
+}

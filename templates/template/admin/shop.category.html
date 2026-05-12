@@ -1,0 +1,63 @@
+<{include file="admin/header.html"}>
+
+<div class="layui-fluid">
+    <div class="layui-card">
+        <div class="layui-card-header">
+            <strong>商品分类管理</strong>
+            <button class="layui-btn layui-btn-sm layui-btn-normal" style="float: right;" onclick="window.open('/acs/?ct=shop_admin&ac=category&action=add_form', '_self')">
+                <i class="layui-icon layui-icon-add-1"></i> 添加分类
+            </button>
+        </div>
+        <div class="layui-card-body">
+            <table class="layui-table">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>分类名称</th>
+                        <th>父分类</th>
+                        <th>排序</th>
+                        <th>状态</th>
+                        <th>创建时间</th>
+                        <th>操作</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <{if $list}>
+                    <{foreach from=$list item=item}>
+                    <tr>
+                        <td><{$item.id}></td>
+                        <td><{$item.name}></td>
+                        <td>
+                            <{if $item.pid == 0}>
+                            顶级分类
+                            <{else}>
+                            <{$item.pid}>
+                            <{/if}>
+                        </td>
+                        <td><{$item.sort}></td>
+                        <td>
+                            <{if $item.status == 1}>
+                            <span class="layui-badge layui-bg-green">启用</span>
+                            <{else}>
+                            <span class="layui-badge">禁用</span>
+                            <{/if}>
+                        </td>
+                        <td><{$item.create_time|date_format:"%Y-%m-%d %H:%M"}></td>
+                        <td>
+                            <a href="/acs/?ct=shop_admin&ac=category&action=edit_form&id=<{$item.id}>" class="layui-btn layui-btn-xs">编辑</a>
+                            <a href="/acs/?ct=shop_admin&ac=category&action=delete&id=<{$item.id}>" class="layui-btn layui-btn-danger layui-btn-xs" onclick="return confirm('确定要删除这个分类吗？')">删除</a>
+                        </td>
+                    </tr>
+                    <{/foreach}>
+                    <{else}>
+                    <tr>
+                        <td colspan="7" style="text-align: center; color: #999;">暂无数据</td>
+                    </tr>
+                    <{/if}>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+<{include file="admin/footer_layui.html"}>

@@ -1,0 +1,285 @@
+<{include file="admin/header.html"}>
+
+<div class="layui-fluid">
+    
+    <!-- 面包屑 -->
+    <div class="layui-card">
+        <div class="layui-card-body">
+            <span class="layui-breadcrumb">
+                <a href="/acs/?ct=index&ac=index">首页</a>
+                <a><cite><{$web_title}></cite></a>
+            </span>
+        </div>
+    </div>
+
+    <!-- 数据列表 -->
+    <div class="layui-card">
+        <div class="layui-card-header">
+            <div style="display: flex; justify-content: space-between; align-items: center;">
+                <span><i class="layui-icon layui-icon-list"></i> 数据列表</span>
+                <div>
+                    <{if isset($_dbfield.batchUpdateTableField) && !empty($_dbfield.batchUpdateTableField)}>
+                        <button type="button" class="layui-btn layui-btn-sm" onclick="more_edit('edit');">
+                            <i class="layui-icon layui-icon-edit"></i> 批量修改
+                        </button>
+                    <{/if}>
+                    
+                    <{if isset($_dbfield.batchDeleteTableField) && !empty($_dbfield.batchDeleteTableField)}>
+                        <button type="button" class="layui-btn layui-btn-sm layui-btn-danger" onclick="more_delete('batch_delete','?ct=<{$ct}>&amp;ac=batch_delete');">
+                            <i class="layui-icon layui-icon-delete"></i> 批量删除
+                        </button>
+                    <{/if}>
+                    
+                    <{if isset($_allowAction.add) && !empty($_allowAction.add)}>
+                        <{if $_allowAction.add.type=='dialog'}>
+                            <button type="button" class="layui-btn layui-btn-sm layui-btn-normal" onclick="add_modal('?ct=<{$ct}>&ac=add&TB_iframe=true&width=<{$_allowAction.add.width}>&height=<{$_allowAction.add.height}>')">
+                                <i class="layui-icon layui-icon-add-1"></i> <{if $_allowAction.add.title!=''}><{$_allowAction.add.title}><{else}>新增<{/if}>
+                            </button>
+                        <{else}>
+                            <a href="?ct=<{$ct}>&amp;ac=add" class="layui-btn layui-btn-sm layui-btn-normal">
+                                <i class="layui-icon layui-icon-add-1"></i> <{if $_allowAction.add.title!=''}><{$_allowAction.add.title}><{else}>新增<{/if}>
+                            </a>
+                        <{/if}>
+                    <{/if}>
+                </div>
+            </div>
+        </div>
+        <div class="layui-card-body">
+            <form id="form_list" name="form_list" method="POST" action="?ct=<{$ct}>&amp;ac=batch_update">
+                <input type="hidden" id="do_action" name="do_action" value="" />
+                
+                <table class="layui-table" lay-skin="line">
+                    <thead>
+                        <tr>
+                            <th width="50"><input type="checkbox" lay-skin="primary" lay-filter="allChoose"></th>
+                            <{if $_dbfield.listTableField}>
+                                <{foreach from=$_dbfield.listTableField key=field item=v}>
+                                <th><{$_dbfield.allTableField[$v]}></th>
+                                <{/foreach}>
+                            <{else}>
+                                <{foreach from=$_dbfield.allTableField item=v}>
+                                <th><{$v}></th>
+                                <{/foreach}>
+                            <{/if}>
+                            <th width="150">管理操作</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    <{if !empty($data_list)}>
+                        <{foreach key=key item=v from=$data_list}>
+                        <tr>
+                            <td><input type="checkbox" name="ids[<{$v[$_dbfield.mainKey]}>]" value="<{$v[$_dbfield.mainKey]}>" lay-skin="primary"></td>
+                            
+                            <{if $_dbfield.listTableField}>
+                                <{foreach from=$_dbfield.listTableField key=intk item=field}>
+                                <td>
+                                    <{if $_dbfield[$field].element.e_name=='select' && $_dbfield[$field].element.datafrom}>
+                                        <{if !isset($_dbfield.batchUpdateTableField) || !in_array($field,$_dbfield.batchUpdateTableField)}>
+                                            <{foreach from=$_dbfield[$field].element.datafrom key=kk item=vv}>
+                                                <{if is_array($vv)}>
+                                                    <{if $v[$field]==$vv.id}><{$vv.name}><{/if}>
+                                                <{else}>
+                                                    <{if $v[$field]==$kk}><{$vv}><{/if}>
+                                                <{/if}>
+                                            <{/foreach}>
+                                        <{elseif isset($_dbfield.batchUpdateTableField) && in_array($field,$_dbfield.batchUpdateTableField)}>
+                                            <select name="<{$field}>[<{$v[$_dbfield.mainKey]}>]" class="layui-input">
+                                                <option value="">请选择</option>
+                                                <{foreach from=$_dbfield[$field].element.datafrom key=kk item=vv}>
+                                                    <{if is_array($vv)}>
+                                                        <option value="<{$vv.id}>" <{if $v[$field]==$vv.id}>selected<{/if}>><{$vv.name}></option>
+                                                    <{else}>
+                                                        <option value="<{$kk}>" <{if $v[$field]==$kk}>selected<{/if}>><{$vv}></option>
+                                                    <{/if}>
+                                                <{/foreach}>
+                                            </select>
+                                        <{/if}>
+                                    <{else}>
+                                        <{if isset($_dbfield.batchUpdateTableField) && in_array($field,$_dbfield.batchUpdateTableField)}>
+                                            <input type="text" name="<{$field}>[<{$v[$_dbfield.mainKey]}>]" value="<{if $field=='createtime' || $field=='paytime'}><{$v[$field]|date_format:'%Y-%m-%d %H:%M:%S'}><{else}><{$v[$field]}><{/if}>" class="layui-input" style="width:auto;" />
+                                        <{else}>
+                                            <{if isset($_dbfield[$field].element.type) && $_dbfield[$field].element.type=='image' && isset($_dbfield[$field].element.src) && $v[$field]!=''}>
+                                                <img src="<{$_dbfield[$field].element.src}><{$v[$field]}>" style="max-width:80px;max-height:60px;" />
+                                            <{else}>
+                                                <div style="max-width:200px; overflow:hidden; text-overflow:ellipsis;">
+                                                <{if $field=='createtime' || $field=='paytime'}><{$v[$field]|date_format:'%Y-%m-%d %H:%M:%S'}><{elseif $field=='data.gender'}>
+                                                    <{if $v.type==4}>无<{else}><{if $v.data.gender==0}>男<{else}>女<{/if}><{/if}>
+                                                <{elseif $field=='data.time'}>
+                                                    <{if $v.data.y || $v.data.year}><{$v.data.y}><{$v.data.year}>-<{$v.data.m}><{$v.data.month}>-<{$v.data.d}><{$v.data.day}> 时辰<{$v.data.h}><{$v.data.hour}><{else}>无<{/if}>
+                                                <{elseif $field=='uid'}>
+                                                    <{if $v.uid}><{$v[$field]}><{else}>无<{/if}>
+                                                <{else}>
+                                                    <{$v[$field]}>
+                                                <{/if}>
+                                                </div>
+                                            <{/if}>
+                                        <{/if}>
+                                    <{/if}>
+                                </td>
+                                <{/foreach}>
+                            <{else}>
+                                <{foreach from=$_dbfield.allTableField key=field item=fieldName}>
+                                <td>
+                                    <{if $_dbfield[$field].element.e_name=='select' && $_dbfield[$field].element.datafrom}>
+                                        <{if !isset($_dbfield.batchUpdateTableField) || !in_array($field,$_dbfield.batchUpdateTableField)}>
+                                            <{foreach from=$_dbfield[$field].element.datafrom key=kk item=vv}>
+                                                <{if is_array($vv)}>
+                                                    <{if $v[$field]==$vv.id}><{$vv.name}><{/if}>
+                                                <{else}>
+                                                    <{if $v[$field]==$kk}><{$vv}><{/if}>
+                                                <{/if}>
+                                            <{/foreach}>
+                                        <{elseif isset($_dbfield.batchUpdateTableField) && in_array($field,$_dbfield.batchUpdateTableField)}>
+                                            <select name="<{$field}>[<{$v[$_dbfield.mainKey]}>]" class="layui-input">
+                                                <option value="">请选择</option>
+                                                <{foreach from=$_dbfield[$field].element.datafrom key=kk item=vv}>
+                                                    <{if is_array($vv)}>
+                                                        <option value="<{$vv.id}>" <{if $v[$field]==$vv.id}>selected<{/if}>><{$vv.name}></option>
+                                                    <{else}>
+                                                        <option value="<{$kk}>" <{if $v[$field]==$kk}>selected<{/if}>><{$vv}></option>
+                                                    <{/if}>
+                                                <{/foreach}>
+                                            </select>
+                                        <{/if}>
+                                    <{else}>
+                                        <{if isset($_dbfield.batchUpdateTableField) && in_array($field,$_dbfield.batchUpdateTableField)}>
+                                            <input type="text" name="<{$field}>[<{$v[$_dbfield.mainKey]}>]" value="<{$v[$field]}>" class="layui-input" style="width:auto;" />
+                                        <{else}>
+                                            <{if isset($_dbfield[$field].element.type) && $_dbfield[$field].element.type=='image' && isset($_dbfield[$field].element.src) && $v[$field]!=''}>
+                                                <img src="<{$_dbfield[$field].element.src}><{$v[$field]}>" style="max-width:100px;max-height:80px;" />
+                                            <{else}>
+                                                <{$v[$field]}>
+                                            <{/if}>
+                                        <{/if}>
+                                    <{/if}>
+                                </td>
+                                <{/foreach}>
+                            <{/if}>
+
+                            <td>
+                                <{if isset($_dbfield.editTableField) && !empty($_dbfield.editTableField)}>
+                                    <{if isset($_allowAction.edit) && !empty($_allowAction.edit)}>
+                                        <{if $_allowAction.edit.type=='dialog'}>
+                                            <a onclick="edit_modal('?ct=<{$ct}>&amp;ac=edit&amp;id=<{$v[$_dbfield.mainKey]}>&amp;page_no=<{$current_page}>&amp;TB_iframe=true')" class="layui-btn layui-btn-xs" style="cursor:pointer;">
+                                                <i class="layui-icon layui-icon-edit"></i> <{if $_allowAction.edit.title!=''}><{$_allowAction.edit.title}><{else}>修改<{/if}>
+                                            </a>
+                                        <{else}>
+                                            <a href="?ct=<{$ct}>&amp;ac=edit&amp;id=<{$v[$_dbfield.mainKey]}>&amp;page_no=<{$current_page}>" class="layui-btn layui-btn-xs">
+                                                <i class="layui-icon layui-icon-edit"></i> <{if $_allowAction.edit.title!=''}><{$_allowAction.edit.title}><{else}>修改<{/if}>
+                                            </a>
+                                        <{/if}>
+                                    <{/if}>
+                                <{/if}>
+                                
+                                <{if isset($_allowAction.delete) && !empty($_allowAction.delete)}>
+                                    <a onclick="do_delete_one('<{$ct}>', '<{$v[$_dbfield.mainKey]}>')" class="layui-btn layui-btn-xs layui-btn-danger" style="cursor:pointer;">
+                                        <i class="layui-icon layui-icon-delete"></i> 删除
+                                    </a>
+                                <{/if}>
+                                
+                                <{if isset($_allowAction._extend) && !empty($_allowAction._extend)}>
+                                    <{foreach from=$_allowAction._extend item=vext key=url}>
+                                        <{if $vext.type=='dialog'}>
+                                            <button type="button" class="layui-btn layui-btn-xs layui-btn-warm" onclick="tb_show('<{$vext.title}>','<{$url}>&<{$vext.paramto}>=<{$v[$vext.paramfrom]}>&TB_iframe=true&width=<{$vext.width}>&height=<{$vext.height}>',true);">
+                                                <{if $vext.title!=''}><{$vext.title}><{else}>操作<{/if}>
+                                            </button>
+                                        <{else}>
+                                            <a href='<{$url}>&<{$vext.paramto}>=<{$v[$vext.paramfrom]}>' class="layui-btn layui-btn-xs layui-btn-warm">
+                                                <{if $vext.title!=''}><{$vext.title}><{else}>操作<{/if}>
+                                            </a>
+                                        <{/if}>
+                                    <{/foreach}>
+                                <{/if}>
+                            </td>
+                        </tr>
+                        <{/foreach}>
+                    <{else}>
+                        <tr>
+                            <td colspan="100" align="center" style="padding: 30px; color: #999;">
+                                <i class="layui-icon layui-icon-face-cry" style="font-size: 30px;"></i>
+                                <p>暂无数据</p>
+                            </td>
+                        </tr>
+                    <{/if}>
+                    </tbody>
+                </table>
+            </form>
+            
+            <!-- 分页 -->
+            <div class="layui-box layui-laypage layui-laypage-default" style="margin-top: 10px;">
+                <{$pages}>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+layui.use(['form', 'layer'], function(){
+    var form = layui.form;
+    var layer = layui.layer;
+    
+    // 全选
+    form.on('checkbox(allChoose)', function(data){
+        var child = $(data.elem).parents('table').find('tbody input[type="checkbox"]');
+        child.each(function(index, item){
+            item.checked = data.elem.checked;
+        });
+        form.render('checkbox');
+    });
+    
+    // 添加弹窗
+    window.add_modal = function(url) {
+        layer.open({
+            type: 2,
+            title: '添加',
+            area: ['650px', '600px'],
+            content: url
+        });
+    };
+    
+    // 编辑弹窗
+    window.edit_modal = function(url) {
+        layer.open({
+            type: 2,
+            title: '修改',
+            area: ['650px', '600px'],
+            content: url
+        });
+    };
+    
+    // 删除确认
+    window.do_delete_one = function(ct, id) {
+        layer.confirm('确定要删除吗？', {
+            icon: 3,
+            title: '删除确认',
+            btn: ['确定删除', '取消']
+        }, function(index){
+            var deleteLink = "?ct="+ct+"&ac=delete&id="+id;
+            window.location.href = deleteLink;
+            layer.close(index);
+        });
+    };
+    
+    // 批量删除
+    window.more_delete = function(id, url) {
+        layer.confirm('确定要批量删除吗？', {
+            icon: 3,
+            title: '删除确认',
+            btn: ['确定删除', '取消']
+        }, function(index){
+            document.getElementById('do_action').value = id;
+            document.form_list.action = url;
+            document.form_list.submit();
+            layer.close(index);
+        });
+    };
+    
+    // 批量修改
+    window.more_edit = function(id) {
+        document.getElementById('do_action').value = id;
+        document.form_list.submit();
+    };
+});
+</script>
+
+<{include file='admin/footer.html'}>

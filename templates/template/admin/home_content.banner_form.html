@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Banner表单</title>
+<link rel="stylesheet" href="/ffsm/statics/ffsm/kmmb/layui/css/layui.css">
+<script src="/ffsm/statics/ffsm/kmmb/layui/layui.js"></script>
+<style>
+body { padding: 20px; background: #f2f2f2; }
+</style>
+<{$page_meta}>
+</head>
+<body>
+
+<form class="layui-form" action="?ct=home_content&ac=banner&action=save" method="POST">
+    <input type="hidden" name="id" value="<{$data.id|default:0}>">
+    
+    <div class="layui-form-item">
+        <label class="layui-form-label">标题</label>
+        <div class="layui-input-block">
+            <input type="text" name="title" value="<{$data.title|default:''}>" placeholder="请输入标题" class="layui-input" lay-verify="required">
+        </div>
+    </div>
+    
+    <div class="layui-form-item">
+        <label class="layui-form-label">图片地址</label>
+        <div class="layui-input-block">
+            <div class="layui-input-inline" style="width: 400px;">
+                <input type="text" name="image" id="image" value="<{$data.image|default:''}>" placeholder="请输入图片地址或点击上传" class="layui-input" lay-verify="required">
+            </div>
+            <button type="button" class="layui-btn layui-btn-normal" id="uploadBtn">
+                <i class="layui-icon">&#xe67c;</i>上传图片
+            </button>
+            <div class="layui-form-mid layui-word-aux">相对路径，如：static/picture/banner.jpg</div>
+            <div style="margin-top: 10px;">
+                <img id="imagePreview" src="<{if $data.image}>/ffsm/<{$data.image}><{/if}>" style="max-width: 300px; max-height: 200px; <{if !$data.image}>display:none;<{/if}>" alt="图片预览">
+            </div>
+        </div>
+    </div>
+    
+    <div class="layui-form-item">
+        <label class="layui-form-label">跳转链接</label>
+        <div class="layui-input-block">
+            <input type="text" name="link" value="<{$data.link|default:''}>" placeholder="请输入跳转链接" class="layui-input" lay-verify="required">
+            <div class="layui-form-mid layui-word-aux">如：?ac=bazi 或 /?ac=bazi</div>
+        </div>
+    </div>
+    
+    <div class="layui-form-item">
+        <label class="layui-form-label">排序</label>
+        <div class="layui-input-block">
+            <input type="number" name="sort" value="<{$data.sort|default:0}>" placeholder="数字越小越靠前" class="layui-input">
+        </div>
+    </div>
+    
+    <div class="layui-form-item">
+        <label class="layui-form-label">状态</label>
+        <div class="layui-input-block">
+            <input type="radio" name="status" value="1" title="启用" <{if !isset($data) || $data.status==1}>checked<{/if}>>
+            <input type="radio" name="status" value="0" title="禁用" <{if isset($data) && $data.status==0}>checked<{/if}>>
+        </div>
+    </div>
+    
+    <div class="layui-form-item">
+        <div class="layui-input-block">
+            <button type="submit" class="layui-btn" lay-submit>提交保存</button>
+            <button type="reset" class="layui-btn layui-btn-primary">重置</button>
+        </div>
+    </div>
+</form>
+
+<script>
+layui.use(['form', 'layer', 'jquery'], function(){
+    var form = layui.form;
+    var layer = layui.layer;
+    var $ = layui.jquery;
+    
+    form.render();
+    
+    // 创建隐藏的file input
+    var fileInput = $('<input type="file" accept="image/*" style="display:none;">');
+    $('body').append(fileInput);
+    
+    // 点击上传按钮
+    $('#uploadBtn').on('click', function(){
+        fileInput.click();
+    });
+    
+    // 文件选择后处理
+    fileInput.on('change', function(e){
+        var file = e.target.files[0];
+        if (!file) return;
+        
+        // 验证文件类型
+        if (!file.type.match('image.*')) {
+            layer.msg('请选择图片文件');
+            return;
+        }
+        
+        // 验证文件大小（5MB）
+        if (file.size > 5 * 1024 * 1024) {
+            layer.msg('图片不能超过5MB，请压缩后上传');
+            return;
+        }
+        
+        // 显示加载
+        var loadingIndex = layer.load(1, {shade: 0.3});
+        
+        // 读取文件为Base64
+        var reader = new FileReader();
+        reader.onload = function(event){
+            var base64Data = event.target.result;
+            
+            // 发送到服务器
+            $.ajax({
+                url: '/acs/?ct=upload&ac=base64',
+                type: 'POST',
+                data: { imageData: base64Data },
+                dataType: 'json',
+                success: function(res){
+                    layer.close(loadingIndex);
+                    if (res.error_code == 0) {
+                        var imagePath = 'static/upload/' + res.data;
+                        $('#image').val(imagePath);
+                        // 后台访问ffsm目录下的图片，使用绝对路径
+                        var fullUrl = window.location.protocol + '//' + window.location.host + '/ffsm/' + imagePath;
+                        console.log('图片路径:', imagePath);
+                        console.log('完整URL:', fullUrl);
+                        $('#imagePreview').attr('src', fullUrl).show();
+                        
+                        // 添加图片加载事件监听
+                        $('#imagePreview').off('load error').on('load', function() {
+                            console.log('图片加载成功:', fullUrl);
+                        }).on('error', function() {
+                            console.log('图片加载失败:', fullUrl);
+                            layer.msg('图片预览失败，但上传成功');
+                        });
+                        
+                        layer.msg('上传成功');
+                    } else {
+                        layer.msg(res.error_message || '上传失败');
+                    }
+                },
+                error: function(){
+                    layer.close(loadingIndex);
+                    layer.msg('上传请求失败');
+                }
+            });
+        };
+        
+        reader.onerror = function(){
+            layer.close(loadingIndex);
+            layer.msg('文件读取失败');
+        };
+        
+        reader.readAsDataURL(file);
+        
+        // 清空input，允许重复选择同一文件
+        fileInput.val('');
+    });
+    
+    // 输入框变化时更新预览
+    $('#image').on('input', function(){
+        var imgPath = $(this).val();
+        if(imgPath){
+            var fullPath;
+            if (imgPath.indexOf('http://') === 0 || imgPath.indexOf('https://') === 0) {
+                fullPath = imgPath;
+            } else {
+                // 使用当前域名作为base URL（图片现在在ffsm目录下）
+                fullPath = window.location.protocol + '//' + window.location.host + '/ffsm/' + imgPath.replace(/^\/+/, '');
+            }
+            console.log('输入框预览路径:', fullPath);
+            $('#imagePreview').attr('src', fullPath).show();
+        } else {
+            $('#imagePreview').hide();
+        }
+    });
+});
+</script>
+
+</body>
+</html>

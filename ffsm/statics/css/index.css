@@ -1,0 +1,321 @@
+
+
+/* CSS Document */
+
+body {
+
+}
+section, div, dl, dt, dd, ul, ol, li, h1, h2, h3, h4, h5, h6, pre, form, p, th, td, input, textarea, select, img {
+	margin: 0;
+	padding: 0;
+	border: 0;
+}
+ul, ol, li {
+
+}
+h1, h2, h3, h4, h5, h6 {
+	font-size: inherit;
+	font-weight: lighter;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+em, i {
+	/*display: inline-block;*/
+	font-weight: normal;
+	font-style: normal;
+}
+textarea, select, input {
+	font-family: "Microsoft Yahei";
+	font-size: .32rem;
+	color: #666;
+}
+a {
+	color: #333;
+	text-decoration: none;
+}
+a:hover {
+	/*color:#333; */
+	text-decoration: none;
+}
+input[type="text"], input[type="password"], input[type="button"], input[type="submit"], button, textarea {
+	-webkit-appearance: none;
+}
+.cfx:after, nav.mini:after, .h:after, .hn:after, .PH:after {
+	content: ' ';
+	clear: both;
+	display: block;
+	height: 0;
+	visibility: hidden;
+	line-height: 0;
+}
+* {
+	box-sizing: border-box;
+	-webkit-tap-highlight-color: transparent;
+}
+
+/**** 公共css ****/
+
+
+/**** 首页 ****/
+
+.wrapper {
+	float: left;
+	width: 100%;
+	background-color: #d3aa72;
+	background-repeat: no-repeat;
+	background-size: 100% auto;
+}
+.wrapper.index {
+	background-image: url(../image/1wrap-index.jpg);
+}
+.wrapper.input {
+	padding: 1rem 0 0 0;
+	background-image: url(http://bd16.yunshi68.com/statics/bazijp/body/wrap-input.jpg);
+	min-height: 100vh;
+}
+.wrapper.middle {
+	padding: 3.5rem 0 0 0;
+	background-image: url(http://bd16.yunshi68.com/statics/bazijp/body/wrap-middle.jpg);
+	min-height: 100vh;
+}
+.wrapper.free {
+	padding: .1rem 0 0 0;
+	background-image: url(http://bd16.yunshi68.com/statics/bazijp/body/wrap-input.jpg);
+}
+.wrapper.result {
+	padding: 3.1rem 0 0 0;
+	background-image: url(http://bd16.yunshi68.com/statics/bazijp/body/wrap-result.jpg);
+}
+
+/*banner图动画*/
+
+.indexBann {
+	position: relative;
+	float: left;
+	width: 100%;
+	height: 5.34rem;
+	overflow: hidden;
+}
+.indexBann ul.plate li {
+	position: absolute;
+	background-repeat: no-repeat;
+	background-size: 100% 100%;
+}
+.indexBann ul.plate li:nth-child(1) {
+    left: 1.3rem;
+    top: 0.3rem;
+    width: 2.8rem;
+    height: 2.8rem;
+	background-image: url(../image/plate01.png);
+	animation: plate1 10s linear infinite;
+	-webkit-animation: plate1 10s linear infinite;
+}
+@keyframes plate1 {
+	from {}
+	to {
+		transform: rotate(360deg);
+	}
+}
+@-webkit-keyframes plate1 {
+	from {}
+	to {
+		transform: rotate(360deg);
+	}
+}
+.indexBann ul.plate li:nth-child(2) {
+    left: 1.9rem;
+    top: 0.89rem;
+    width: 1.6rem;
+    height: 1.6rem;
+	background-image: url(../image/plate02.png);
+}
+.indexBann ul.plate li:nth-child(3) {
+    left: 2.2rem;
+    top: 1.185rem;
+    width: 1rem;
+    height: 1rem;
+	background-image: url(../image/plate03.png);
+	animation: plate3 10s linear infinite;
+	-webkit-animation: plate3 10s linear infinite;
+}
+@keyframes plate3 {
+	from {}
+	to {
+		transform: rotate(-360deg);
+	}
+}
+@-webkit-keyframes plate3 {
+	from {}
+	to {
+		transform: rotate(-360deg);
+	}
+}
+.indexBann ul.plate li:nth-child(4) {
+    left: 2.45rem;
+    top: 1.43rem;
+    width: 0.5rem;
+    height: 0.5rem;
+	background-image: url(../image/plate04.png);
+}
+.indexBann div.text {
+	position: absolute;
+    left: 1.89rem;
+    top: 2.35rem;
+    width: 2rem;
+    height: 2rem;
+}
+.indexSwiper {
+	width: 100%;
+	transform: rotateY(180deg);
+}
+.indexSwiper .swiper-slide img {
+	display: block;
+	width: 100%;
+	transform: rotateY(180deg);
+}
+
+/*banner图动画*/
+
+.main {
+	float: left;
+	width: 100%;
+	padding: 0 .15rem .5rem .15rem;
+}
+.button {
+	float: left;
+	width: 100%;
+	padding: 0 .7rem;
+	margin: .4rem 0 0 0;
+}
+.button a {
+	float: left;
+	width: 100%;
+	height: 1.1rem;
+	background: url(http://bd16.yunshi68.com/statics/bazijp/body/btn-bg.png) no-repeat;
+	background-size: 100% 100%;
+	line-height: 1rem;
+	font-size: .4rem;
+	color: #fcedb8;
+	font-weight: bold;
+	text-align: center;
+	letter-spacing: .03rem;
+	text-shadow: .04rem .04rem .04rem #5c0d12;
+}
+
+/*.button a span {
+	background: linear-gradient(180deg, #fffefb 0%, #fce38c 100%);
+	-webkit-background-clip: text;
+	-webkit-text-fill-color: transparent;
+}*/
+
+.button.zoom a {
+	animation: btnZoom 1s linear infinite alternate;
+	-webkit-animation: btnZoom 1s linear infinite alternate;
+}
+@keyframes btnZoom {
+	from {}
+	to {
+		transform: scale(.8);
+	}
+}
+@-webkit-keyframes btnZoom {
+	from {}
+	to {
+		transform: scale(.8);
+	}
+}
+.picture, .picture img {
+	float: left;
+	width: 100%;
+}
+.bigbox {
+	float: left;
+	width: 100%;
+	padding: 0 .33rem .33rem .33rem;
+	margin: .95rem 0 0 0;
+	background: #fff;
+	border: solid .02rem rgba(147, 65, 41, 0.68);
+	border-radius: .1rem;
+	box-shadow: 0 .04rem .05rem 0 #462205, inset 0 .03rem .35rem .03rem #f2a944;
+	color: #3e090a;
+}
+.bigbox .button {
+	padding: 0 .35rem;
+	margin: .3rem 0 0 0;
+}
+.picTitle {
+	float: left;
+	width: 7.2rem;
+	margin: -.55rem 0 0 -.35rem;
+}
+.picTitle img {
+	display: block;
+	width: 100%;
+}
+.indexAbout {
+	float: left;
+	width: 100%;
+	padding: 3rem .3rem 0 .3rem;
+	margin: .3rem 0 0 0;
+	background: url(http://bd16.yunshi68.com/statics/bazijp/body/zy-logo.png) no-repeat center top;
+	background-size: auto 3.1rem;
+}
+.indexAbout ul li {
+	float: left;
+	width: 100%;
+	padding: 0 0 0 .8rem;
+	margin: .2rem 0 0 0;
+	background-repeat: no-repeat;
+	background-position: left .1rem;
+	background-size: .56rem auto;
+	font-size: .28rem;
+	text-align: justify;
+}
+.indexAbout ul li:nth-child(1) {
+	background-image: url(http://bd16.yunshi68.com/statics/bazijp/body/zy-icon1.png);
+}
+.indexAbout ul li:nth-child(2) {
+	background-image: url(http://bd16.yunshi68.com/statics/bazijp/body/zy-icon2.png);
+}
+.indexAbout ul li:nth-child(3) {
+	background-image: url(http://bd16.yunshi68.com/statics/bazijp/body/zy-icon3.png);
+}
+.indexAbout ul li:nth-child(4) {
+	background-image: url(http://bd16.yunshi68.com/statics/bazijp/body/zy-icon4.png);
+}
+.male,.female{
+    line-height: 1.16rem;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+}
+.radio_img{
+	width: 0.2rem;
+    -ms-flex-item-align: center;
+    align-self: center;
+    margin-right: 0.066667rem;
+    display: inline-block;
+}
+.date_btn_box{
+	padding: 0 0.4rem !important;
+    margin-bottom: 0.3rem !important;
+}
+.lcalendar_cancel, .lcalendar_finish {
+    width: 1.16rem !important;
+    height: 0.32rem !important;
+    font-size: .16rem !important;
+    line-height: .32rem !important;
+}
+.date_roll{    padding: 0.2rem !important;}
+.date_class{
+	font-size: 0.16rem !important;
+    width: 0.86rem !important;
+    height: 0.36rem !important;
+    line-height: .36rem !important;
+}
+.date_class_box{padding-top: 0 !important;}
+/**** 首页 ****/
+
+

@@ -1,0 +1,157 @@
+<{include file="admin/header.html"}>
+
+
+<div class="app-content flex-column-fluid py-3 py-lg-6">
+	<div class="app-container container-fluid">
+		<div class="card card-flush">
+			<div class="card-header align-items-center py-5 gap-2 gap-md-5">
+				<div class="card-title">
+                    <h2><{$web_title}> </h2>
+                </div>
+				<div class="card-toolbar flex-row-fluid justify-content-end gap-5">
+                    <form name="form1" action="?ct=recommend" method="POST">
+                        <div class="fl">
+                            <button type="button" class="btn btn-sm btn-light btn-active-primary" onclick="add_recommend_modal()">增加</button>
+                        </div>
+                    </form>
+                </div>
+			</div>
+			<div class="card-body pt-0" style="padding: 2rem 2.25rem 0rem 2.25rem;">
+				<table class="table align-middle table-row-dashed fs-6 gy-5">
+					<thead>
+						<tr class="text-start text-gray-500 fw-bold fs-7 text-uppercase gs-0">
+            				<th>
+								<div class="form-check form-check-sm form-check-custom form-check-solid me-3">
+									<input class="form-check-input" type="checkbox" name="checkbox" value="" rel="parent"/>
+								</div>
+							</th>
+            			 
+            				<th> 标题 </th>
+                            <th> 链接</th>
+                            <th> 图片</th>
+            				<th> 描述</th>
+            				<th> 操作 </th>
+						</tr>
+					</thead>
+					<tbody class="fw-semibold text-gray-600">
+            			<{lurd_list item='v'}>
+            			<tr>
+            				<td> 
+								<div class="form-check form-check-sm form-check-custom form-check-solid me-3">
+									<input class="form-check-input" type="checkbox" name="id[]" value="<{$v.id}>" rel="child" />
+								</div>
+            				</td>
+            		 
+            				<td> <{$v.title}> </td>
+                            <td style="max-width: 200px;"> <{$v.url}>  </td>
+            			    <td style="max-width: 100px;" >  
+                                <{if $$v.image}>
+                                    <img src="<{$v.image}>" width="80" class="border"> 
+                                <{/if}>
+                            </td>
+            				<td style="max-width: 200px;"> <{$v.description}> </td>
+            				<td>
+								<a href="#" class="btn btn-sm btn-light btn-flex btn-center btn-active-light-primary" data-kt-menu-trigger="click" data-kt-menu-placement="bottom-end">更多操作 
+								<i class="ki-duotone ki-down fs-5 ms-1"></i></a>
+								<div class="menu menu-sub menu-sub-dropdown menu-column menu-rounded menu-gray-600 menu-state-bg-light-primary fw-semibold fs-7 w-125px py-4" data-kt-menu="true">
+									<div class="menu-item px-3">
+										<a href="javascript:edit_recommend_modal('<{$v.id}>');" class="menu-link px-3">修改</a>
+									</div>
+                                    <div class="menu-item px-3">
+										<a onclick="do_delete_one('<{$v.id}>')" class="menu-link px-3" data-kt-ecommerce-product-filter="delete_row">删除</a>
+									</div>
+								</div>
+            				</td>
+            			</tr>
+            			<{/lurd_list}>
+					</tbody>
+				</table>
+				<{$lurd_pagination}>
+			</div>
+		</div>
+	</div>
+</div>
+
+<div class="modal fade" id="add_recommend_modal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered mw-600px">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>增加</h2>
+                <div class="btn btn-sm btn-icon btn-active-color-primary" data-bs-dismiss="modal">
+                    <span class="svg-icon svg-icon-1">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <rect opacity="0.5" x="6" y="17.3137" width="16" height="2" rx="1" transform="rotate(-45 6 17.3137)" fill="currentColor" />
+                            <rect x="7.41422" y="6" width="16" height="2" rx="1" transform="rotate(45 7.41422 6)" fill="currentColor" />
+                        </svg>
+                    </span>
+                </div>
+            </div>
+            <div class="modal-body py-lg-10 px-lg-10">
+                <iframe src="?ct=recommend&ac=index&even=add&tb=recommend&TB_iframe=true" style="border: none; width: 100%; height: 450px; overflow: hidden;" scrolling="no"></iframe>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="edit_recommend_modal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-scrollable mw-600px">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>修改</h2>
+                <div class="btn btn-sm btn-icon btn-active-color-primary" data-bs-dismiss="modal">
+                    <span class="svg-icon svg-icon-1">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <rect opacity="0.5" x="6" y="17.3137" width="16" height="2" rx="1" transform="rotate(-45 6 17.3137)" fill="currentColor" />
+                            <rect x="7.41422" y="6" width="16" height="2" rx="1" transform="rotate(45 7.41422 6)" fill="currentColor" />
+                        </svg>
+                    </span>
+                </div>
+            </div>
+            <div class="modal-body py-lg-10 px-lg-10">
+                <iframe id="edit_recommend" style="border: none; width: 100%; height: 500px; overflow: hidden;" scrolling="no"></iframe>
+            </div>
+        </div>
+    </div>
+</div>
+<{include file='admin/footer.html'}>
+<script src="/acs/demo1/plugins/custom/datatables/datatables.bundle.js"></script>
+<script src="/acs/demo1/js/custom/apps/ecommerce/catalog/products.js"></script>
+
+<script src="images/js/jquery.js" type="text/javascript"></script>
+<script src="images/js/util.js" type="text/javascript"></script>
+<script src="images/js/frm.js" type="text/javascript"></script>
+<script src="images/js/tb-box.js" type="text/javascript"></script>
+
+
+
+<script lang='javascript'>
+function add_recommend_modal() {
+    $('#add_recommend_modal').modal('show');
+   
+}
+function edit_recommend_modal(id) {
+    $('#edit_recommend_modal').modal('show');
+    var iframe = document.getElementById('edit_recommend');
+    var iframeSrc = '?ct=recommend&ac=index&even=edit&tb=recommend&id='+ id +'&TB_iframe=true&height=350&width=500';
+    iframe.src = iframeSrc;
+    
+}
+
+function do_delete_one(id) {
+    Swal.fire({
+        title: '确定删除推荐板块吗？', 
+        showDenyButton: true,
+        confirmButtonText: '确定删除',
+        denyButtonText: '取消删除',
+        customClass: {
+            confirmButton: "btn btn-primary",
+            denyButton: 'btn btn-danger'
+        }
+    }).then((result) => {
+        if (result.isConfirmed) {
+            var deleteLink = "?ct=recommend&ac=index&even=delete&tb=recommend&id[]=" + id ;
+            window.location.href = deleteLink; // 提交删除链接
+        }
+    })
+}
+</script>

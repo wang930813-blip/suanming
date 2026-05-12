@@ -1,0 +1,263 @@
+<{include file="admin/header.html"}>
+
+<div class="layui-fluid">
+    <div class="layui-card">
+        <div class="layui-card-header">
+            <strong><{if $goods}>编辑商品<{else}>添加商品<{/if}></strong>
+        </div>
+        <div class="layui-card-body">
+            <form class="layui-form" action="/acs/?ct=shop_admin&ac=goods_add&action=save" method="post">
+                <{if $goods}>
+                <input type="hidden" name="id" value="<{$goods.id}>">
+                <{/if}>
+                
+                <div class="layui-form-item">
+                    <label class="layui-form-label">商品名称</label>
+                    <div class="layui-input-block">
+                        <input type="text" name="goods_name" value="<{$goods.goods_name}>" required lay-verify="required" placeholder="请输入商品名称" class="layui-input">
+                    </div>
+                </div>
+                
+                <div class="layui-form-item">
+                    <label class="layui-form-label">商品分类</label>
+                    <div class="layui-input-block">
+                        <select name="cid" lay-verify="required">
+                            <option value="">请选择分类</option>
+                            <{if $category_list}>
+                            <{foreach from=$category_list item=cat}>
+                            <option value="<{$cat.id}>" <{if $goods.cid == $cat.id}>selected<{/if}>><{$cat.name}></option>
+                            <{/foreach}>
+                            <{/if}>
+                        </select>
+                    </div>
+                </div>
+                
+                <div class="layui-form-item">
+                    <label class="layui-form-label">商品类型</label>
+                    <div class="layui-input-block">
+                        <input type="radio" name="goods_type" value="1" title="实物商品" <{if !$goods || $goods.goods_type == 1}>checked<{/if}>>
+                        <input type="radio" name="goods_type" value="2" title="虚拟商品" <{if $goods.goods_type == 2}>checked<{/if}>>
+                    </div>
+                </div>
+                
+                <div class="layui-form-item">
+                    <label class="layui-form-label">商品主图</label>
+                    <div class="layui-input-block">
+                        <input type="text" name="thumb" id="thumb" value="<{$goods.thumb}>" placeholder="请上传商品主图" class="layui-input" readonly>
+                        <button type="button" class="layui-btn layui-btn-primary" style="margin-top: 10px;" onclick="uploadThumb()">
+                            <i class="layui-icon layui-icon-upload"></i> 选择图片
+                        </button>
+                        <div class="layui-form-mid layui-word-aux">建议尺寸：800x800px</div>
+                        <div id="thumb-preview" style="margin-top: 10px;">
+                            <{if $goods.thumb}>
+                            <img src="/ffsm<{$goods.thumb}>" style="max-width: 200px; max-height: 200px; border: 1px solid #e6e6e6; padding: 5px;">
+                            <{/if}>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="layui-form-item">
+                    <label class="layui-form-label">首页显示图</label>
+                    <div class="layui-input-block">
+                        <input type="text" name="home_image" id="home_image" value="<{$goods.home_image}>" placeholder="请上传首页显示图片" class="layui-input" readonly>
+                        <button type="button" class="layui-btn layui-btn-warm" style="margin-top: 10px;" onclick="uploadHomeImage()">
+                            <i class="layui-icon layui-icon-upload"></i> 选择首页图片
+                        </button>
+                        <div class="layui-form-mid layui-word-aux" style="color:#FF5722;">
+                            <i class="layui-icon layui-icon-tips"></i> 建议尺寸：400x400px，用于首页特辑活动区域显示（如不上传则使用商品主图）
+                        </div>
+                        <div id="home-image-preview" style="margin-top: 10px;">
+                            <{if $goods.home_image}>
+                            <img src="/ffsm<{$goods.home_image}>" style="max-width: 200px; max-height: 200px; border: 1px solid #e6e6e6; padding: 5px;">
+                            <{/if}>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="layui-form-item">
+                    <label class="layui-form-label">商品价格</label>
+                    <div class="layui-input-inline">
+                        <input type="number" name="price" value="<{$goods.price|default:0}>" step="0.01" required lay-verify="required" placeholder="0.00" class="layui-input">
+                    </div>
+                    <div class="layui-form-mid layui-word-aux">元</div>
+                </div>
+                
+                <div class="layui-form-item">
+                    <label class="layui-form-label">市场价</label>
+                    <div class="layui-input-inline">
+                        <input type="number" name="market_price" value="<{$goods.market_price|default:0}>" step="0.01" placeholder="0.00" class="layui-input">
+                    </div>
+                    <div class="layui-form-mid layui-word-aux">元（用于显示划线价）</div>
+                </div>
+                
+                <div class="layui-form-item">
+                    <label class="layui-form-label">库存数量</label>
+                    <div class="layui-input-inline">
+                        <input type="number" name="stock" value="<{$goods.stock|default:999}>" required lay-verify="required" class="layui-input">
+                    </div>
+                </div>
+                
+                <div class="layui-form-item">
+                    <label class="layui-form-label">商品描述</label>
+                    <div class="layui-input-block">
+                        <textarea id="goods_desc" name="goods_desc" class="layui-textarea"><{$goods.goods_desc}></textarea>
+                        <button type="button" class="layui-btn layui-btn-normal" style="margin-top: 10px;" onclick="uploadDescImage()">
+                            <i class="layui-icon layui-icon-picture"></i> 上传图片到描述
+                        </button>
+                        <div class="layui-form-mid layui-word-aux">点击按钮上传图片，图片会自动插入到编辑器中</div>
+                    </div>
+                </div>
+                
+                <div class="layui-form-item">
+                    <label class="layui-form-label">排序</label>
+                    <div class="layui-input-inline">
+                        <input type="number" name="sort" value="<{$goods.sort|default:0}>" class="layui-input">
+                    </div>
+                    <div class="layui-form-mid layui-word-aux">数字越小越靠前</div>
+                </div>
+                
+                <div class="layui-form-item">
+                    <label class="layui-form-label">首页显示</label>
+                    <div class="layui-input-block">
+                        <input type="checkbox" name="is_home_show" value="1" title="显示在首页" <{if $goods.is_home_show}>checked<{/if}>>
+                    </div>
+                </div>
+                
+                <div class="layui-form-item">
+                    <label class="layui-form-label">状态</label>
+                    <div class="layui-input-block">
+                        <input type="radio" name="status" value="1" title="上架" <{if !$goods || $goods.status == 1}>checked<{/if}>>
+                        <input type="radio" name="status" value="0" title="下架" <{if $goods.status == 0}>checked<{/if}>>
+                    </div>
+                </div>
+                
+                <div class="layui-form-item">
+                    <div class="layui-input-block">
+                        <button class="layui-btn" lay-submit lay-filter="formSubmit">保存商品</button>
+                        <button type="button" class="layui-btn layui-btn-primary" onclick="history.back()">返回</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<script src="/ffsm/statics/ffsm/kmmb/layui/layui.js"></script>
+<script src="/ffsm/static/js/jquery-3.4.1.min.js"></script>
+<script>
+var editIndex;
+$(document).ready(function(){
+    console.log('开始初始化编辑器');
+    
+    layui.use(['form', 'layer', 'layedit'], function(){
+        var form = layui.form;
+        var layedit = layui.layedit;
+        var layer = layui.layer;
+        
+        console.log('layedit加载完成', layedit);
+        
+        // 创建编辑器（不含图片按钮，使用下方的上传按钮）
+        try {
+            editIndex = layedit.build('goods_desc', {
+                height: 400,
+                tool: ['strong', 'italic', 'underline', 'del', '|', 'left', 'center', 'right', '|', 'link', 'unlink']
+            });
+            console.log('编辑器创建成功，索引:', editIndex);
+            layer.msg('富文本编辑器加载成功！使用下方的上传按钮添加图片', {time: 2000});
+        } catch(e) {
+            console.error('编辑器创建失败:', e);
+            layer.msg('编辑器加载失败: ' + e.message);
+        }
+        
+        // 监听表单提交
+        form.on('submit(formSubmit)', function(data){
+            layedit.sync(editIndex);
+            return true;
+        });
+    });
+});
+
+// 接收上传图片的回调
+function receiveImage(field, imagePath) {
+    console.log('receiveImage被调用:', field, imagePath);
+    
+    // 如果是描述图片，插入到编辑器
+    if (field === 'desc_image') {
+        insertImageToEditor(imagePath);
+        return;
+    }
+    
+    // 其他字段的图片
+    $('#' + field).val(imagePath);
+    $('#' + field + '-preview').html('<img src="/ffsm' + imagePath + '" style="max-width: 200px; max-height: 200px; border: 1px solid #e6e6e6; padding: 5px;">');
+}
+
+// 在富文本编辑器中插入图片
+function insertImageToEditor(imagePath) {
+    console.log('尝试插入图片到编辑器:', imagePath);
+    console.log('编辑器索引:', editIndex);
+    
+    layui.use('layedit', function(){
+        var layedit = layui.layedit;
+        try {
+            // 获取当前内容
+            var currentContent = layedit.getContent(editIndex);
+            // 追加图片HTML
+            var imageHtml = '<p><img src="/ffsm' + imagePath + '" style="max-width:100%;"></p>';
+            layedit.setContent(editIndex, currentContent + imageHtml);
+            console.log('图片插入成功');
+            layui.layer.msg('图片已插入到编辑器');
+        } catch(e) {
+            console.error('插入图片失败:', e);
+            layui.layer.msg('插入图片失败: ' + e.message);
+        }
+    });
+}
+
+// 接收上传的描述图片并插入到编辑器（备用回调）
+function receiveDescImage(imagePath) {
+    console.log('receiveDescImage被调用:', imagePath);
+    insertImageToEditor(imagePath);
+}
+
+// 上传描述图片
+function uploadDescImage() {
+    layui.use('layer', function(){
+        var layer = layui.layer;
+        layer.open({
+            type: 2,
+            title: '上传商品描述图片',
+            area: ['800px', '600px'],
+            content: '?ct=upload&ac=image&field=desc_image'
+        });
+    });
+}
+
+// 上传商品主图
+function uploadThumb() {
+    layui.use('layer', function(){
+        var layer = layui.layer;
+        layer.open({
+            type: 2,
+            title: '上传商品主图',
+            area: ['800px', '600px'],
+            content: '?ct=upload&ac=image&field=thumb'
+        });
+    });
+}
+
+// 上传首页显示图
+function uploadHomeImage() {
+    layui.use('layer', function(){
+        var layer = layui.layer;
+        layer.open({
+            type: 2,
+            title: '上传首页显示图',
+            area: ['800px', '600px'],
+            content: '?ct=upload&ac=image&field=home_image'
+        });
+    });
+}
+</script>
+
+<{include file="admin/footer_layui.html"}>

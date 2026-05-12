@@ -1,0 +1,217 @@
+<{include file="admin/header.html"}>
+
+<div class="layui-fluid">
+    
+    <!-- 面包屑 -->
+    <div class="layui-card">
+        <div class="layui-card-body">
+            <span class="layui-breadcrumb">
+                <a href="/acs/?ct=index&ac=index">首页</a>
+                <a><cite>账号管理</cite></a>
+            </span>
+        </div>
+    </div>
+
+    <!-- 搜索筛选 -->
+    <div class="layui-card">
+        <div class="layui-card-header"><i class="layui-icon layui-icon-search"></i> 搜索筛选</div>
+        <div class="layui-card-body">
+            <form class="layui-form" method="post" action="/acs/?ct=users&ac=index">
+                <div class="layui-form-item">
+                    <div class="layui-inline">
+                        <label class="layui-form-label">用户ID</label>
+                        <div class="layui-input-inline">
+                            <input type="text" name="uid_s" value="<{$sch_uid}>" placeholder="用户ID" class="layui-input">
+                        </div>
+                    </div>
+                    <div class="layui-inline">
+                        <label class="layui-form-label">上级用户ID</label>
+                        <div class="layui-input-inline">
+                            <input type="text" name="sd_uid" value="<{$sd_uid}>" placeholder="上级用户ID" class="layui-input">
+                        </div>
+                    </div>
+                    <div class="layui-inline">
+                        <label class="layui-form-label">用户账号</label>
+                        <div class="layui-input-inline">
+                            <input type="text" name="sch_user_name" value="<{$sch_user_name}>" placeholder="用户账号" class="layui-input">
+                        </div>
+                    </div>
+                    <div class="layui-inline">
+                        <label class="layui-form-label">用户电话</label>
+                        <div class="layui-input-inline">
+                            <input type="text" name="sch_phone" value="<{$sch_phone}>" placeholder="用户电话" class="layui-input">
+                        </div>
+                    </div>
+                    <div class="layui-inline">
+                        <button class="layui-btn layui-btn-normal" lay-submit><i class="layui-icon layui-icon-search"></i> 搜索</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- 数据列表 -->
+    <div class="layui-card">
+        <div class="layui-card-header">
+            <div style="display: flex; justify-content: space-between; align-items: center;">
+                <span><i class="layui-icon layui-icon-user"></i> 账号列表</span>
+                <button type="button" class="layui-btn layui-btn-sm layui-btn-normal" onclick="addUser()">
+                    <i class="layui-icon layui-icon-add-1"></i> 增加管理员
+                </button>
+            </div>
+        </div>
+        <div class="layui-card-body">
+            <table class="layui-table" lay-skin="line">
+                <thead>
+                    <tr>
+                        <th width="50"><input type="checkbox" lay-skin="primary" lay-filter="allChoose"></th>
+                        <th>用户ID</th>
+                        <th>上级ID</th>
+                        <th>用户账号</th>
+                        <th>手机号</th>
+                        <th>用户昵称</th>
+                        <th>用户等级</th>
+                        <th>积分</th>
+                        <th>独立提成</th>
+                        <th>未提佣金</th>
+                        <th>总佣金</th>
+                        <th>操作</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <{lurd_list item='v'}>
+                    <tr>
+                        <td><input type="checkbox" name="uid[]" value="<{$v.uid}>" lay-skin="primary"></td>
+                        <td><{$v.uid}></td>
+                        <td><{$v.sd_uid}></td>
+                        <td><{$v.user_name}></td>
+                        <td><{$v.mobile}></td>
+                        <td><{$v.user_nicheng}></td>
+                        <td><{$v.user_dl_mode}></td>
+                        <td><{$v.jf}></td>
+                        <td><{$v.dl_tcbl}></td>
+                        <td><{$v.money}></td>
+                        <td><{$v.moneys}></td>
+                        <td style="white-space: nowrap;">
+                            <button type="button" class="layui-btn layui-btn-xs" onclick="editUser(<{$v.uid}>)">
+                                <i class="layui-icon layui-icon-edit"></i> 修改
+                            </button>
+                            <button type="button" class="layui-btn layui-btn-xs layui-btn-danger" onclick="deleteUser(<{$v.uid}>)">
+                                <i class="layui-icon layui-icon-delete"></i> 删除
+                            </button>
+                        </td>
+                    </tr>
+                    <{/lurd_list}>
+                </tbody>
+            </table>
+            
+            <!-- 分页 -->
+            <div class="layui-box layui-laypage layui-laypage-default" style="margin-top: 10px;">
+                <{$pages}>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+layui.use(['form', 'layer'], function(){
+    var form = layui.form;
+    var layer = layui.layer;
+    
+    // 全选
+    form.on('checkbox(allChoose)', function(data){
+        var child = $(data.elem).parents('table').find('tbody input[type="checkbox"]');
+        child.each(function(index, item){
+            item.checked = data.elem.checked;
+        });
+        form.render('checkbox');
+    });
+});
+
+// 添加用户 - 弹窗
+function addUser() {
+    layui.use('layer', function(){
+        var layer = layui.layer;
+        layer.open({
+            type: 2,
+            title: '添加管理员',
+            shade: 0.3,
+            shadeClose: false,
+            maxmin: true,
+            area: ['800px', '90%'],
+            content: '?ct=users&ac=index&even=add',
+            end: function(){
+                // 关闭弹窗后刷新页面
+                location.reload();
+            }
+        });
+    });
+}
+
+// 编辑用户 - 弹窗
+function editUser(uid) {
+    layui.use('layer', function(){
+        var layer = layui.layer;
+        layer.open({
+            type: 2,
+            title: '编辑用户',
+            shade: 0.3,
+            shadeClose: false,
+            maxmin: true,
+            area: ['800px', '90%'],
+            content: '?ct=users&ac=index&even=edit&uid=' + uid,
+            end: function(){
+                // 关闭弹窗后刷新页面
+                location.reload();
+            }
+        });
+    });
+}
+
+// 删除用户 - 确认对话框
+function deleteUser(uid) {
+    layui.use('layer', function(){
+        var layer = layui.layer;
+        layer.confirm('确定要删除该用户吗？删除后无法恢复！', {
+            icon: 3,
+            title: '删除确认',
+            btn: ['确定删除', '取消']
+        }, function(index){
+            // 创建表单并提交
+            var form = document.createElement('form');
+            form.method = 'POST';
+            form.action = '?ct=users&ac=index';
+            
+            // 添加even和tb参数
+            var evenInput = document.createElement('input');
+            evenInput.type = 'hidden';
+            evenInput.name = 'even';
+            evenInput.value = 'delete';
+            form.appendChild(evenInput);
+            
+            var tbInput = document.createElement('input');
+            tbInput.type = 'hidden';
+            tbInput.name = 'tb';
+            tbInput.value = 'users';
+            form.appendChild(tbInput);
+            
+            // 添加uid数组参数（LURD框架需要数组形式）
+            var uidInput = document.createElement('input');
+            uidInput.type = 'hidden';
+            uidInput.name = 'uid[]';  // 注意是数组形式
+            uidInput.value = uid;
+            form.appendChild(uidInput);
+            
+            document.body.appendChild(form);
+            
+            // 显示加载动画
+            layer.msg('正在删除...', {icon: 16, shade: 0.3, time: 0});
+            
+            // 提交表单
+            form.submit();
+        });
+    });
+}
+</script>
+
+<{include file='admin/footer.html'}>

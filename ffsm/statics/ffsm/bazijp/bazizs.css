@@ -1,0 +1,382 @@
+@-webkit-keyframes showText-data-v-00af0680 {
+0% {
+    opacity: 0;
+}
+100% {
+    opacity: 1;
+}
+}
+@keyframes showText-data-v-00af0680 {
+0% {
+    opacity: 0;
+}
+100% {
+    opacity: 1;
+}
+}
+@-webkit-keyframes showJix-data-v-00af0680 {
+to {
+    -webkit-transform: translateX(-0.85333rem) scale(1);
+            transform: translateX(-0.85333rem) scale(1);
+    opacity: 1;
+}
+}
+@keyframes showJix-data-v-00af0680 {
+to {
+    -webkit-transform: translateX(-0.85333rem) scale(1);
+            transform: translateX(-0.85333rem) scale(1);
+    opacity: 1;
+}
+}
+@-webkit-keyframes widthChange-data-v-00af0680 {
+0% {
+    width: 0;
+}
+100% {
+    width: 100%;
+}
+}
+@keyframes widthChange-data-v-00af0680 {
+0% {
+    width: 0;
+}
+100% {
+    width: 100%;
+}
+}
+@-webkit-keyframes widthMask-data-v-00af0680 {
+0% {
+    width: 100%;
+}
+100% {
+    width: 0;
+}
+}
+@keyframes widthMask-data-v-00af0680 {
+0% {
+    width: 100%;
+}
+100% {
+    width: 0;
+}
+}
+.middle[data-v-00af0680] {
+  position: relative;
+  background: #d19e5f url(https://s.xymlcs.com/bzzsb/img/wrap-middle.a2c52fce.png) no-repeat;
+  background-size: 100%;
+  min-height: 100vh;
+  width: 10rem;
+  padding-bottom: 3.46667rem;
+  padding-top: 3.5rem;
+}
+.middle.addPadBott[data-v-00af0680] {
+  padding-bottom: 4.8rem;
+}
+.middle .flex[data-v-00af0680] {
+  display: -webkit-box;
+  display: flex;
+  -webkit-box-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+          align-items: center;
+}
+.middle .middleBox[data-v-00af0680] {
+  padding-top: 0.02667rem;
+  width: 9.6rem;
+  height: 11.85333rem;
+  background: url(https://s.xymlcs.com/bzzsb/img/mid-bg.701628dc.png) no-repeat;
+  background-size: 100% 100%;
+  margin: auto;
+}
+.middle .middleBox .tableBox[data-v-00af0680] {
+  position: relative;
+  width: 8.85333rem;
+  height: 11.06667rem;
+  margin: 0.32rem auto 0;
+  border: 0.06667rem solid #a85f37;
+  color: #3e090a;
+  font-size: 0.37333rem;
+  text-align: center;
+}
+.middle .middleBox .tableBox .TableTop[data-v-00af0680] {
+  width: 100%;
+  height: 0.86667rem;
+  line-height: 0.86667rem;
+  border-bottom: 0.02667rem solid #a85f37;
+}
+.middle .middleBox .tableBox .TableTop p[data-v-00af0680] {
+  opacity: 0;
+}
+.middle .middleBox .tableBox .TableTop p img[data-v-00af0680] {
+  width: 1.28rem;
+  height: 0.64rem;
+  margin-right: 0.08rem;
+}
+.middle .middleBox .tableBox .grid[data-v-00af0680] {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: repeat(5, 0.85333rem);
+  justify-items: center;
+  -webkit-box-align: center;
+          align-items: center;
+}
+.middle .middleBox .tableBox .grid .item[data-v-00af0680] {
+  display: -webkit-box;
+  display: flex;
+  -webkit-box-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+          align-items: center;
+  border-bottom: 0.02667rem solid #a85f37;
+  border-right: 0.02667rem solid #a85f37;
+  width: 2.18667rem;
+  height: 0.85333rem;
+  box-sizing: border-box;
+}
+.middle .middleBox .tableBox .grid .item span[data-v-00af0680] {
+  opacity: 0;
+}
+.middle .middleBox .tableBox .grid .item[data-v-00af0680]:nth-child(-n+4) {
+  color: #d04813;
+  border-top: 0;
+}
+.middle .middleBox .tableBox .grid .bt0[data-v-00af0680] {
+  border-top: 0;
+}
+.middle .middleBox .tableBox .grid .bl0[data-v-00af0680] {
+  border-left: 0;
+}
+.middle .middleBox .tableBox .grid .br0[data-v-00af0680] {
+  border-right: 0;
+}
+.middle .middleBox .tableBox .grid .bb0[data-v-00af0680] {
+  border-bottom: 0;
+}
+.middle .middleBox .tableBox .center[data-v-00af0680] {
+  position: absolute;
+  left: 4.93333rem;
+  top: 3.44rem;
+  width: 0.72rem;
+  min-height: 3.41333rem;
+  padding: 0.13333rem 0 0 0;
+  padding-bottom: 8%;
+  background: #ba8245;
+  line-height: 1.3;
+  color: #fff;
+  font-size: 0.37333rem;
+  font-weight: 700;
+  opacity: 0;
+  -webkit-transform: translateX(-0.24533rem) scale(0);
+          transform: translateX(-0.24533rem) scale(0);
+}
+.middle .middleBox .tableBox .center .centerJi[data-v-00af0680] {
+  position: absolute;
+  display: block;
+  bottom: 0;
+  width: 1.12rem;
+  background: #b9292a;
+  border-radius: 0.53333rem 0.53333rem 0 0;
+  line-height: 0.61333rem;
+  font-weight: normal;
+  left: -0.24rem;
+  height: 0.61333rem;
+}
+.middle .middleBox .tableBox .center .centerJi span[data-v-00af0680] {
+  margin-left: 0.13333rem;
+}
+.middle .middleBox .tableBox .chartBg[data-v-00af0680],
+.middle .middleBox .tableBox .chart[data-v-00af0680] {
+  position: absolute;
+  inset: 0;
+}
+.middle .middleBox .tableBox .chartBg[data-v-00af0680] {
+  width: 8.77333rem;
+  height: 4rem;
+  background-image: url(https://s.xymlcs.com/bzzsb/img/chart-bg.27b1aa38.png);
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  margin: auto;
+  top: 6.90667rem;
+}
+.middle .middleBox .tableBox .chart[data-v-00af0680] {
+  width: 0;
+  background: url(https://s.xymlcs.com/bzzsb/img/chart.19b9e170.png) no-repeat;
+  -webkit-animation: widthChange-data-v-00af0680 1s linear forwards 8s;
+          animation: widthChange-data-v-00af0680 1s linear forwards 8s;
+  top: 0.05333rem;
+  left: 0.02667rem;
+  height: 3.62667rem;
+  background-size: 8.77333rem 4rem;
+}
+.middle .ProgressBox[data-v-00af0680] {
+  position: absolute;
+  top: 16.96rem;
+  left: 0.21333rem;
+  width: 9.6rem;
+  height: 2.02667rem;
+}
+.middle .ProgressBox .progress[data-v-00af0680] {
+  background: #f9e0c0;
+  width: 9.6rem;
+  height: 2.02667rem;
+  border-radius: 0.13333rem;
+  border: 0.02667rem #a85f37 solid;
+}
+.middle .ProgressBox .progress .top[data-v-00af0680] {
+  height: 1.01333rem;
+  margin-bottom: 0.37333rem;
+  margin-top: 0.13333rem;
+  text-align: center;
+  color: #333;
+  font-size: 0.42667rem;
+  line-height: 1.54667rem;
+}
+.middle .ProgressBox .progress .top .jia[data-v-00af0680] {
+  background-color: #CB412D;
+}
+.middle .ProgressBox .progress .pro[data-v-00af0680] {
+  margin: -0.24rem auto;
+  width: 8.34667rem;
+  height: 0.4rem;
+  background: #fff;
+  border-radius: 0.26667rem;
+}
+.middle .ProgressBox .progress .pro .lottie .center[data-v-00af0680] {
+  display: block;
+  width: 0;
+  height: 0.4rem;
+  background: #d04813;
+  border-radius: 0.26667rem;
+  top: 0;
+  left: 0;
+  -webkit-transition: all 2s;
+  transition: all 2s;
+}
+.middle .ProgressBox .progress .pro .lottie .center.flex_1[data-v-00af0680] {
+  -webkit-animation: widthChange-data-v-00af0680 2s linear forwards;
+          animation: widthChange-data-v-00af0680 2s linear forwards;
+}
+.middle .ProgressBox .progress .pro .lottie .center.flex_2[data-v-00af0680] {
+  -webkit-animation: widthChange-data-v-00af0680 2s linear forwards;
+          animation: widthChange-data-v-00af0680 2s linear forwards;
+}
+.middle .ProgressBox .progress .pro .lottie .center.flex_3[data-v-00af0680] {
+  -webkit-animation: widthChange-data-v-00af0680 2s linear forwards;
+          animation: widthChange-data-v-00af0680 2s linear forwards;
+}
+.middle .ProgressBox .progress .pro .lottie .center.flex_4[data-v-00af0680] {
+  -webkit-animation: widthChange-data-v-00af0680 2s linear forwards;
+          animation: widthChange-data-v-00af0680 2s linear forwards;
+}
+.middle .aniMiddle .TopName[data-v-00af0680] {
+  -webkit-animation: showText-data-v-00af0680 .1s linear forwards .5s;
+          animation: showText-data-v-00af0680 .1s linear forwards .5s;
+}
+.middle .aniMiddle .birth[data-v-00af0680] {
+  -webkit-animation: showText-data-v-00af0680 .1s linear forwards 1s;
+          animation: showText-data-v-00af0680 .1s linear forwards 1s;
+}
+.middle .aniMiddle .RowTow1[data-v-00af0680] {
+  -webkit-animation: showText-data-v-00af0680 .1s linear forwards 2s;
+          animation: showText-data-v-00af0680 .1s linear forwards 2s;
+}
+.middle .aniMiddle .RowTow2[data-v-00af0680] {
+  -webkit-animation: showText-data-v-00af0680 .1s linear forwards 2.3s;
+          animation: showText-data-v-00af0680 .1s linear forwards 2.3s;
+}
+.middle .aniMiddle .RowTow3[data-v-00af0680] {
+  -webkit-animation: showText-data-v-00af0680 .1s linear forwards 2.6s;
+          animation: showText-data-v-00af0680 .1s linear forwards 2.6s;
+}
+.middle .aniMiddle .RowTow4[data-v-00af0680] {
+  -webkit-animation: showText-data-v-00af0680 .1s linear forwards 2.9s;
+          animation: showText-data-v-00af0680 .1s linear forwards 2.9s;
+}
+.middle .aniMiddle .RowThree1[data-v-00af0680] {
+  -webkit-animation: showText-data-v-00af0680 .1s linear forwards 3.2s;
+          animation: showText-data-v-00af0680 .1s linear forwards 3.2s;
+}
+.middle .aniMiddle .RowThree2[data-v-00af0680] {
+  -webkit-animation: showText-data-v-00af0680 .1s linear forwards 3.5s;
+          animation: showText-data-v-00af0680 .1s linear forwards 3.5s;
+}
+.middle .aniMiddle .RowThree3[data-v-00af0680] {
+  -webkit-animation: showText-data-v-00af0680 .1s linear forwards 3.8s;
+          animation: showText-data-v-00af0680 .1s linear forwards 3.8s;
+}
+.middle .aniMiddle .RowThree4[data-v-00af0680] {
+  -webkit-animation: showText-data-v-00af0680 .1s linear forwards 4.1s;
+          animation: showText-data-v-00af0680 .1s linear forwards 4.1s;
+}
+.middle .aniMiddle .RowFour1[data-v-00af0680] {
+  -webkit-animation: showText-data-v-00af0680 .1s linear forwards 4.4s;
+          animation: showText-data-v-00af0680 .1s linear forwards 4.4s;
+}
+.middle .aniMiddle .RowFour2[data-v-00af0680] {
+  -webkit-animation: showText-data-v-00af0680 .1s linear forwards 4.7s;
+          animation: showText-data-v-00af0680 .1s linear forwards 4.7s;
+}
+.middle .aniMiddle .RowFour3[data-v-00af0680] {
+  -webkit-animation: showText-data-v-00af0680 .1s linear forwards 5s;
+          animation: showText-data-v-00af0680 .1s linear forwards 5s;
+}
+.middle .aniMiddle .RowFour4[data-v-00af0680] {
+  -webkit-animation: showText-data-v-00af0680 .1s linear forwards 5.3s;
+          animation: showText-data-v-00af0680 .1s linear forwards 5.3s;
+}
+.middle .aniMiddle .RowFive1[data-v-00af0680] {
+  -webkit-animation: showText-data-v-00af0680 .1s linear forwards 5.6s;
+          animation: showText-data-v-00af0680 .1s linear forwards 5.6s;
+}
+.middle .aniMiddle .RowFive2[data-v-00af0680] {
+  -webkit-animation: showText-data-v-00af0680 .1s linear forwards 5.9s;
+          animation: showText-data-v-00af0680 .1s linear forwards 5.9s;
+}
+.middle .aniMiddle .RowFive3[data-v-00af0680] {
+  -webkit-animation: showText-data-v-00af0680 .1s linear forwards 6.1s;
+          animation: showText-data-v-00af0680 .1s linear forwards 6.1s;
+}
+.middle .aniMiddle .RowFive4[data-v-00af0680] {
+  -webkit-animation: showText-data-v-00af0680 .1s linear forwards 6.4s;
+          animation: showText-data-v-00af0680 .1s linear forwards 6.4s;
+}
+.middle .aniMiddle .ShowCenter[data-v-00af0680] {
+  -webkit-animation: showJix-data-v-00af0680 .8s linear forwards 7s;
+          animation: showJix-data-v-00af0680 .8s linear forwards 7s;
+}
+.middle .fade-in[data-v-00af0680] {
+  opacity: 0;
+  -webkit-animation: fadeIn-data-v-00af0680 1s ease-in-out forwards;
+          animation: fadeIn-data-v-00af0680 1s ease-in-out forwards;
+  background: url(https://s.xymlcs.com/bzzsb/img/chart.19b9e170.png) no-repeat;
+  background-size: 100% 100%;
+  width: 8rem;
+  height: 100%;
+  position: absolute;
+  top: 0.32rem;
+  left: 0;
+}
+@-webkit-keyframes fadeIn-data-v-00af0680 {
+from {
+    opacity: 0;
+    -webkit-transform: translateX(-10%);
+            transform: translateX(-10%);
+}
+to {
+    opacity: 1;
+    -webkit-transform: translateX(0);
+            transform: translateX(0);
+}
+}
+@keyframes fadeIn-data-v-00af0680 {
+from {
+    opacity: 0;
+    -webkit-transform: translateX(-10%);
+            transform: translateX(-10%);
+}
+to {
+    opacity: 1;
+    -webkit-transform: translateX(0);
+            transform: translateX(0);
+}
+}

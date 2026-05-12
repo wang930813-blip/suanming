@@ -1,0 +1,23 @@
+﻿@charset "utf-8";
+/* CSS Document */
+
+/**** 产品尾部 ****/
+.scProd_footer {
+	width: 100%;
+	float: left;
+	margin: .4rem 0 0 0;
+	line-height: 1.5;
+	color: #fff;
+	font-size: .24rem;
+	text-align: center;
+}
+.scProd_footer a {
+	color: #fff;
+	text-decoration: underline;
+}
+.scProd_footer img {
+	width: .26rem;
+	vertical-align: middle;
+	margin: -.05rem 0 0 0;
+}
+/**** 产品尾部 ****/

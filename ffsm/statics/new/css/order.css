@@ -1,0 +1,68 @@
+.public_pay_box .paypal {
+    background: #113984 !important;
+    background-size: 120px;
+    border: 0;
+}
+
+.public_pay_box a {
+    text-decoration: none;
+}
+
+.public_pay_box .btn {
+    display: block;
+
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+
+}
+
+.public_pay_box .btn span {
+    font-size: 20px !important;
+    color: #fff !important;
+    display: inline-block;
+    text-indent: 0;
+    font-weight: 600;
+
+}
+
+.public_pay_box .btn .pay-icon {
+    display: inline-block;
+    width: 26px;
+    height: 26px;
+    background-color: #ffffff;
+    margin-right: 10px;
+}
+
+
+
+.public_pay_box .btn .icon-wechat {
+    background: url(../images/ico-wechat.png) no-repeat;
+    background-size: 100%
+}
+
+.public_pay_box .btn .icon-zfb {
+    background: url(../images/ico-zfb.png) no-repeat;
+    background-size: 100%
+}
+
+.public_pay_box .btn .icon-paypal {
+    background: url(../images/paypal.png) no-repeat;
+    background-size: 100%;
+    border-radius: 2px;
+}
+
+
+
+.public_pay_box .btn .ico-arrow {
+    display: block;
+    position: absolute;
+    top: .28rem;
+    right: .05rem;
+    width: .13rem;
+    height: .24rem;
+    background: url(../images/ico-arrow.png) no-repeat;
+    background-size: 100%
+}

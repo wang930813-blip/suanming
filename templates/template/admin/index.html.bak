@@ -1,0 +1,332 @@
+<{include file="admin/header.html"}>
+
+<div class="app-content flex-column-fluid py-3 py-lg-6">
+	<div class="app-container container-fluid">
+	    <{if $userinfo.uid==1}>
+        <div class="card h-md-100 mb-6">
+            <div class="d-flex fs-6 fw-semibold align-items-center mt-6">
+                <div class="separator separator-dashed min-w-10px flex-grow-1 mx-2"></div>
+                <h1 class="fw-semibold text-gray-800 text-center lh-lg ms-5 me-5">
+                    <span class="fw-bolder">全部数据统计</span>
+                </h1>
+                <div class="separator separator-dashed min-w-10px flex-grow-1 mx-2"></div>
+            </div>
+            <div class="card-body d-flex flex-column">
+                <div class="row">
+                    <div class="col-xl-3">
+                        <div class="card card-flush">
+                                <div class="d-flex p-6">
+                    			<div class="d-flex align-items-center flex-grow-1 me-2 me-sm-5">
+                    				<div class="me-2">
+                    					<a class="text-gray-800 text-hover-primary fs-6 fw-bold">今日成交金额</a>
+                    					<span class="text-gray-400 fw-bold d-block fs-7">成交率:<{$row_Todays.wcl}></span>
+                    				</div>
+                    			</div>
+                    			<div class="d-flex align-items-center">
+                    				<span class="fw-semibold fs-2 text-gray-600 mx-1 pt-1">¥</span>
+                    				<span class="text-dark fw-bolder fs-2x"><{$row_Todays.s_money}></span>
+                    			</div>
+                    		</div>
+                    		<div class="separator separator my-3"></div>
+                    		<div class="card-body pt-5">
+                				<div class="d-flex flex-stack">
+                					<div class="text-gray-700 fw-semibold fs-6 me-2">已支付</div>
+                					<div class="d-flex align-items-senter">
+                						<span class="text-gray-900 fw-bolder fs-3"><{$row_Todays.s_count}>笔</span>
+                					</div>
+                				</div>
+                				<div class="separator separator-dashed my-3"></div>
+                				<div class="d-flex flex-stack">
+                					<div class="text-gray-700 fw-semibold fs-6 me-2">未支付</div>
+                					<div class="d-flex align-items-senter">
+                						<span class="text-gray-900 fw-bolder fs-3"><{$row_Todays.f_count}>笔</span>
+                					</div>
+                				</div>
+                			</div>
+                		</div>
+                    </div>
+                    <div class="col-xl-3">
+                        <div class="card card-flush">
+                                <div class="d-flex p-6">
+                    			<div class="d-flex align-items-center flex-grow-1 me-2 me-sm-5">
+                    				<div class="me-2">
+                    					<a class="text-gray-800 text-hover-primary fs-6 fw-bold">昨日成交金额</a>
+                    					<span class="text-gray-400 fw-bold d-block fs-7">成交率:<{$row_Yesterdays.wcl}></span>
+                    				</div>
+                    			</div>
+                    			<div class="d-flex align-items-center">
+                    				<span class="fw-semibold fs-2 text-gray-600 mx-1 pt-1">¥</span>
+                    				<span class="text-dark fw-bolder fs-2x"><{$row_Yesterdays.s_money}></span>
+                    			</div>
+                    		</div>
+                    		<div class="separator separator my-3"></div>
+                    		<div class="card-body pt-5">
+                				<div class="d-flex flex-stack">
+                					<div class="text-gray-700 fw-semibold fs-6 me-2">已支付</div>
+                					<div class="d-flex align-items-senter">
+                						<span class="text-gray-900 fw-bolder fs-3"><{$row_Yesterdays.s_count}>笔</span>
+                					</div>
+                				</div>
+                				<div class="separator separator-dashed my-3"></div>
+                				<div class="d-flex flex-stack">
+                					<div class="text-gray-700 fw-semibold fs-6 me-2">未支付</div>
+                					<div class="d-flex align-items-senter">
+                						<span class="text-gray-900 fw-bolder fs-3"><{$row_Yesterdays.f_count}>笔</span>
+                					</div>
+                				</div>
+                			</div>
+                		</div>
+                    </div>
+                    <div class="col-xl-3">
+                        <div class="card card-flush">
+                                <div class="d-flex p-6">
+                    			<div class="d-flex align-items-center flex-grow-1 me-2 me-sm-5">
+                    				<div class="me-2">
+                    					<a class="text-gray-800 text-hover-primary fs-6 fw-bold">本月成交金额</a>
+                    					<span class="text-gray-400 fw-bold d-block fs-7">成交率:<{$row_Thismonths.wcl}></span>
+                    				</div>
+                    			</div>
+                    			<div class="d-flex align-items-center">
+                    				<span class="fw-semibold fs-2 text-gray-600 mx-1 pt-1">¥</span>
+                    				<span class="text-dark fw-bolder fs-2x"><{$row_Thismonths.s_money}></span>
+                    			</div>
+                    		</div>
+                    		<div class="separator separator my-3"></div>
+                    		<div class="card-body pt-5">
+                				<div class="d-flex flex-stack">
+                					<div class="text-gray-700 fw-semibold fs-6 me-2">已支付</div>
+                					<div class="d-flex align-items-senter">
+                						<span class="text-gray-900 fw-bolder fs-3"><{$row_Thismonths.s_count}>笔</span>
+                					</div>
+                				</div>
+                				<div class="separator separator-dashed my-3"></div>
+                				<div class="d-flex flex-stack">
+                					<div class="text-gray-700 fw-semibold fs-6 me-2">未支付</div>
+                					<div class="d-flex align-items-senter">
+                						<span class="text-gray-900 fw-bolder fs-3"><{$row_Thismonths.f_count}>笔</span>
+                					</div>
+                				</div>
+                			</div>
+                		</div>
+                    </div>
+                    <div class="col-xl-3">
+                        <div class="card card-flush">
+                                <div class="d-flex p-6">
+                    			<div class="d-flex align-items-center flex-grow-1 me-2 me-sm-5">
+                    				<div class="me-2">
+                    					<a class="text-gray-800 text-hover-primary fs-6 fw-bold">历史累计成交金额</a>
+                    					<span class="text-gray-400 fw-bold d-block fs-7">成交率:<{$row_alls.wcl}></span>
+                    				</div>
+                    			</div>
+                    			<div class="d-flex align-items-center">
+                    				<span class="fw-semibold fs-2 text-gray-600 mx-1 pt-1">¥</span>
+                    				<span class="text-dark fw-bolder fs-2x"><{$row_alls.s_money}></span>
+                    			</div>
+                    		</div>
+                    		<div class="separator separator my-3"></div>
+                    		<div class="card-body pt-5">
+                				<div class="d-flex flex-stack">
+                					<div class="text-gray-700 fw-semibold fs-6 me-2">已支付</div>
+                					<div class="d-flex align-items-senter">
+                						<span class="text-gray-900 fw-bolder fs-3"><{$row_alls.s_count}>笔</span>
+                					</div>
+                				</div>
+                				<div class="separator separator-dashed my-3"></div>
+                				<div class="d-flex flex-stack">
+                					<div class="text-gray-700 fw-semibold fs-6 me-2">未支付</div>
+                					<div class="d-flex align-items-senter">
+                						<span class="text-gray-900 fw-bolder fs-3"><{$row_alls.f_count}>笔</span>
+                					</div>
+                				</div>
+                			</div>
+                		</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <{/if}>
+        <div class="card h-md-100 mb-6">
+            <div class="d-flex fs-6 fw-semibold align-items-center mt-6">
+                <div class="separator separator-dashed min-w-10px flex-grow-1 mx-2"></div>
+                <h1 class="fw-semibold text-gray-800 text-center lh-lg ms-5 me-5">
+                    <span class="fw-bolder">每日数据统计</span>
+                </h1>
+                <div class="separator separator-dashed min-w-10px flex-grow-1 mx-2"></div>
+            </div>
+            <div class="card-body d-flex flex-column">
+                <div class="row">
+                    <div class="col-xl-3">
+                        <div class="card card-flush">
+                                <div class="d-flex p-6">
+                    			<div class="d-flex align-items-center flex-grow-1 me-2 me-sm-5">
+                    				<div class="me-2">
+                    					<a class="text-gray-800 text-hover-primary fs-6 fw-bold">今日成交金额</a>
+                    					<span class="text-gray-400 fw-bold d-block fs-7">总佣金:<{$data.total_today.lirun}></span>
+                    				</div>
+                    			</div>
+                    			<div class="d-flex align-items-center">
+                    				<span class="fw-semibold fs-2 text-gray-600 mx-1 pt-1">¥</span>
+                    				<span class="text-dark fw-bolder fs-2x"><{$data.total_today.total}></span>
+                    			</div>
+                    		</div>
+                    		<div class="separator separator my-3"></div>
+                    		<div class="card-body pt-5">
+                				<div class="d-flex flex-stack">
+                					<div class="text-gray-700 fw-semibold fs-6 me-2">已支付</div>
+                					<div class="d-flex align-items-senter">
+                						<span class="text-gray-900 fw-bolder fs-3"><{$data.total_today.numpay}>笔</span>
+                					</div>
+                				</div>
+                				<div class="separator separator-dashed my-3"></div>
+                				<div class="d-flex flex-stack">
+                					<div class="text-gray-700 fw-semibold fs-6 me-2">未支付</div>
+                					<div class="d-flex align-items-senter">
+                						<span class="text-gray-900 fw-bolder fs-3"><{$data.total_today.numall}>笔</span>
+                					</div>
+                				</div>
+                				<div class="separator separator-dashed my-3"></div>
+                				<div class="d-flex flex-stack">
+                					<div class="text-gray-700 fw-semibold fs-6 me-2">完成率</div>
+                					<div class="d-flex align-items-senter">
+                						<span class="text-gray-900 fw-bolder fs-3"><{$data.total_today.bili}></span>
+                					</div>
+                				</div>
+                			</div>
+                		</div>
+                    </div>
+                    <div class="col-xl-3">
+                        <div class="card card-flush">
+                                <div class="d-flex p-6">
+                    			<div class="d-flex align-items-center flex-grow-1 me-2 me-sm-5">
+                    				<div class="me-2">
+                    					<a class="text-gray-800 text-hover-primary fs-6 fw-bold">昨日成交金额</a>
+                    					<span class="text-gray-400 fw-bold d-block fs-7">总佣金:<{$data.total_yesterday.lirun}></span>
+                    				</div>
+                    			</div>
+                    			<div class="d-flex align-items-center">
+                    				<span class="fw-semibold fs-2 text-gray-600 mx-1 pt-1">¥</span>
+                    				<span class="text-dark fw-bolder fs-2x"><{$data.total_yesterday.total}></span>
+                    			</div>
+                    		</div>
+                    		<div class="separator separator my-3"></div>
+                    		<div class="card-body pt-5">
+                				<div class="d-flex flex-stack">
+                					<div class="text-gray-700 fw-semibold fs-6 me-2">已支付</div>
+                					<div class="d-flex align-items-senter">
+                						<span class="text-gray-900 fw-bolder fs-3"><{$data.total_yesterday.numpay}>笔</span>
+                					</div>
+                				</div>
+                				<div class="separator separator-dashed my-3"></div>
+                				<div class="d-flex flex-stack">
+                					<div class="text-gray-700 fw-semibold fs-6 me-2">未支付</div>
+                					<div class="d-flex align-items-senter">
+                						<span class="text-gray-900 fw-bolder fs-3"><{$data.total_yesterday.numall}>笔</span>
+                					</div>
+                				</div>
+                				<div class="separator separator-dashed my-3"></div>
+                				<div class="d-flex flex-stack">
+                					<div class="text-gray-700 fw-semibold fs-6 me-2">完成率</div>
+                					<div class="d-flex align-items-senter">
+                						<span class="text-gray-900 fw-bolder fs-3"><{$data.total_yesterday.bili}></span>
+                					</div>
+                				</div>
+                			</div>
+                		</div>
+                    </div>
+                    <div class="col-xl-3">
+                        <div class="card card-flush">
+                                <div class="d-flex p-6">
+                    			<div class="d-flex align-items-center flex-grow-1 me-2 me-sm-5">
+                    				<div class="me-2">
+                    					<a class="text-gray-800 text-hover-primary fs-6 fw-bold">本月成交金额</a>
+                    					<span class="text-gray-400 fw-bold d-block fs-7">总佣金:<{$data.total_smonth.lirun}></span>
+                    				</div>
+                    			</div>
+                    			<div class="d-flex align-items-center">
+                    				<span class="fw-semibold fs-2 text-gray-600 mx-1 pt-1">¥</span>
+                    				<span class="text-dark fw-bolder fs-2x"><{$data.total_smonth.total}></span>
+                    			</div>
+                    		</div>
+                    		<div class="separator separator my-3"></div>
+                    		<div class="card-body pt-5">
+                				<div class="d-flex flex-stack">
+                					<div class="text-gray-700 fw-semibold fs-6 me-2">已支付</div>
+                					<div class="d-flex align-items-senter">
+                						<span class="text-gray-900 fw-bolder fs-3"><{$data.total_smonth.numpay}>笔</span>
+                					</div>
+                				</div>
+                				<div class="separator separator-dashed my-3"></div>
+                				<div class="d-flex flex-stack">
+                					<div class="text-gray-700 fw-semibold fs-6 me-2">未支付</div>
+                					<div class="d-flex align-items-senter">
+                						<span class="text-gray-900 fw-bolder fs-3"><{$data.total_smonth.numall}>笔</span>
+                					</div>
+                				</div>
+                				<div class="separator separator-dashed my-3"></div>
+                				<div class="d-flex flex-stack">
+                					<div class="text-gray-700 fw-semibold fs-6 me-2">完成率</div>
+                					<div class="d-flex align-items-senter">
+                						<span class="text-gray-900 fw-bolder fs-3"><{$data.total_smonth.bili}></span>
+                					</div>
+                				</div>
+                			</div>
+                		</div>
+                    </div>
+                    <div class="col-xl-3">
+                        <div class="card card-flush">
+                                <div class="d-flex p-6">
+                    			<div class="d-flex align-items-center flex-grow-1 me-2 me-sm-5">
+                    				<div class="me-2">
+                    					<a class="text-gray-800 text-hover-primary fs-6 fw-bold">历史累计成交金额</a>
+                    					<span class="text-gray-400 fw-bold d-block fs-7">总佣金:<{$data.total.lirun}></span>
+                    				</div>
+                    			</div>
+                    			<div class="d-flex align-items-center">
+                    				<span class="fw-semibold fs-2 text-gray-600 mx-1 pt-1">¥</span>
+                    				<span class="text-dark fw-bolder fs-2x"><{$data.total.total}></span>
+                    			</div>
+                    		</div>
+                    		<div class="separator separator my-3"></div>
+                    		<div class="card-body pt-5">
+                				<div class="d-flex flex-stack">
+                					<div class="text-gray-700 fw-semibold fs-6 me-2">已支付</div>
+                					<div class="d-flex align-items-senter">
+                						<span class="text-gray-900 fw-bolder fs-3"><{$data.total.numpay}>笔</span>
+                					</div>
+                				</div>
+                				<div class="separator separator-dashed my-3"></div>
+                				<div class="d-flex flex-stack">
+                					<div class="text-gray-700 fw-semibold fs-6 me-2">未支付</div>
+                					<div class="d-flex align-items-senter">
+                						<span class="text-gray-900 fw-bolder fs-3"><{$data.total.numall}>笔</span>
+                					</div>
+                				</div>
+                				<div class="separator separator-dashed my-3"></div>
+                				<div class="d-flex flex-stack">
+                					<div class="text-gray-700 fw-semibold fs-6 me-2">完成率</div>
+                					<div class="d-flex align-items-senter">
+                						<span class="text-gray-900 fw-bolder fs-3"><{$data.total.bili}></span>
+                					</div>
+                				</div>
+                			</div>
+                		</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="card h-md-100">
+            <div class="alert alert-dismissible d-flex flex-column flex-sm-row">
+                <div class="d-flex flex-column pe-0 pe-sm-10">
+                    <h4 class="fs-5 text-dark fw-bolder text-gray-500 mb-3">分销代理推广链接说明：</h4>
+                    <span class="text-gray-500">
+                        <p>复制你的专属推广链接，只要用户下单你即可获取提成。</p>
+                        <p>关于提现：请到提现管理栏目，申请提现，提现方式为微信或者支付宝，任何时间内申请提现最迟24小时内到账。</p>
+                        <p>分成比例：请咨询一级管理员或者联系源码开发者，分销提成比例一级管理员可在后台设置，可设置一二级代理提成比例。</p>
+                        如果你有任何疑问， 获取解答！祝我们合作共赢！
+                    </span>
+                </div>
+            </div>
+        </div>
+	</div>
+</div>
+<{include file='admin/footer.html'}>

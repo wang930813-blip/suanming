@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <title>编辑推荐板块</title>
+    <link rel="stylesheet" href="/ffsm/statics/ffsm/kmmb/layui/css/layui.css">
+    <script src="/ffsm/static/js/jquery-3.4.1.min.js"></script>
+    <style>
+        body {
+            padding: 20px;
+            background-color: #fff;
+        }
+        .layui-form-item {
+            margin-bottom: 20px;
+        }
+        .upload-img-box {
+            width: 150px;
+            height: 150px;
+            border: 2px dashed #d2d2d2;
+            border-radius: 4px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+        .upload-img-box:hover {
+            border-color: #1E9FFF;
+        }
+        .upload-img-box img {
+            max-width: 100%;
+            max-height: 100%;
+        }
+        .upload-icon {
+            font-size: 40px;
+            color: #d2d2d2;
+            display: none;
+        }
+        .upload-img-box:not(.has-img) .upload-icon {
+            display: block;
+        }
+        .upload-img-box:not(.has-img) img {
+            display: none;
+        }
+        .remove-img {
+            position: absolute;
+            top: 5px;
+            right: 5px;
+            display: none;
+            background: rgba(0,0,0,0.5);
+            color: #fff;
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            text-align: center;
+            line-height: 24px;
+            cursor: pointer;
+            z-index: 10;
+        }
+        .upload-img-box.has-img .remove-img {
+            display: block;
+        }
+        .remove-img:hover {
+            background: rgba(255,0,0,0.8);
+        }
+    </style>
+<{$page_meta}>
+</head>
+<body>
+    <{lurd_list item='v'}>
+    <form class="layui-form" name="form1" action="?ct=recommend&ac=index&even=saveedit&tb=recommend" method="POST" enctype="multipart/form-data">
+        <input type="hidden" name="form[id]" value="<{$v.id}>">
+        
+        <div class="layui-form-item">
+            <label class="layui-form-label"><span style="color:red;">*</span> 标题：</label>
+            <div class="layui-input-block">
+                <input type="text" name="form[title]" required lay-verify="required" placeholder="请输入标题" value="<{$v.title}>" class="layui-input">
+            </div>
+        </div>
+        
+        <div class="layui-form-item">
+            <label class="layui-form-label"><span style="color:red;">*</span> 链接：</label>
+            <div class="layui-input-block">
+                <input type="text" name="form[url]" required lay-verify="required|url" placeholder="请输入链接地址" value="<{$v.url}>" class="layui-input">
+            </div>
+        </div>
+        
+        <div class="layui-form-item">
+            <label class="layui-form-label">图片：</label>
+            <div class="layui-input-block">
+                <div class="upload-img-box <{if $v.image}>has-img<{/if}>" id="uploadBox">
+                    <i class="layui-icon layui-icon-upload upload-icon"></i>
+                    <img id="previewImg" src="<{$v.image}>" alt="">
+                    <span class="remove-img" id="removeImg">×</span>
+                    <input type="file" id="imgUpload" name="file" accept="image/*" style="display:none;">
+                    <input type="hidden" id="formImage" name="form[base64]">
+                </div>
+                <div class="layui-form-mid layui-word-aux">点击上传图片，支持jpg/png/jpeg格式</div>
+            </div>
+        </div>
+        
+        <div class="layui-form-item layui-form-text">
+            <label class="layui-form-label">描述：</label>
+            <div class="layui-input-block">
+                <textarea name="form[description]" placeholder="请输入描述信息" class="layui-textarea"><{$v.description}></textarea>
+            </div>
+        </div>
+        
+        <div class="layui-form-item">
+            <div class="layui-input-block">
+                <button class="layui-btn layui-btn-normal" lay-submit lay-filter="formSubmit">
+                    <i class="layui-icon layui-icon-ok"></i> 保存修改
+                </button>
+                <button type="reset" class="layui-btn layui-btn-primary">
+                    <i class="layui-icon layui-icon-refresh"></i> 重置
+                </button>
+            </div>
+        </div>
+    </form>
+    <{/lurd_list}>
+
+    <script src="/ffsm/statics/ffsm/kmmb/layui/layui.js"></script>
+    <script>
+    layui.use(['form', 'layer'], function(){
+        var form = layui.form;
+        var layer = layui.layer;
+        
+        // 图片上传处理
+        $('#uploadBox').click(function(){
+            $('#imgUpload').click();
+        });
+        
+        $('#imgUpload').change(function(event){
+            var file = event.target.files[0];
+            if(file){
+                // 检查文件类型
+                if(!file.type.match('image.*')){
+                    layer.msg('请选择图片文件！', {icon: 2});
+                    return;
+                }
+                
+                // 检查文件大小（限制2MB）
+                if(file.size > 2 * 1024 * 1024){
+                    layer.msg('图片大小不能超过2MB！', {icon: 2});
+                    return;
+                }
+                
+                // 读取文件并转换为base64
+                var reader = new FileReader();
+                reader.onload = function(e){
+                    var base64 = e.target.result;
+                    $('#formImage').val(base64);
+                    $('#previewImg').attr('src', base64);
+                    $('#uploadBox').addClass('has-img');
+                    layer.msg('图片上传成功', {icon: 1, time: 1000});
+                };
+                reader.readAsDataURL(file);
+            }
+        });
+        
+        // 移除图片
+        $('#removeImg').click(function(e){
+            e.stopPropagation();
+            $('#previewImg').attr('src', '');
+            $('#formImage').val('');
+            $('#imgUpload').val('');
+            $('#uploadBox').removeClass('has-img');
+            layer.msg('图片已移除', {icon: 1, time: 1000});
+        });
+        
+        // 表单验证
+        form.verify({
+            url: function(value){
+                if(value && !/^https?:\/\/.+/.test(value)){
+                    return '请输入正确的URL地址（以http://或https://开头）';
+                }
+            }
+        });
+        
+        // 表单提交
+        form.on('submit(formSubmit)', function(data){
+            var loadIndex = layer.msg('提交中...', {
+                icon: 16,
+                shade: 0.3,
+                time: 0
+            });
+            
+            // 使用AJAX提交表单
+            $.ajax({
+                url: data.form.action,
+                type: 'POST',
+                data: $(data.form).serialize(),
+                success: function(response){
+                    layer.close(loadIndex);
+                    layer.msg('修改成功！', {
+                        icon: 1,
+                        time: 1500
+                    }, function(){
+                        // 刷新父页面
+                        parent.location.reload();
+                    });
+                },
+                error: function(){
+                    layer.close(loadIndex);
+                    layer.msg('提交失败，请重试', {icon: 2});
+                }
+            });
+            
+            return false; // 阻止表单默认提交
+        });
+    });
+    </script>
+</body>
+</html>

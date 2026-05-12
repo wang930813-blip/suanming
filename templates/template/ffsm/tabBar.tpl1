@@ -1,0 +1,14 @@
+    <div class="tabBar">
+        <div class="item">
+            <a href="/"><i class="home_icon"></i><span>首页</span></a>
+        </div>
+        <div class="item">
+            <a href="/?ac=history"><i class="report_icon"></i><span>报告</span></a>
+        </div>
+        <div class="item">
+            <a href="/?ac=contact"><i class="service_icon"></i><span>客服</span></a>
+        </div>
+        <div class="item">
+            <a href="/?ac=userlogin"><i class="user_icon"></i><span>我</span></a>
+        </div>
+    </div>

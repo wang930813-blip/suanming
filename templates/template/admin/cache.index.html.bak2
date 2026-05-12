@@ -1,0 +1,67 @@
+<{include file="admin/header.html"}>
+<div class="app-content flex-column-fluid py-3 py-lg-6">
+	<div class="app-container container-fluid">
+	    
+		<div class="card card-flush">
+			<div class="card-header align-items-center py-5 gap-2 gap-md-5">
+				<div class="card-title">
+                    <form name="myform" action="?ct=cache&ac=index" method="POST" jstype="vali">
+                        <input type='hidden' name='tb' value='admin_log' />
+                        <input type='hidden' name='orderby' value='' />
+                        <div class="explain-col me-3">
+                            请选择删除缓存的目录&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox"  name="synchurls[]" id='synchurls[]' class="form-check-input synch_url" rel="parent">&nbsp;<label for='synchurls[]'>全选/取消</label>&nbsp;&nbsp;&nbsp;&nbsp;
+                            <input type="checkbox" value="/data/cache" name="dirs[]" id='dirs' class="form-check-input synch_url" rel="child">
+                            <label for='dirs'>
+                                框架缓存
+                            </label>&nbsp;&nbsp;
+                            <input type="checkbox" value="/templates/compile" name="dirs[]" id="dirs4" class="form-check-input synch_url" rel="child">
+                            <label for="dirs4">
+                                模板缓存
+                            </label>
+                        </div>
+                        <div class="explain-col mt-10">
+                            <input type='hidden' name='dosubmit' value='true' />
+                            <button type="submit" class="btn btn-primary">保存</button>
+                            <button type="reset" class="btn btn-light">重设</button>
+                        </div>
+                    </form>	
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<{include file='admin/footer.html'}>
+<script src="/acs/demo1/plugins/custom/datatables/datatables.bundle.js"></script>
+<script src="/acs/demo1/js/custom/apps/ecommerce/catalog/products.js"></script>
+
+<script src="images/js/jquery.js" type="text/javascript"></script>
+<script src="images/js/util.js" type="text/javascript"></script>
+<script src="images/js/frm.js" type="text/javascript"></script>
+<script src="images/js/tb-box.js" type="text/javascript"></script>
+
+<link href="images/css/lyz.calendar.css" rel="stylesheet" type="text/css" /> 
+<script src="images/js/lyz.calendar.min.js" type="text/javascript"></script> 
+
+<script language="javascript">
+    $(function(){
+        var curid = $(":input:checked").val();
+        curid = curid+'id';
+        alterUC(curid);
+
+    });
+    function alterUC(id)
+    {
+        var	curid = id;
+        var obj = $("table[id='table']>tbody");
+        $("table[id='table']>tbody").each(function(){
+            if(this.id==curid)
+            {
+                $(this).css('display','');
+            }
+            else
+            {
+                $(this).css('display','none');
+            }
+        });
+    }
+</script>

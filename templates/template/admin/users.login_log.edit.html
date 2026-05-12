@@ -1,0 +1,56 @@
+<link href="/acs/demo1/plugins/custom/fullcalendar/fullcalendar.bundle.css" rel="stylesheet" type="text/css" />
+<link href="/acs/demo1/plugins/custom/datatables/datatables.bundle.css" rel="stylesheet" type="text/css" />
+<link href="/acs/demo1/plugins/global/plugins.bundle.css" rel="stylesheet" type="text/css" />
+<link href="/acs/demo1/css/style.bundle.css" rel="stylesheet" type="text/css" />
+
+<form name="form1" action="?ct=users&ac=login_log&even=saveedit&tb=users_login_history" method="POST" enctype="multipart/form-data">
+<{lurd_list item='v'}>
+    <input type="hidden" name="autoid" value="<{$v.autoid}>" />
+    
+    
+    <div class="fv-row mb-6">
+        <label class="form-label">用户id</label>
+        <input type='input' name='uid' class='form-control txtnumber' value='<{$v.uid}>' />
+    </div>
+    
+    <div class="fv-row mb-6">
+        <label class="form-label">用户名</label>
+        <input type='input' name='accounts' class='form-control' value='<{$v.accounts}>' />
+    </div>
+    <div class="fv-row mb-6">
+        <label class="form-label">登录ip</label>
+        <input type='input' name='loginip' class='form-control' value='<{$v.loginip}>' />
+    </div>
+    <div class="fv-row mb-6">
+        <label class="form-label">登录时间</label>
+        <input type='input' name='logintime' class='form-control' value='<{$v.logintime}>' />
+    </div>
+    <div class="fv-row mb-6">
+        <label class="form-label">应用池</label>
+        <input type='input' name='pools' class='form-control' value='<{$v.pools}>' />
+    </div>
+    
+    <div class="fv-row mb-6">
+        <label class="form-label">登录时状态</label>
+        <input type='input' name='loginsta' class='form-control' value='<{$v.loginsta}>' />
+    </div>
+    <div class="fv-row mb-6">
+        <label class="form-label">用户登录名和ip的hash</label>
+        <input type='input' name='cli_hash' class='form-control' value='<{$v.cli_hash}>' />
+    </div>
+<{/lurd_list}>
+        <div class="text-center">
+            <button type="reset"  name="bt1" class="btn btn-light w-25 me-3">重置</button>
+            <button type="submit"  name="bt1" class="btn btn-primary w-25">保存</button>
+        </div> 
+</form>
+
+<script src="/acs/demo1/plugins/global/plugins.bundle.js"></script>
+<script src="/acs/demo1/js/scripts.bundle.js"></script>
+<script src="/acs/demo1/js/widgets.bundle.js"></script>
+<script src="/acs/demo1/js/custom/widgets.js"></script>
+<script src="/acs/demo1/js/custom/apps/chat/chat.js"></script>
+<script src="/acs/demo1/js/custom/utilities/modals/upgrade-plan.js"></script>
+<script src="/acs/demo1/js/custom/utilities/modals/create-app.js"></script>
+<script src="/acs/demo1/js/custom/utilities/modals/new-target.js"></script>
+<script src="/acs/demo1/js/custom/utilities/modals/users-search.js"></script>

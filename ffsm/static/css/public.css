@@ -1,0 +1,86 @@
+@charset "utf-8";
+
+/* CSS Document */
+
+body {
+	min-width: 3.2rem;
+	max-width: 7.5rem;
+	margin: 0 auto !important;
+	overflow-x: hidden;
+	background: #fff;
+	font: .3rem/1.5 "microsoft yahei", Arial, Helvetica, sans-serif;
+	color: #333;
+}
+section, div, dl, dt, dd, ul, ol, li, h1, h2, h3, h4, h5, h6, pre, form, p, th, td, input, textarea, select, img {
+	margin: 0;
+	padding: 0;
+	border: 0;
+}
+ul, ol, li {
+	list-style: none;
+}
+h1, h2, h3, h4, h5, h6 {
+	font-size: inherit;
+	font-weight: lighter;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+em, i {
+	display: inline-block;
+	font-weight: normal;
+	font-style: normal;
+}
+textarea, select, input {
+	font-family: "Microsoft Yahei";
+	font-size: .3rem;
+	color: #666;
+}
+a {
+	color: #333;
+	text-decoration: none;
+}
+a:hover {
+	/*color:#333; */
+	text-decoration: none;
+}
+input[type="text"], input[type="password"], input[type="button"], input[type="submit"], button, textarea {
+	-webkit-appearance: none;
+}
+.cfx:after, nav.mini:after, .h:after, .hn:after, .PH:after {
+	content: ' ';
+	clear: both;
+	display: block;
+	height: 0;
+	visibility: hidden;
+	line-height: 0;
+}
+* {
+	box-sizing: border-box;
+	-webkit-tap-highlight-color: transparent;
+}
+
+/**** 公共css ****/
+
+
+/***美化滚动条***/
+
+::-webkit-scrollbar {
+	width: 10px;
+	height: 10px;
+}
+::-webkit-scrollbar-thumb {
+	background-color: rgba(50, 50, 50, 0.25);
+	border: 2px solid transparent;
+	border-radius: 10px;
+	background-clip: padding-box;
+}
+::-webkit-scrollbar-thumb:hover {
+	background-color: rgba(50, 50, 50, 0.5);
+}
+::-webkit-scrollbar-track {
+	background-color: rgba(50, 50, 50, 0.05);
+}
+
+/***美化滚动条***/

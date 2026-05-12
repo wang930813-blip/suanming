@@ -1,0 +1,336 @@
+<{include file="admin/header.html"}>
+<div class="app-content flex-column-fluid py-3 py-lg-6">
+	<div class="app-container container-fluid">
+	    
+	    
+		<div class="card card-flush">
+			<div class="card-header align-items-center py-5 gap-2 gap-md-5">
+				<div class="card-title">
+				</div>
+				<div class="card-toolbar flex-row-fluid justify-content-end gap-5">
+                   
+                   
+                   
+                    <form method="POST" action="" bind=".table-sort">
+                        <div class="fl">
+                            <{if isset($_dbfield.batchUpdateTableField) && !empty($_dbfield.batchUpdateTableField)}>
+                            <button type="button" onclick="more_edit('edit');" class="btn btn-sm btn-light btn-active-primary">批量修改</button>&nbsp; &nbsp;
+                            <{/if}>
+                
+                            <{if isset($_dbfield.batchDeleteTableField) && !empty($_dbfield.batchDeleteTableField)}>
+                            <button type="button" onclick="more_delete('batch_delete','?ct=<{$ct}>&amp;ac=batch_delete');" class="btn btn-sm btn-light btn-active-danger">批量删除</button>&nbsp; &nbsp;
+                            <{/if}>
+                
+                
+                
+                
+                            <{if isset($_allowAction.add) && !empty($_allowAction.add)}>
+                                <{if $_allowAction.add.type=='dialog'}>
+                                    <button type="button" class="btn btn-sm btn-light btn-active-primary"
+                                    onclick="add_modal('?ct=<{$ct}>&ac=add&TB_iframe=true&width=<{$_allowAction.add.width}>&height=<{$_allowAction.add.height}>')">
+                                    <{if $_allowAction.add.title!=''}><{$_allowAction.add.title}><{else}>新增<{/if}></button>&nbsp; &nbsp;
+                                <{else}>
+                                    <a href="?ct=<{$ct}>&amp;ac=add" class="btn btn-sm btn-light btn-active-primary" style="cursor:pointer;"><{if $_allowAction.add.title!=''}><{$_allowAction.add.title}><{else}>新增<{/if}></a>
+                                    &nbsp;&nbsp;
+                                <{/if}>
+                            <{/if}>
+                        </div>
+                    </form>
+                   
+                    
+                    
+                    
+                </div>
+			</div>
+			<div class="card-body pt-0" style="padding: 2rem 2.25rem 0rem 2.25rem;">
+			
+			
+			
+			
+			
+			    <form id="form_list" name="form_list" method="POST" action="?ct=<{$ct}>&amp;ac=batch_update">
+                    <input type="hidden" id="do_action" name="do_action" value="" />
+                    <table class="table align-middle table-row-dashed fs-6 gy-5">
+                        <tbody>
+                        <tr class="text-start text-gray-500 fw-bold fs-7 text-uppercase gs-0">
+                            <th width="20"><input type="checkbox" rel="parent" value="" name="" class="form-check-input"></th>
+                            <{*指定了列表字段*}>
+                            <{if $_dbfield.listTableField}>
+                                <{foreach from=$_dbfield.listTableField key=field item=v}>
+                                <th><{$_dbfield.allTableField[$v]}></th>
+                                <{/foreach}>
+                            <{else}>
+                                <{foreach from=$_dbfield.allTableField item=v}>
+                                <th><{$v}></th>
+                                <{/foreach}>
+                            <{/if}>
+            
+                            <th>管理</th>
+                        </tr>
+                        <{if !empty($data_list)}>
+                            <{foreach key=key item=v from=$data_list}>
+                            <tr>
+                                <td><input type="checkbox" rel="child" value="<{$v[$_dbfield.mainKey]}>" name="ids[<{$v[$_dbfield.mainKey]}>]" class="form-check-input"></td>
+                                <{*指定了列表字段*}>
+                                <{if $_dbfield.listTableField}>
+                                    <{foreach from=$_dbfield.listTableField key=intk item=field}>
+                                    <td>
+                                        <div style="max-width: 100px;max-height: 50px;overflow-y: scroll;font-size: 12px;">
+            
+                                        <{if $_dbfield[$field].element.e_name=='select' && $_dbfield[$field].element.datafrom}>
+                                            <{if !isset($_dbfield.batchUpdateTableField) || !in_array($field,$_dbfield.batchUpdateTableField)}>
+                                                <{*<{assign var='selectkey' value=$v[$field]}>
+                                                <{assign var='selectvalue' value=$_dbfield[$field].element.datafrom}>
+                                                <{if $selectvalue[$selectkey]}>
+                                                    <{$v[$field]}>(<{$selectvalue[$selectkey]}>)
+                                                <{else}>
+                                                    <{$v[$field]}>
+                                                <{/if}>*}>
+                                                <{foreach from=$_dbfield[$field].element.datafrom key=kk item=vv}>
+                                                    <{if is_array($vv)}>
+                                                        <{if $v[$field]==$vv.id}><{$vv.name}>(<{$v[$field]}>)<{/if}>
+                                                    <{else}>
+                                                        <{if $v[$field]==$kk}><{$vv}><{/if}>
+                                                    <{/if}>
+                                                <{/foreach}>
+                                            <{elseif isset($_dbfield.batchUpdateTableField) && in_array($field,$_dbfield.batchUpdateTableField)}>
+                                                <select name="<{$field}>[<{$v[$_dbfield.mainKey]}>]">
+                                                    <option value="" >所属<{$_dbfield.allTableField[$field]}></option>
+                                                    <{foreach from=$_dbfield[$field].element.datafrom key=kk item=vv}>
+                                                        <{if is_array($vv)}>
+                                                            <option value="<{$vv.id}>" <{if $v[$field]==$vv.id}>selected<{/if}>><{$vv.name}></option>
+                                                        <{else}>
+                                                            <option value="<{$kk}>" <{if $v[$field]==$kk}>selected<{/if}>><{$vv}></option>
+                                                        <{/if}>
+                                                    <{/foreach}>
+                                                </select>
+                                            <{/if}>
+                                        <{else}>
+            
+                                            <{if isset($_dbfield.batchUpdateTableField) && in_array($field,$_dbfield.batchUpdateTableField)}>
+                                                <input type="text" name="<{$field}>[<{$v[$_dbfield.mainKey]}>]" value="<{if $field=='createtime' || $field=='paytime'}><{$v[$field]|date_format:'%Y-%m-%d %H:%M:%S'}><{else}><{$v[$field]}><{/if}>"  class="text <{if !empty($_dbfield[$field].element.class)}><{$_dbfield[$field].element.class}><{else}>s<{/if}>" <{if isset($_dbfield[$field].element.jstype) && $_dbfield[$field].element.jstype!=''}>jstype="<{$_dbfield[$field].element.jstype}>"<{/if}> />
+                                            <{else}>
+                                                <{if isset($_dbfield[$field].element.type) && $_dbfield[$field].element.type=='image' && isset($_dbfield[$field].element.src) && $v[$field]!=''}>
+                                                    <img title="<{$v[$field]}>" alt="<{$v[$field]}>" src="<{$_dbfield[$field].element.src}><{$v[$field]}>" style="width:80px;height:60px;" />
+                                                <{else}>
+                                                    <{if $field=='createtime' || $field=='paytime'}><{$v[$field]|date_format:'%Y-%m-%d %H:%M:%S'}><{elseif $field=='data.gender'}>
+                                                      <{if  $v.type==4}>无<{else}><{if  $v.data.gender==0}>男<{else}>女 <{/if}><{/if}>
+                                                      <{elseif $field=='data.time'}>
+                                                    <{if  $v.data.y || $v.data.year}><{$v.data.y}><{$v.data.year}>-<{$v.data.m}><{$v.data.month}>-<{$v.data.d}><{$v.data.day}>时辰<{$v.data.h}><{$v.data.hour}>
+                                                      <{else}>无<{/if}>
+                                                       <{elseif $field=='uid'}>
+                                                         <{if $v.uid}><{$v[$field]}><{else}>无<{/if}>
+                                                      <{else}><{$v[$field]}>
+                                                      <{/if}>
+                                                <{/if}>
+                                            <{/if}>
+            
+            
+                                        <{/if}>
+                                        </div>
+                                    </td>
+                                    <{/foreach}>
+                                <{*没有指定列表字段*}>
+                                <{else}>
+            
+                                    <{foreach from=$_dbfield.allTableField key=field item=fieldName}>
+                                    <td>
+            
+                                        <{if $_dbfield[$field].element.e_name=='select' && $_dbfield[$field].element.datafrom}>
+                                            <{if !isset($_dbfield.batchUpdateTableField) || !in_array($field,$_dbfield.batchUpdateTableField)}>
+                                                <{*<{assign var='selectkey' value=$v[$field]}>
+                                                <{assign var='selectvalue' value=$_dbfield[$field].element.datafrom}>
+                                                <{if $selectvalue[$selectkey]}>
+                                                    <{$v[$field]}>(<{$selectvalue[$selectkey]}>)
+                                                <{else}>
+                                                    <{$v[$field]}>
+                                                <{/if}>*}>
+                                                <{foreach from=$_dbfield[$field].element.datafrom key=kk item=vv}>
+                                                    <{if is_array($vv)}>
+                                                        <{if $v[$field]==$vv.id}><{$vv.name}>(<{$v[$field]}>)<{/if}>
+                                                    <{else}>
+                                                        <{if $v[$field]==$kk}><{$vv}>(<{$v[$field]}>)<{/if}>
+                                                    <{/if}>
+                                                <{/foreach}>
+                                            <{elseif isset($_dbfield.batchUpdateTableField) && in_array($field,$_dbfield.batchUpdateTableField)}>
+                                                <select name="<{$field}>[<{$v[$_dbfield.mainKey]}>]">
+                                                    <option value="" >所属<{$_dbfield.allTableField[$field]}></option>
+                                                    <{foreach from=$_dbfield[$field].element.datafrom key=kk item=vv}>
+                                                        <{if is_array($vv)}>
+                                                            <option value="<{$vv.id}>" <{if $v[$field]==$vv.id}>selected<{/if}>><{$vv.name}></option>
+                                                        <{else}>
+                                                            <option value="<{$kk}>" <{if $v[$field]==$kk}>selected<{/if}>><{$vv}></option>
+                                                        <{/if}>
+                                                    <{/foreach}>
+                                                </select>
+                                            <{/if}>
+                                        <{else}>
+                                            <{if isset($_dbfield.batchUpdateTableField) && in_array($field,$_dbfield.batchUpdateTableField)}>
+                                                <input type="text" name="<{$field}>[<{$v[$_dbfield.mainKey]}>]" value="<{$v[$field]}>"  class="text <{if !empty($_dbfield[$field].element.class)}><{$_dbfield[$field].element.class}><{else}>s<{/if}>" <{if isset($_dbfield[$field].element.jstype) && $_dbfield[$field].element.jstype!=''}>jstype="<{$_dbfield[$field].element.jstype}>"<{/if}> />
+                                            <{else}>
+                                                <{if isset($_dbfield[$field].element.type) && $_dbfield[$field].element.type=='image' && isset($_dbfield[$field].element.src) && $v[$field]!=''}>
+                                                    <img title="<{$v[$field]}>" alt="<{$v[$field]}>" src="<{$_dbfield[$field].element.src}><{$v[$field]}>" style="width:100px;height:80px;" />
+                                                <{else}>
+                                                    <{$v[$field]}>
+                                                <{/if}>
+            
+                                            <{/if}>
+            
+            
+                                        <{/if}>
+                                    </td>
+                                    <{/foreach}>
+            
+                                <{/if}>
+            
+                                <td>
+                                
+                                
+								<a href="#" class="btn btn-sm btn-light btn-flex btn-center btn-active-light-primary" data-kt-menu-trigger="click" data-kt-menu-placement="bottom-end">更多操作 
+								<i class="ki-duotone ki-down fs-5 ms-1"></i></a>
+								<div class="menu menu-sub menu-sub-dropdown menu-column menu-rounded menu-gray-600 menu-state-bg-light-primary fw-semibold fs-7 w-125px py-4" data-kt-menu="true">
+								
+                                    <{if isset($_dbfield.editTableField) && !empty($_dbfield.editTableField)}>
+                                        <{if isset($_allowAction.edit) && !empty($_allowAction.edit)}>
+        									<div class="menu-item px-3">
+        										<a onclick="edit_modal('?ct=<{$ct}>&amp;ac=edit&amp;id=<{$v[$_dbfield.mainKey]}>&amp;page_no=<{$current_page}>')"  class="menu-link px-3"><{if $_allowAction.edit.title!=''}><{$_allowAction.edit.title}><{else}>修改<{/if}></a>
+        									</div>
+                                        <{/if}>
+                                    <{/if}>
+                                    
+                                    <{if isset($_allowAction.delete) && !empty($_allowAction.delete)}>
+    									<div class="menu-item px-3">
+    										
+    										<a onclick="do_delete_one('<{$ct}>', '<{$v[$_dbfield.mainKey]}>')" class="menu-link px-3">删除</a>
+    									</div>
+                                    <{/if}>
+								
+    									
+                                    <{if isset($_allowAction._extend) && !empty($_allowAction._extend)}>
+                                        <{foreach from=$_allowAction._extend item=vext key=url}>
+                                            <{if $vext.type=='dialog'}>
+                                                <button type="button" onclick="tb_show('<{$vext.title}>','<{$url}>&<{$vext.paramto}>=<{$v[$vext.paramfrom]}>&TB_iframe=true&width=<{$vext.width}>&height=<{$vext.height}>',true);"><{if $vext.title!=''}><{$vext.title}><{else}>未知操作名称<{/if}></button>&nbsp; &nbsp;
+                                            <{else}>
+                                                <a href='<{$url}>&<{$vext.paramto}>=<{$v[$vext.paramfrom]}>' class="btn" style="cursor:pointer;"><{if $vext.title!=''}><{$vext.title}><{else}>未知操作名称<{/if}></a>
+                                            &nbsp;&nbsp;
+                                            <{/if}>
+                                        <{/foreach}>
+                                    <{/if}>
+    									
+    									
+								</div>
+                                </td>
+                            </tr>
+                            <{/foreach}>
+                            <{else}>
+                            <tr>
+                                <td colspan="<{$_dbfield.allTableField|count}>" align="center">数据为空</td>
+                            </tr>
+                            <{/if}>
+            
+                        </tbody></table>
+                </form>
+			
+			</div>
+		</div>
+	</div>
+</div>
+
+<div class="modal fade" id="add_modal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-scrollable mw-600px">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>添加</h2>
+                <div class="btn btn-sm btn-icon btn-active-color-primary" data-bs-dismiss="modal">
+                    <span class="svg-icon svg-icon-1">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <rect opacity="0.5" x="6" y="17.3137" width="16" height="2" rx="1" transform="rotate(-45 6 17.3137)" fill="currentColor" />
+                            <rect x="7.41422" y="6" width="16" height="2" rx="1" transform="rotate(45 7.41422 6)" fill="currentColor" />
+                        </svg>
+                    </span>
+                </div>
+            </div>
+            <div class="modal-body py-lg-10 px-lg-10">
+                <iframe id="add_ffsm_dsyy" style="border: none; width: 100%; height: 95vh; overflow: hidden;" scrolling="no"></iframe>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="edit_modal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-scrollable mw-600px">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>修改</h2>
+                <div class="btn btn-sm btn-icon btn-active-color-primary" data-bs-dismiss="modal">
+                    <span class="svg-icon svg-icon-1">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <rect opacity="0.5" x="6" y="17.3137" width="16" height="2" rx="1" transform="rotate(-45 6 17.3137)" fill="currentColor" />
+                            <rect x="7.41422" y="6" width="16" height="2" rx="1" transform="rotate(45 7.41422 6)" fill="currentColor" />
+                        </svg>
+                    </span>
+                </div>
+            </div>
+            <div class="modal-body py-lg-10 px-lg-10">
+                <iframe id="edit_ffsm_dsyy" style="border: none; width: 100%; height: 95vh; overflow: hidden;" scrolling="no"></iframe>
+            </div>
+        </div>
+    </div>
+</div>
+<{include file='admin/footer.html'}>
+<script src="/acs/demo1/plugins/custom/datatables/datatables.bundle.js"></script>
+<script src="/acs/demo1/js/custom/apps/ecommerce/catalog/products.js"></script>
+
+<script src="images/js/jquery.js" type="text/javascript"></script>
+<script src="images/js/util.js" type="text/javascript"></script>
+<script src="images/js/frm.js" type="text/javascript"></script>
+<script src="images/js/tb-box.js" type="text/javascript"></script>
+
+
+
+<script lang='javascript'>
+function add_modal(url) {
+    $('#add_modal').modal('show');
+    
+    var iframe = document.getElementById('add_ffsm_dsyy');
+    var iframeSrc = url;
+    iframe.src = iframeSrc;
+}
+function edit_modal(url) {
+    $('#edit_modal').modal('show');
+    
+    var iframe = document.getElementById('edit_ffsm_dsyy');
+    var iframeSrc = url;
+    iframe.src = iframeSrc;
+}
+
+
+function do_delete_one(ct, id) {
+    Swal.fire({
+        title: '确定删除商户吗？', 
+        showDenyButton: true,
+        confirmButtonText: '确定删除',
+        denyButtonText: '取消删除',
+        customClass: {
+            confirmButton: "btn btn-primary",
+            denyButton: 'btn btn-danger'
+        }
+    }).then((result) => {
+        if (result.isConfirmed) {
+            var deleteLink = "?ct="+ct+"&ac=delete&id="+id;
+            window.location.href = deleteLink; // 提交删除链接
+        }
+    })
+}
+function more_delete(id,url)
+
+{
+
+    document.getElementById('do_action').value=id;
+
+    document.form_list.action = url;
+
+    document.form_list.submit();
+
+}
+</script>

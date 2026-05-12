@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>添加管理员</title>
+<link rel="stylesheet" href="/ffsm/statics/ffsm/kmmb/layui/css/layui.css">
+<style>
+body { padding: 20px; background: #f2f2f2; }
+.content-box { background: #fff; padding: 20px; border-radius: 8px; }
+.page-title { margin: 0 0 20px 0; padding-bottom: 15px; border-bottom: 2px solid #1E9FFF; }
+</style>
+<{$page_meta}>
+</head>
+<body>
+
+<div class="content-box">
+    <h2 class="page-title">添加管理员</h2>
+    
+    <form name="form1" action="?ct=users&ac=index&even=saveadd&tb=users" method="POST" onsubmit="return checkpass()" class="layui-form">
+        <div class="layui-form-item">
+            <label class="layui-form-label">用户名</label>
+            <div class="layui-input-block">
+                <input type='text' name='user_name' class="layui-input" placeholder="请输入用户名" lay-verify="required" />
+            </div>
+        </div>
+        
+        <div class="layui-form-item">
+            <label class="layui-form-label">用户昵称</label>
+            <div class="layui-input-block">
+                <input type='text' name='nickname' class="layui-input" placeholder="请输入昵称（必须汉字）" lay-verify="required" />
+            </div>
+        </div>
+        
+        <div class="layui-form-item">
+            <label class="layui-form-label">用户密码</label>
+            <div class="layui-input-block">
+                <input type='password' name='userpwd' id='userpwd' class="layui-input" placeholder="请输入密码（至少6位）" lay-verify="required" />
+                <div id='pwdtest' style='color: #ff5722; font-size: 12px; margin-top: 5px;'></div>
+            </div>
+        </div>
+        
+        <div class="layui-form-item">
+            <label class="layui-form-label">用户Email</label>
+            <div class="layui-input-block">
+                <input type='text' name='email' class="layui-input" placeholder="请输入邮箱" lay-verify="email" />
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">用户组</label>
+            <div class="layui-input-block">
+                <{foreach from=$cfg_groups.pools.admin.private key=k item=v}>
+                <input type='checkbox' name='groups[]' value='admin_<{$k}>' lay-skin="primary" title="<{$v.name}>" />
+                <{/foreach}>
+            </div>
+        </div>
+        
+        <div class="layui-form-item" style="text-align: center; margin-top: 30px;">
+            <button type="reset" class="layui-btn layui-btn-primary">重置</button>
+            <button type="submit" class="layui-btn layui-btn-normal" lay-submit>保存</button>
+        </div>
+    </form>
+</div>
+
+<script src="/ffsm/statics/ffsm/kmmb/layui/layui.js"></script>
+<script>
+layui.use('form', function(){
+    var form = layui.form;
+    form.render();
+});
+
+function checkpass() {
+    var pwd = document.form1.userpwd.value;
+    var pwdtest = document.getElementById('pwdtest');
+    
+    if(pwd.length < 6) {
+        pwdtest.innerHTML = '✗ 密码长度至少6位';
+        return false;
+    } else {
+        pwdtest.innerHTML = '';
+        return true;
+    }
+}
+</script>
+
+</body>
+</html>

@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <title><{$web_title|default:"管理后台"}></title>
+    <link rel="stylesheet" href="/ffsm/statics/ffsm/kmmb/layui/css/layui.css">
+    <script src="/ffsm/static/js/jquery-3.4.1.min.js"></script>
+    <style>
+        .layui-layout-admin .layui-header {
+            background-color: #2f4056;
+        }
+        .layui-side {
+            background-color: #2f4056;
+        }
+        .layui-side-scroll {
+            background-color: #2f4056;
+        }
+        .layui-nav-tree .layui-nav-child dd.layui-this,
+        .layui-nav-tree .layui-nav-child dd.layui-this a,
+        .layui-nav-tree .layui-this,
+        .layui-nav-tree .layui-this>a,
+        .layui-nav-tree .layui-this>a:hover {
+            background-color: #1E9FFF;
+            color: #fff;
+        }
+        .layui-nav-tree .layui-nav-item a:hover {
+            background-color: #1E9FFF;
+        }
+        .layui-body {
+            left: 220px;
+        }
+        .layui-side {
+            width: 220px;
+        }
+        .layui-layout-admin .layui-footer {
+            left: 220px;
+        }
+        .admin-header-item {
+            line-height: 60px;
+            padding: 0 15px;
+            cursor: pointer;
+        }
+        .admin-header-item:hover {
+            background-color: rgba(0,0,0,.1);
+        }
+        .layui-card {
+            margin-bottom: 15px;
+        }
+        .stat-card {
+            text-align: center;
+            padding: 20px;
+        }
+        .stat-card .stat-value {
+            font-size: 28px;
+            font-weight: bold;
+            color: #1E9FFF;
+            margin: 10px 0;
+        }
+        .stat-card .stat-label {
+            color: #666;
+            font-size: 14px;
+        }
+        .stat-card .stat-sub {
+            color: #999;
+            font-size: 12px;
+            margin-top: 5px;
+        }
+    </style>
+</head>
+<body class="layui-layout-body">
+<div class="layui-layout layui-layout-admin">
+    <!-- 头部 -->
+    <div class="layui-header">
+        <div class="layui-logo" style="color: #fff; font-size: 18px; font-weight: bold;">
+            <i class="layui-icon layui-icon-website"></i> 管理后台
+        </div>
+        <!-- 头部右侧菜单 -->
+        <ul class="layui-nav layui-layout-right" style="background-color: transparent;">
+            <li class="layui-nav-item">
+                <a href="javascript:;" class="admin-header-item" onclick="location.reload()">
+                    <i class="layui-icon layui-icon-refresh"></i> 刷新
+                </a>
+            </li>
+            <li class="layui-nav-item">
+                <a href="javascript:;">
+                    <img src="/acs/demo1/media/avatars/300-3.jpg" class="layui-nav-img" style="width: 35px; height: 35px; border-radius: 50%;">
+                    admin
+                </a>
+                <dl class="layui-nav-child">
+                    <dd><a href="?ct=users&ac=editpwd">修改密码</a></dd>
+                    <dd><a href="?ct=index&ac=loginout">退出登录</a></dd>
+                </dl>
+            </li>
+        </ul>
+    </div>
+    
+    <!-- 左侧导航 -->
+    <div class="layui-side layui-bg-black">
+        <div class="layui-side-scroll">
+            <ul class="layui-nav layui-nav-tree" lay-filter="side-nav" style="background-color: #2f4056;">
+                
+                <!-- 首页概况 -->
+                <li class="layui-nav-item <{if $web_title=='首页概况总览'}>layui-this<{/if}>">
+                    <a href="/acs/?ct=index&ac=index">
+                        <i class="layui-icon layui-icon-home"></i> 首页概况总览
+                    </a>
+                </li>
+                
+                <!-- 系统配置 -->
+                <li class="layui-nav-item <{if $web_title=='系统基本配置' || $web_title=='测算价格配置' || $web_title=='系统信息配置' || $web_title=='代理分成配置' || $web_title=='推广积分配置' || $web_title=='VIP价格配置' || $web_title=='账号管理' || $web_title=='在线预约配置'}>layui-nav-itemed<{/if}>">
+                    <a href="javascript:;">
+                        <i class="layui-icon layui-icon-set"></i> 系统配置
+                    </a>
+                    <dl class="layui-nav-child">
+                        <dd class="<{if $web_title=='系统基本配置'}>layui-this<{/if}>">
+                            <a href="/acs/?ct=system&ac=index">系统基本配置</a>
+                        </dd>
+                        <dd class="<{if $web_title=='测算价格配置'}>layui-this<{/if}>">
+                            <a href="/acs/?ct=system&ac=index_m">测算价格配置</a>
+                        </dd>
+                        <dd class="<{if $web_title=='在线预约配置'}>layui-this<{/if}>">
+                            <a href="/acs/?ct=ffsm_dsyy&ac=index">在线预约配置</a>
+                        </dd>
+                        <dd class="<{if $web_title=='系统信息配置'}>layui-this<{/if}>">
+                            <a href="/acs/?ct=system&ac=index_a">系统信息配置</a>
+                        </dd>
+                        <dd class="<{if $web_title=='代理分成配置'}>layui-this<{/if}>">
+                            <a href="/acs/?ct=system&ac=index_b">代理分成配置</a>
+                        </dd>
+                        <dd class="<{if $web_title=='推广积分配置'}>layui-this<{/if}>">
+                            <a href="/acs/?ct=system&ac=integral">推广积分配置</a>
+                        </dd>
+                        <dd class="<{if $web_title=='VIP价格配置'}>layui-this<{/if}>">
+                            <a href="/acs/?ct=system&ac=index_d">VIP价格配置</a>
+                        </dd>
+                        <dd class="<{if $web_title=='账号管理'}>layui-this<{/if}>">
+                            <a href="/acs/?ct=users&ac=index">账号管理</a>
+                        </dd>
+                    </dl>
+                </li>
+                
+                <!-- 内容管理 - 已隐藏
+                <li class="layui-nav-item <{if $web_title=='功能板块' || $web_title=='推荐板块' || $web_title=='搜索匹配关键词' || $web_title=='搜索记录'}>layui-nav-itemed<{/if}>">
+                    <a href="javascript:;">
+                        <i class="layui-icon layui-icon-template-1"></i> 内容管理
+                    </a>
+                    <dl class="layui-nav-child">
+                        <dd class="<{if $web_title=='功能板块'}>layui-this<{/if}>">
+                            <a href="/acs/?ct=plate&ac=index">功能板块</a>
+                        </dd>
+                        <dd class="<{if $web_title=='推荐板块'}>layui-this<{/if}>">
+                            <a href="/acs/?ct=recommend&ac=index">推荐板块列表</a>
+                        </dd>
+                        <dd class="<{if $web_title=='搜索匹配关键词'}>layui-this<{/if}>">
+                            <a href="/acs/?ct=search&ac=index">搜索匹配关键词</a>
+                        </dd>
+                        <dd class="<{if $web_title=='搜索记录'}>layui-this<{/if}>">
+                            <a href="/acs/?ct=search&ac=log">搜索记录</a>
+                        </dd>
+                    </dl>
+                </li>
+                -->
+                
+                <!-- 付费应用 -->
+                <li class="layui-nav-item">
+                    <a href="javascript:;">
+                        <i class="layui-icon layui-icon-rmb"></i> 付费应用
+                    </a>
+                    <dl class="layui-nav-child">
+                        <dd><a href="/acs/?ct=ffsm_order&ac=index">订单管理</a></dd>
+                        <dd><a href="/acs/?ct=ffsm_order&ac=excel">订单导出</a></dd>
+                    </dl>
+                </li>
+                
+                <!-- 推广管理 -->
+                <li class="layui-nav-item <{if $web_title=='推广链接' || $web_title=='订单管理' || $web_title=='提现管理'}>layui-nav-itemed<{/if}>">
+                    <a href="javascript:;">
+                        <i class="layui-icon layui-icon-share"></i> 推广管理
+                    </a>
+                    <dl class="layui-nav-child">
+                        <dd class="<{if $web_title=='推广链接'}>layui-this<{/if}>">
+                            <a href="/acs/?ct=fxdl&ac=links">推广链接</a>
+                        </dd>
+                        <dd class="<{if $web_title=='订单管理'}>layui-this<{/if}>">
+                            <a href="/acs/?ct=fxdl&ac=index">订单管理</a>
+                        </dd>
+                        <dd class="<{if $web_title=='提现管理'}>layui-this<{/if}>">
+                            <a href="/acs/?ct=fxdltxzh&ac=index">提现管理</a>
+                        </dd>
+                    </dl>
+                </li>
+                
+                <!-- 账号管理 -->
+                <li class="layui-nav-item <{if $web_title=='组权限管理' || $web_title=='组权限XML配置' || $web_title=='修改密码'}>layui-nav-itemed<{/if}>">
+                    <a href="javascript:;">
+                        <i class="layui-icon layui-icon-user"></i> 账号管理
+                    </a>
+                    <dl class="layui-nav-child">
+                        <dd class="<{if $web_title=='组权限管理'}>layui-this<{/if}>">
+                            <a href="/acs/?ct=users&ac=edit_purview_groups">组权限管理</a>
+                        </dd>
+                        <dd class="<{if $web_title=='组权限XML配置'}>layui-this<{/if}>">
+                            <a href="/acs/?ct=users&ac=edit_purview_xml">组权限XML配置</a>
+                        </dd>
+                        <dd class="<{if $web_title=='修改密码'}>layui-this<{/if}>">
+                            <a href="/acs/?ct=users&ac=editpwd">修改密码</a>
+                        </dd>
+                    </dl>
+                </li>
+                
+                <!-- 系统其他 -->
+                <li class="layui-nav-item <{if $web_title=='操作日志' || $web_title=='登录日志'}>layui-nav-itemed<{/if}>">
+                    <a href="javascript:;">
+                        <i class="layui-icon layui-icon-log"></i> 系统其他
+                    </a>
+                    <dl class="layui-nav-child">
+                        <dd class="<{if $web_title=='操作日志'}>layui-this<{/if}>">
+                            <a href="/acs/?ct=users&ac=log">操作日志</a>
+                        </dd>
+                        <dd class="<{if $web_title=='登录日志'}>layui-this<{/if}>">
+                            <a href="/acs/?ct=users&ac=login_log">登录日志</a>
+                        </dd>
+                    </dl>
+                </li>
+                
+                <!-- 缓存管理 -->
+                <li class="layui-nav-item <{if $web_title=='缓存管理'}>layui-this<{/if}>">
+                    <a href="/acs/?ct=cache&ac=index">
+                        <i class="layui-icon layui-icon-release"></i> 缓存管理
+                    </a>
+                </li>
+                
+            </ul>
+        </div>
+    </div>
+    
+    <!-- 主体内容 -->
+    <div class="layui-body" style="padding: 15px;">

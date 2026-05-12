@@ -1,0 +1,2 @@
+ <link href="/statics/quanju.css" rel="stylesheet" type="text/css">
+  <{include file='./ffsm/tabBar.tpl'}>

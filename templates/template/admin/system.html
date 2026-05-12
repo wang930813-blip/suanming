@@ -1,0 +1,316 @@
+<{include file="admin/header.html"}>
+
+<div class="layui-fluid">
+    
+    <!-- 面包屑 -->
+    <div class="layui-card">
+        <div class="layui-card-body">
+            <span class="layui-breadcrumb">
+                <a href="/acs/?ct=index&ac=index">首页</a>
+                <a><cite><{$web_title}></cite></a>
+            </span>
+        </div>
+    </div>
+
+    <!-- 系统配置表单 -->
+    <div class="layui-card">
+        <div class="layui-card-header">
+            <i class="layui-icon layui-icon-set"></i> <{$web_title}>
+        </div>
+        <div class="layui-card-body">
+            <form class="layui-form" action="?ct=system&ac=<{$ac_url}>" method="POST" enctype="multipart/form-data">
+                <input type="hidden" name="even" value="saveedit" />
+                
+                <{foreach from=$sys_all key=k item=v}>
+                
+                <!-- 支付方式选择 -->
+                <{if $v.name=="pay_type"}>
+                <div class="layui-form-item">
+                    <label class="layui-form-label">显示支付方式</label>
+                    <div class="layui-input-block">
+                        <input type="checkbox" name="sys[pay_type][1]" value="1" title="微信支付" <{if $payMethod.wechat==1}>checked<{/if}> lay-skin="primary">
+                        <input type="checkbox" name="sys[pay_type][2]" value="2" title="支付宝支付" <{if $payMethod.alipay==1}>checked<{/if}> lay-skin="primary">
+                        <input type="checkbox" name="sys[pay_type][4]" value="4" title="3方支付" <{if $payMethod.other==1}>checked<{/if}> lay-skin="primary">
+                        <input type="checkbox" name="sys[pay_type][5]" value="5" title="Paypal支付" <{if $payMethod.paypal==1}>checked<{/if}> lay-skin="primary">
+                        <input type="checkbox" name="sys[pay_type][6]" value="6" title="Stripe支付" <{if $payMethod.stripe==1}>checked<{/if}> lay-skin="primary">
+                    </div>
+                </div>
+                <{/if}>
+                
+                <!-- 首页模板切换 -->
+                <{if $v.name=="mobanqh"}>
+                <div class="layui-form-item">
+                    <label class="layui-form-label">首页模板切换</label>
+                    <div class="layui-input-block">
+                        <select name="sys[<{$v.name}>][0]">
+                            <option value="5" <{if $v.config==5}>selected<{/if}>>默认模板</option>
+                        </select>
+                        <input type='hidden' name='sys[<{$v.name}>][1]' value='<{$v.title}>' />
+                        <input type='hidden' name='sys[<{$v.name}>][2]' value='<{$v.class}>' />
+                    </div>
+                </div>
+                <{/if}>
+                
+                <!-- 推广积分开关 -->
+                <{if $v.name=="tjex_on"}>
+                <div class="layui-form-item">
+                    <label class="layui-form-label">推广积分是否开启</label>
+                    <div class="layui-input-block">
+                        <select name="sys[<{$v.name}>][0]">
+                            <option value="0" <{if $v.config==0}>selected<{/if}>>关闭</option>
+                            <option value="1" <{if $v.config==1}>selected<{/if}>>开启</option>
+                        </select>
+                        <input type='hidden' name='sys[<{$v.name}>][1]' value='<{$v.title}>' />
+                        <input type='hidden' name='sys[<{$v.name}>][2]' value='<{$v.class}>' />
+                    </div>
+                </div>
+                <{/if}>
+                
+                <!-- VIP开关 -->
+                <{if $v.name=="vip_on"}>
+                <div class="layui-form-item">
+                    <label class="layui-form-label">VIP是否开启</label>
+                    <div class="layui-input-block">
+                        <select name="sys[<{$v.name}>][0]">
+                            <option value="0" <{if $v.config==0}>selected<{/if}>>关闭</option>
+                            <option value="1" <{if $v.config==1}>selected<{/if}>>开启</option>
+                        </select>
+                        <input type='hidden' name='sys[<{$v.name}>][1]' value='<{$v.title}>' />
+                        <input type='hidden' name='sys[<{$v.name}>][2]' value='<{$v.class}>' />
+                    </div>
+                </div>
+                <{/if}>
+                
+                <!-- Stripe支付配置 -->
+                <{if $v.name=="stripe_secret_key" || $v.name=="stripe_public_key" || $v.name=="stripe_webhook_secret" || $v.name=="stripe_currency" || $v.name=="stripe_mode"}>
+                <div class="layui-form-item">
+                    <label class="layui-form-label"><{$v.title}></label>
+                    <div class="layui-input-block">
+                        <{if $v.name=="stripe_mode"}>
+                            <select name="sys[<{$v.name}>][0]">
+                                <option value="test" <{if $v.config=='test'}>selected<{/if}>>测试模式</option>
+                                <option value="live" <{if $v.config=='live'}>selected<{/if}>>正式模式</option>
+                            </select>
+                        <{else}>
+                            <input type="text" name="sys[<{$v.name}>][0]" value="<{$v.config}>" class="layui-input" placeholder="请输入<{$v.title}>">
+                        <{/if}>
+                        <input type='hidden' name='sys[<{$v.name}>][1]' value='<{$v.title}>' />
+                        <input type='hidden' name='sys[<{$v.name}>][2]' value='<{$v.class}>' />
+                    </div>
+                </div>
+                <{/if}>
+                
+                <!-- 短信宝配置 -->
+                <{if $v.name=="sms_username" || $v.name=="sms_password" || $v.name=="sms_goods_id"}>
+                <div class="layui-form-item">
+                    <label class="layui-form-label"><{$v.title}></label>
+                    <div class="layui-input-block">
+                        <{if $v.name=="sms_password"}>
+                            <input type="password" name="sys[<{$v.name}>][0]" value="<{$v.config}>" class="layui-input" placeholder="请输入<{$v.title}>">
+                        <{else}>
+                            <input type="text" name="sys[<{$v.name}>][0]" value="<{$v.config}>" class="layui-input" placeholder="请输入<{$v.title}>">
+                        <{/if}>
+                        <input type='hidden' name='sys[<{$v.name}>][1]' value='<{$v.title}>' />
+                        <input type='hidden' name='sys[<{$v.name}>][2]' value='<{$v.class}>' />
+                        <{if $v.name=="sms_username"}>
+                        <div class="layui-form-mid layui-word-aux">
+                            <a href="https://www.smsbao.com/" target="_blank" style="color:#1890ff;">短信宝</a> 平台用户名
+                        </div>
+                        <{/if}>
+                        <{if $v.name=="sms_password"}>
+                        <div class="layui-form-mid layui-word-aux">
+                            短信宝 API 密码
+                        </div>
+                        <{/if}>
+                        <{if $v.name=="sms_goods_id"}>
+                        <div class="layui-form-mid layui-word-aux">
+                            专用通道 ID，无则留空
+                        </div>
+                        <{/if}>
+                    </div>
+                </div>
+                <{/if}>
+                
+                <!-- 短信服务商配置 -->
+                <{if $v.name=="sms_provider"}>
+                <div class="layui-form-item">
+                    <label class="layui-form-label">短信服务商</label>
+                    <div class="layui-input-block">
+                        <select name="sys[sms_provider][0]" class="layui-input" style="width:300px;">
+                            <option value="smsbao" <{if $v.config=="smsbao"}>selected<{/if}>>短信宝</option>
+                            <option value="spug" <{if $v.config=="spug"}>selected<{/if}>>Spug推送助手</option>
+                        </select>
+                        <input type='hidden' name='sys[sms_provider][1]' value='短信服务商' />
+                        <input type='hidden' name='sys[sms_provider][2]' value='0' />
+                        <div class="layui-form-mid layui-word-aux">选择短信服务商，保存后生效</div>
+                    </div>
+                </div>
+                <{/if}>
+                
+                <{if $v.name=="spug_template_id"}>
+                <div class="layui-form-item">
+                    <label class="layui-form-label"><{$v.title}></label>
+                    <div class="layui-input-block">
+                        <input type="text" name="sys[spug_template_id][0]" value="<{$v.config}>" class="layui-input" placeholder="请输入Spug消息模板ID">
+                        <input type='hidden' name='sys[spug_template_id][1]' value='Spug模板ID' />
+                        <input type='hidden' name='sys[spug_template_id][2]' value='0' />
+                        <div class="layui-form-mid layui-word-aux">
+                            在 <a href="https://push.spug.cc" target="_blank" style="color:#1890ff;">push.spug.cc</a> 创建消息模板后获取的模板ID
+                        </div>
+                    </div>
+                </div>
+                <{/if}>
+                
+                <{/foreach}>
+                
+                <!-- 其他普通配置项 -->
+                <{foreach from=$sys_all key=k item=v}>
+                <{if $v.name!="pay_type" && $v.name!="tjex_on" && $v.name!="vip_on" && $v.name!="mobanqh" && $v.name!="stripe_secret_key" && $v.name!="stripe_public_key" && $v.name!="stripe_webhook_secret" && $v.name!="stripe_currency" && $v.name!="stripe_mode" && $v.name!="sms_username" && $v.name!="sms_password" && $v.name!="sms_goods_id" && $v.name!="sms_provider" && $v.name!="spug_template_id"}>
+                
+                <{* 二维码图片链接特殊处理 *}>
+                <{if $v.name=="weixintp"}>
+                <div class="layui-form-item">
+                    <label class="layui-form-label"><{$v.title}></label>
+                    <div class="layui-input-block">
+                        <div class="layui-input-inline" style="width: 400px;">
+                            <input type="text" name="sys[<{$v.name}>][0]" id="weixintp" value="<{$v.config}>" class="layui-input" placeholder="请输入图片地址或点击上传">
+                        </div>
+                        <button type="button" class="layui-btn layui-btn-normal" id="uploadQrcodeBtn">
+                            <i class="layui-icon">&#xe67c;</i>上传图片
+                        </button>
+                        <input type='hidden' name='sys[<{$v.name}>][1]' value='<{$v.title}>' />
+                        <input type='hidden' name='sys[<{$v.name}>][2]' value='<{$v.class}>' />
+                        <div class="layui-form-mid layui-word-aux">二维码图片路径，如：/weixin.jpg</div>
+                        <div style="margin-top: 10px;">
+                            <img id="qrcodePreview" src="<{if $v.config}>/ffsm<{$v.config}><{/if}>" style="max-width: 300px; max-height: 200px; <{if !$v.config}>display:none;<{/if}>" alt="二维码预览">
+                        </div>
+                    </div>
+                </div>
+                <{else}>
+                <div class="layui-form-item">
+                    <label class="layui-form-label"><{$v.title}></label>
+                    <div class="layui-input-block">
+                        <input type="text" name="sys[<{$v.name}>][0]" value="<{$v.config}>" class="layui-input" placeholder="请输入<{$v.title}>">
+                        <input type='hidden' name='sys[<{$v.name}>][1]' value='<{$v.title}>' />
+                        <input type='hidden' name='sys[<{$v.name}>][2]' value='<{$v.class}>' />
+                    </div>
+                </div>
+                <{/if}>
+                
+                <{/if}>
+                <{/foreach}>
+                
+                <!-- 提交按钮 -->
+                <div class="layui-form-item">
+                    <div class="layui-input-block">
+                        <input type='hidden' name='dosubmit' value='true'/>
+                        <button type="submit" class="layui-btn layui-btn-normal" lay-submit lay-filter="formSubmit">
+                            <i class="layui-icon layui-icon-ok"></i> 保存设置
+                        </button>
+                        <button type="reset" class="layui-btn layui-btn-primary">
+                            <i class="layui-icon layui-icon-refresh"></i> 重置
+                        </button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<script src="https://apps.bdimg.com/libs/jquery/1.9.1/jquery.min.js"></script>
+<script>
+layui.use(['form', 'layer'], function(){
+    var form = layui.form;
+    var layer = layui.layer;
+    
+    // 表单渲染
+    form.render();
+});
+
+// 二维码图片上传功能
+$(document).ready(function(){
+    // 创建隐藏的file input
+    var fileInput = $('<input type="file" accept="image/*" style="display:none;" id="hiddenQrcodeInput">');
+    $('body').append(fileInput);
+    
+    // 点击上传按钮
+    $('#uploadQrcodeBtn').on('click', function(e){
+        e.preventDefault();
+        fileInput.click();
+    });
+    
+    // 文件选择后处理
+    fileInput.on('change', function(e){
+        var file = e.target.files[0];
+        if (!file) return;
+        
+        // 验证文件类型
+        if (!file.type.match('image.*')) {
+            alert('请选择图片文件');
+            return;
+        }
+        
+        // 验证文件大小（5MB）
+        if (file.size > 5 * 1024 * 1024) {
+            alert('图片不能超过5MB，请压缩后上传');
+            return;
+        }
+        
+        // 读取文件为Base64
+        var reader = new FileReader();
+        reader.onload = function(event){
+            var base64Data = event.target.result;
+            
+            // 发送到服务器
+            $.ajax({
+                url: '/acs/?ct=upload&ac=base64',
+                type: 'POST',
+                data: { imageData: base64Data },
+                dataType: 'json',
+                success: function(res){
+                    if (res.error_code == 0) {
+                        var imagePath = '/static/upload/' + res.data;
+                        $('#weixintp').val(imagePath);
+                        $('#qrcodePreview').attr('src', '/ffsm' + imagePath).show();
+                        alert('上传成功');
+                    } else {
+                        alert(res.error_message || '上传失败');
+                    }
+                },
+                error: function(xhr, status, error){
+                    alert('上传请求失败');
+                }
+            });
+        };
+        
+        reader.onerror = function(){
+            alert('文件读取失败');
+        };
+        
+        reader.readAsDataURL(file);
+        
+        // 清空input，允许重复选择同一文件
+        fileInput.val('');
+    });
+    
+    // 输入框变化时更新预览
+    $('#weixintp').on('input', function(){
+        var imgPath = $(this).val();
+        if(imgPath){
+            var previewPath = imgPath;
+            // 如果路径不是以http开头，添加/ffsm前缀
+            if (imgPath && !imgPath.match(/^https?:\/\//)) {
+                previewPath = '/ffsm' + imgPath;
+            }
+            $('#qrcodePreview').attr('src', previewPath).show();
+        } else {
+            $('#qrcodePreview').hide();
+        }
+    });
+    
+    // 页面加载时触发一次input事件，初始化预览
+    $('#weixintp').trigger('input');
+});
+</script>
+
+<{include file='admin/footer.html'}>

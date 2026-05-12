@@ -1,0 +1,80 @@
+<{include file="admin/header.html"}>
+
+
+<div class="app-content flex-column-fluid py-3 py-lg-6">
+	<div class="app-container container-fluid">
+		<div class="card card-flush">
+			<div class="card-header align-items-center py-5 gap-2 gap-md-5">
+				<div class="card-title">
+                    <h2><{$web_title}> </h2>
+                </div>
+			</div>
+			<div class="card-body pt-0" style="padding: 2rem 2.25rem 0rem 2.25rem;">
+				<table class="table align-middle table-row-dashed fs-6 gy-5">
+					<thead>
+						<tr class="text-start text-gray-500 fw-bold fs-7 text-uppercase gs-0">
+            				<th>
+								<div class="form-check form-check-sm form-check-custom form-check-solid me-3">
+									<input class="form-check-input" type="checkbox" name="checkbox" value="" rel="parent"/>
+								</div>
+							</th>
+            				<th> 搜索关键词 </th>
+                            <th> ip</th>
+            				<th> 添加时间</th>
+            				<th> 操作 </th>
+						</tr>
+					</thead>
+					<tbody class="fw-semibold text-gray-600">
+            			<{lurd_list item='v'}>
+            			<tr>
+            				<td> 
+								<div class="form-check form-check-sm form-check-custom form-check-solid me-3">
+									<input class="form-check-input" type="checkbox" name="id[]" value="<{$v.id}>" rel="child" />
+								</div>
+            				</td>
+            				<td> <{$v.title}> </td>
+                            <td> <{$v.ip}> </td>
+            				<td> <{$v.createtime|date_format:'%Y-%m-%d %H:%M:%S'}> </td>
+            				<td>
+                                <div class="menu-item">
+                                    <a onclick="do_delete_one('<{$v.id}>')" class="menu-link px-3" data-kt-ecommerce-product-filter="delete_row">删除</a>
+                                </div>
+            				</td>
+            			</tr>
+            			<{/lurd_list}>
+					</tbody>
+				</table>
+				<{$lurd_pagination}>
+			</div>
+		</div>
+	</div>
+</div>
+
+<{include file='admin/footer.html'}>
+<script src="/acs/demo1/plugins/custom/datatables/datatables.bundle.js"></script>
+<script src="/acs/demo1/js/custom/apps/ecommerce/catalog/products.js"></script>
+<script src="images/js/jquery.js" type="text/javascript"></script>
+<script src="images/js/util.js" type="text/javascript"></script>
+<script src="images/js/frm.js" type="text/javascript"></script>
+<script src="images/js/tb-box.js" type="text/javascript"></script>
+
+<script lang='javascript'>
+ 
+function do_delete_one(id) {
+    Swal.fire({
+        title: '确定删除推荐板块吗？', 
+        showDenyButton: true,
+        confirmButtonText: '确定删除',
+        denyButtonText: '取消删除',
+        customClass: {
+            confirmButton: "btn btn-primary",
+            denyButton: 'btn btn-danger'
+        }
+    }).then((result) => {
+        if (result.isConfirmed) {
+            var deleteLink = "?ct=search&ac=log&even=delete&tb=search&id[]=" + id ;
+            window.location.href = deleteLink; // 提交删除链接
+        }
+    })
+}
+</script>

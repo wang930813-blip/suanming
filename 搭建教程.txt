@@ -1,0 +1,20 @@
+搭建教程
+
+环境：linux php5.6 mysql5.6
+
+导入数据库和源码
+配置数据库账号密码
+config/inc_config.php 70行左右
+
+后台：域名+/acs
+账号：admin
+密码：123123
+
+php 版本5.6>php>5.3
+
+测算域名绑定到子目录ffsm
+
+
+
+替换
+cs.400110.cn

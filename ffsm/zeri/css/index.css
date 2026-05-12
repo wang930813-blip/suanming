@@ -1,0 +1,780 @@
+﻿@charset "utf-8";
+
+/* CSS Document */
+
+body {
+    min-width: 3.2rem;
+    max-width: 7.5rem;
+    margin: 0 auto !important;
+    overflow-x: hidden;
+    background: #fff;
+    font: .3rem/1.5 "microsoft yahei", Arial, Helvetica, sans-serif;
+    color: #333;
+}
+
+section,
+div,
+dl,
+dt,
+dd,
+ul,
+ol,
+li,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+pre,
+form,
+p,
+th,
+td,
+input,
+textarea,
+select,
+img {
+    margin: 0;
+    padding: 0;
+    border: 0;
+}
+
+ul,
+ol,
+li {
+    list-style: none;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-size: inherit;
+    font-weight: lighter;
+}
+
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+
+em,
+i {
+    display: inline-block;
+    font-weight: normal;
+    font-style: normal;
+}
+
+textarea,
+select,
+input {
+    font-family: "Microsoft Yahei";
+    font-size: .3rem;
+    color: #333;
+}
+
+a {
+    color: #333;
+    text-decoration: none;
+}
+
+a:hover {
+    /*color:#333; */
+    text-decoration: none;
+}
+
+input[type="text"],
+input[type="password"],
+input[type="button"],
+input[type="submit"],
+button,
+textarea {
+    -webkit-appearance: none;
+}
+
+.cfx:after,
+nav.mini:after,
+.h:after,
+.hn:after,
+.PH:after {
+    content: ' ';
+    clear: both;
+    display: block;
+    height: 0;
+    visibility: hidden;
+    line-height: 0;
+}
+
+* {
+    box-sizing: border-box;
+    -webkit-tap-highlight-color: transparent;
+}
+
+
+/**** 公共css ****/
+
+
+/**** 首页 ****/
+
+.wrapper {
+    float: left;
+    width: 100%;
+    background: #e7e0d5 url(../../static/image/wrap-bg.jpg) no-repeat;
+    background-size: 100% auto;
+    min-height: 100vh;
+}
+
+.wrapper.input,
+.wrapper.free {
+    padding: 1rem 0 0 0;
+}
+
+.wrapper.input .indexTop {
+    cursor: pointer;
+}
+
+
+/*.wrapper.input {
+	min-height: 100vh;
+}*/
+
+
+/*banner图动画*/
+
+.indexBann {
+    position: relative;
+    float: left;
+    width: 100%;
+    height: 9rem;
+    background: url(../../static/image/headline.png) no-repeat;
+    background-size: 100% 100%;
+    overflow: hidden;
+}
+
+.indexBann ul.shadow {
+    position: absolute;
+    top: 2.5rem;
+    left: 3.25rem;
+    width: 4.3rem;
+    height: 4.1rem;
+    border-radius: 50%;
+    transform: skewX(165deg)skewY(-3deg);
+    overflow: hidden;
+}
+
+.indexBann ul.shadow li {
+    position: absolute;
+    left: 2.3rem;
+    top: 2.2rem;
+    width: 1.75rem;
+    height: 1.54rem;
+    background: url(../../static/image/shadow1.png)no-repeat;
+    background-size: 100% 100%;
+    transform-origin: left top;
+}
+
+.indexBann ul.pointer {
+    position: absolute;
+    top: 2.85rem;
+    left: 3.5rem;
+    width: 2.09rem;
+    height: 1.89rem;
+    background: url(../../static/image/pointer1.png) no-repeat;
+    background-size: 100% 100%;
+}
+
+.indexBann ul.text li {
+    position: absolute;
+    width: 1.2rem;
+    height: 2.1rem;
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    display: none;
+    animation: text 2s linear infinite;
+    -webkit-animation: text 2s linear infinite;
+}
+
+.indexBann ul.text li:nth-child(1) {
+    left: 4.6rem;
+    top: .5rem;
+    background-image: url(../../static/image/text01.png);
+}
+
+.indexBann ul.text li:nth-child(2) {
+    left: 3.5rem;
+    top: 2.1rem;
+    background-image: url(../../static/image/text02.png);
+}
+
+.indexBann ul.text li:nth-child(3) {
+    left: 5.4rem;
+    top: 1.1rem;
+    background-image: url(../../static/image/text03.png);
+}
+
+@keyframes text {
+    0% {}
+    25% {
+        transform: scale(.8);
+    }
+    50% {
+        transform: scale(1);
+    }
+    75% {
+        transform: scale(.8);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+
+@-webkit-keyframes text {
+    0% {}
+    25% {
+        transform: scale(.8);
+    }
+    50% {
+        transform: scale(1);
+    }
+    75% {
+        transform: scale(.8);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+
+
+/*banner图动画*/
+
+.main {
+    float: left;
+    width: 100%;
+    padding: 0 .2rem .5rem .2rem;
+}
+
+.bigbox {
+    float: left;
+    width: 100%;
+    margin: .4rem 0 0 0;
+}
+
+.bigbox .top {
+    width: 100%;
+    float: left;
+    height: 3.37rem;
+    background: url(../../static/image/top.png)no-repeat;
+    background-size: 100% 100%;
+}
+
+.bigbox .mid {
+    width: 100%;
+    float: left;
+    padding: 0 .2rem;
+    background: url(../../static/image/mid.jpg)repeat-y;
+    background-size: 100% auto;
+}
+
+.bigbox .con {
+    width: 100%;
+    float: left;
+    margin: -2.97rem 0 0 0;
+}
+
+.bigbox .down {
+    width: 100%;
+    float: left;
+    height: .57rem;
+    background: url(../../static/image/down.png)no-repeat;
+    background-size: 100% auto;
+}
+
+.indexTop {
+    float: left;
+    width: 100%;
+    margin: -.3rem 0 0 0;
+    background: url(../../static/image/tit_bg.png) no-repeat center;
+    background-size: auto 100%;
+    line-height: .71rem;
+    font-size: .4rem;
+    color: #fff9f5;
+    font-weight: bold;
+    text-align: center;
+}
+
+.indexTop.bg2 {
+    background: url(../../static/image/top-bg2.png) no-repeat center;
+    background-size: auto 100%;
+}
+
+.indexTop b {
+    background: linear-gradient(180deg, #e95c21 0%, #a52408 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.indexClass {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    float: left;
+    width: 100%;
+}
+
+.indexClass a {
+    width: 2.15rem;
+    margin: .3rem 0 0 0;
+}
+
+.indexClass a img {
+    display: block;
+    width: 100%;
+}
+
+.picture,
+.picture img {
+    float: left;
+    width: 100%;
+}
+
+.picTitle {
+    width: 100%;
+    float: left;
+    margin: -.6rem 0 0 0;
+}
+
+.picTitle img {
+    display: block;
+    width: 5.35rem;
+    margin: 0 auto;
+}
+
+
+/**** 首页 ****/
+
+
+/**** 输入页 ****/
+
+.innputBox {
+    float: left;
+    width: 100%;
+}
+
+.innputBox .row {
+    display: flex;
+    float: left;
+    width: 100%;
+    margin: .3rem 0 0 0;
+    background: #fff;
+    border: solid .02rem #ebc7aa;
+    border-radius: .1rem;
+}
+
+.innputBox .row .left {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 1.5rem;
+    background: #fff8eb;
+    border-right: solid .02rem #ebc7aa;
+    border-radius: .1rem 0 0 .1rem;
+    text-align: center;
+}
+
+.innputBox .row .left i {
+    color: #b1311b;
+    font-weight: bold;
+}
+
+.innputBox .row .right {
+    width: 5.22rem;
+}
+
+.innputBox .row .name {
+    float: left;
+    width: 100%;
+}
+
+.innputBox .row .name.border {
+    border-bottom: solid .02rem #ebc7aa;
+}
+
+.innputBox .row .name input {
+    float: left;
+    width: 100%;
+    background: none;
+    outline: none;
+    height: .7rem;
+    text-indent: .2rem;
+}
+
+.innputBox .row .name input::-webkit-input-placeholder {
+    color: #333;
+}
+
+.innputBox .row .birth {
+    float: left;
+    width: 100%;
+    line-height: .7rem;
+    cursor: pointer;
+    text-indent: .2rem;
+}
+
+.innputBox .row .birth span {
+    display: block;
+}
+
+.innputBox .row .time {
+    float: left;
+    width: 100%;
+}
+
+.innputBox .row .time select {
+    float: left;
+    width: 100%;
+    background: none;
+    outline: none;
+    height: .7rem;
+    text-indent: .2rem;
+}
+
+.indexBtn {
+    float: left;
+    width: 100%;
+    margin: .3rem 0 0 0;
+}
+
+.indexBtn a {
+    float: left;
+    width: 100%;
+    background: linear-gradient(0deg, #701f9a 2%, #9500e2 100%);
+    border-radius: .1rem;
+    line-height: .9rem;
+    font-size: .4rem;
+    color: #fff;
+    font-weight: bold;
+    text-align: center;
+}
+
+
+/**** 输入页 ****/
+
+
+/**** 弹窗 ****/
+
+.inputPop {
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    top: 0;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    padding: 0 .3rem;
+    max-width: 7.5rem;
+    z-index: 9;
+    background: rgba(0, 0, 0, .75);
+}
+
+.inputPop .box {
+    float: left;
+    width: 100%;
+    padding: .01rem .2rem .2rem .2rem;
+    background: #fff8eb;
+    border: solid .02rem #ebc7aa;
+    border-radius: .1rem;
+}
+
+.inputPop .box .indexClass a {
+    width: 2rem;
+    margin: .2rem 0 0 0;
+}
+
+.inputPop .close {
+    float: left;
+    width: 100%;
+    margin: .3rem 0 0 0;
+}
+
+.inputPop .close a {
+    display: block;
+    width: .65rem;
+    height: .65rem;
+    margin: 0 auto;
+    background: url(../../static/image/pop-close.png) no-repeat;
+    background-size: 100% 100%;
+}
+
+
+/**** 弹窗 ****/
+
+
+/**** 免费页 ****/
+
+.freeDataDb {
+    position: relative;
+    float: left;
+    width: 100%;
+    margin: .3rem 0 0 0;
+}
+
+.freeDataDb .box {
+    width: 3.3rem;
+    padding: .2rem;
+    background: #fff8eb;
+    border: solid .02rem #ebc7aa;
+    border-radius: .1rem;
+}
+
+.freeDataDb .box:nth-child(1) {
+    float: left;
+}
+
+.freeDataDb .box:nth-child(2) {
+    float: right;
+}
+
+.freeDataDb .box .title {
+    float: left;
+    width: 100%;
+    background: url(../../static/image/title-bg.png) no-repeat center;
+    background-size: auto 100%;
+    line-height: .6rem;
+    color: #fff;
+    text-align: center;
+}
+
+.freeDataDb .box .avatar {
+    float: left;
+    width: 100%;
+    margin: .2rem 0 0 0;
+    color: #b1311b;
+    font-weight: bold;
+    text-align: center;
+}
+
+.freeDataDb .box .avatar img {
+    width: 1.5rem;
+}
+
+.freeDataDb .box .txt {
+    float: left;
+    width: 100%;
+    margin: .1rem 0 0 0;
+}
+
+.freeDataDb .pic {
+    position: absolute;
+    left: 50%;
+    top: 40%;
+    width: 1.2rem;
+    transform: translate(-50%, -50%);
+}
+
+.freeDataDb .pic img {
+    float: left;
+    width: 100%;
+}
+
+.freeCouplet {
+    float: left;
+    width: 100%;
+    margin: .25rem 0 -.1rem 0;
+    text-align: center;
+}
+
+.freeCouplet b {
+    display: block;
+    font-size: .36rem;
+    color: #ffe4a0;
+    text-align: center;
+    text-shadow: -0.03rem -0.03rem 0 #b1311b, 0.03rem -0.03rem 0 #b1311b, -0.03rem 0.03rem 0 #b1311b, 0.03rem 0.03rem 0 #b1311b;
+}
+
+.freePay {
+    float: left;
+    width: 100%;
+    margin: .3rem 0 0 0;
+    background: #b1311b;
+    border: solid .02rem #ebc7aa;
+    border-radius: .1rem;
+    line-height: .8rem;
+    color: #fff8eb;
+    font-weight: bold;
+    text-align: center;
+}
+
+.freeList {
+    float: left;
+    width: 100%;
+    margin: .3rem 0 0 0;
+    background: #fff8eb;
+    border: solid .02rem #ebc7aa;
+    border-radius: .1rem;
+}
+
+.freeList .title {
+    float: left;
+    width: 100%;
+    line-height: 1rem;
+    color: #b1311b;
+    font-weight: bold;
+    text-align: center;
+}
+
+.freeList .title img {
+    width: .33rem;
+    margin: -.03rem 0 0 0;
+    vertical-align: middle;
+}
+
+.freeList .date {
+    display: flex;
+    float: left;
+    width: 100%;
+    padding: .2rem 0;
+    border-top: dotted .02rem #eeceb0;
+}
+
+.freeList .date .left {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 35%;
+    border-right: dotted .02rem #eeceb0;
+    text-align: center;
+}
+
+.freeList .date .left b {
+    font-size: .6rem;
+    color: #b1311b;
+}
+
+.freeList .date .right {
+    width: 65%;
+    text-align: center;
+}
+
+.freeFanli {
+    float: left;
+    width: 100%;
+    margin: -.68rem 0 -.2rem 0;
+}
+
+.freeFanli img {
+    float: right;
+    width: .88rem;
+}
+
+.freeInfo {
+    float: left;
+    width: 100%;
+    margin: .25rem 0 0 0;
+    text-align: justify;
+}
+
+.freeBox {
+    float: left;
+    width: 100%;
+    padding: .3rem;
+    margin: .3rem 0 0 0;
+    background: #fff8eb;
+    border: solid .02rem #ebc7aa;
+    border-radius: .1rem;
+}
+
+.freeTitle {
+    float: left;
+    width: 100%;
+    background: url(../../static/image/title-bg.png) no-repeat center;
+    background-size: auto 100%;
+    line-height: .6rem;
+    color: #fff;
+    text-align: center;
+}
+
+.freeDataSg {
+    float: left;
+    width: 100%;
+    margin: .2rem 0 0 0;
+}
+
+.freeDataSg i {
+    float: left;
+    width: .88rem;
+    height: .45rem;
+}
+
+.freeLine {
+    float: left;
+    width: 100%;
+    height: .02rem;
+    margin: .2rem 0 0 0;
+    background: #ebc7aa;
+}
+
+.freePop {
+    width: 100%;
+    float: left;
+    padding: .01rem .2rem .2rem .2rem;
+    background: #fff8eb;
+    border: solid .02rem #ebc7aa;
+    border-radius: .1rem;
+}
+
+
+/**** 免费页 ****/
+
+
+/**** 弹窗 ****/
+
+.popMask {
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    top: 0;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    padding: 0 .25rem;
+    max-width: 7.5rem;
+    z-index: 9;
+    background: rgba(0, 0, 0, .75);
+}
+
+.popClose {
+    float: left;
+    width: 100%;
+    margin: 0 0 .3rem 0;
+}
+
+.popClose a {
+    float: right;
+    width: .66rem;
+    height: .66rem;
+    background: url(../../static/image/pop-close.png) no-repeat;
+    background-size: 100% 100%;
+}
+
+
+/**** 弹窗 ****/
+
+/**** 浮动按钮 ****/
+
+.floatbtn {
+    float: left;
+    width: 100%;
+    background: rgba(0, 0, 0, .7);
+    padding: .1rem .3rem;
+    position: fixed;
+    bottom: 0;
+    max-width: 7.5rem;
+}
+.floatbtn .button {
+    margin: 0;
+}
+
+/**** 浮动按钮 ****/

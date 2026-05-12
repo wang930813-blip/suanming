@@ -1,0 +1,126 @@
+.tan_zhegai{
+    display: none;
+    position: fixed;
+    width: 100%;
+    bottom: 1rem;
+    z-index: 1000;
+    background-color: rgba(1,1,1,0.7);
+    top: 0px;
+    max-width: 640px;
+    height: 100vh;
+}
+.tanchuan_beijing{
+    display: none;
+    background-size: 6.4rem 6.2rem;
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-image: url(../images/tandi.png);
+    width: 100%;
+    max-width: 6.4rem;
+    height: 6.2rem;
+    position: fixed;
+    z-index: 1100000000;
+    top: 50%;
+    left: 50%;
+    webkit-transform: translate(-50%, -50%);
+    -webkit-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+}
+.olduser_2020{
+    position: absolute;
+    top: 3.3rem;
+    left: 2rem;
+    font-size: 0.28rem;
+    font-family: Source Han Sans CN;
+    font-weight: 400;
+    color: rgba(210,33,51,1);
+}
+.counpon_2020{
+    background: url(../images/quan.png);
+    background-size: 100%;
+    width: 3.8rem;
+    height: 1.07rem;
+    position: absolute;
+    top: 3.8rem;
+    left: 1.3rem;
+}
+.couprice_2020{
+    font-size: 0.4rem;
+    font-family: Roboto;
+    font-weight: bold;
+    color: rgba(255,255,255,1);
+    width: 1.1rem;
+    display: inline-block;
+    margin-left: 0.28rem;
+    /*margin-top: 0.3rem;*/
+    height: 1.07rem;
+    line-height: 1.07rem;
+}
+.tongyong_2020{
+    font-size:0.28rem;
+    font-family:Source Han Sans CN;
+    font-weight:400;
+    color:rgba(255,255,255,1);
+    margin-left: 0.43rem;
+}
+.dizuo_2020{
+    position: absolute;
+    bottom: 0.1rem;
+    left: 1.3rem;
+}
+.dizuo_2020 p{
+
+    font-size: 0.2rem;
+    font-family: Source Han Sans CN;
+    font-weight: 400;
+    color: #FEEFB9;
+    line-height: 0.34rem;
+}
+.close_red_2020{
+    display: none;
+    position: fixed;
+    z-index: 1100000000;
+    /* margin-top: 2.7rem; */
+    margin-left: 2.8rem;
+    text-align: center;
+    width: 100%;
+    max-width: 7.5rem;
+    top: 25%;
+}
+.close_red_2020_go{
+    width: 2.4rem;
+    height: 0.75rem;
+    line-height: 0.75rem;
+    border-radius: 0.1rem;
+    background-color: #FDEB59;
+    margin: 0 auto;
+    text-align: center;
+    font-size: 0.35rem;
+}
+.red_hong_2020{
+    width: 0.64rem;
+    height: 0.64rem;
+}
+.guding{
+    overflow: hidden;
+}
+.liji_coupon{
+    display: none;
+    background: url(../images/shiyong.png);
+    background-size: 100%;
+    background-repeat: no-repeat;
+    width: 3rem;
+    height: 0.8rem;
+    position: fixed;
+    margin-top: 4rem;
+    margin-left: 2.25rem;
+    top: 50%;
+    text-align: center;
+    max-width: 7.5rem;
+    font-size: 0.32rem;
+    line-height: 0.8rem;
+    font-family: Source Han Sans CN;
+    font-weight: bold;
+    color: #DA3A24;
+    z-index: 1100000000;
+}

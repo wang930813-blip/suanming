@@ -1,0 +1,173 @@
+<{include file="admin/header.html"}>
+
+<div class="layui-fluid" style="padding: 20px;">
+    <div class="layui-card">
+        <div class="layui-card-header">
+            <h3 style="margin: 0;"><{if $data.id}>编辑<{else}>添加<{/if}>测算项目</h3>
+        </div>
+        <div class="layui-card-body" style="padding: 30px;">
+            <form method="post" action="?ct=test_list&ac=save_item" class="layui-form" lay-filter="itemForm">
+                <input type="hidden" name="id" value="<{$data.id}>">
+                
+                <div class="layui-form-item">
+                    <label class="layui-form-label"><span style="color: red;">*</span> 所属分类</label>
+                    <div class="layui-input-block" style="max-width: 500px;">
+                        <select name="category_id" required lay-verify="required">
+                            <option value="">请选择分类</option>
+                            <{foreach from=$categories item=cat}>
+                            <option value="<{$cat.id}>" <{if $data.category_id == $cat.id}>selected<{/if}>><{$cat.name}></option>
+                            <{/foreach}>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="layui-form-item">
+                    <label class="layui-form-label"><span style="color: red;">*</span> 标题</label>
+                    <div class="layui-input-block" style="max-width: 500px;">
+                        <input type="text" name="title" class="layui-input" value="<{$data.title}>" placeholder="请输入标题" required lay-verify="required">
+                    </div>
+                </div>
+
+                <div class="layui-form-item">
+                    <label class="layui-form-label"><span style="color: red;">*</span> 描述</label>
+                    <div class="layui-input-block" style="max-width: 500px;">
+                        <textarea name="description" class="layui-textarea" rows="3" placeholder="请输入描述" required lay-verify="required"><{$data.description}></textarea>
+                    </div>
+                </div>
+
+                <div class="layui-form-item">
+                    <label class="layui-form-label"><span style="color: red;">*</span> 图片</label>
+                    <div class="layui-input-block" style="max-width: 500px;">
+                        <input type="text" name="image" id="image" class="layui-input" value="<{$data.image}>" placeholder="请上传图片" required readonly lay-verify="required">
+                        <button type="button" class="layui-btn layui-btn-primary" style="margin-top: 10px;" onclick="uploadImage()">
+                            <i class="layui-icon layui-icon-upload"></i> 选择图片
+                        </button>
+                        <div id="image-preview" style="margin-top: 10px;">
+                            <{if $data.image}>
+                            <img src="" data-path="<{$data.image}>" style="max-width: 200px; max-height: 150px; border-radius: 4px; border: 1px solid #e6e6e6; padding: 5px;">
+                            <{/if}>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="layui-form-item">
+                    <label class="layui-form-label"><span style="color: red;">*</span> 链接地址</label>
+                    <div class="layui-input-block" style="max-width: 500px;">
+                        <input type="text" name="link" class="layui-input" value="<{$data.link}>" placeholder="请输入链接地址（如：/?ac=bazi）" required lay-verify="required">
+                    </div>
+                </div>
+
+                <div class="layui-form-item">
+                    <label class="layui-form-label">测算人次</label>
+                    <div class="layui-input-block" style="max-width: 500px;">
+                        <input type="number" name="test_count" class="layui-input" value="<{$data.test_count|default:0}>" placeholder="测算人次">
+                    </div>
+                </div>
+
+                <div class="layui-form-item">
+                    <label class="layui-form-label">好评率</label>
+                    <div class="layui-input-block" style="max-width: 500px;">
+                        <input type="text" name="rate" class="layui-input" value="<{$data.rate|default:'0'}>" placeholder="如：98.7%">
+                    </div>
+                </div>
+
+                <div class="layui-form-item">
+                    <label class="layui-form-label">排序</label>
+                    <div class="layui-input-block" style="max-width: 500px;">
+                        <input type="number" name="sort" class="layui-input" value="<{$data.sort|default:0}>" placeholder="数字越小越靠前">
+                    </div>
+                </div>
+
+                <div class="layui-form-item">
+                    <label class="layui-form-label">状态</label>
+                    <div class="layui-input-block">
+                        <input type="radio" name="status" value="1" title="显示" <{if !$data.id || $data.status == 1}>checked<{/if}>>
+                        <input type="radio" name="status" value="0" title="隐藏" <{if $data.status == 0}>checked<{/if}>>
+                    </div>
+                </div>
+
+                <div class="layui-form-item">
+                    <div class="layui-input-block">
+                        <button type="submit" class="layui-btn layui-btn-normal" lay-submit lay-filter="submitForm">
+                            <i class="layui-icon layui-icon-ok"></i> 保存
+                        </button>
+                        <button type="button" class="layui-btn layui-btn-primary" onclick="location.href='?ct=test_list&ac=index'">
+                            <i class="layui-icon layui-icon-return"></i> 返回
+                        </button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<script>
+// 确保element模块被初始化（侧边栏需要）
+layui.use(['form', 'layer', 'element'], function(){
+    var form = layui.form;
+    var layer = layui.layer;
+    var element = layui.element;
+    form.render();
+});
+
+// 图片上传
+function uploadImage() {
+    layui.use('layer', function(){
+        var layer = layui.layer;
+        layer.open({
+            type: 2,
+            title: '上传图片',
+            area: ['800px', '600px'],
+            content: '?ct=upload&ac=image&field=image'
+        });
+    });
+}
+
+// 接收上传的图片
+function receiveImage(field, url) {
+    if (field === 'image') {
+        document.getElementById('image').value = url;
+        // 显示预览
+        var preview = document.getElementById('image-preview');
+        var fullUrl = url;
+        // 如果不是完整URL且不以/ffsm开头，则添加/ffsm前缀
+        if (!url.startsWith('http') && !url.startsWith('/ffsm/')) {
+            fullUrl = '/ffsm' + url;
+        }
+        preview.innerHTML = '<img src="' + fullUrl + '" style="max-width: 200px; max-height: 150px; border: 1px solid #ddd; padding: 5px;">';
+    }
+}
+
+// 监听输入框变化显示预览
+document.getElementById('image').addEventListener('input', function() {
+    var url = this.value;
+    var preview = document.getElementById('image-preview');
+    
+    if (url) {
+        var fullUrl = url;
+        // 如果不是完整URL且不以/ffsm开头，则添加/ffsm前缀
+        if (!url.startsWith('http') && !url.startsWith('/ffsm/')) {
+            fullUrl = '/ffsm' + url;
+        }
+        preview.innerHTML = '<img src="' + fullUrl + '" style="max-width: 200px; max-height: 150px; border: 1px solid #ddd; padding: 5px;">';
+    } else {
+        preview.innerHTML = '';
+    }
+});
+
+// 页面加载时初始化预览
+(function(){
+    var preview = document.getElementById('image-preview');
+    var img = preview.querySelector('img[data-path]');
+    if (img) {
+        var path = img.getAttribute('data-path');
+        var fullUrl = path;
+        if (path && !path.startsWith('http') && !path.startsWith('/ffsm/')) {
+            fullUrl = '/ffsm' + path;
+        }
+        img.src = fullUrl;
+    }
+})();
+</script>
+
+<{include file='admin/footer.html'>

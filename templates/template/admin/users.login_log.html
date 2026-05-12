@@ -1,0 +1,155 @@
+<{include file="admin/header.html"}>
+<div class="layui-fluid" style="padding: 20px;">
+	<div class="layui-card">
+		<div class="layui-card-header">
+			<h3 style="margin: 0;">登录日志</h3>
+		</div>
+		
+		<!-- 搜索和操作按钮 -->
+		<div class="layui-card-header" style="border-top: 1px solid #f0f0f0;">
+			<form name="formsearch" method="GET" style="display: flex; gap: 10px; align-items: center;">
+				<input type='hidden' name='ct' value='users' />
+				<input type='hidden' name='ac' value='login_log' />
+				<input type='hidden' name='even' value='list' />
+				<input type='hidden' name='orderby' value='' />
+				<input type='text' name='keyword' value="<{request_em key='keyword'}>" placeholder="搜索用户名或IP" class="layui-input" style="width: 250px;" />
+				<button type="submit" class="layui-btn layui-btn-normal">
+					<i class="layui-icon layui-icon-search"></i> 搜索
+				</button>
+				<button type="button" class="layui-btn layui-btn-warm" onclick="delete_old()">
+					<i class="layui-icon layui-icon-delete"></i> 清空3个月前
+				</button>
+				<button type="button" class="layui-btn layui-btn-danger" onclick="do_delete();">
+					<i class="layui-icon layui-icon-delete"></i> 删除选中
+				</button>
+			</form>
+		</div>
+		<div class="layui-card-body">
+			<form name="form1" action="?ct=users&ac=login_log" method="POST">
+				<input type='hidden' name='tb' value='users_login_history' />
+				<input type="hidden" name="even" value="delete" />
+				<table class="layui-table" lay-skin="line">
+					<thead>
+					<tr>
+						<th width="50"><input type="checkbox" id="allChoose" onclick="toggleAll(this)"></th>
+						<th>用户ID</th>
+						<th>用户名</th>
+						<th>登录IP</th>
+						<th>登录时间</th>
+						<th>应用池</th>
+						<th>状态</th>
+						<th>操作</th>
+					</tr>
+					</thead>
+					<tbody>
+  <{lurd_list item='v'}>
+  <tr>
+   <td><input type="checkbox" class="item-checkbox" onclick="checkAllSelected()" name="autoid[]" value="<{$v.autoid}>" /></td>
+  <td> <{$v.uid}> </td>
+  <td> <{$v.accounts}> </td>
+  <td> <{$v.loginip}> </td>
+  <td> <{lurd do="format_date" var=$v.logintime format="" }> </td>
+  <td> <{$v.pools}> </td>
+  <td>
+    <{if $v.loginsta==1}>
+      <span class="layui-badge layui-bg-green">成功</span>
+    <{else}>
+      <span class="layui-badge layui-bg-red">失败</span>
+    <{/if}>
+  </td>
+  <td>
+    <button type="button" class="layui-btn layui-btn-xs" onclick="show_data('<{$v.autoid}>');">
+      <i class="layui-icon layui-icon-search"></i> 查看详情
+    </button>
+  </td>
+  </tr>
+  <{/lurd_list}>
+  <tr>
+</table>
+</form>
+			
+			<!-- 分页 -->
+			<div style="margin-top: 20px; text-align: center;">
+				<{$lurd_pagination}>
+			</div>
+		</div>
+	</div>
+</div>
+
+<script>
+// 全选/取消全选
+function toggleAll(source) {
+    var checkboxes = document.getElementsByClassName('item-checkbox');
+    for(var i = 0; i < checkboxes.length; i++) {
+        checkboxes[i].checked = source.checked;
+    }
+}
+
+// 检查是否全部选中
+function checkAllSelected() {
+    var checkboxes = document.getElementsByClassName('item-checkbox');
+    var allChoose = document.getElementById('allChoose');
+    var allChecked = true;
+    for(var i = 0; i < checkboxes.length; i++) {
+        if(!checkboxes[i].checked) {
+            allChecked = false;
+            break;
+        }
+    }
+    allChoose.checked = allChecked;
+}
+
+// 查看登录详情
+function show_data(nid) {
+    layui.use('layer', function(){
+        var layer = layui.layer;
+        layer.open({
+            type: 2,
+            title: '登录详情',
+            shade: 0.3,
+            maxmin: true,
+            area: ['700px', '450px'],
+            content: '?ct=users&ac=login_log&even=edit&tb=users_login_history&autoid=' + nid
+        });
+    });
+}
+
+// 删除选中记录
+function do_delete() {
+    var checkboxes = document.querySelectorAll('.item-checkbox:checked');
+    if(checkboxes.length === 0) {
+        layui.use('layer', function(){
+            layui.layer.msg('请先选择要删除的记录', {icon: 5});
+        });
+        return;
+    }
+    
+    layui.use('layer', function(){
+        var layer = layui.layer;
+        layer.confirm('确定要删除选中的' + checkboxes.length + '条登录记录吗？', {
+            icon: 3,
+            title: '删除确认',
+            btn: ['确定删除', '取消']
+        }, function(index){
+            document.form1.even.value = 'delete';
+            document.form1.submit();
+        });
+    });
+}
+
+function delete_old() {
+    layui.use('layer', function(){
+        var layer = layui.layer;
+        layer.confirm('确定要清空三个月前的登录记录吗？', {
+            icon: 3,
+            title: '清空确认',
+            btn: ['确定清空', '取消']
+        }, function(index){
+            layer.msg('正在清空...', {icon: 16, shade: 0.3});
+            window.location.href = "?ct=users&ac=del_old_login_log";
+        });
+    });
+}
+</script>
+
+<{include file='admin/footer.html'}>

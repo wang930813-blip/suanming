@@ -1,0 +1,1960 @@
+@charset "utf-8";
+
+/* CSS Document */
+
+body {
+	min-width: 3.2rem;
+	max-width: 7.5rem;
+	margin: 0 auto !important;
+	overflow-x: hidden;
+	background: #fff;
+	font: .32rem/1.5 "microsoft yahei", Arial, Helvetica, sans-serif;
+	color: #333;
+}
+body, section, div, dl, dt, dd, ul, ol, li, h1, h2, h3, h4, h5, h6, pre, form, p, th, td, input, textarea, select, img {
+	margin: 0;
+	padding: 0;
+	border: 0;
+}
+ul, ol, li {
+	margin: 0px;
+	padding: 0px;
+	list-style: none;
+}
+h1, h2, h3, h4, h5, h6 {
+	font-size: inherit;
+	font-weight: lighter;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+em, i {
+	display: inline-block;
+	font-weight: normal;
+	font-style: normal;
+}
+textarea, select, input {
+	font-family: "Microsoft Yahei";
+	font-size: .32rem;
+	color: #666;
+}
+b {
+	font-weight: bold;
+}
+img {
+	margin: 0;
+	padding: 0;
+	border: 0;
+}
+a {
+	color: #333;
+	text-decoration: none;
+}
+a:hover {
+	/*color:#333; */
+	text-decoration: none;
+}
+input[type="text"], input[type="password"], input[type="button"], input[type="submit"], button, textarea {
+	-webkit-appearance: none;
+}
+.cfx:after, nav.mini:after, .h:after, .hn:after, .PH:after {
+	content: ' ';
+	clear: both;
+	display: block;
+	height: 0;
+	visibility: hidden;
+	line-height: 0;
+}
+* {
+	box-sizing: border-box;
+}
+.fl {
+	float: left;
+}
+.fr {
+	float: right;
+}
+
+/**** 公共css ****/
+
+
+/***老师咨询首页***/
+
+.wrapper {
+	float: left;
+	width: 100%;
+	background: #f5f5f5;
+}
+.main {
+	float: left;
+	width: 100%;
+	padding: .3rem .2rem;
+}
+.main.marg50 {
+	margin: -.5rem 0 0 0;
+}
+.main.marg50 section:first-child.whitebox {
+	padding-top: .3rem;
+}
+.indexMarquee, .indexMarquee img {
+	float: left;
+	width: 100%;
+}
+.indexGuide {
+	float: left;
+	width: 100%;
+	padding: .4rem 0;
+	background: #fff;
+	border-radius: .1rem;
+}
+.indexGuide a {
+	float: left;
+	text-align: center;
+}
+.indexGuide a:first-child {
+	width: 55%;
+	border-right: solid .01rem #ccc;
+}
+.indexGuide a:last-child {
+	width: 45%;
+}
+.indexGuide a img {
+	width: .35rem;
+	vertical-align: middle;
+	margin: -.05rem 0 0 0;
+}
+.indexCmsTags {
+	float: left;
+	width: 100%;
+	margin: .3rem 0 0 0;
+}
+.indexCmsTags img {
+	float: left;
+	width: 100%;
+}
+.indexTitle {
+	float: left;
+	width: 100%;
+	background: url(../images/line.png) no-repeat left center;
+	background-size: auto .34rem;
+	padding: 0 0 0 .15rem;
+	line-height: .95rem;
+	font-size: .36rem;
+	color: #0d0d0d;
+	font-weight: bold;
+}
+
+/*.indexTitle::before {
+	content: "";
+	float: left;
+	width: .05rem;
+	height: .35rem;
+	margin: .32rem .1rem 0 0;
+	background: #a57942;
+}*/
+
+.indexFocus {
+	float: left;
+	width: 100%;
+	margin: 0 0 -.1rem 0;
+}
+.indexFocus ul li {
+	float: left;
+	width: 25%;
+	font-size: .28rem;
+	text-align: center;
+}
+.indexFocus ul li img {
+	width: .45rem;
+}
+.indexTeacher {
+	float: left;
+	width: 100%;
+	padding: .2rem;
+	margin-top: .3rem;
+	background: #fff;
+	border-radius: .1rem;
+}
+.indexTeacher .intro {
+	width: 100%;
+	display: flex;
+}
+.indexTeacher .intro .pic {
+	float: left;
+	width: 1.4rem;
+}
+.indexTeacher .intro .pic img {
+	float: left;
+	width: 100%;
+}
+.indexTeacher .intro .con {
+	flex: 1;
+	padding-left: .2rem;
+}
+.indexTeacher .intro .con .name {
+	float: left;
+	width: 100%;
+}
+.indexTeacher .intro .con .name em {
+	font-size: .28rem;
+	color: #666;
+}
+.indexTeacher .intro .con .name span {
+	font-size: .28rem;
+	color: #ff081f;
+}
+.indexTeacher .intro .con .name b {
+	float: right;
+	color: #ff081f;
+}
+.indexTeacher .intro .con .year {
+	float: left;
+	width: 100%;
+	font-size: .28rem;
+	color: #a57942;
+}
+.indexTeacher .intro .con .year span {
+	color: #ff081f;
+}
+.indexTeacher .intro .con .label {
+	float: left;
+	width: 100%;
+	margin: .1rem 0 0 0;
+}
+.indexTeacher .intro .con .label span {
+	float: left;
+	width: auto;
+	/*height: .44rem;*/
+	padding: 0 .1rem;
+	margin: 0 .1rem 0 0;
+	border: solid 1px #ff081f;
+	border-radius: .1rem;
+	line-height: .42rem;
+	font-size: .28rem;
+	color: #ff081f;
+}
+.indexTeacher .txt {
+	float: left;
+	width: 100%;
+	margin-top: .1rem;
+	font-size: .28rem;
+	text-align: justify;
+}
+.indexHeartfelt {
+	float: left;
+	width: 100%;
+	padding: .2rem;
+	border-radius: .1rem;
+	background: #fff;
+}
+.indexHeartfelt.marg30 {
+	margin-top: .3rem;
+}
+.indexHeartfelt .pic {
+	float: left;
+	width: 100%;
+}
+.indexHeartfelt .pic img {
+	float: left;
+	width: .46rem;
+}
+.indexHeartfelt .txt {
+	float: left;
+	width: 100%;
+	margin-top: .1rem;
+	font-size: .28rem;
+	text-align: justify;
+}
+.indexHeartfelt .txt span {
+	float: right;
+}
+.indexHeartfelt .ask {
+	float: left;
+	width: 100%;
+	padding: .2rem;
+	margin: .2rem 0;
+	background: #faf0db;
+	border-radius: .1rem;
+}
+.indexHeartfelt .ask .avator {
+	width: .7rem;
+	float: left;
+}
+.indexHeartfelt .ask .avator img {
+	float: left;
+	width: 100%;
+}
+.indexHeartfelt .ask .name {
+	float: left;
+	width: auto;
+	margin-left: .2rem;
+	font-size: .24rem;
+}
+.indexHeartfelt .ask .name span {
+	color: #999;
+}
+.indexHeartfelt .ask .btn {
+	float: right;
+	width: 1.3rem;
+	margin: .12rem 0 0 0;
+}
+.indexHeartfelt .ask .btn a {
+	float: left;
+	width: 100%;
+	background: #fe7517;
+	border-radius: .1rem;
+	line-height: .46rem;
+	font-size: .24rem;
+	color: #fffefe;
+	text-align: center;
+}
+.indexHeartfelt .num {
+	float: left;
+	width: 100%;
+	font-size: .24rem;
+	color: #ff081f;
+	text-align: right;
+}
+
+/***老师咨询首页***/
+
+
+/***确认订单支付页***/
+
+.whitebox {
+	float: left;
+	width: 100%;
+	padding: .2rem;
+	background: #fff;
+	border-radius: .1rem;
+}
+.whitebox.marg30 {
+	margin: .3rem 0 0 0;
+}
+.confirmStep, .confirmStep img {
+	float: left;
+	width: 100%;
+}
+.confirmTitle {
+	float: left;
+	width: 100%;
+	background: url(../images/line.png) no-repeat left center;
+	background-size: auto .34rem;
+	padding: 0 0 0 .15rem;
+	line-height: .95rem;
+	font-size: .36rem;
+	color: #0d0d0d;
+	font-weight: bold;
+}
+
+/*.confirmTitle::before {
+	content: "";
+	float: left;
+	width: .05rem;
+	height: .35rem;
+	margin: .32rem .1rem 0 0;
+	background: #a57942;
+}*/
+
+.confirmTitle span {
+	font-size: .24rem;
+	color: #666;
+	font-weight: normal;
+}
+.confirmTitle i {
+	font-size: .28rem;
+	color: #ffd275;
+}
+.confirmSam {
+	float: left;
+	width: 100%;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	padding: .2rem;
+	margin: .1rem 0;
+	background: #faf0db;
+	border-radius: .1rem;
+}
+.confirmSam .pic {
+	width: 1.2rem;
+}
+.confirmSam img {
+	float: left;
+	width: 1.2rem;
+}
+.confirmSam .txt {
+	width: 4.9rem;
+	text-align: justify;
+	display: flex;
+	flex-direction: column;
+}
+.confirmSam .txt span {
+	font-size: .26rem;
+	color: #666;
+}
+.confirmSam .txt span i {
+	color: #ff081f;
+}
+.confirmSam .txt span b {
+	font-size: .5rem;
+	color: #ff081f;
+}
+.confirmOrder {
+	float: left;
+	width: 100%;
+}
+.confirmOrder .row {
+	float: left;
+	width: 100%;
+	line-height: .7rem;
+}
+.confirmOrder .row em.bg1 {
+	display: inline-block;
+	padding: 0 .1rem;
+	background: #ffee7f;
+	border-radius: .1rem;
+	line-height: .5rem;
+	font-size: .28rem;
+	color: #ff081f;
+}
+.confirmOrder .row em.bg1 b {
+	font-size: .36rem;
+}
+.confirmOrder .row del {
+	float: right;
+	font-size: .24rem;
+	color: #999;
+}
+.confirmOrder .row span {
+	float: right;
+	color: #ff081f;
+}
+.confirmOrder .row span a {
+	color: #ff081f;
+}
+.confirmOrder .row a i {
+	color: #999;
+}
+.confirmOrder .row em.bg2 {
+	display: inline-block;
+	padding: 0 .1rem;
+	border: solid 1px #ff081f;
+	border-radius: .1rem;
+	line-height: .35rem;
+	font-size: .24rem;
+	color: #ff081f;
+}
+.confirmOrder .total {
+	float: left;
+	width: 100%;
+	margin: .15rem 0 0 0;
+	padding: .15rem 0 0 0;
+	border-top: dotted 1px #ccc;
+	line-height: .5rem;
+	text-align: right;
+}
+.confirmOrder .total span {
+	color: #ff081f;
+}
+.confirmOrder .total span b {
+	font-size: .45rem;
+}
+.confirmData {
+	float: left;
+	width: 100%;
+}
+.confirmData .row {
+	float: left;
+	width: 100%;
+}
+.confirmData .row .txt {
+	position: relative;
+	float: left;
+	width: 1.65rem;
+	line-height: .7rem;
+}
+.confirmData .row .txt a {
+	position: absolute;
+	right: .2rem;
+	top: 0;
+	width: .25rem;
+	height: .25rem;
+	background: #ffd275;
+	border-radius: 50%;
+	line-height: .25rem;
+	font-size: .25rem;
+	color: #a57942;
+	text-align: center;
+}
+.confirmData .row .name {
+	float: left;
+	width: 68%;
+}
+.confirmData .row .name input {
+	float: left;
+	width: 100%;
+	border: none;
+	background: none;
+	outline: none;
+	height: .7rem;
+}
+.confirmData .row .icon {
+	float: right;
+	line-height: .7rem;
+	color: #ff081f;
+}
+.confirmData .row .sex {
+	overflow: hidden;
+}
+.confirmData .row .sex a {
+	float: left;
+	width: auto;
+	margin: 0 .4rem 0 0;
+	line-height: .7rem;
+	color: #666;
+}
+.confirmData .row .sex a.current {
+	color: #ff081f;
+}
+.confirmData .row .birth {
+	overflow: hidden;
+	padding: 0 .1rem;
+	margin: .1rem 0 0 0;
+	border: solid 1px #999;
+	background: #f3f3f3;
+	border-radius: .1rem;
+	line-height: .48rem;
+	cursor: pointer;
+	color: #666;
+}
+.confirmData .row .birth span {
+	display: block;
+}
+.confirmData .row .birth i {
+	float: right;
+	line-height: .48rem;
+}
+.confirmProblem {
+	float: left;
+	width: 100%;
+}
+.confirmProblem a {
+	float: right;
+	color: #2481ff;
+}
+.confirmNotice {
+	float: left;
+	width: 100%;
+	margin: -.1rem 0 0 0;
+}
+.confirmNotice .select {
+	float: left;
+	width: 100%;
+}
+.confirmNotice .select .txt {
+	float: left;
+	width: 1.65rem;
+	line-height: .7rem;
+}
+.confirmNotice .select .way {
+	overflow: hidden;
+}
+.confirmNotice .select .way a {
+	float: left;
+	width: auto;
+	margin: 0 .4rem 0 0;
+	line-height: .7rem;
+	color: #666;
+}
+.confirmNotice .select .way a.current {
+	color: #ff081f;
+}
+
+/*.confirmNotice .tips {
+	float: left;
+	width: 100%;
+	font-size: .24rem;
+	color: #999;
+}*/
+
+.confirmNotice .phone {
+	float: left;
+	width: 100%;
+}
+.confirmNotice .phone .row {
+	float: left;
+	width: 100%;
+	/*margin: .1rem 0 0 0;*/
+}
+.confirmNotice .phone .row .txt {
+	float: left;
+	width: 1.65rem;
+	height: .7rem;
+	line-height: .7rem;
+}
+.confirmNotice .phone .row .con {
+	overflow: hidden;
+	padding: .1rem 0;
+	border-bottom: solid 1px #ccc;
+}
+.confirmNotice .phone .row .con span {
+	float: left;
+	width: auto;
+	padding: 0 .1rem 0 0;
+	margin: 0 .1rem 0 0;
+	border-right: solid 1px #333;
+	line-height: .5rem;
+}
+.confirmNotice .phone .row .con input {
+	float: left;
+	width: 50%;
+	border: none;
+	background: none;
+	outline: none;
+	height: .5rem;
+}
+.confirmNotice .phone .row .con a {
+	float: right;
+	width: 1.35rem;
+	background: #fe7517;
+	border-radius: .1rem;
+	line-height: .5rem;
+	font-size: .24rem;
+	color: #fff;
+	text-align: center;
+}
+.confirmNotice .phone .row .btn {
+	overflow: hidden;
+	padding: 0 .8rem;
+	margin: .2rem 0 0 0;
+}
+.confirmNotice .phone .row .btn a {
+	float: left;
+	width: 100%;
+	background: #ff081f;
+	border-radius: .1rem;
+	line-height: .6rem;
+	color: #fff;
+	text-align: center;
+}
+.confirmNotice .email {
+	float: left;
+	width: 100%;
+	/*margin: .1rem 0 0 0;*/
+}
+.confirmNotice .email .txt {
+	float: left;
+	width: 1.65rem;
+	line-height: .7rem;
+	text-align: right;
+}
+.confirmNotice .email .con {
+	float: left;
+	width: 68%;
+	padding: .1rem 0 0 0;
+}
+.confirmNotice .email .con input {
+	float: left;
+	width: 100%;
+	border: solid 1px #999;
+	background: #f3f3f3;
+	border-radius: .1rem;
+	outline: none;
+	height: .5rem;
+	text-indent: .1rem;
+}
+.confirmNotice .email .icon {
+	float: right;
+	line-height: .7rem;
+	color: #ff081f;
+}
+.confirmPayment {
+	float: left;
+	width: 100%;
+}
+.confirmPayment .row {
+	float: left;
+	width: 100%;
+	padding: 0 0 .2rem 0;
+	line-height: .6rem;
+}
+.confirmPayment .row:first-child {
+	border-bottom: dashed 1px #f0f0f0;
+	margin-bottom: .2rem;
+}
+.confirmPayment .row a {
+	display: block;
+}
+.confirmPayment .row a img {
+	width: .6rem;
+	vertical-align: middle;
+	margin: -.05rem 0 0 0;
+}
+.confirmPayment .row a span {
+	float: right;
+	width: 1.6rem;
+	background: #ff081f;
+	border-radius: .3rem;
+	color: #fff;
+	text-align: center;
+}
+.confirmPayment .tips {
+	float: left;
+	width: 100%;
+	font-size: .24rem;
+	color: #999;
+}
+.confirmLink {
+	float: left;
+	width: 100%;
+	margin: .2rem 0 0 0;
+	font-size: .28rem;
+}
+.confirmLink a {
+	color: #ff081f;
+}
+.confirmLink a i {
+	float: left;
+	width: .3rem;
+	height: .3rem;
+	background: #ff081f;
+	border-radius: 50%;
+	line-height: .3rem;
+	font-size: .26rem;
+	color: #fff;
+	text-align: center;
+	margin: .06rem .1rem 0 0;
+}
+
+/*弹窗*/
+
+.confirmMask {
+	width: 100%;
+	height: 100%;
+	background: #959595;
+	opacity: .85;
+	position: fixed;
+	top: 0;
+	max-width: 7.5rem;
+	z-index: 9;
+}
+.confirmPop {
+	width: 5.6rem;
+	position: fixed;
+	top: 15%;
+	left: 50%;
+	margin: 0 0 0 -2.8rem;
+	z-index: 99;
+}
+.confirmPop .con {
+	float: left;
+	width: 100%;
+	background: #fff;
+	border-radius: .1rem;
+	padding: .3rem;
+}
+.confirmPop .con .pic {
+	float: left;
+	width: 100%;
+	margin: -1.1rem 0 0 0;
+}
+.confirmPop .con .pic img {
+	display: block;
+	width: 3.22rem;
+	margin: 0 auto;
+}
+.confirmPop .con .title {
+	float: left;
+	width: 100%;
+	font-size: .36rem;
+	color: #a67942;
+	text-align: center;
+	margin: .2rem 0;
+}
+.confirmPop .con .txt {
+	float: left;
+	width: 100%;
+	font-size: .24rem;
+	color: #666;
+	text-align: justify;
+}
+.confirmPop .con .txt p {
+	height: .2rem;
+}
+.confirmPop .con .txt span {
+	color: #a67942;
+}
+.confirmPop .close {
+	float: left;
+	width: 100%;
+	margin: .3rem 0 0 0;
+}
+.confirmPop .close a {
+	width: .69rem;
+	height: .69rem;
+	display: block;
+	margin: 0 auto;
+}
+.confirmPop .close a img {
+	float: left;
+	width: 100%;
+}
+
+/*弹窗*/
+
+
+/***确认订单支付页***/
+
+
+/***优惠券页面***/
+
+.couponBox {
+	float: left;
+	width: 100%;
+}
+.couponBox .point {
+	float: left;
+	width: 100%;
+	margin: 0 0 .2rem 0;
+	font-size: .28rem;
+	color: #666;
+	text-align: center;
+}
+.couponBox .point span {
+	color: #ff081f;
+}
+.couponBox .list {
+	float: left;
+	width: 100%;
+	padding: .3rem .3rem .3rem 0;
+	margin: 0 0 .3rem 0;
+	background: #fff;
+	border-radius: .1rem;
+}
+.couponBox .list .zuo {
+	float: left;
+	width: 1.6rem;
+	border-right: dashed 1px #f0f0f0;
+	line-height: 1.6;
+	color: #ff081f;
+	text-align: center;
+}
+.couponBox .list .zuo b {
+	font-size: .45rem;
+}
+.couponBox .list .zuo span {
+	display: inline-block;
+	padding: 0 .1rem;
+	background: #fffad9;
+	border-radius: .3rem;
+}
+.couponBox .list .you {
+	overflow: hidden;
+	padding: 0 0 0 .3rem;
+	font-size: .28rem;
+}
+.couponBox .list .you i {
+	float: right;
+	font-size: .4rem;
+	color: #ff081f;
+}
+.couponBox .list .you span {
+	color: #999;
+}
+.couponBox .none {
+	float: left;
+	width: 100%;
+	margin: 2.7rem 0;
+	color: #666;
+	text-align: center;
+}
+.couponBox .none img {
+	width: 1.92rem;
+}
+.couponFixed {
+	float: left;
+	width: 100%;
+}
+.couponFixed .space {
+	float: left;
+	width: 100%;
+	height: 1rem;
+}
+.couponFixed .btn {
+	float: left;
+	width: 100%;
+	position: fixed;
+	bottom: 0;
+	max-width: 7.5rem;
+	background: #fff;
+}
+.couponFixed .btn .zuo {
+	float: left;
+	width: 60%;
+	line-height: 1rem;
+	font-size: .28rem;
+	text-align: center;
+}
+.couponFixed .btn .zuo span {
+	color: #ff081f;
+}
+.couponFixed .btn .you {
+	float: left;
+	width: 40%;
+}
+.couponFixed .btn .you a {
+	float: left;
+	width: 100%;
+	background: #ff081f;
+	line-height: 1rem;
+	font-size: .36rem;
+	color: #fff;
+	text-align: center;
+}
+
+/***优惠券页面***/
+
+
+/***服务填写问题***/
+
+.fillTitle {
+	float: left;
+	width: 100%;
+	font-size: .36rem;
+	color: #0d0d0d;
+	font-weight: bold;
+	text-align: center;
+}
+.fillTitle i {
+	font-size: .28rem;
+	color: #ffd275;
+}
+.fillTitle span {
+	font-size: .24rem;
+	color: #666;
+	font-weight: normal;
+}
+.fillRadio {
+	float: left;
+	width: 100%;
+}
+.fillRadio a {
+	float: left;
+	width: 1.55rem;
+	margin: .2rem .166rem 0 0;
+	background: #ccc;
+	border-radius: .1rem;
+	line-height: .45rem;
+	font-size: .28rem;
+	color: #666;
+	text-align: center;
+}
+.fillRadio a:nth-child(4n) {
+	margin-right: 0;
+}
+.fillRadio a.current {
+	background: #ff081f;
+	color: #fff;
+}
+.fillArea {
+	float: left;
+	width: 100%;
+}
+.fillArea.marg10 {
+	margin: .1rem 0 0 0;
+}
+.fillArea.marg10 textarea {
+	height: 8rem;
+}
+.fillArea textarea {
+	float: left;
+	width: 100%;
+	height: 2rem;
+	background: #f5f5f5;
+	border-radius: .1rem;
+	padding: .2rem;
+	line-height: 1.5;
+	font-size: .28rem;
+	text-align: justify;
+	outline: none;
+}
+.fillNum {
+	position: relative;
+	float: left;
+	width: 100%;
+	padding: 0 .2rem 0 0;
+	margin: -.5rem 0 0 0;
+	font-size: .24rem;
+	color: #666;
+	text-align: right;
+}
+.fillTips {
+	float: left;
+	width: 100%;
+	margin: .2rem 0;
+	font-size: .24rem;
+	color: #999;
+	text-align: justify;
+}
+.fillBtn {
+	float: left;
+	width: 100%;
+}
+.fillBtn a {
+	float: left;
+	width: 100%;
+	background: #ff081f;
+	border-radius: .1rem;
+	line-height: .8rem;
+	color: #fff;
+	text-align: center;
+}
+.fillData {
+	float: left;
+	width: 100%;
+}
+.fillData .row {
+	float: left;
+	width: 100%;
+}
+.fillData .row .txt {
+	position: relative;
+	float: left;
+	width: auto;
+	line-height: .7rem;
+}
+.fillData .row .name {
+	float: left;
+	width: 57%;
+}
+.fillData .row .name input {
+	float: left;
+	width: 100%;
+	border: none;
+	background: none;
+	outline: none;
+	height: .7rem;
+}
+.fillData .row .icon {
+	float: right;
+	line-height: .7rem;
+	color: #ff081f;
+}
+.fillData .row .wcount {
+	overflow: hidden;
+	margin: 0 0 -.1rem 0;
+}
+.fillData .row .wcount a {
+	width: 50%;
+	float: left;
+	line-height: .7rem;
+}
+.fillData .row .wcount a i {
+	color: #bfc3cf;
+}
+.fillData .row .sex {
+	overflow: hidden;
+}
+.fillData .row .sex a {
+	float: left;
+	width: auto;
+	margin: 0 .4rem 0 0;
+	line-height: .7rem;
+	color: #666;
+}
+.fillData .row .sex a.current {
+	color: #ff081f;
+}
+.fillData .row .birth {
+	overflow: hidden;
+	padding: 0 .1rem;
+	margin: .1rem 0 0 0;
+	border: solid 1px #999;
+	background: #f3f3f3;
+	border-radius: .1rem;
+	line-height: .48rem;
+	cursor: pointer;
+	color: #666;
+}
+.fillData .row .birth span {
+	display: block;
+}
+.fillData .row .birth i {
+	float: right;
+	line-height: .48rem;
+}
+.fillData .row .select {
+	overflow: hidden;
+	margin: .1rem 0 0 0;
+}
+.fillData .row select {
+	float: left;
+	width: 100%;
+	border: solid 1px #999;
+	background: #f3f3f3;
+	border-radius: .1rem;
+	height: .5rem;
+	outline: none;
+}
+
+/***服务填写问题***/
+
+
+/***付款完成***/
+
+.paysucIcon {
+	float: left;
+	width: 100%;
+	margin: .3rem 0 0 0;
+	font-size: .36rem;
+	color: #0d0d0d;
+	font-weight: bold;
+	text-align: center;
+}
+.paysucIcon img {
+	width: 1.45rem;
+}
+.paysucTips {
+	float: left;
+	width: 100%;
+	margin: .2rem 0 0 0;
+	font-size: .26rem;
+	text-align: justify;
+}
+.paysucTips a {
+	display: inline-block;
+	padding: 0 .1rem;
+	background: #fe7517;
+	border-radius: .1rem;
+	font-size: .24rem;
+	color: #fffefe;
+}
+.paysucData {
+	float: left;
+	width: 100%;
+}
+.paysucData ul li {
+	float: left;
+	width: 100%;
+	line-height: 1.7;
+}
+
+/***付款完成***/
+
+
+/***服务问题查看***/
+
+.lookTitle {
+	float: left;
+	width: 100%;
+	font-size: .36rem;
+	color: #0d0d0d;
+	font-weight: bold;
+}
+.lookLine {
+	float: left;
+	width: 100%;
+	margin: .2rem 0;
+	border-bottom: dotted .02rem #f5f5f5;
+}
+.lookTxt {
+	float: left;
+	width: 100%;
+	color: #666;
+	text-align: justify;
+}
+.lookTxt ul li {
+	margin: .2rem 0 0 0;
+}
+.lookTxt ul li span {
+	color: #333;
+}
+
+/***服务问题查看***/
+
+
+/***点墨先生填写问题***/
+
+.dianmoTips {
+	float: left;
+	width: 100%;
+	font-size: .28rem;
+	color: #666;
+}
+
+/***点墨先生填写问题***/
+
+
+/****点墨先生取爻****/
+
+.gua_wrap {
+    float: left;
+    width: 100%;
+    height: 13.34rem;
+    background: url(../images/guawrap.jpg) no-repeat;
+    background-size: 100% 100%;
+}
+
+.gua_plate {
+    position: relative;
+    float: left;
+    width: 100%;
+    height: 7rem;
+    overflow: hidden;
+}
+
+.gua_plate div {
+    position: absolute;
+}
+
+.gua_plate img {
+    float: left;
+    width: 100%;
+}
+
+.gua_plate .chassis {
+    top: 0;
+    left: .25rem;
+    width: 7rem;
+    animation: 12s rotateOpac linear infinite;
+    -o-animation: 12s rotateOpac linear infinite;
+    -webkit-animation: 12s rotateOpac linear infinite;
+    -moz-animation: 12s rotateOpac linear infinite;
+}
+
+@keyframes rotateOpac {
+    from {}
+    to {
+        transform: rotate(-1turn);
+    }
+}
+
+@-o-keyframes rotateOpac {
+    from {}
+    to {
+        transform: rotate(-1turn);
+        opacity: .5;
+    }
+}
+
+@-moz-keyframes rotateOpac {
+    from {}
+    to {
+        transform: rotate(-1turn);
+        opacity: .5;
+    }
+}
+
+@-webkit-keyframes rotateOpac {
+    from {}
+    to {
+        transform: rotate(-1turn);
+        opacity: .5;
+    }
+}
+
+.gua_plate .gossip {
+    top: .3rem;
+    left: .75rem;
+    width: 6rem;
+    animation: 12s unRotateOpac linear infinite;
+    -o-animation: 12s unRotateOpac linear infinite;
+    -webkit-animation: 12s unRotateOpac linear infinite;
+    -moz-animation: 12s unRotateOpac linear infinite;
+}
+
+@keyframes unRotateOpac {
+    from {}
+    to {
+        transform: rotate(1turn);
+        opacity: .5;
+    }
+}
+
+@-o-keyframes unRotateOpac {
+    from {}
+    to {
+        transform: rotate(1turn);
+        opacity: .5;
+    }
+}
+
+@-moz-keyframes unRotateOpac {
+    from {}
+    to {
+        transform: rotate(1turn);
+        opacity: .5;
+    }
+}
+
+@-webkit-keyframes unRotateOpac {
+    from {}
+    to {
+        transform: rotate(1turn);
+        opacity: .5;
+    }
+}
+
+.gua_plate .turtle {
+    top: 4.4rem;
+    left: 3.1rem;
+    width: 1.3rem;
+}
+
+.gua_plate .turtle.move {
+    animation: moveTurtle 1s linear;
+    -o-animation: moveTurtle 1s linear;
+    -moz-animation: moveTurtle 1s linear;
+    -webkit-animation: moveTurtle 1s linear;
+}
+
+@-o-keyframes moveTurtle {
+    0% {}
+    30% {
+        transform: rotate(-20deg);
+    }
+    40% {
+        transform: rotate(20deg);
+    }
+    50% {
+        transform: rotate(-20deg);
+    }
+    60% {
+        transform: rotate(12deg);
+    }
+    70% {
+        transform: rotate(-8deg);
+    }
+    80%,
+    100% {
+        transform: rotate(0);
+    }
+}
+
+@-moz-keyframes moveTurtle {
+    0% {}
+    30% {
+        transform: rotate(-20deg);
+    }
+    40% {
+        transform: rotate(20deg);
+    }
+    50% {
+        transform: rotate(-20deg);
+    }
+    60% {
+        transform: rotate(12deg);
+    }
+    70% {
+        transform: rotate(-8deg);
+    }
+    80%,
+    100% {
+        transform: rotate(0);
+    }
+}
+
+@-webkit-keyframes moveTurtle {
+    0% {}
+    30% {
+        transform: rotate(-20deg);
+    }
+    40% {
+        transform: rotate(20deg);
+    }
+    50% {
+        transform: rotate(-20deg);
+    }
+    60% {
+        transform: rotate(12deg);
+    }
+    70% {
+        transform: rotate(-8deg);
+    }
+    80%,
+    100% {
+        transform: rotate(0);
+    }
+}
+
+@keyframes moveTurtle {
+    0% {}
+    30% {
+        transform: rotate(-20deg);
+    }
+    40% {
+        transform: rotate(20deg);
+    }
+    50% {
+        transform: rotate(-20deg);
+    }
+    60% {
+        transform: rotate(12deg);
+    }
+    70% {
+        transform: rotate(-8deg);
+    }
+    80%,
+    100% {
+        transform: rotate(0);
+    }
+}
+
+.gua_plate .money {
+    top: 1rem;
+    left: 1.25rem;
+    width: 5rem;
+    height: 5rem;
+    z-index: 99;
+}
+
+.gua_plate .money img {
+    width: 1.24rem;
+    position: absolute;
+    display: none;
+    transition: all .4s;
+}
+
+.gua_plate .money img.imgRotate {
+    animation: moneyRotate .2s linear infinite;
+    -o-animation: moneyRotate .2s linear infinite;
+    -moz-animation: moneyRotate .2s linear infinite;
+    -webkit-animation: moneyRotate .2s linear infinite;
+}
+
+@-o-keyframes moneyRotate {
+    from {
+        transform: rotateX(83deg) rotateY(0deg);
+    }
+    to {
+        transform: rotateX(83deg) rotateY(360deg);
+    }
+}
+
+@-moz-keyframes moneyRotate {
+    from {
+        transform: rotateX(83deg) rotateY(0deg);
+    }
+    to {
+        transform: rotateX(83deg) rotateY(360deg);
+    }
+}
+
+@-webkit-keyframes moneyRotate {
+    from {
+        transform: rotateX(83deg) rotateY(0deg);
+    }
+    to {
+        transform: rotateX(83deg) rotateY(360deg);
+    }
+}
+
+@keyframes moneyRotate {
+    from {
+        transform: rotateX(83deg) rotateY(0deg);
+    }
+    to {
+        transform: rotateX(83deg) rotateY(360deg);
+    }
+}
+
+.gua_box {
+    float: left;
+    width: 7.1rem;
+    margin: 0 .2rem;
+}
+
+.gua_box .you {
+    float: left;
+    width: 100%;
+    height: 3.31rem;
+    background: url(../images/guabg_1.png) no-repeat;
+    background-size: 100% 100%;
+}
+
+.gua_box .you .title {
+    float: left;
+    width: 100%;
+    height: .94rem;
+    margin: -.45rem 0 0 0;
+    background: url(../images/guatitle_1.png) no-repeat center;
+    background-size: auto 100%;
+}
+
+.gua_box .you .gua {
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+}
+
+.gua_box .you .gua div {
+    width: 1.38rem;
+    position: relative;
+    margin-top: .8rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    color: #522e0a;
+    padding-top: 1rem;
+}
+
+.gua_box .you .gua p {
+    font-size: .28rem;
+    text-align: center;
+    position: absolute;
+    top: -.52rem;
+}
+
+.gua_box .you .gua img {
+    position: absolute;
+    left: 0;
+    width: 100%;
+}
+
+.gua_box .you .gua img:nth-of-type(1) {
+    top: .7rem;
+}
+
+.gua_box .you .gua img:nth-of-type(2) {
+    top: .56rem;
+}
+
+.gua_box .you .gua img:nth-of-type(3) {
+    top: .42rem;
+}
+
+.gua_box .you .gua img:nth-of-type(4) {
+    top: .28rem;
+}
+
+.gua_box .you .gua img:nth-of-type(5) {
+    top: .14rem;
+}
+
+.gua_box .you .gua img:nth-of-type(6) {
+    top: 0;
+}
+
+.gua_btn {
+    float: left;
+    width: 100%;
+    padding: 0 .47rem;
+    margin: .5rem 0 0 0;
+    animation: btnZoom 1s linear infinite alternate;
+    -moz-animation: btnZoom 1s linear infinite alternate;
+    -webkit-animation: btnZoom 1s linear infinite alternate;
+    -o-animation: btnZoom 1s linear infinite alternate;
+}
+
+.gua_btn a {
+    float: left;
+    width: 100%;
+    color: #fff;
+    background: #ff081f;
+    border-radius: .1rem;
+    font-size: .36rem;
+    font-weight: bold;
+    line-height: 1rem;
+    text-align: center;
+}
+
+.gua_btn img {
+    float: left;
+    width: 100%;
+}
+
+@keyframes btnZoom {
+    from {}
+    to {
+        transform: scale(.8);
+    }
+}
+
+@-moz-keyframes btnZoom {
+    from {}
+    to {
+        transform: scale(.8);
+    }
+}
+
+@-webkit-keyframes btnZoom {
+    from {}
+    to {
+        transform: scale(.8);
+    }
+}
+
+@-o-keyframes btnZoom {
+    from {}
+    to {
+        transform: scale(.8);
+    }
+}
+
+
+/****点墨先生取爻****/
+
+
+/**** 老师详情页 ****/
+
+.detailBanner {
+	float: left;
+	width: 100%;
+	height: 4.45rem;
+	padding: .5rem .2rem 0 .2rem;
+}
+.detailBanner.bg1 {
+	background: url(../images/01.jpg) no-repeat;
+	background-size: 100% 100%;
+}
+.detailBanner.bg2 {
+	background: url(../images/02.jpg) no-repeat;
+	background-size: 100% 100%;
+}
+.detailBanner.bg3 {
+	background: url(../images/03.jpg) no-repeat;
+	background-size: 100% 100%;
+}
+.detailBanner.bg4 {
+	background: url(../images/04.jpg) no-repeat;
+	background-size: 100% 100%;
+}
+.detailBanner.bg5 {
+	background: url(../images/05.jpg) no-repeat;
+	background-size: 100% 100%;
+}
+.detailBanner.bg6 {
+	background: url(../images/06.jpg) no-repeat;
+	background-size: 100% 100%;
+}
+.detailBanner.bg7 {
+	background: url(../images/07.jpg) no-repeat;
+	background-size: 100% 100%;
+}
+.detailBanner.bg8 {
+	background: url(../images/08.jpg) no-repeat;
+	background-size: 100% 100%;
+}
+.detailBanner.bg9 {
+	background: url(../images/09.jpg) no-repeat;
+	background-size: 100% 100%;
+}
+.detailBanner .info {
+	width: 100%;
+	display: flex;
+}
+.detailBanner .info .avator {
+	float: left;
+	width: 1.4rem;
+	margin: .2rem 0 0 0;
+}
+.detailBanner .info .avator img {
+	float: left;
+	width: 100%;
+}
+.detailBanner .info .con {
+	flex: 1;
+	padding-left: .2rem;
+	line-height: 1.7;
+	font-size: .28rem;
+	text-align: justify;
+}
+.detailBanner .info .con b {
+	font-size: .36rem;
+	color: #0d0d0d;
+}
+.detailBanner .info .con span {
+	color: #ff081f;
+}
+.detailBanner .num {
+	float: left;
+	width: 100%;
+	margin-top: .3rem;
+}
+.detailBanner .num ul li {
+	float: left;
+	width: 33.33%;
+	font-size: .28rem;
+	text-align: center;
+}
+.detailBanner .num ul li:nth-of-type(2) {
+	border-left: 1px solid #ccc;
+	border-right: 1px solid #ccc;
+}
+.detailBanner .num ul li span {
+	color: #ff081f;
+}
+.detailTitle {
+	float: left;
+	width: 100%;
+}
+.detailTitle span {
+	display: inline-block;
+	width: auto;
+	padding: 0 .1rem;
+	background: #fffad9;
+	border-radius: .35rem;
+	font-weight: bold;
+}
+.detailTitle em {
+	display: inline-block;
+	padding: 0 .1rem;
+	border: solid 1px #ff081f;
+	border-radius: .1rem;
+	font-size: .28rem;
+	color: #ff081f;
+}
+.detailLabel {
+	float: left;
+	width: 100%;
+	margin-top: .2rem;
+}
+.detailLabel ul li {
+	float: left;
+	width: 1.5rem;
+	margin: 0 .23rem 0 0;
+	border-radius: .1rem;
+	line-height: .46rem;
+	font-size: .28rem;
+	color: #fff;
+	text-align: center;
+}
+.detailLabel ul li:nth-of-type(1) {
+	background: linear-gradient(225deg, #fa6fa3 0%, #f8697b 100%);
+}
+.detailLabel ul li:nth-of-type(2) {
+	background: linear-gradient(225deg, #47d87a 0%, #2dc344 100%);
+}
+.detailLabel ul li:nth-of-type(3) {
+	background: linear-gradient(225deg, #f6a225 0%, #f3871b 100%);
+}
+.detailLabel ul li:nth-of-type(4) {
+	margin: 0;
+	background: linear-gradient(225deg, #63c7f6 0%, #1ba0f5 100%);
+}
+.detailLine {
+	float: left;
+	width: 100%;
+	border-top: dotted 1px #ccc;
+	margin: .3rem 0;
+}
+.detailTxt {
+	float: left;
+	width: 100%;
+	margin-top: .2rem;
+	font-size: .28rem;
+	text-align: justify;
+}
+.detailSpeak {
+	float: left;
+	width: 100%;
+	line-height: .5rem;
+	font-size: .28rem;
+	text-align: center;
+}
+.detailSpeak img {
+	float: left;
+	width: 1.15rem;
+	margin: 0 .2rem 0 0;
+}
+.detail_speak .right {
+	overflow: hidden;
+	text-align: justify;
+	color: #676765;
+	font-size: .28rem;
+	padding-left: .2rem;
+}
+.detailIntro {
+	float: left;
+	width: 100%;
+}
+.detailIntro .title {
+	float: left;
+	width: 100%;
+	background: url(../images/line.png) no-repeat left .1rem;
+	background-size: auto .3rem;
+	padding: 0 0 0 .15rem;
+	color: #a57942;
+	font-weight: bold;
+}
+
+/*.detailIntro .title::before {
+	content: "";
+	float: left;
+	width: .05rem;
+	height: .3rem;
+	margin: .12rem .1rem 0 0;
+	background: #a57942;
+}*/
+
+.detailIntro .title span {
+	float: right;
+	color: #ff081f;
+}
+.detailIntro .txt {
+	float: left;
+	width: 100%;
+	margin-top: .1rem;
+	font-size: .28rem;
+	text-align: justify;
+}
+.detailIntro .icon {
+	float: left;
+	width: 100%;
+	text-align: right;
+}
+.detailIntro .icon.current {
+	color: #ff081f;
+}
+.detailComment {
+	float: left;
+	width: 100%;
+}
+.detailComment div:first-child {
+	border: none;
+	padding: 0;
+	margin: 0;
+}
+.detailComment .row {
+	float: left;
+	width: 100%;
+	padding: .2rem 0 0 0;
+	margin: .2rem 0 0 0;
+	border-top: dotted 1px #ccc;
+	font-size: .28rem;
+	text-align: justify;
+}
+.detailComment .row i {
+	color: #ffd275;
+}
+.detailComment .row span {
+	float: right;
+}
+.detailComment .row p {
+	height: .1rem;
+}
+.detailFixed {
+	float: left;
+	width: 100%;
+}
+.detailFixed .space {
+	float: left;
+	width: 100%;
+	height: 1rem;
+}
+.detailFixed .btn {
+	float: left;
+	width: 100%;
+	position: fixed;
+	bottom: 0;
+	max-width: 7.5rem;
+	background: #fff;
+}
+.detailFixed .btn .zuo {
+	float: left;
+	width: 40%;
+	line-height: 1rem;
+	font-size: .28rem;
+	text-align: center;
+}
+.detailFixed .btn .zuo img {
+	width: .35rem;
+	vertical-align: middle;
+	margin: -.05rem 0 0 0;
+}
+.detailFixed .btn .you {
+	float: left;
+	width: 60%;
+}
+.detailFixed .btn .you a {
+	float: left;
+	width: 100%;
+	background: #ff081f;
+	line-height: 1rem;
+	font-size: .36rem;
+	color: #fff;
+	text-align: center;
+}
+
+/**** 老师详情页 ****/
+
+.detailtab .active {
+    border-bottom: solid .04rem #9e733c;
+    color: #bc7d3f;
+}
+.detailmore {
+    width: 100%;
+    float: left;
+    margin: .2rem 0 0 0;
+    line-height: .5rem;
+    font-size: .3rem;
+    text-align: center;
+}
+/** 弹窗 **/
+.kefupop {
+	width: 7rem;
+	background: #fff;
+	position: fixed;
+	left: 50%;
+	top: 15%;
+	margin: 0 0 0 -3.5rem;
+	z-index: 999;
+}
+.kefupop_title {
+	width: 100%;
+	float: left;
+	background: #f2f2f2;
+	padding: .3rem;
+	line-height: .6rem;
+	font-size: .48rem;
+	text-align: center;
+	position: relative;
+}
+.kefupop_title span {
+	font-size: .3rem;
+	color: #ff5252;
+}
+.kefupop_title a {
+	color: #a9a9a9;
+	position: absolute;
+	right: .3rem;
+	top: .3rem;
+}
+.kefupop_txt {
+	width: 100%;
+	float: left;
+	padding: .4rem .5rem;
+	line-height: .8rem;
+	font-size: .32rem;
+}
+.kefupop_txt a {
+	background: #bd7c3e;
+	border-radius: 5px;
+	padding: .05rem .2rem;
+	color: #fff;
+}
+.kefupop_code {
+	width: 100%;
+	float: left;
+	line-height: .55rem;
+	font-size: .32rem;
+	text-align: center;
+	padding: 0 0 .4rem 0;
+}
+.kefupop img {
+	width: 2.67rem;
+}
+.popbg {
+    width: 100%;
+    height: 100%;
+    float: left;
+    background: #000;
+    opacity: .85;
+    position: fixed;
+    top: 0;
+    max-width: 700px;
+    z-index: 997;
+}

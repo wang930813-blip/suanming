@@ -1,0 +1,143 @@
+<{include file="admin/header.html"}>
+
+<div class="layui-fluid">
+    <div class="layui-card">
+        <div class="layui-card-header">
+            <strong>订单详情</strong>
+            <button class="layui-btn layui-btn-sm layui-btn-primary" style="float: right;" onclick="history.back()">返回</button>
+        </div>
+        <div class="layui-card-body">
+            <{if $order}>
+            <!-- 订单信息 -->
+            <div class="layui-form" lay-filter="">
+                <div class="layui-form-item">
+                    <label class="layui-form-label">订单号</label>
+                    <div class="layui-input-inline" style="width: auto;">
+                        <div class="layui-form-mid"><{$order.order_no}></div>
+                    </div>
+                </div>
+                
+                <div class="layui-form-item">
+                    <label class="layui-form-label">订单金额</label>
+                    <div class="layui-input-inline" style="width: auto;">
+                        <div class="layui-form-mid" style="color: #ff6b6b; font-weight: bold; font-size: 18px;">¥<{$order.pay_price}></div>
+                    </div>
+                </div>
+                
+                <div class="layui-form-item">
+                    <label class="layui-form-label">支付状态</label>
+                    <div class="layui-input-inline" style="width: auto;">
+                        <div class="layui-form-mid">
+                            <{if $order.pay_status == 0}>
+                            <span class="layui-badge">待支付</span>
+                            <{else}>
+                            <span class="layui-badge layui-bg-green">已支付</span>
+                            <{/if}>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="layui-form-item">
+                    <label class="layui-form-label">发货状态</label>
+                    <div class="layui-input-inline" style="width: auto;">
+                        <div class="layui-form-mid">
+                            <{if $order.ship_status == 0}>
+                            <span class="layui-badge layui-bg-gray">待发货</span>
+                            <{elseif $order.ship_status == 1}>
+                            <span class="layui-badge layui-bg-blue">已发货</span>
+                            <{else}>
+                            <span class="layui-badge layui-bg-green">已完成</span>
+                            <{/if}>
+                        </div>
+                    </div>
+                </div>
+                
+                <{if $order.express_company}>
+                <div class="layui-form-item">
+                    <label class="layui-form-label">物流信息</label>
+                    <div class="layui-input-inline" style="width: auto;">
+                        <div class="layui-form-mid"><{$order.express_company}>: <{$order.express_no}></div>
+                    </div>
+                </div>
+                <{/if}>
+                
+                <div class="layui-form-item">
+                    <label class="layui-form-label">收货人</label>
+                    <div class="layui-input-inline" style="width: auto;">
+                        <div class="layui-form-mid"><{$order.ship_name}> / <{$order.ship_mobile}></div>
+                    </div>
+                </div>
+                
+                <div class="layui-form-item">
+                    <label class="layui-form-label">收货地址</label>
+                    <div class="layui-input-block" style="width: 500px;">
+                        <div class="layui-form-mid"><{$order.ship_address}></div>
+                    </div>
+                </div>
+                
+                <{if $order.remark}>
+                <div class="layui-form-item">
+                    <label class="layui-form-label">订单备注</label>
+                    <div class="layui-input-block" style="width: 500px;">
+                        <div class="layui-form-mid"><{$order.remark}></div>
+                    </div>
+                </div>
+                <{/if}>
+                
+                <div class="layui-form-item">
+                    <label class="layui-form-label">下单时间</label>
+                    <div class="layui-input-inline" style="width: auto;">
+                        <div class="layui-form-mid"><{$order.create_time|date_format:"%Y-%m-%d %H:%M:%S"}></div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- 商品清单 -->
+            <fieldset class="layui-elem-field" style="margin-top: 30px;">
+                <legend>商品清单</legend>
+                <div class="layui-field-box">
+                    <table class="layui-table">
+                        <thead>
+                            <tr>
+                                <th width="80">商品图片</th>
+                                <th>商品名称</th>
+                                <th width="150">规格</th>
+                                <th width="100">单价</th>
+                                <th width="100">数量</th>
+                                <th width="120">小计</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <{if $order.goods_list}>
+                            <{foreach from=$order.goods_list item=goods}>
+                            <tr>
+                                <td>
+                                    <{if $goods.goods_thumb}>
+                                    <img src="<{$goods.goods_thumb}>" style="width: 50px; height: 50px; object-fit: cover;">
+                                    <{else}>
+                                    <div style="width: 50px; height: 50px; background: #f5f5f5; display: flex; align-items: center; justify-content: center; color: #999;">无图</div>
+                                    <{/if}>
+                                </td>
+                                <td><{$goods.goods_name}></td>
+                                <td><{$goods.spec_name|default:'-'}></td>
+                                <td>¥<{$goods.price}></td>
+                                <td><{$goods.num}></td>
+                                <td style="font-weight: bold;">¥<{$goods.total_price}></td>
+                            </tr>
+                            <{/foreach}>
+                            <{/if}>
+                        </tbody>
+                    </table>
+                </div>
+            </fieldset>
+            
+            <{else}>
+            <div style="text-align: center; color: #999; padding: 100px 0;">订单不存在</div>
+            <{/if}>
+        </div>
+    </div>
+</div>
+
+<script src="/ffsm/statics/ffsm/kmmb/layui/layui.js"></script>
+
+<{include file="admin/footer_layui.html"}>

@@ -1,0 +1,42 @@
+blockquote, body, button, code, dd, div, dl, dt,fieldset, figure, form, h1, h2, h3, h4, h5, h6, input, legend, li, ol, p, pre, section, select, td, textarea, th, ul,span{
+    margin: 0;
+    padding: 0;
+    -webkit-tap-highlight-color: rgba(0,0,0,0);
+    -webkit-tap-highlight-color: transparent;
+}
+dd, dl, dt, ol, ul {list-style-type: none;}
+img, input {border: none;} 
+a{text-decoration: none;border:none;}
+.left{float: left;}
+.right{float: right;}
+/* 头部导航UVE3NzUyNTgxNA */
+html{max-width:750px;margin:0 auto;}
+body{
+    width:100%;color:#333333;
+    font: 0.28rem "Microsoft Yahei",Arial,Helvetica,sans-serif;
+    background-color: #fff;
+    margin: 0 auto;
+}
+
+.zm_tab .curr a{background: #a61222;color: #fff;}
+ /* 用户表单UVE3NzUyNTgxNA */
+ .m_form_container{
+
+}
+.m_form_wrap{margin:0.2rem;}
+.m_form_ul{
+    list-style: none;
+}
+.m_form_ul li{
+    height:0.9rem;
+    line-height: 0.9rem;
+    border-radius: 0.1rem;
+    border:0.02rem solid #DAB197;
+    display: flex;
+    margin-bottom:0.2rem;
+    overflow: hidden;
+    background-color:#ffffff;
+    font-size:0.3rem;
+}
+
+

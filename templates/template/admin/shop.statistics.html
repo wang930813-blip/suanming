@@ -1,0 +1,93 @@
+<{include file="admin/header.html"}>
+
+<div class="layui-fluid">
+    <!-- 销售统计 -->
+    <div class="layui-row layui-col-space15">
+        <div class="layui-col-md4">
+            <div class="layui-card">
+                <div class="layui-card-body stat-card">
+                    <div class="stat-label">今日销售</div>
+                    <div class="stat-value">¥<{$today_order.amount|default:0}></div>
+                    <div class="stat-sub">订单数: <{$today_order.total|default:0}>笔</div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="layui-col-md4">
+            <div class="layui-card">
+                <div class="layui-card-body stat-card">
+                    <div class="stat-label">本月销售</div>
+                    <div class="stat-value">¥<{$month_order.amount|default:0}></div>
+                    <div class="stat-sub">订单数: <{$month_order.total|default:0}>笔</div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="layui-col-md4">
+            <div class="layui-card">
+                <div class="layui-card-body stat-card">
+                    <div class="stat-label">累计销售</div>
+                    <div class="stat-value">¥<{$total_order.amount|default:0}></div>
+                    <div class="stat-sub">订单数: <{$total_order.total|default:0}>笔</div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- 商品销量排行 -->
+    <div class="layui-card" style="margin-top: 20px;">
+        <div class="layui-card-header">
+            <strong>商品销量排行榜 TOP 10</strong>
+        </div>
+        <div class="layui-card-body">
+            <table class="layui-table">
+                <thead>
+                    <tr>
+                        <th width="60">排名</th>
+                        <th width="80">商品图片</th>
+                        <th>商品名称</th>
+                        <th width="120">销量</th>
+                        <th width="150">销售额</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <{if $goods_rank}>
+                    <{foreach from=$goods_rank item=item name=rank}>
+                    <tr>
+                        <td>
+                            <{if $smarty.foreach.rank.iteration == 1}>
+                            <span style="color: #ff6b6b; font-size: 18px; font-weight: bold;">🥇</span>
+                            <{elseif $smarty.foreach.rank.iteration == 2}>
+                            <span style="color: #ffa500; font-size: 18px; font-weight: bold;">🥈</span>
+                            <{elseif $smarty.foreach.rank.iteration == 3}>
+                            <span style="color: #daa520; font-size: 18px; font-weight: bold;">🥉</span>
+                            <{else}>
+                            <{$smarty.foreach.rank.iteration}>
+                            <{/if}>
+                        </td>
+                        <td>
+                            <{if $item.thumb}>
+                            <img src="<{$item.thumb}>" style="width: 50px; height: 50px; object-fit: cover; border-radius: 4px;">
+                            <{else}>
+                            <div style="width: 50px; height: 50px; background: #f5f5f5; display: flex; align-items: center; justify-content: center; color: #999; border-radius: 4px;">无图</div>
+                            <{/if}>
+                        </td>
+                        <td><{$item.goods_name}></td>
+                        <td><{$item.total_num}> 件</td>
+                        <td style="color: #ff6b6b; font-weight: bold;">¥<{$item.total_amount}></td>
+                    </tr>
+                    <{/foreach}>
+                    <{else}>
+                    <tr>
+                        <td colspan="5" style="text-align: center; color: #999; padding: 50px 0;">暂无数据</td>
+                    </tr>
+                    <{/if}>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+<script src="/ffsm/statics/ffsm/kmmb/layui/layui.js"></script>
+
+<{include file="admin/footer_layui.html"}>

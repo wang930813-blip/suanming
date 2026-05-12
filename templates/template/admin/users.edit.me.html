@@ -1,0 +1,126 @@
+<{include file="admin/header.html"}>
+<div class="layui-fluid" style="padding: 20px;">
+    <div class="layui-card">
+        <div class="layui-card-header">
+            <h3 style="margin: 0;">修改密码</h3>
+        </div>
+        <div class="layui-card-body">
+
+
+<form name="form1" action="?ct=users&ac=editpwd&even=saveedit" method="POST" onsubmit="return checkpass()" class="layui-form" style="max-width: 600px; margin: 0 auto;">
+<{lurd_list item='v'}>
+
+<div class="layui-form-item">
+    <label class="layui-form-label">用户名</label>
+    <div class="layui-input-block">
+        <div class="layui-form-mid"><{$v.user_name}></div>
+    </div>
+</div>
+
+<div class="layui-form-item">
+    <label class="layui-form-label">用户昵称</label>
+    <div class="layui-input-block">
+        <div class="layui-form-mid"><{$v.nickname}></div>
+    </div>
+</div>
+
+<div class="layui-form-item">
+    <label class="layui-form-label">新密码</label>
+    <div class="layui-input-block">
+        <input type='password' name='userpwd' id='userpwd' class="layui-input" placeholder="请输入新密码" onkeyup='checkpass()' />
+        <div class="layui-form-mid layui-word-aux">密码长度至少6位</div>
+    </div>
+</div>
+
+<div class="layui-form-item">
+    <label class="layui-form-label">确认密码</label>
+    <div class="layui-input-block">
+        <input type='password' name='userpwdok' id='userpwdok' class="layui-input" placeholder="请再次输入新密码" onkeyup='checkpass()' />
+        <div id='pwdtest' style='color: #ff5722; font-size: 12px; margin-top: 5px;'></div>
+    </div>
+</div>
+<div class="layui-form-item">
+    <label class="layui-form-label">用户Email</label>
+    <div class="layui-input-block">
+        <div class="layui-form-mid"><{$v.email}></div>
+    </div>
+</div>
+
+<div class="layui-form-item">
+    <label class="layui-form-label">用户组</label>
+    <div class="layui-input-block">
+        <div class="layui-form-mid"><{$v.groups|groupname}></div>
+    </div>
+</div>
+
+<div class="layui-form-item">
+    <label class="layui-form-label">上次登录时间</label>
+    <div class="layui-input-block">
+        <div class="layui-form-mid"><{lurd var=$last_login.logintime do="format_date" format="Y-m-d H:i:s" }></div>
+    </div>
+</div>
+
+<div class="layui-form-item">
+    <label class="layui-form-label">上次登录IP</label>
+    <div class="layui-input-block">
+        <div class="layui-form-mid"><{$last_login.loginip}></div>
+    </div>
+</div>
+<div class="layui-form-item" style="margin-top: 30px; text-align: center;">
+    <input type="hidden" name="dosubmit" value="true">
+    <button type="submit" class="layui-btn layui-btn-normal" style="width: 150px;">
+        <i class="layui-icon layui-icon-ok"></i> 保存修改
+    </button>
+    <button type="reset" class="layui-btn layui-btn-primary" style="width: 150px;">
+        <i class="layui-icon layui-icon-refresh"></i> 重置
+    </button>
+</div>
+
+<{/lurd_list}>
+</form>
+
+        </div>
+    </div>
+</div>
+
+<script>
+layui.use('form', function(){
+    var form = layui.form;
+    form.render();
+});
+
+function checkpass() {
+    var pwd = document.form1.userpwd.value;
+    var pwdok = document.form1.userpwdok.value;
+    var pwdtest = document.getElementById('pwdtest');
+    
+    // 如果两个都为空
+    if(pwd === '' && pwdok === '') {
+        pwdtest.innerHTML = '';
+        return true;
+    }
+    
+    // 密码长度检查
+    if(pwd !== '' && pwd.length < 6) {
+        pwdtest.innerHTML = '✗ 密码长度至少6位';
+        return false;
+    }
+    
+    // 两次密码一致性检查
+    if(pwd === pwdok) {
+        if(pwd !== '') {
+            pwdtest.innerHTML = '<span style="color: #5FB878;">✓ 两次密码一致</span>';
+        } else {
+            pwdtest.innerHTML = '';
+        }
+        return true;
+    } else {
+        if(pwdok !== '') {
+            pwdtest.innerHTML = '✗ 两次输入的密码不一致';
+        }
+        return false;
+    }
+}
+</script>
+
+<{include file='admin/footer.html'}>

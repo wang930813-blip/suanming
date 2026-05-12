@@ -1,0 +1,187 @@
+@charset "utf-8";
+/* CSS Document */
+
+/**** 浮动按钮 ****/
+.scProd_floatBtn {
+	width: 100%;
+	float: left;
+}
+.scProd_floatBtn .space {
+	float: left;
+	width: 100%;
+	height: 1rem;
+}
+.scProd_floatBtn .btn {
+	width: 100%;
+	float: left;
+	max-width: 7.5rem;
+	position: fixed;
+	bottom: 0;
+	z-index: 999;
+}
+.scProd_floatBtn .btn a {
+	float: left;
+	line-height: 1rem;
+	font-size: .3rem;
+	text-align: center;
+	background: #ffffff;
+}
+.scProd_floatBtn .btn a:nth-child(1) {
+	width: 30%;
+}
+.scProd_floatBtn .btn a:nth-child(2) {
+	width: 30%;
+	color: #ff3f3f;
+	font-weight: bold;
+	-webkit-text-stroke: .01rem #fff0c6;
+	text-stroke: .01rem #fff0c6;
+}
+.scProd_floatBtn .btn a:nth-child(3) {
+	width: 40%;
+	background: #ff821d;
+	color: #fff;
+	font-weight: bold;
+}
+.scProd_floatBtn .btn a img {
+	width: .41rem;
+	vertical-align: middle;
+	margin: -.05rem 0 0 0;
+}
+/**** 浮动按钮 ****/
+
+/**** 弹窗 ****/
+.scProd_popBg {
+	width: 100%;
+	height: 100%;
+	background: #959595;
+	opacity: .85;
+	position: fixed;
+	top: 0;
+	max-width: 7.5rem;
+	z-index: 99;
+}
+.scProd_popBox {
+	width: 5.6rem;
+	position: fixed;
+	top: 5%;
+	left: 50%;
+	margin: 0 0 0 -2.8rem;
+	z-index: 100;
+}
+.scProd_popBox .popCon {
+	width: 100%;
+	float: left;
+	background: #fff;
+	border-radius: .1rem;
+	padding: .3rem;
+}
+.scProd_popBox .popCon .title {
+	width: 100%;
+	float: left;
+	font-size: .36rem;
+	color: #956731;
+	font-weight: bold;
+	text-align: center;
+	margin: 0 0 .2rem 0;
+}
+.scProd_popBox .popCon .row {
+	width: 100%;
+	float: left;
+	font-size: .28rem;
+	color: #5a5a5a;
+	margin: .1rem 0;
+}
+.scProd_popBox .popCon .row a {
+	width: 1.5rem;
+	float: right;
+	border-radius: .2rem;
+	line-height: .4rem;
+	font-size: .24rem;
+	color: #fff;
+	text-align: center;
+}
+.scProd_popBox .popCon .row a.bg1 {
+	background: #f9b974;
+}
+.scProd_popBox .popCon .row a.bg2 {
+	background: #7abc63;
+}
+.scProd_popBox .popCon .row a.bg3 {
+	background: #afafaf;
+}
+.scProd_popBox .popCon .row a img {
+	width: .25rem;
+	vertical-align: middle;
+	margin: -.05rem 0 0 0;
+}
+.scProd_popBox .popCon .btn {
+	width: 100%;
+	float: left;
+	margin: .3rem 0 0 0;
+}
+.scProd_popBox .popCon .btn a {
+	width: 100%;
+	float: left;
+	background: #956731;
+	border-radius: .1rem;
+	line-height: .8rem;
+	font-size: .32rem;
+	color: #fff;
+	text-align: center;
+}
+.scProd_popBox .popCon .tips {
+	width: 100%;
+	float: left;
+	font-size: .24rem;
+	color: #848484;
+	text-align: center;
+	margin: .2rem 0 0 0;
+}
+.scProd_popBox .popClose {
+	width: 100%;
+	float: left;
+	margin: .3rem 0 0 0;
+}
+.scProd_popBox .popClose a {
+	width: .69rem;
+	height: .69rem;
+	display: block;
+	margin: 0 auto;
+}
+.scProd_popBox .popClose a img {
+	width: 100%;
+	float: left;
+}
+.scProd_popBox .title2 {
+	width: 100%;
+	float: left;
+	font-size: .6rem;
+	color: #ff3c58;
+	font-weight: bold;
+	text-align: center;
+	margin: 0 0 .2rem 0;
+}
+.scProd_popBox .txt {
+	width: 100%;
+	float: left;
+	font-size: .32rem;
+	color: #5a5a5a;
+	text-align: center;
+}
+.scProd_popBox .txt i {
+	color: #956731;
+}
+.scProd_popBox .txt span {
+	font-size: .24rem;
+}
+.scProd_popBox .pic {
+	width: 100%;
+	float: left;
+	margin: .2rem 0 0 0;
+}
+.scProd_popBox .pic img {
+	width: 2.4rem;
+	display: block;
+	margin: 0 auto;
+}
+/**** 弹窗 ****/

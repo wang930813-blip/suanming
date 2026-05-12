@@ -1,0 +1,278 @@
+
+
+
+
+.tkbox {
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    position: fixed;
+    left: 0;
+    top: 0;
+    z-index: 10;
+    display: flex;
+    align-items: center;
+    /* display: none; */
+}
+.tkbox_con{
+    width: 100%;
+    height: 416px;
+    padding-top: 11.2px;
+    box-sizing: border-box;
+    position: relative;
+}
+
+.tk_tit{
+    width: 232.8px;
+    height: 38.4px;
+    display: block;
+    margin: 0 auto;
+    position: absolute;
+    left: 50%;
+    top:0;
+    z-index: 10;
+    position: absolute;
+    transform: translateX(-50%);
+}
+.tk_tit img{
+    width: 232.8px;
+    height: 38.4px;
+}
+.tk_container{
+    width: 100%;
+    height: 402.4px;
+    position: relative;
+    z-index: 8;
+}
+.tk_item{
+    width: 370.4px;
+	height: 291.2px;
+	background-image: linear-gradient(0deg, 
+		#fdcd9c 0%, 
+		#ffffff 100%);
+        margin: 0 auto;
+        border-radius: 8px;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        padding: 49.6px 20px 0 20px;
+        box-sizing: border-box;
+        position: relative;
+        z-index: 8;
+}
+.tk_item a{
+    width: 96px;
+    height: 96px;
+    display: block;
+    margin-bottom: 21.6px;
+}
+.tk_item a img{
+    width: 96px;
+    height: 96px;
+}
+
+.tk_redbj{
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    z-index: 5;
+    width: 100%;
+    height: 189.6px;
+	background-image: linear-gradient(0deg, 
+		#cb1717 0%, 
+		#de1a1a 100%);
+        border-radius: 16px;
+}
+
+.tk_but{
+    width: 100%;
+    position: absolute;
+    height: 40px;
+    left: 0;
+    bottom: 32px;
+    display: flex;
+    justify-content: space-around;
+    z-index: 10;
+}
+.tk_but a.but01{
+    width: 155.2px;
+	height: 46.4px;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.tk_but a.but01 img{
+    width: 155.2px;
+	height: 46.4px;
+    position: absolute;
+    left: 0;
+    top: 0;
+}
+.tk_but a.but01 span{
+    position: relative;
+    z-index: 2;
+}
+.tk_but a.but01 span.sp01{
+    font-size: 22.4px;
+	font-weight: normal;
+	font-stretch: normal;
+	color: #ffe1ad;
+}
+.tk_but a.but01 span.sp02{
+    font-size: 22.4px;
+	font-weight: normal;
+	font-stretch: normal;
+	color: #dd1919;
+    font-weight: bold;
+}
+.tk_but a.but01：hover span{
+    font-weight: bold;
+}
+.top  img{ width: 100%; height: auto;}
+
+
+
+
+
+.tkbox1 {
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    position: fixed;
+    left: 0;
+    top: 0;
+    z-index: 10;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    /* display: none; */
+}
+.tkbox1_con{
+    width: 296px;
+    height: 443.2px;
+    box-sizing: border-box;
+    position: relative;
+    background: url(http://cs.hxgqm.com/image/bj01.png) no-repeat center top;
+    background-size: contain;
+    padding-top: 64px;
+}
+
+.tk1_tit{
+   width: 100%;
+    display: block;
+    color: #b35a1b;
+    font-size: 28px;
+    line-height: 40px;
+    margin: 0 auto;
+    text-align: center;
+   
+}
+
+.tk1_container{
+    width: 100%;
+    height: auto;
+    overflow: hidden;
+    position: relative;
+    z-index: 8;
+}
+.money{
+    text-align: center;
+    font-size: 24px;
+	font-weight: normal;
+	letter-spacing: 0px;
+	color: #d10101;
+    line-height: 56px;
+}
+.money span{
+    font-size: 48px;
+	letter-spacing: 0px;
+	color: #d10101;
+}
+.tj{
+    width: 202.4px;
+	height: 36px;
+    margin: 0 auto;
+	background-color: #fed2a7;
+	border: solid 1px #e6aa74;
+    text-align: center;
+    line-height: 36px;
+    font-size: 19.2px;
+	color: #b3520f;
+}
+.tip{
+    font-size: 16px;
+    line-height: 44.8px;
+	color: #ae5312;
+	opacity: 0.65;
+    text-align: center;
+}
+
+.time{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 40px;
+    position: absolute;
+    bottom:97.6px
+}
+.time .time_box{
+    width: 39.2px;
+	height: 38.4px;
+	background-color: #b90b24;
+	border: solid 1px #ff4e55;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-sizing: border-box;
+    font-size: 18.4px;
+    color: #fff;
+}
+.time span{
+    font-size: 18.4px;
+	letter-spacing: 1px;
+	color: #ffffff;
+    margin: 0 4px;
+
+}
+
+.tk1_but{
+    width: 100%;
+    height: 40px;
+    display: flex;
+    justify-content: space-around;
+    z-index: 10;
+    margin: 0 auto;
+    position: absolute;
+    bottom: 38.4px;
+}
+.tk1_but a.but01{
+    width: 211.2px;
+	height: 52.8px;
+	background-image: linear-gradient(0deg, 
+		#ffe2c7 0%, 
+		#fdd2a5 10%, 
+		#fac183 48%, 
+		#fde0c1 85%, 
+		#ffffff 100%);
+        font-size: 28px;
+	letter-spacing: 3px;
+	color: #6d2e02;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 24px;
+}
+.tk_closed{
+    position: absolute;
+    right: 0;
+    top: 0;
+    z-index: 10;
+    width: 0.52rem;
+    height: 0.52rem;
+}
+.tk_closed img{
+    width: 0.52rem;
+    height: 0.52rem;
+}

@@ -1,0 +1,65 @@
+<{include file="admin/header.html"}>
+
+<div class="layui-fluid" style="padding: 20px;">
+    <div class="layui-card">
+        <div class="layui-card-header">
+            <h3 style="margin: 0;"><{if $data.id}>编辑<{else}>添加<{/if}>分类</h3>
+        </div>
+        <div class="layui-card-body" style="padding: 30px;">
+            <form method="post" action="?ct=test_list&ac=save_category" class="layui-form" lay-filter="categoryForm">
+                <input type="hidden" name="id" value="<{$data.id}>">
+                
+                <div class="layui-form-item">
+                    <label class="layui-form-label"><span style="color: red;">*</span> 分类名称</label>
+                    <div class="layui-input-block" style="max-width: 500px;">
+                        <input type="text" name="name" class="layui-input" value="<{$data.name}>" placeholder="请输入分类名称" required lay-verify="required">
+                    </div>
+                </div>
+
+                <div class="layui-form-item">
+                    <label class="layui-form-label"><span style="color: red;">*</span> 分类代码</label>
+                    <div class="layui-input-block" style="max-width: 500px;">
+                        <input type="text" name="code" class="layui-input" value="<{$data.code}>" placeholder="请输入分类代码（如：rm、ys、yy）" required lay-verify="required">
+                        <div class="layui-form-mid layui-word-aux">分类代码用于前端标识，必须唯一</div>
+                    </div>
+                </div>
+
+                <div class="layui-form-item">
+                    <label class="layui-form-label">排序</label>
+                    <div class="layui-input-block" style="max-width: 500px;">
+                        <input type="number" name="sort" class="layui-input" value="<{$data.sort|default:0}>" placeholder="数字越小越靠前">
+                    </div>
+                </div>
+
+                <div class="layui-form-item">
+                    <label class="layui-form-label">状态</label>
+                    <div class="layui-input-block">
+                        <input type="radio" name="status" value="1" title="显示" <{if !$data.id || $data.status == 1}>checked<{/if}>>
+                        <input type="radio" name="status" value="0" title="隐藏" <{if $data.status == 0}>checked<{/if}>>
+                    </div>
+                </div>
+
+                <div class="layui-form-item">
+                    <div class="layui-input-block">
+                        <button type="submit" class="layui-btn layui-btn-normal" lay-submit lay-filter="submitForm">
+                            <i class="layui-icon layui-icon-ok"></i> 保存
+                        </button>
+                        <button type="button" class="layui-btn layui-btn-primary" onclick="location.href='?ct=test_list&ac=category'">
+                            <i class="layui-icon layui-icon-return"></i> 返回
+                        </button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<script>
+// 确保element模块被初始化（侧边栏需要）
+layui.use(['form', 'element'], function(){
+    var form = layui.form;
+    var element = layui.element;
+    form.render();
+});
+</script>
+

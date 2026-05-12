@@ -1,0 +1,296 @@
+<style>
+.index-gg1216{background-color: #fff;height: 40px;}
+.index-gg1216>a{display: block;float:left;width: 85px;height: 40px; line-height:40px; text-align: center; font-size:16px;}
+.index-gg1216 .active{ color:#e35c57}
+</style>
+
+</style>
+<div class="index_list_wrap">
+<div class="index-gg1216" id="tabNav">
+<a href="javascript://;/?sourcead=1216&sourcea=1216.1216" class="active" data-type="a">热门推荐</a>
+<a href="javascript://;/?sourcead=1216&sourcea=1216.1216" data-type="b">先天命运</a>
+<a href="javascript://;/?sourcead=1216&sourcea=1216.1216" data-type="c">感情姻缘</a>
+<a href="javascript://;/?sourcead=1216&sourcea=1216.1216" data-type="d">年月运势</a>
+<a href="javascript://;/?sourcead=1216&sourcea=1216.1216" data-type="e">财运事业</a>
+<a href="javascript://;/?sourcead=1216&sourcea=1216.1216" data-type="f">家庭生活</a>
+</div>
+
+
+<li>
+<a href="/yunyincs/?sourcead=1216&sourcea=1216.1216">
+<img src="https://img.d1xz.net/d/2020/06/5ee6da66a7bd3.jpg" alt="八字姻缘 看你什么时候会恋爱结婚" />
+<p class="il_words">八字姻缘 看你什么时候会恋爱结婚</p>
+<div class="il_number">
+        <p class="pbot">
+          <span>
+            <i class="ics"></i>254160测试</span>
+          <span>
+            <i class="ihp"></i>98.8%好评</span>
+        </p>
+</li>
+</a>
+<li><a href="/liudaolunhui/?sourcead=1216&sourcea=1216.1216"><img src="https://img.d1xz.net/d/2020/06/5ee6d9e2f0303.jpg" alt="[六道轮回轮世书]看清你的前世今生" /><p class="il_words">[六道轮回轮世书]看清你的前世今生</p></a>
+<div class="il_number">
+<span>  <i class="ics">6641111</i></span>
+<span class="ihp">98%</span>
+</div>
+</li>
+<li><a href="/liunian2023/?sourcead=1216&sourcea=1216.1216"><img src="https://img.d1xz.net/d/2022/12/638b22101738b.png" alt="2022流年运势 值得信赖的开年攻略" /><p class="il_words">国学大师为你全面预测，2023机遇良缘、危机陷阱！</p></a>
+<div class="il_number">
+<span class="ics">1245256</span>
+<span class="ihp">98%</span></div>
+</li>
+<li><a href="/pibazi/?sourcead=1216&sourcea=1216.1216"><img src="https://img.d1xz.net/d/2022/12/638aedccc133d.png" alt="神准预测！传统八字详批" /><p class="il_words">批算事业财运、感情婚姻、一生大运、2023运势</p></a>
+<div class="il_number">
+<span class="ics">365212</span>
+<span class="ihp">97%</span></div>
+</li>
+<li><a href="/bazihehun/?sourcead=1216&sourcea=1216.1216"><img src="https://img.d1xz.net/d/2020/06/5ee6d3ff44b23.jpg" alt="[专业合婚配对]开启专属你们的婚姻幸福生活" /><p class="il_words">和TA结婚你会幸福么？能和TA一起领会日常的窝心浪漫么？</p></a>
+<div class="il_number">
+<span class="ics">534123</span>
+<span class="ihp">99%</span></div>
+</li>
+<li><a href="/gerenzhanxing/?sourcead=1216&sourcea=1216.1216"><img src="https://img.d1xz.net/d/2020/06/5ee6d3a6a58bd.jpg" alt="[深度个人占星报告]彻底了解自己的命运" /><p class="il_words">[深度个人占星报告]彻底了解自己的命运</p></a>
+<div class="il_number">
+<span class="ics">455862</span>
+<span class="ihp">98%</span></div>
+</li>
+</ul>
+<ul class="il_box J_b"><li>
+<a href="/shiniandy/?sourcead=1216&sourcea=1216.1216"><img src="https://img.d1xz.net/d/2022/12/638aebcfddc1e.png" alt="十年大运 分析一运十年中的吉凶祸福" /><p class="il_words">预知十年运势吉凶，揭秘未来好运年份！</p></a>
+<div class="il_number">
+<span class="ics">4261536</span>
+<span class="ihp">98</span></div>
+</li>
+<li><a href="/ziweidoushu/?sourcead=1216&sourcea=1216.1216"><img src="https://img.d1xz.net/d/2022/12/638aebe9d6594.png" alt="紫微命格详批 分析命中富贵格局" /><p class="il_words">古代帝王之术，算尽一生命运伏线</p></a>
+<div class="il_number">
+<span class="ics">523165</span>
+<span class="ihp">98</span></div>
+</li>
+<li><a href="/bzzsy/?sourcead=1216&sourcea=1216.1216"><img src="https://img.d1xz.net/d/2020/06/5ee6d4feac374.jpg" alt="精准分析：你的人生格局、事业财富、感情健康" /><p class="il_words">批算姻缘时机、发财方向、何时行大运！</p></a>
+<div class="il_number">
+<span class="ics">422536</span>
+<span class="ihp">98</span></div>
+</li>
+<li><a href="/baobaomg/?sourcead=1216&sourcea=1216.1216"><img src="https://img.d1xz.net/d/2020/06/5ee6d4d49bf55.jpg" alt="宝宝命格详批 开启宝宝成长潜能" /><p class="il_words">宝宝命格详批 开启宝宝成长潜能</p></a>
+<div class="il_number">
+<span class="ics">1517211</span>
+<span class="ihp">98</span></div>
+</li>
+<li><a href="/jieming/?sourcead=1216&sourcea=1216.1216"><img src="https://img.d1xz.net/d/2022/12/638ae78f9ba92.png" alt="八字姓名详批 助你趋吉避凶" /><p class="il_words">算准当前运势，预测未来吉凶</p></a>
+<div class="il_number">
+<span class="ics">23546</span>
+<span class="ihp">98%</span></div>
+</li>
+</ul>
+<ul class="il_box J_c">
+<li><a href="/xzhepanpeidui/?sourcead=1216&sourcea=1216.1216"><img src="https://img.d1xz.net/d/2020/06/5ee6d67a140ef.jpg" alt="超准星座合盘 为你们的爱情解码" /><p class="il_words">你对TA有多少吸引力？爱情合盘解析你们的缘分</p></a>
+<div class="il_number">
+<span class="ics">321512</span>
+<span class="ihp">98</span></div>
+</li>
+<li><a href="/xingzuopd/?sourcead=1216&sourcea=1216.1216"><img src="https://img.d1xz.net/d/2020/06/5ee6d63e12f4d.jpg" alt="星座配对 让星座打开你们缘分的大门" /><p class="il_words">星座配对 让星座打开你们缘分的大门</p></a>
+<div class="il_number">
+<span class="ics">412135</span>
+<span class="ihp">98</span></div>
+</li>
+<li><a href="/xmpeidui/?sourcead=1216&sourcea=1216.1216"><img src="https://img.d1xz.net/d/2020/08/5f2b7094025c6.jpg" alt="姓名配对 揭秘专属于你自己的幸福秘籍" /><p class="il_words">姓名配对 揭秘专属于你自己的幸福秘籍</p></a>
+<div class="il_number">
+<span class="ics">425631</span>
+<span class="ihp">98</span></div>
+</li>
+<li><a href="/aiqingddp/?sourcead=1216&sourcea=1216.1216"><img src="https://img.d1xz.net/d/2020/06/5ee6d5ba63574.jpg" alt="缘份测试 你和ta的缘分是深是浅" /><p class="il_words">缘份测试 你和ta的缘分是深是浅</p></a>
+<div class="il_number">
+<span class="ics">513541</span>
+<span class="ihp">98</span></div>
+</li>
+<li><a href="/zhuiaimj/?sourcead=1216&sourcea=1216.1216"><img src="https://img.d1xz.net/d/2020/06/5ee6d57ab82e8.jpg" alt="借你勇气，推开通往爱情的大门" /><p class="il_words">TA对你是真心么？看透ta的心，不走爱情冤枉路！</p></a>
+<div class="il_number">
+<span class="ics">423256</span>
+<span class="ihp">98</span></div>
+</li>
+</ul>
+<ul class="il_box J_d">
+<li><a href="/shengxiao2023/?sourcead=1216&sourcea=1216.1216"><img src="https://img.d1xz.net/d/2022/12/638b21ef6a6b9.png" alt="揭秘你2021年财富运，事业运，感情运" /><p class="il_words">精准预测，2023年你的爱情/事业/财富高光领域。</p></a>
+<div class="il_number">
+<span class="ics">174595</span>
+<span class="ihp">98.6%</span>
+</div>
+</li>
+<li><a href="/yunshiyuce12/?sourcead=1216&sourcea=1216.1216"><img src="https://img.d1xz.net/d/2020/06/5ee6d7999da51.jpg" alt="每月运势 掌握每个月具体运势" /><p class="il_words">每月运势 掌握每个月具体运势</p></a>
+<div class="il_number"><span class="ics">153432</span>
+<span class="ihp">98</span></div>
+</li>
+<li><a href="/shiniandy/?sourcead=1216&sourcea=1216.1216"><img src="https://img.d1xz.net/d/2020/06/5ee6d5548b800.jpg" alt="剖析人生运势 掌握未来命运" /><p class="il_words">剖析人生运势 掌握未来命运</p></a>
+<div class="il_number">
+<span class="ics">421351</span>
+<span class="ihp">98</span></div>
+</li>
+</ul>
+<ul class="il_box J_e">
+<li><a href="/ziweicaiyun/?sourcead=1216&sourcea=1216.1216"><img src="https://img.d1xz.net/d/2020/06/5ee6d75f1cc27.jpg" alt="紫微财运 分析你一生中的财库" /><p class="il_words">紫微财运 分析你一生中的财库</p></a>
+<div class="il_number"><span class="ics">415325</span>
+<span class="ihp">98</span></div>
+</li>
+<li><a href="/bazisyy/?sourcead=1216&sourcea=1216.1216"><img src="https://img.d1xz.net/d/2020/06/5ee6d72ccc438.jpg" alt="看事业财运,能否飞黄腾达一看便知" /><p class="il_words">看事业财运,能否飞黄腾达一看便知</p></a>
+<div class="il_number"><span class="ics">395535</span>
+<span class="ihp">98</span></div>
+</li>
+<li><a href="/xmcaiyun/?sourcead=1216&sourcea=1216.1216"><img src="https://img.d1xz.net/d/2020/06/5ee6d6de3261d.jpg" alt="财运测算 揭示隐藏在姓名里的财运" /><p class="il_words">财运测算 揭示隐藏在姓名里的财运</p></a>
+<div class="il_number"><span class="ics">325135</span>
+<span class="ihp">98</span></div>
+</li>
+<li><a href="/bazicy/?sourcead=1216&sourcea=1216.1216"><img src="https://img.d1xz.net/d/2020/06/5ee6d6a43feb6.jpg" alt="想成为有钱人？八字财运告诉你发财机会" /><p class="il_words">想成为有钱人？八字财运告诉你发财机会</p></a>
+<div class="il_number">
+<span class="ics">215354</span>
+<span class="ihp">98</span>
+</div>
+</li>
+</ul>
+<ul class="il_box J_f"><li><a href="/chepaijixiong/?sourcead=1216&sourcea=1216.1216"><img src="https://img.d1xz.net/d/2020/06/5ee6d7e212577.jpg" alt="车牌号码吉凶测试  福祸运势早知道" /><p class="il_words">车牌号码吉凶测试  福祸运势早知道</p></a>
+<div class="il_number">
+<span class="ics">151651</span>
+<span class="ihp">98</span>
+</div>
+</li>
+<li><a href="/baobaoqm/?sourcead=1216&sourcea=1216.1216"><img src="https://img.d1xz.net/d/2020/06/5ee6d77b5368b.jpg" alt="宝宝取名  一名之得，可以成龙" /><p class="il_words">宝宝取名  一名之得，可以成龙</p></a>
+<div class="il_number">
+<span class="ics">412354</span>
+<span class="ihp">98</span>
+</div>
+</li>
+</ul>
+</div>
+</div>
+
+<script>
+    // 封装
+    (function ($, window, undefined) {
+        $.fn.jqSwipe = function (classname) {
+            var $binder = $(this),
+                binder = $(this).get(0),
+                $children = $binder.children(),
+                itemNum = $children.length,
+                itemWidth = $children.eq(0).width(),
+                binderWidth = itemNum * itemWidth,
+                transl_x = 0,  //translate3d偏移值
+                transl_x_temp = 0,
+                prefix = (function(temp) {
+                    var props = [['transformProperty',''], ['WebkitTransform','-webkit-'], ['MozTransform','-moz-'], ['OTransform','-o-'], ['msTransform','-ms-']];
+                    for ( var i in props ) {
+                        if (temp.style[ props[i][0] ] !== undefined) return props[i][1];
+                    }
+                    return '';
+                })(document.createElement('jqSwipe')),
+                transition = prefix + "transition",
+                transform = prefix + "transform",
+                vp_width = prefix==="-moz-" ? screen.width : window.innerWidth; //视区宽度hack
+    
+            classname = classname || null;
+            initSwipe();
+    
+            /**
+             * 初始化UI
+             */
+            function initUI(){
+                setTransition("0");
+                $binder.css(transform, "translate3d(0,0,0)")
+                .css("width",binderWidth);
+            }
+    
+            /**
+             * 设置绑定对象的transition时间
+             * @param time {string} - 过渡间隔值（秒）
+             */
+            function setTransition(time){
+                binder.style[transition] = transform + " " + time + "ms";
+            }
+    
+            function dealTransition(x,transTime){
+                x = x||0;
+                transTime = transTime||"300";
+                setTransition(transTime);
+                $binder.css(transform, "translate3d(" + x + "px,0,0)");
+                setTimeout(function(){setTransition("0")},transTime);
+                transl_x = x;
+            }
+    
+            function activeItem(){
+                $binder.on("click",$children,function(e){
+                    var $item = $(e.target),
+                        index = $item.index(),
+                        transl_x_temp = 0;
+                    if(classname){
+                        $item.addClass(classname).siblings().removeClass(classname);
+                    }
+                    if( (index-1) * itemWidth < -transl_x ){
+                        if(index>0) transl_x_temp = - (index-1) * itemWidth;
+                        dealTransition(transl_x_temp);
+                    }else if((index+2) * itemWidth + transl_x > vp_width){ //注意transl_x是负值
+                        if(index==itemNum-1) transl_x_temp = vp_width - itemNum * itemWidth;
+                        else transl_x_temp = vp_width - (index+2) * itemWidth;
+                        dealTransition(transl_x_temp);
+                    }
+    
+                })
+            }
+    
+            /**
+             * 处理手势
+             */
+            function dealGesture(){
+                var min_x = vp_width - binderWidth,
+                    touch_x = 0,
+                    move_s = 0;
+                binder.addEventListener('touchstart', function (e) {
+                    transl_x_temp = transl_x;
+                    touch_x = e.targetTouches[0].clientX;
+                },false);
+                binder.addEventListener('touchmove', function (e) {
+                    move_s = e.targetTouches[0].clientX - touch_x;
+                    if(transl_x_temp < min_x){
+                        transl_x_temp = move_s + transl_x + (min_x-transl_x_temp)*0.9;
+                    }else if(transl_x_temp>0){
+                        transl_x_temp = move_s + transl_x - (transl_x_temp)*0.9;
+                    }else{
+                        transl_x_temp = move_s + transl_x;
+                    }
+    
+                    $binder.css(transform, "translate3d(" + transl_x_temp + "px,0,0)");
+    
+                    e.preventDefault();
+                    e.stopPropagation();
+                },false);
+                binder.addEventListener('touchend', function () {
+                    if(transl_x_temp < min_x){
+                        dealTransition(min_x);
+                    }else if(transl_x_temp>0){
+                        dealTransition();
+                    }else{
+                        transl_x = transl_x_temp;
+                    }
+                },false);
+            }
+    
+            /**
+             * 初始化全部
+             */
+            function initSwipe() {
+                initUI();
+                dealGesture();
+                activeItem();
+            }
+        }
+    }(jQuery,window,undefined));
+    
+    
+    var tabNav = $("#tabNav") //选项卡导航
+    var tabList = $("#tabList");//选项卡内容
+    tabNav.jqSwipe("active");
+    $("#tabList ul:first").show(); //默认第一个ul显示
+    tabNav.on("click","a",function(){
+      var z = $(this).data("type")
+      tabList.children(".J_" + z).show().siblings().hide();
+    })
+  </script>
+<!--sas:1216.1216 end-->

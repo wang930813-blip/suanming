@@ -1,0 +1,89 @@
+@charset "utf-8";
+/* CSS Document */
+
+/**** 产品推荐列表 ****/
+.scProd_hotRecom {
+	float: left;
+	width: 100%;
+	background: #fff;
+	border: solid 1px #ac7b44;
+	border-radius: .1rem;
+	margin: .4rem 0 0 0;
+}
+.scProd_hotRecom .top {
+	position: relative;
+	width: 100%;
+	float: left;
+	background: #ac7b44;
+	border-radius: .1rem .1rem 0 0;
+	line-height: .85rem;
+	font-size: .42rem;
+	color: #fff;
+	text-align: center;
+}
+.scProd_hotRecom .top a {
+	position: absolute;
+	right: .2rem;
+	font-size: .26rem;
+	color: #fffbcc;
+	font-weight: bold;
+}
+.scProd_hotRecom .list {
+	width: 100%;
+	float: left;
+	padding: .3rem;
+}
+.scProd_hotRecom .list a {
+	width: 100%;
+	float: left;
+	border-bottom: solid 1px #f0f0f0;
+	padding: 0 0 .2rem 0;
+	margin: 0 0 .2rem 0;
+}
+.scProd_hotRecom .list a:last-child {
+	border: none;
+	padding: 0;
+	margin: 0;
+}
+.scProd_hotRecom .list a .banner {
+	width: 100%;
+	float: left;
+	margin: 0 0 .2rem 0;
+}
+.scProd_hotRecom .list a .pic {
+	width: 1.1rem;
+	float: right;
+}
+.scProd_hotRecom .list a .banner img, .scProd_hotRecom .list a .pic img {
+	width: 100%;
+	float: left;
+	border-radius: .2rem;
+}
+.scProd_hotRecom .list a .con {
+	overflow: hidden;
+	padding: 0 .2rem 0 0;
+}
+.scProd_hotRecom .list a .con .title {
+	width: 100%;
+	float: left;
+	font-size: .28rem;
+}
+.scProd_hotRecom .list a .con .info {
+	width: 100%;
+	float: left;
+	font-size: .22rem;
+	margin: .1rem 0;
+}
+.scProd_hotRecom .list a .con .num {
+	width: 100%;
+	float: left;
+	font-size: .18rem;
+	color: #a9a9a9;
+}
+.scProd_hotRecom .list a .con img {
+	width: .23rem;
+	vertical-align: middle;
+	margin: -.03rem 0 0 0;
+}
+/**** 产品推荐列表 ****/
+

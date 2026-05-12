@@ -1,0 +1,81 @@
+﻿@charset "utf-8";
+/* CSS Document */
+
+/*** 滚动评论 ***/
+.box { width:100%; float:left; }
+.bcon { width:100%; float:left; /*width:270px; border:1px solid #eee; margin:30px auto; color:#fff;*/ }
+
+.list_lh { height:400px; overflow:hidden; }
+.list_lh li { padding:10px 0; /*height:200px;*/ }
+.list_lh li em { width:100%; float:left; border-top:solid 1px #ccc; padding:15px 0 0 0; margin:10px 0 0 0; }
+.inpingjia_hang{float:none;}
+/*** 滚动评论 ***/
+
+/***邮箱+评价***/
+.youxpinjbox { width:100%; float:left; border:solid 10px #fefde7; background:#fff; border-radius:5px; padding:10px; margin:20px 0 0 0; }
+
+.mailbox { width:100%; float:left; margin:0 0 20px 0; }
+.mailbox_title { width:100%; float:left; background:url(../../zeri/image/title_bg.png) no-repeat center; line-height:35px; font-size:1.125em; text-align:center; font-weight:bold; }
+.mailbox_txt { width:100%; float:left; line-height:30px; font-size:1em; color:#a3a3a3; }
+.mailbox_output { width:100%; float:left; margin:10px 0 0 0; }
+.mailbox_output_l { width:100%; float:left; height:50px; border:solid 1px #a3a3a3; border-radius:5px; padding:5px; }
+.mailbox_output_l_txt { width:40px; float:left; line-height:38px; font-size:1em; }
+.mailbox_output_l_input { overflow:hidden; }
+.mailbox_output_l_input input { width:100%; float:left; border:solid 1px #ccc; border-radius:5px; background:none; outline:none; height:38px; color:#a3a3a3; text-indent:10px; }
+.mailbox_output_btn { width:100%; float:left; height:50px; margin:10px 0 0 0; }
+.mailbox_output_btn a { width:100%; height:50px; float:left; background:#228fee; border-radius:5px; line-height:50px; font-size:1.125em; color:#fff; text-align:center; }
+
+.eremind { width:100%; float:left; line-height:30px; font-size:1em; text-align:justify; }
+
+.valuation { width:100%; float:left; }
+.valuation_title { width:100%; float:left; background:url(../../zeri/image/title_bg.png) no-repeat center; line-height:35px; font-size:1.125em; text-align:center; font-weight:bold; }
+.valuation_name { width:100%; float:left; }
+.valuation_name_l { width:auto; float:left; line-height:35px; font-size:1em; }
+.valuation_name_l input { width:100px; height:35px; border:solid 1px #a3a3a3; border-radius:5px; color:#a3a3a3; text-indent:3px; }
+.valuation_name_r { width:auto; float:left; line-height:35px; font-size:1em; margin:0 0 0 10px; }
+.valuation_name_r label { display:block; }
+.valuation_score { width:100%; float:left; margin:10px 0; }
+.valuation_score_l { width:auto; float:left; line-height:35px; font-size:1em; }
+.valuation_score_l img { width:25px; vertical-align:middle; margin:-5px 0 0 0; }
+.valuation_score_r { width:auto; float:left; margin:0 0 0 10px; border-radius:5px; padding:0 15px; line-height:35px; font-size:1em; color:#fff; }
+.valuation_score_r img { width:20px; vertical-align:middle; margin:-5px 0 0 0; }
+.valuation_score_r.bg5 { background:#ff9900; }
+.valuation_score_r.bg4 { background:#ffac30; }
+.valuation_score_r.bg3 { background:#ffca7a; opacity:.8; }
+.valuation_score_r.bg2 { background:#a3a3a3; }
+.valuation_score_r.bg1 { background:#bebebe; opacity:.8; }
+.valuation_area { width:100%; float:left; }
+.valuation_area textarea { width:100%; height:120px; background:#fbf8fb; border:solid 1px #d9d9d9; border-radius:5px; padding:5px; line-height:30px; font-size:1em; color:#a3a3a3; text-align:justify; }
+.valuation_btn { width:100%; float:left; margin:10px 0 0 0; }
+.valuation_btn a { width:100%; float:left; background:#ff8e04; border-radius:5px; line-height:50px; font-size:1.125em; color:#fff; text-align:center; }
+/***邮箱+评价***/
+
+
+/*免费产品-结果页-你可能还喜欢-产品推荐*/
+.xptuij { width:100%; float:left; margin:20px 0 0 0; }
+.xptuij_top { width:100%; float:left; background:#72dafb; background:-webkit-linear-gradient(#72dafb, #45aecf); background:-o-linear-gradient(#72dafb, #45aecf); background:-moz-linear-gradient(#72dafb, #45aecf); background: linear-gradient(#72dafb, #45aecf); border-radius:8px 8px 0 0; line-height:55px; font-size:1.5em; color:#fff; text-align:center; }
+.xptuij_top img { vertical-align:middle; }
+.xptuij_box { width:100%; float:left; padding:15px; padding-top:0; }
+.xptuij_prod { width:100%; float:left; margin:15px 0 0 0; }
+.xptuij_prod img { width:100%; float:left; }
+.xptuij_btn { width:100%; float:left; padding:0 5%; margin:15px 0 0 0; }
+.xptuij_btn a { width:100%; float:left; background:#ed9f3a; border:solid 1px #e18d75; border-radius:5px; line-height:45px; font-size:1.125em; text-align:center; color:#fff; }
+/*免费产品-结果页-你可能还喜欢-产品推荐*/
+
+
+
+/**** 邮箱弹窗 ****/
+.mailpop { width:90%; background:#fff; border:solid 1px #ccc; position:fixed; left:5%; top:25%; z-index:999; }
+.mailpop_title { width:100%; float:left; background:#f1f1f1; border-bottom:solid 1px #ccc; line-height:60px; font-size:1.5em; text-align:center; }
+.mailpop_txt { width:100%; float:left; padding:20px; line-height:30px; font-size:1em; text-align:justify; }
+.mailpop_txt span { color:#f00; }
+.mailpop_btn { width:100%; float:left; padding:0 20px; margin:0 0 20px 0; }
+.mailpop_btn a { width:46%; border-radius:8px; line-height:45px; font-size:1.125em; text-align:center; color:#fff; }
+.mailpop_btn a:first-child { float:left; background:#7f7f7f; }
+.mailpop_btn a:last-child { float:right; background:#48aa30; }
+/**** 邮箱弹窗 ****/
+
+.refloatbtn { width:100%; float:left; position:fixed; bottom:0; max-width:700px; }
+.refloatbtn a { width:100%; float:left; background:#FF6502; border-radius:8px; line-height:50px; font-size:1.125em; color:#fff; text-align:center; }
+.popbg { width:100%; height:100%; float:left; background:#000; opacity:.85; position:fixed; top:0; max-width:700px; }
+

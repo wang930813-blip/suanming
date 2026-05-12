@@ -1,0 +1,95 @@
+.date-header {
+    /*background: #F7672D !important;*/
+    background: #DA0202 !important;
+    color: white !important;
+}
+
+.date-choice {
+    background: #FFF8E0 !important;
+}
+
+.gear-date160 .date-class__box {
+    background-color: #FFF8E0 !important;
+    border: 1px solid #CD0000 !important;
+}
+
+.gear-date160 .date-class__box.active {
+    /*background-color: #F7672D !important;*/
+    /*border: 1px solid #F7672D !important;*/
+    background-color: #DA0202 !important;
+    border: 1px solid #CD0000 !important;
+    color: #fff !important;
+}
+
+.gear-date160 .date-class__box:last-of-type {
+    /*border: 1px solid #F7672D !important;*/
+    border: 1px solid #CD0000 !important;
+}
+
+.gear-date160 {
+    /*border-top: 1px solid #F7672D !important;*/
+    border-top: 1px solid #CD0000 !important;
+}
+
+.gear-date160 .date_btn__elem {
+    /*border: 1px solid #F7672D !important;*/
+    border: 1px solid #CD0000 !important;
+    border-radius: 0 0 15px 0;
+}
+
+.gear-date160 .date_btn__elem:first-child {
+    /*background: #F7672D !important;*/
+    background: #DA0202 !important;
+    border-radius: 0 0 0 15px !important;
+}
+
+.gear-date160 .date-grid {
+    /*border-top: 1px solid #F7672D !important;*/
+    /*box-shadow: #F7672D 0 0 6px !important;*/
+    border-top: 1px solid #CD0000 !important;
+    box-shadow: #CD0000 0 0 6px !important;
+}
+
+@media (max-width: 243px) {
+    .gear-date160 .date-header{
+        font-size: 1.5em !important;
+    }
+}
+@media only screen and (min-width: 400px) and (max-width: 450px) {
+    .title_l_img {
+        top: 1% !important;
+        left: 2% !important;
+        width: 10% !important;
+    }
+    .title_r_img {
+        top: 1% !important;
+        right: 2% !important;
+        width: 10% !important;
+    }
+}
+
+@media only screen and (min-width: 451px) and (max-width: 500px) {
+    .title_l_img {
+        top: 2% !important;
+        left: 2% !important;
+        width: 8% !important;
+    }
+    .title_r_img {
+        top: 2% !important;
+        right: 2% !important;
+        width: 8% !important;
+    }
+}
+
+@media (min-width: 501px) {
+    .title_l_img {
+        top: 1% !important;
+        left: 2% !important;
+        width: 7% !important;
+    }
+    .title_r_img {
+        top: 1% !important;
+        right: 2% !important;
+        width: 7% !important;
+    }
+}

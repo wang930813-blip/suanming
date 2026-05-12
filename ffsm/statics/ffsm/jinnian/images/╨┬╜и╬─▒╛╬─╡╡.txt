@@ -1,0 +1,4 @@
+.J_ajax_submit_btnsub{width: 80%;
+    margin: 0 auto;font-size: 38px;color: #631f00;height: 100px; line-height: 35px;text-align: center;background: url('/statics/ffsm/jinnian/images/CYZ_csbtn_yhj.png') center;background-size:100%;display: block;padding-bottom: 10px;border-radius: 5px;pointer-events: none;
+    -webkit-animation: btnAnimate 1.5s linear infinite;
+    animation: btnAnimate 1.5s linear infinite;}

@@ -1,0 +1,148 @@
+.mask_bg {
+    background: black;
+    opacity: 0.7;
+}
+.pay_oid_box,.pay_haibao,.pay_hb {
+    display: none;
+    width: 88%;
+    max-width: 750px;
+    position: absolute;
+    left: 5%;
+    top: 10vh;
+    z-index: 9999999999;
+}
+.pay_oid_box_close,.pay_haibao_close,.pay_hb_close {
+    background: url("../../common/img/pay_box/x.png") no-repeat;
+    background-size: 100%;
+    width: 0.5rem;
+    height: 0.5rem;
+    display: inline-block;
+    position: absolute;
+}
+.pay_oid_box_close,.pay_haibao_close {
+    top: -8vh;
+    right: 0;
+}
+.pay_oid_bg {
+    position: relative;
+    width: 100%;
+}
+.out {
+    position: absolute;
+    bottom: 0.8rem;
+    left: 1rem;
+    width: 2rem;
+}
+.lingqu {
+    position: absolute;
+    bottom: 0.8rem;
+    right: 1rem;
+    width: 2rem;
+}
+.pay_haibao_lingqu,.pay_hb_lq {
+    position: absolute;
+    bottom: 0.68rem;
+    right: 0.8rem;
+    width: 5rem;
+    cursor: pointer;
+    animation:mymove 5s infinite;
+    -webkit-animation:mymove 5s infinite; /*Safari and Chrome*/
+    animation-direction:alternate;/*轮流反向播放动画。*/
+    animation-timing-function: ease-in-out; /*动画的速度曲线*/
+    /* Safari 和 Chrome */
+    -webkit-animation:mymove 5s infinite;
+    -webkit-animation-direction:alternate;/*轮流反向播放动画。*/
+    -webkit-animation-timing-function: ease-in-out; /*动画的速度曲线*/
+}
+.pay_hb_lq {
+    bottom: 0.7rem !important;
+    right: 1.3rem !important;
+    width: 4rem !important;
+}
+.pay_hb_close {
+    bottom: -8vh;
+    left: 50%;
+    margin-left: -0.25rem;
+}
+@keyframes mymove {
+    0%{
+        transform: scale(1);  /*开始为原始大小*/
+    }
+    25%{
+        transform: scale(1.1); /*放大1.1倍*/
+    }
+    50%{
+        transform: scale(1);
+    }
+    75%{
+        transform: scale(1.1);
+    }
+}
+@-webkit-keyframes mymove {
+    0%{
+        transform: scale(1);  /*开始为原始大小*/
+    }
+    25%{
+        transform: scale(1.1); /*放大1.1倍*/
+    }
+    50%{
+        transform: scale(1);
+    }
+    75%{
+        transform: scale(1.1);
+    }
+}
+
+.daohjishi {
+    position: absolute;
+    top: 5.4rem;
+    left: 50%;
+    z-index: 99999;
+    display: flex;
+    flex-direction: row;
+    color: white;
+    justify-content: space-between;
+    width: 3.8rem;
+    margin-left: -1.9rem;
+    font-weight: 900;
+}
+.daohjishi span {
+    background: #252525;
+    border-radius: 0.1rem;
+    padding: 0 0.2rem;
+    font-weight: 100;
+}
+.daohjishi b {
+    margin-left: 0.1rem;
+    font-weight: 100;
+}
+
+/*pc端*/
+@media (min-width: 767px) {
+    .pay_oid_box {
+        left: 50% !important;
+        margin-left: -350px !important;
+    }
+    .out, .lingqu {
+        width: 4rem !important;
+    }
+    .pay_haibao {
+        left: 50% !important;
+        margin-left: -3.75rem !important;
+        max-width: 7.5rem;
+    }
+    .pay_haibao_lingqu{
+        bottom: 0.8rem !important;
+        right: 1rem !important;
+        width: 5.6rem !important;
+    }
+    .pay_hb {
+        max-width: 7rem !important;
+        left: 50% !important;
+        margin-left: -3.5rem !important;
+    }
+    .pay_hb_lq {
+        bottom: 0.8rem !important;
+        right: 1.5rem !important;
+    }
+}

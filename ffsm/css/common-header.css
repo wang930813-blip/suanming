@@ -1,0 +1,55 @@
+/* 通用 Header 样式 - 从 shengxiao 提取 */
+.common-header {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 50px;
+    padding: 0 16px;
+    background: linear-gradient(90deg, #ff6347 0%, #ff4500 100%);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    z-index: 100;
+}
+
+.common-header__con {
+    display: none;
+}
+
+.common-header__home,
+.common-header__order {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    height: 32px;
+    padding: 0 16px;
+    font-size: 14px;
+    color: #fff;
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 16px;
+    text-decoration: none;
+    transition: all 0.3s;
+}
+
+.common-header__home::before,
+.common-header__order::before {
+    content: '';
+    display: inline-block;
+    width: 18px;
+    height: 18px;
+    margin-right: 6px;
+    vertical-align: middle;
+}
+
+.common-header__home::before {
+    content: '🏠';
+}
+
+.common-header__order::before {
+    content: '📋';
+}
+
+.common-header__home:active,
+.common-header__order:active {
+    background: rgba(255, 255, 255, 0.3);
+    opacity: 0.8;
+}

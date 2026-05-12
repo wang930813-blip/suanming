@@ -1,0 +1,32 @@
+
+.top{
+    height:0.5rem;
+    background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#ff8500),color-stop(50%,#bf7612), color-stop(100%,#fa930336));
+    text-align:center;position:relative
+    
+}
+
+.splogo{
+    display:inline-block;
+    width:2.52rem;
+    height:0.49rem;
+    margin-top:0.03rem;
+    text-align:center;
+    font-size:0.32rem;
+    color:#fff;
+    background:url(../images/logobg.png) no-repeat center;
+    background-size:100% auto;
+    letter-spacing:0.07rem;
+    text-indent:0.07rem}
+
+.toutiao{background-color:#fff;border-radius:10px;margin:0 0.03rem;height:0.8rem;box-shadow:0 0.05rem 0.1rem 0 rgba(216,197,172,0.46);margin-top:0.1rem}
+.tt_icon{float:left;width:0.8rem;height:0.2rem;background:url(../images/tticon.png) no-repeat center;background-size:100% 100%;margin:0.14rem 0 0 0.1rem}
+
+
+.ttnews a{
+    font-size:0.26rem;
+    color:#666;
+    margin:0rem 0 0 0rem
+}
+
+/*# sourceMappingURL=newindex.css.map */

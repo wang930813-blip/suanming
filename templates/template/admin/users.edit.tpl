@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>编辑用户</title>
+</head>
+<body style="padding: 20px; background: #fff; font-family: Arial;">
+
+<h1 style="color: #1E9FFF; border-bottom: 2px solid #1E9FFF; padding-bottom: 10px;">测试页面</h1>
+
+<div style="padding: 20px; background: #52c41a; color: #fff; border-radius: 4px; margin: 20px 0;">
+    <h2 style="margin: 0;">✓ 如果您能看到这段绿色文字，说明模板文件已经被正确加载！</h2>
+    <p style="margin: 10px 0 0 0;">文件路径：users.edit.tpl</p>
+</div>
+
+<div style="padding: 20px; background: #f0f0f0; border-radius: 4px;">
+    <h3>调试信息：</h3>
+    <p>URL: <?php echo $_SERVER['REQUEST_URI']; ?></p>
+    <p>当前时间: <?php echo date('Y-m-d H:i:s'); ?></p>
+</div>
+    
+    <form name="form1" action="?ct=users&ac=index&even=saveedit&tb=users" method="POST" onsubmit="return checkpass()" enctype="multipart/form-data" class="layui-form">
+    <{lurd_list item='v'}>
+    
+    <!-- 调试：显示是否进入循环 -->
+    <div style="padding: 10px; background: #e6f7ff; border: 1px solid #91d5ff; margin-bottom: 20px; border-radius: 4px;">
+        <p style="margin: 0;">✓ 数据循环已进入，用户ID: <{$v.uid}></p>
+    </div>
+    <input type="hidden" name="uid" value="<{$v.uid}>" />
+        <div class="layui-form-item">
+            <label class="layui-form-label">用户账号</label>
+            <div class="layui-input-block">
+                <input type='text' class="layui-input layui-disabled" value='<{$v.user_name}>' disabled=""/>
+            </div>
+        </div>
+        
+        <div class="layui-form-item">
+            <label class="layui-form-label">用户昵称</label>
+            <div class="layui-input-block">
+                <input type='text' class="layui-input layui-disabled" value='<{$v.nickname}>' disabled=""/>
+            </div>
+        </div>
+        
+        <div class="layui-form-item">
+            <label class="layui-form-label">用户密码</label>
+            <div class="layui-input-block">
+                <input type='password' name='userpwd' id='userpwd' class="layui-input" value='' onchange='checkpass()' placeholder="不修改请留空" />
+            </div>
+        </div>
+        
+        <div class="layui-form-item">
+            <label class="layui-form-label">确认密码</label>
+            <div class="layui-input-block">
+                <input type='password' name='userpwdok' id='userpwdok' class="layui-input" value='' onchange='checkpass()' placeholder="不修改请留空" />
+                <span id='pwdtest' style="color: red;"></span>
+            </div>
+        </div>
+        
+        <div class="layui-form-item">
+            <label class="layui-form-label">用户积分</label>
+            <div class="layui-input-block">
+                <input type='text' name='integral' id='integral' class="layui-input" value='<{$v.integral}>' />
+            </div>
+        </div>
+        
+        <div class="layui-form-item">
+            <label class="layui-form-label">用户上级ID</label>
+            <div class="layui-input-block">
+                <input type='text' name='sd_uid' id='sd_uid' class="layui-input" value='<{$v.sd_uid}>' />
+            </div>
+        </div>
+        
+        <div class="layui-form-item">
+            <label class="layui-form-label">提成比例</label>
+            <div class="layui-input-block">
+                <input type='text' name='dl_tcbl' id='dl_tcbl' class="layui-input" value='<{$v.dl_tcbl}>' />
+                <div class="layui-form-mid layui-word-aux">提成金额=交易额×(提成比例÷100)</div>
+            </div>
+        </div>
+        
+        <div class="layui-form-item">
+            <label class="layui-form-label">未提佣金</label>
+            <div class="layui-input-block">
+                <input type='text' name='dl_syjf' id='dl_syjf' class="layui-input" value='<{$v.dl_syjf}>' />
+                <div class="layui-form-mid layui-word-aux">必须小于或等于全部佣金</div>
+            </div>
+        </div>
+        
+        <div class="layui-form-item">
+            <label class="layui-form-label">全部佣金</label>
+            <div class="layui-input-block">
+                <input type='text' name='dl_zjf' id='dl_zjf' class="layui-input" value='<{$v.dl_zjf}>' />
+            </div>
+        </div>
+        
+        <div class="layui-form-item">
+            <label class="layui-form-label">用户Email</label>
+            <div class="layui-input-block">
+                <input type='text' class="layui-input layui-disabled" value='<{$v.email}>' disabled="" />
+            </div>
+        </div>
+        
+        <div class="layui-form-item">
+            <label class="layui-form-label">用户组</label>
+            <div class="layui-input-block">
+                <{foreach from=$cfg_groups.pools.admin.private key=kk item=vv}>
+                <input type='checkbox' name='groups[]' value='admin_<{$kk}>' lay-skin="primary" <{if preg_match("/admin_". $kk ."/", $v.groups) }> checked='checked'<{/if}> title="<{$vv.name}>" />
+                <{/foreach}>
+                <div style="margin-top: 10px;">
+                    <a href='javascript:done_purview("?ct=users&ac=user_purview&uid=<{$v.uid}>");' class="layui-btn layui-btn-xs layui-btn-normal">为此用户设置独立权限</a>
+                </div>
+            </div>
+        </div>
+        
+        <div class="layui-form-item" style="text-align: center; margin-top: 30px;">
+            <button type="reset" class="layui-btn layui-btn-primary">重置</button>
+            <button type="submit" class="layui-btn layui-btn-normal">保存</button>
+        </div>
+        
+    <{/lurd_list}>
+    </form>
+</div>
+
+<script src="/ffsm/statics/ffsm/kmmb/layui/layui.js"></script>
+<script>
+// 渲染Layui表单
+layui.use('form', function(){
+    var form = layui.form;
+    form.render();
+});
+
+// 密码验证
+function checkpass() {
+    var pwd = document.form1.userpwd.value;
+    var pwdok = document.form1.userpwdok.value;
+    
+    // 如果两个都为空，允许提交（不修改密码）
+    if(pwd === '' && pwdok === '') {
+        document.getElementById('pwdtest').innerHTML = "";
+        return true;
+    }
+    
+    // 如果输入了密码，必须两次一致
+    if(pwd == pwdok) {
+        document.getElementById('pwdtest').innerHTML = "";
+        return true;
+    } else {
+        document.getElementById('pwdtest').innerHTML = "两次输入密码不一致！";
+        return false;
+    }
+}
+
+// 设置独立权限
+function done_purview(gurl) {
+    window.location.href = gurl;
+}
+</script>
+
+</body>
+</html>

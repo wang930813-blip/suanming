@@ -1,0 +1,706 @@
+"use strict";
+
+function _typeof(e) {
+	"@babel/helpers - typeof";
+	return (_typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ?
+	function(e) {
+		return typeof e
+	} : function(e) {
+		return e && "function" == typeof Symbol && e.constructor === Symbol && e !== Symbol.prototype ? "symbol" : typeof e
+	})(e)
+}
+try {
+	define("jquery", [], function() {
+		return jQuery
+	})
+} catch (e) {
+	console.warn(e)
+}
+requirejs.config({
+	baseUrl: __staticHost + "/statics/ffsm_lg/public/wap/js/",
+	map: {
+		"*": {
+			css: __staticHost + "/statics/ffsm_lg/public/wap/js/libs/require-css-0.1.10.min.js"
+		}
+	},
+	paths: {
+		jquery: "libs/jquery-3.4.1.min",
+		"ffsm-layerJS": "layer-3.1.0/layer",
+		"ffsm-layerCSS": "layer-3.1.0/theme/default/layer",
+		"ffsm-ruiDatepickerJS": "rui-datepicker-1.2/rui-datepicker.min",
+		"ffsm-ruiDatepickerCSS": "rui-datepicker-1.2/rui-datepicker.min",
+		"ffsm-echarts": "echarts-4.2.1/echarts.min",
+		"ffsm-echartsSimple": "echarts-4.2.1/echarts.simple.min",
+		"ffsm-echartsCommon": "echarts-4.2.1/echarts.common.min",
+		"ffsm-swiperJS": "swiper-4.5.0/swiper.min",
+		"ffsm-swiperCSS": "swiper-4.5.0/swiper.min",
+		"ffsm-clipboard": "libs/clipboard-2.0.4.min",
+		"ffsm-qrcode": "libs/qrcode.min",
+		"ffsm-picker": "picker/picker.min"
+	},
+	shim: {
+		"ffsm-picker": {
+			deps: ["css!picker/picker.min.css"]
+		}
+	}
+}), $(function() {
+	$.ajaxSetup({
+		error: function(e, t, a) {
+			// alert(JSON.stringify(e)) ;
+			
+			require(["ffsm-layerJS", "css!ffsm-layerCSS"], function() {
+				layer.msg("Ajax请求出现错误：", {
+					icon: 2,
+					time: 2e3
+				})
+			})
+		}
+	});
+	var common = {};
+	common.payRemind = function() {
+		var e = $(".J_pay_remind");
+		e.length && require(["ffsm-layerJS", "css!ffsm-layerCSS"], function() {
+			e.on("click", function() {
+				layer.msg("付费后才能看")
+			})
+		})
+	}, common.datepickerInput = function() {
+		var e = $(".J_datepicker");
+		e.length && (e.focus(function() {
+			this.blur()
+		}), require(["ffsm-ruiDatepickerJS", "css!ffsm-ruiDatepickerCSS"], function() {
+			for (var t = 0, a = e.length; t < a; t++) {
+				(new ruiDatepicker).init({
+					id: "#" + $(".J_datepicker").eq(t).attr("id"),
+					callback: function (e) {
+						//Ming Fix start
+						if ($('#birthday').attr('data-hour')) {
+							$('#b_hour').val($('#birthday').attr('data-hour'));
+							$('.J-time').val($('#birthday').attr('data-hour'));
+						}
+						if ($('#birthday1').attr('data-hour')) {
+							$('#gb_hour').val($('#birthday1').attr('data-hour'));
+							$('.J-time1').val($('#birthday1').attr('data-hour'));
+						}
+						//Ming Fix end
+
+						
+						// console.info($('#birthday1').attr('data-hour'));
+						console.log(e)
+					}
+				})
+			}
+		}))
+	}, common.protocolPop = function() {
+		var e = $("#protocolPopBox");
+		if (e.length) {
+			var t = e.find(".J_tabTitle").children("li"),
+				a = e.find(".J_tabText").children("li"),
+				o = 0;
+			$(".J_protocolShowBtn").on("click", function() {
+				e.show(), o = $(document).scrollTop(), $("body").css({
+					position: "fixed",
+					top: -o
+				})
+			}), e.find(".J_close").on("click", function() {
+				$("body").css({
+					position: "static"
+				}), $(document).scrollTop(o), e.hide()
+			}), t.on("click", function() {
+				$(this).addClass("active").siblings().removeClass("active"), a.eq($(this).index()).addClass("active").siblings().removeClass("active")
+			})
+		}
+	}, common.formSubmit = function() {
+		var ajaxForm = $("form.J_ajaxForm");
+		ajaxForm.length && require(["ffsm-layerJS", "css!ffsm-layerCSS"], function() {
+			var layerLoad, ajaxLock = !1;
+			$(".J_ajax_submit_btn").on("click", function(e) {
+				e.preventDefault();
+				var btn = $(this),
+					form = btn.parents("form.J_ajaxForm"),
+					formDataArr, ajaxUrl = btn.data("action") ? btn.data("action") : form.attr("action"),
+					ajaxType = form.attr("method") ? form.attr("method") : "GET",
+					inputPrivacyProtocol = form.find('input[name="privacy_protocol"]');
+				if (inputPrivacyProtocol.length && !inputPrivacyProtocol.is(":checked")) return layer.msg("您未同意个人隐私协议"), !1;
+				if (ajaxLock) return !1;
+				ajaxLock = !0;
+				var callback = function(e, t) {
+						var a = e.msg,
+							o = "";
+						a.msg && (a = e.msg.msg, o = e.msg.field), e.code > 0 ? layer.msg(a, {
+							icon: 1,
+							time: 2e3
+						}, function() {
+							e.url ? window.location.href = e.url : form.data("refresh") && window.location.reload(), form.find('input[name="username"]').val(""), form.find('input[type="text"]').val(""), form.find('input[name="birthday"]').val(""), form.find('input[name="girl_birthday"]').val("")
+						}) : e.code <= 0 && (layer.msg(a, {
+							time: 1e3
+						}), t.removeProp("disabled").removeClass("disabled"), "" != o && $("#" + o).focus())
+					};
+				"" !== btn.data("callback") && void 0 != btn.data("callback") && (callback = eval(btn.data("callback"))), formDataArr = form.serializeArray(), $.ajax({
+					url: ajaxUrl,
+					type: ajaxType,
+					data: form.serialize(),
+					dataType: "json",
+					beforeSend: function() {
+						var e = btn.text();
+						btn.text(e + "中...").prop("disabled", !0).addClass("disabled"), layerLoad = layer.load(0, {
+							shade: !1
+						})
+					},
+					success: function(e, t, a, o) {
+						if (e.code > 0 && window.localStorage) for (var n = 0, i = formDataArr.length; n < i; n++) try {
+							localStorage.setItem(formDataArr[n].name, formDataArr[n].value)
+						} catch (e) {}
+						var r = btn.text();
+						btn.removeClass("disabled").removeAttr("disabled").text(r.replace("中...", "")).parent().find("span").remove(), layer.close(layerLoad), callback(e, btn), setTimeout(function() {
+							ajaxLock = !1
+						}, 2e3)
+					}
+				})
+			})
+		})
+	}, common.formAutoFill = function() {
+		if ($("form.J_ajaxForm").length) for (var e = $("form.J_ajaxForm").find("input"), t = 0, a = e.length; t < a; t++) {
+			var o = e.eq(t),
+				n = o.attr("name");
+			if ("" != n && window.localStorage && localStorage.getItem(n)) switch (!0) {
+			case /birthday / .test(n):
+				if ($("#" + n).val()) break;
+				$("#" + n).attr("data-date", localStorage.getItem(n));
+				break;
+			default:
+				if ("true" == o.attr("nolocal") || o.val()) break;
+				"text" == o.attr("type") && o.val(localStorage.getItem(n))
+			}
+		}
+	}, common.urlFormAutoFill = function() {
+		function e(e) {
+			var t = new RegExp("(^|&)" + e + "=([^&]*)(&|$)", "i"),
+				a = window.location.search.substr(1).match(t);
+			return null != a ? decodeURIComponent(a[2]) : null
+		}
+		for (var t = $("form.J_ajaxForm"), a = t.length ? t.find("input") : [], o = 0, n = a.length; o < n; o++) {
+			var i = a.eq(o),
+				r = i.attr("name");
+			if ("" != r && e(r)) switch (!0) {
+			case /username / .test(r):
+			case /girl_username / .test(r):
+			case /xing / .test(r):
+			case /birthday / .test(r):
+			case /girl_birthday / .test(r):
+			case /hour / .test(r):
+			case /girl_hour / .test(r):
+				i.prop("value", e(r));
+				break;
+			case /gender / .test(r):
+				var s = e(r);
+				if (["1", "0"].indexOf(s) < 0) break;
+				i.prop("value", e(r)), i.siblings('span[data-value="'.concat(s, '"]')).addClass("cur");
+				break;
+			case /datetext / .test(r):
+				i.prop("value", e(r)).attr({
+					"data-type": 1 == e("isnongli") ? 1 : 0,
+					"data-date": e("birthday") ? e("birthday") : "",
+					"data-hour": e("hour") ? e("hour") : ""
+				});
+				break;
+			case /girl_datetext / .test(r):
+				i.prop("value", e(r)).attr({
+					"data-type": 1 == e("girl_isnongli") ? 1 : 0,
+					"data-date": e("girl_birthday") ? e("girl_birthday") : "",
+					"data-hour": e("girl_hour") ? e("girl_hour") : ""
+				})
+			}
+		}
+	}, common.sexCheckbox = function() {
+		var e = $(".J_sex");
+		e.length && e.children("span").on("click", function() {
+			$(this).addClass("cur").siblings("span").removeClass("cur"), $(this).parent().find("input").val($(this).data("value"))
+		})
+	}, common.timerCountDown = function() {
+		var e = $(".J_countDown");
+		if (e.length) for (var t = 0, a = e.length; t < a; t++)(function() {
+			return {
+				obj: "",
+				timeSecond: "7200",
+				html: "{H}:{I}:{S}",
+				checkTime: function() {
+					var e = this;
+					if (!(e.timeSecond <= 0)) {
+						--e.timeSecond;
+						var t = parseInt(e.timeSecond / 60 / 60),
+							a = parseInt(e.timeSecond / 60 % 60),
+							o = parseInt(e.timeSecond % 60),
+							n = {
+								h: t,
+								i: a,
+								s: o,
+								H: t >= 10 ? t : "0" + t,
+								I: a >= 10 ? a : "0" + a,
+								S: o >= 10 ? o : "0" + o
+							},
+							i = e.html;
+						for (var r in n) {
+							var s = new RegExp("{" + r + "}", "g");
+							i = i.replace(s, n[r])
+						}
+						e.obj.html(i), setTimeout(function() {
+							e.checkTime()
+						}, 1e3)
+					}
+				},
+				ready: function(e) {
+					this.obj = e;
+					var t = parseInt(e.data("second")),
+						a = e.data("html");
+					t && (this.timeSecond = t), a && (this.html = a), this.checkTime()
+				}
+			}
+		})().ready(e.eq(t))
+	}, common.resultBind = function() {
+		var e = $("#orderBindPopup");
+		if (e.length) {
+			var t = window.navigator.userAgent.toLowerCase();
+			/iphone|ipod|ipad/i.test(navigator.appVersion) && /MicroMessenger/i.test(t) && document.body.addEventListener("focusout", function() {
+				window.scrollTo({
+					top: 0,
+					left: 0,
+					behavior: "smooth"
+				})
+			}), require(["ffsm-layerJS", "css!ffsm-layerCSS"], function() {
+				function t(e) {
+					return /^1\d{10}$/.test(e)
+				}
+				e.show(), $("body").css({
+					position: "fixed"
+				});
+				var a = e.find("#bindText"),
+					o = e.find("#phoneCode"),
+					n = e.find("#bindAreacode");
+				t(a.val()) && o.slideDown(), a.on("input propertychange", function() {
+					t($(this).val()) ? o.slideDown() : o.slideUp()
+				}), n.find("select").on("change", function() {
+					var e = $(this).find("option:selected").val();
+					$(this).siblings("span").html("+" + e)
+				}), o.children("span").on("click", function() {
+					if (!t(a.val())) return void layer.msg("请输入正确的手机号");
+					var e = $(this),
+						o = $(this).data("action");
+					if (!$(this).attr("disabled")) {
+						var n = 60;
+						e.attr("disabled", !0).html("60s后重获");
+						var i = setInterval(function() {
+							n--, n > 0 ? e.html(n + "s后重获") : (clearInterval(i), e.removeAttr("disabled").html("获取验证码"))
+						}, 1e3);
+						$.ajax({
+							url: o,
+							data: {
+								phone: a.val()
+							},
+							dataType: "json",
+							success: function(t) {
+								if (t.code <= 0) return layer.msg(t.msg), clearInterval(i), e.removeAttr("disabled").html("获取验证码"), !1;
+								layer.msg("验证码发送成功")
+							}
+						})
+					}
+				}), $(".J_result_submit_btn").on("click", function() {
+					if (!t(a.val())) return void layer.msg("请输入正确的手机号");
+					var e, o, n = !1,
+						i = $(this),
+						r = i.parents("form.J_ajaxForm"),
+						s = i.data("action") ? i.data("action") : r.attr("action"),
+						c = r.attr("method") ? r.attr("method") : "GET",
+						l = r.find('input[name="privacy_protocol"]');
+					if (l.length && !l.is(":checked")) return layer.msg("您未同意个人隐私协议"), !1;
+					if (n) return !1;
+					n = !0;
+					var d = function(e, t) {
+							var a = e.msg,
+								o = "";
+							a.msg && (a = e.msg.msg, o = e.msg.field), e.code > 0 ? layer.msg(a, {
+								icon: 1,
+								time: 2e3
+							}, function() {
+								e.data.isGiveCoupon && $("#guideApp").length ? (1 == e.data.isGiveCoupon ? ($("#orderBindPopup").remove(), $("body").css({
+									position: "fixed"
+								}), $("#guideApp").show(), $("#guideChooseWrap").length > 0 && ($("#guideChooseWrap").addClass("J_guide_choose_first"), $("#publicPopQuan").show()), $("#pcGuideChooseWrap").length > 0 && ($("#pcGuideChooseWrap").addClass("J_pcGuideChoose_first"), $("#pcPopQuan").show())) : ($("#guideApp").hide(), $("body").css({
+									position: "static"
+								})), e.url && e.url) : e.url && (window.location.href = e.url), r.find('input[name="value"]').val(""), r.find('input[type="code"]').val("")
+							}) : e.code <= 0 && (layer.msg(a, {
+								time: 1e3
+							}), t.removeProp("disabled").removeClass("disabled"), "" != o && $("#" + o).focus())
+						};
+					o = r.serializeArray(), $.ajax({
+						url: s,
+						type: c,
+						data: r.serialize(),
+						dataType: "json",
+						beforeSend: function() {
+							var t = i.text();
+							i.text(t + "中...").prop("disabled", !0).addClass("disabled"), e = layer.load(0, {
+								shade: !1
+							})
+						},
+						success: function(t, a, r, s) {
+							if (t.code > 0 && window.localStorage) for (var c = 0, l = o.length; c < l; c++) try {
+								localStorage.setItem(o[c].name, o[c].value)
+							} catch (e) {}
+							var f = i.text();
+							i.removeClass("disabled").text(f.replace("中...", "")).parent().find("span").remove(), layer.close(e), d(t, i), setTimeout(function() {
+								n = !1
+							}, 2e3)
+						}
+					})
+				});
+				var i = e.find(".J_mainContent"),
+					r = e.find(".J_twoConfirm");
+				e.find(".J_bind_cancel").on("click", function() {
+					r.show(), i.hide()
+				}), r.find(".J_twoConfirmCancel").on("click", function() {
+					e.remove(), $("body").css({
+						position: "static"
+					})
+				}), r.find(".J_twoConfirmBack").on("click", function() {
+					r.hide(), i.show()
+				})
+			})
+		}
+	}, common.select = function() {
+		var e = $(".J_select");
+		if (e.length) {
+			var t = e.children("select");
+			e.children("span").text(function() {
+				return $(this).siblings("select").find("option:selected").text()
+			}), t.on("change", function() {
+				var e = $(this).find("option:selected").text();
+				$(this).siblings("span").text(e), $(this).find("option:selected").val() ? $(this).siblings("span").css("color", "#333") : $(this).siblings("span").css("color", "#999")
+			})
+		}
+	}, common.resultEvaluate = function() {
+		var e = $("#evaluateBox");
+		if (e.length) {
+			var t = ["特别不满意", "不太满意", "一般", "还算满意", "非常满意"];
+			$(".J_evaluateStar").on("click", function() {
+				for (var e = +$(this).data("star"), a = 0; a < 5; a++) a < e ? $(".J_evaluateStar").eq(a).addClass("full") : $(".J_evaluateStar").eq(a).removeClass("full");
+				$(this).siblings("input").val(e), $(".J_star_words").text(t[e - 1]), e < 3 ? $(".J_bad_evaluate").slideDown("fast") : $(".J_bad_evaluate").slideUp("fast", function() {
+					$(this).find("select").val("").trigger("change")
+				})
+			}), window.evaluateCallback = function(t, a) {
+				var o = t.msg;
+				o.msg && (o = t.msg.msg), t.code > 0 ? layer.msg(o, {
+					icon: 1,
+					time: 2e3
+				}, function() {
+					e.slideUp("fast", function() {
+						$(this).remove()
+					})
+				}) : t.code <= 0 && layer.msg(o, {
+					time: 1e3
+				})
+			}
+		}
+	}, common.payStatus = function() {
+		var e = $("#payStatus");
+		if (e.length) {
+			!
+			function t() {
+				$.ajax({
+					type: "GET",
+					url: e.data("pay-status"),
+					success: function(a) {
+						a.code && a.data.status ? location.href = e.data("result-url") : setTimeout(function() {
+							t()
+						}, 2e3)
+					},
+					error: function() {}
+				})
+			}();
+			var t = localStorage.getItem("ffsm-order-history") || "{}";
+			t = JSON.parse(t);
+			var a = e.data("serversinfo"),
+				o = e.data("orderinfo");
+			"object" != _typeof(t[a.identifier]) && (t[a.identifier] = {});
+			var n = {};
+			n[o.order_sn] = {
+				serversinfo: a,
+				orderinfo: o
+			}, Object.assign(t[a.identifier], n), localStorage.setItem("ffsm-order-history", JSON.stringify(t))
+		}
+	}, common.hot = function() {
+		$(".J_hotSwiper").length && require(["ffsm-swiperJS", "css!ffsm-swiperCSS", "ffsm-layerJS", "css!ffsm-layerCSS"], function(e) {
+			var t = !1;
+			t = layer.load(1, {
+				shade: !1
+			}), setTimeout(function() {
+				layer.close(t);
+				new e(".J_hotSwiper", {
+					slidesPerView: 4,
+					slidesPerColumn: 2,
+					slidesPerGroup: 4,
+					autoplay: {
+						delay: 5e3,
+						disableOnInteraction: !1
+					},
+					pagination: {
+						el: ".hot_pages",
+						clickable: !0
+					}
+				});
+				$(".J_hotSwiper").css("opacity", 1)
+			}, 500)
+		})
+	}, common.customer = function() {
+		$(".J_customer_swiper").length && require(["ffsm-swiperJS", "css!ffsm-swiperCSS"], function(e) {
+			new e(".J_customer_swiper", {
+				direction: "vertical",
+				autoplay: !0,
+				loop: !0
+			})
+		})
+	}, common.comment = function() {
+		function e() {
+			var e = parseInt(a.children("li").eq(0).outerHeight());
+			Math.abs(t) == Math.abs(e) ? (a.children("li").eq(0).appendTo(a), a.css("top", t = 0)) : a.css("top", --t)
+		}
+		if ($("#publicFeedbackScroll").length) {
+			var t = 0,
+				a = $("#publicFeedbackScroll").children("ul");
+			setInterval(e, 50);
+			var o = $("#publicShowFeedbackForm"),
+				n = $("#publicFeedbackForm"),
+				i = $("#publicFeedbackSubmit"),
+				r = $("#publicFeedbackText");
+			o.length > 0 && o.on("click", function() {
+				n.show(), $(this).hide()
+			});
+			var s = 0;
+			i.length > 0 && i.on("click", function() {
+				require(["ffsm-layerJS", "css!ffsm-layerCSS"], function() {
+					var e = r.val();
+					s ? layer.msg("您已经提交过反馈，短时间不能再提交了哦！") : e ? (s = 1, r.val(""), layer.msg("提交成功，谢谢您的反馈！", {
+						icon: 1,
+						time: 3e3
+					})) : layer.msg("请输入留言内容！")
+				})
+			})
+		}
+	}, common.copyOrdersn = function() {
+		$(".J_copyOrdersn").length && require(["ffsm-clipboard", "ffsm-layerJS", "css!ffsm-layerCSS"], function(e) {
+			var t = new e(".J_copyOrdersn");
+			t.on("success", function(e) {
+				layer.msg("复制成功"), e.clearSelection()
+			}), t.on("error", function(e) {
+				layer.msg("请长按复制订单号")
+			})
+		})
+	}, common.packageCreate = function() {
+		var e = $(".J_packagePaybutton");
+		e.length && require(["ffsm-layerJS", "css!ffsm-layerCSS"], function(t) {
+			var a = !1;
+			e.on("click", function(e) {
+				if (a) return !1;
+				var t = $(this).data("before-api"),
+					o = $(this).data("package-param"),
+					n = $(this).data("href");
+				a = layer.load(0, {
+					shade: !1
+				}), $.get(t + "&" + o, function(e) {
+					$.get(t + "&" + o, function(e) {
+						layer.close(a), a = !1, e.code ? location.href = n : layer.msg(e.msg)
+					})
+				})
+			})
+		})
+	}, common.resultPerfect = function() {
+		function e(e) {
+			if (0 == e.required) return '<input type="hidden" name="data['.concat(e.field, ']" value="').concat(e.value, '" />');
+			var t = e.type,
+				a = "";
+			switch (e.name = e.name.replace("(新)", ""), t) {
+			case "input":
+				a = '<div class="m_fp_formtype">\n                                <div class="name"><span>'.concat(e.name, '</span></div>\n                                <div class="input">\n                                    <input type="text" name="data[').concat(e.field, ']" value="" placeholder="请输入" />\n                                </div>\n                            </div>');
+				break;
+			case "date":
+				var o = Math.random().toString(36).substr(2);
+				a = '<div class="m_fp_formtype">\n                            <div class="name"><span>'.concat(e.name, '</span></div>\n                            <div class="datepicker">\n                                <input type="text" name="" class="J_resultDatepicker" id="datepicker_').concat(o, '" data-toid-date="dateInput_').concat(o, '" value="" placeholder="请输入" />\n                                <input type="hidden" name="data[').concat(e.field, ']" id="dateInput_').concat(o, '">\n                            </div>\n                        </div>');
+				break;
+			case "select":
+				var n = "";
+				for (var i in e.option) n += '<option value="'.concat(i, '">').concat(e.option[i], "</option>");
+				a = '<div class="m_fp_formtype">\n                            <div class="name"><span>'.concat(e.name, '</span></div>\n                            <div class="select">\n                                <select name="data[').concat(e.field, ']">').concat(n, "</select>\n                            </div>\n                        </div>")
+			}
+			return a
+		}
+		var t = $("#resultPerfect");
+		if (t.length) {
+			var a = t.data("ordersn"),
+				o = t.find(".J_customizedForm");
+			if (o.length) return o.show(), t.find(".J_formType").remove(), void t.find(".J_formBtn").show();
+			$.get("/user/orders/template.html?order_sn=" + a, function(a) {
+				if (a.code) {
+					var o = a.data,
+						n = "";
+					for (var i in o) n += e(o[i]);
+					if (t.find(".J_formType").html(n), t.find(".J_formBtn").show(), !$(".J_resultDatepicker").length) return;
+					require(["ffsm-ruiDatepickerJS", "css!ffsm-ruiDatepickerCSS"], function() {
+						for (var e = 0, t = $(".J_resultDatepicker").length; e < t; e++) {
+							(new ruiDatepicker).init("#" + $(".J_resultDatepicker").eq(e).attr("id"))
+						}
+					})
+				}
+			})
+		}
+	}, common.resultPackageTabnav = function() {
+		var e = $("#packageTabnav");
+		if (!e.length) return !1;
+		var t = e.find(".active"),
+			a = $(window).width(),
+			o = t.length ? t.offset().left : 0;
+		console.log(o), t && o > a / 2 && e.animate({
+			scrollLeft: o - a / 2
+		}, 500), $(window).scroll(function() {
+			$(this).scrollTop() >= e.parent().offset().top ? e.addClass("fixed") : e.removeClass("fixed")
+		})
+	}, common.resultTopBindPhone = function() {
+		var e = $("#publicTopBindPopup");
+		e.length && require(["ffsm-layerJS", "css!ffsm-layerCSS"], function() {
+			function t(e) {
+				return /^1[3456789]{1}\d{9}$/.test(e)
+			}
+			var a = e.find("#publicTopBindText"),
+				o = e.find("#publicTopPhoneCode");
+			t(a.val()) && o.slideDown(), a.on("input propertychange", function() {
+				t($(this).val()) ? o.slideDown() : o.slideUp()
+			}), o.children("span").on("click", function() {
+				if (!t(a.val())) return void layer.msg("请输入正确的手机号");
+				var e = $(this),
+					o = $(this).data("action");
+				if (!$(this).attr("disabled")) {
+					var n = 60;
+					e.attr("disabled", !0).html("60s后重获");
+					var i = setInterval(function() {
+						n--, n > 0 ? e.html(n + "s后重获") : (clearInterval(i), e.removeAttr("disabled").html("获取验证码"))
+					}, 1e3);
+					$.ajax({
+						url: o,
+						data: {
+							phone: a.val()
+						},
+						dataType: "json",
+						success: function(t) {
+							if (t.code <= 0) return layer.msg(t.msg), clearInterval(i), e.removeAttr("disabled").html("获取验证码"), !1;
+							layer.msg("验证码发送成功")
+						}
+					})
+				}
+			}), $(".J_publicTopPhoneBtn").on("click", function() {
+				if (!t(a.val())) return void layer.msg("请输入正确的手机号");
+				var e, o, n = !1,
+					i = $(this),
+					r = i.parents("form.J_ajaxForm"),
+					s = i.data("action") ? i.data("action") : r.attr("action"),
+					c = r.attr("method") ? r.attr("method") : "GET",
+					l = r.find('input[name="privacy_protocol"]');
+				if (l.length && !l.is(":checked")) return layer.msg("您未同意个人隐私协议"), !1;
+				if (n) return !1;
+				n = !0;
+				var d = function(e, t) {
+						var a = e.msg,
+							o = "";
+						a.msg && (a = e.msg.msg, o = e.msg.field), e.code > 0 ? layer.msg(a, {
+							icon: 1,
+							time: 2e3
+						}, function() {
+							e.url && (window.location.href = e.url), r.find('input[name="value"]').val(""), r.find('input[type="code"]').val("")
+						}) : e.code <= 0 && (layer.msg(a, {
+							time: 1e3
+						}), t.removeProp("disabled").removeClass("disabled"), "" != o && $("#" + o).focus())
+					};
+				o = r.serializeArray(), $.ajax({
+					url: s,
+					type: c,
+					data: r.serialize(),
+					dataType: "json",
+					beforeSend: function() {
+						var t = i.text();
+						i.text(t + "中...").prop("disabled", !0).addClass("disabled"), e = layer.load(0, {
+							shade: !1
+						})
+					},
+					success: function(t, a, r, s) {
+						if (t.code > 0 && window.localStorage) for (var c = 0, l = o.length; c < l; c++) try {
+							localStorage.setItem(o[c].name, o[c].value)
+						} catch (e) {}
+						var f = i.text();
+						i.removeClass("disabled").text(f.replace("中...", "")).parent().find("span").remove(), layer.close(e), d(t, i), setTimeout(function() {
+							n = !1
+						}, 2e3)
+					}
+				})
+			})
+		})
+	}, common.indexFixed = function() {
+		var e = $(".J_testFixedShow");
+		if (e.length) {
+			e = e.offset().top;
+			var t = $(".J_testFixedTop").length > 0 ? $(".J_testFixedTop").offset().top - 20 : 200,
+				a = $("#testFixedBtn"),
+				o = a.outerHeight();
+			$(window).scroll(function() {
+				var t = $(".J_testFixedBottom").length > 0 ? $(".J_testFixedBottom").offset().top - $(window).height() : $("body").height(),
+					n = $(window).scrollTop();
+				n > e && n < t ? (a.fadeIn(), $(".public_footer_servers").css("padding-bottom", o + 5 + "px"), $(".wnl_history_btn").length && $(".wnl_history_btn").css("bottom", o + 10 + "px")) : (a.fadeOut(), $(".public_footer_servers").css("padding-bottom", "20px"), $(".wnl_history_btn").length && $(".wnl_history_btn").css("bottom", "10px"))
+			}), a.add(".J_testScrollTop").on("click", function() {
+				$("html,body").animate({
+					scrollTop: t
+				}, 300)
+			})
+		}
+	}, common.payPagePopup = function() {
+		var e = $("#publicPayPopup"),
+			t = $("#publicPPClose"),
+			a = $(".J_payPopupShow").length > 0 ? $(".J_payPopupShow") : "";
+		$("#publicPayBottom").each(function() {
+			var o = $(this);
+			$(window).scroll(function() {
+				var e = $(".J_payBottomShow").length > 0 ? $(".J_payBottomShow").offset().top : 200;
+				$(window).scrollTop() > e ? o.fadeIn() : o.fadeOut()
+			}), o.on("click", function() {
+				e.show()
+			}), t.on("click", function() {
+				e.hide()
+			}), a && a.on("click", function() {
+				e.show()
+			})
+		})
+	}, common.getWnlPayUrl = function() {
+		0 != $(".J_wnl_pay_button").length && require(["ffsm-layerJS", "css!ffsm-layerCSS"], function() {
+			$(".J_wnl_pay_button").on("click", function() {
+				var e = $(this).data("type"),
+					t = $(this).data("ordersn"),
+					a = "/pay/Wnlpay/" + t + ".html?payType=" + e + "&isjson=1",
+					o = layer.load(0, {
+						shade: !1
+					});
+				$.ajax({
+					url: a,
+					success: function(e) {
+						1 == e.status && e.data.pay_url && (location.href = e.data.pay_url), layer.close(o)
+					}
+				})
+			})
+		})
+	}, common.orderHistory = function() {
+		var e = $(".J_order_history_entry");
+		e.length && (window.addEventListener("pageshow", function() {
+			var t = e.data("app"),
+				a = e.data("banner"),
+				o = JSON.parse(localStorage.getItem("ffsm-order-history"));
+			o && o[t] && (a && "[banner]" != a && (o[t + "banner"] = a, localStorage.setItem("ffsm-order-history", JSON.stringify(o))), e.show())
+		}, !1), e.find(".J_entry_close").on("click", function() {
+			$(this).parents(".J_order_history_entry").slideUp("fast")
+		}))
+	};
+	for (var key in common)"function" == typeof common[key] && common[key]()
+});

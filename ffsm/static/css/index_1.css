@@ -1,0 +1,181 @@
+
+/**** 红包弹窗 ****/
+
+.popMask {
+	position: fixed;
+	width: 100%;
+	height: 100%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-direction: column;
+	background: rgba(78, 78, 78, .85);
+	max-width: 7.5rem;
+	z-index: 9;
+}
+.paymentPop {
+	width: 6.2rem;
+	padding: .3rem;
+	background: #fff url(../images/pay-bg.png) no-repeat center top;
+	background-size: 5.46rem auto;
+	border-radius: .1rem;
+	box-shadow: inset 0 0 .5rem #fbedd4;
+}
+.paymentPop .close {
+	float: left;
+	width: 100%;
+	margin: 0 0 2.8rem 0;
+}
+.paymentPop .close a {
+	float: right;
+	width: .32rem;
+	height: .32rem;
+	margin: -.2rem -.2rem 0 0;
+	background: url(../images/pay-close.png) no-repeat;
+	background-size: 100% 100%;
+}
+.hongbaoPop {
+	width: 7.5rem;
+	height: 8.35rem;
+	padding: 1.6rem 1.5rem 0 1.5rem;
+	background-repeat: no-repeat;
+	background-size: 100% 100%;
+}
+.hongbaoPop.bg1 {
+	background-image: url(../images/red-bg1.png);
+}
+.hongbaoPop.bg2 {
+	background-image: url(../images/red-bg2.png);
+}
+.hongbaoPop .text1 {
+	float: left;
+	width: 100%;
+	font-size: .36rem;
+	color: #ff7800;
+	font-weight: bold;
+	text-align: center;
+}
+.hongbaoPop .text2 {
+	float: left;
+	width: 100%;
+	line-height: 1.4;
+	font-size: .48rem;
+	color: #b80003;
+	text-align: center;
+}
+.hongbaoPop .text2 b {
+	font-size: 1rem;
+}
+.hongbaoPop .text3 {
+	float: left;
+	width: 100%;
+	background: #ffc774;
+	border-radius: .3rem;
+	line-height: .45rem;
+	font-size: .3rem;
+	color: #ff7529;
+	text-align: center;
+}
+.hongbaoPop .text3 b {
+	color: #b80003;
+}
+.hongbaoPop .text4 {
+	float: left;
+	width: 100%;
+	margin: .1rem 0 0 0;
+	font-size: .24rem;
+	color: #af694f;
+	text-align: center;
+}
+.hongbaoPop .text5 {
+	float: left;
+	width: 100%;
+	margin: 1.4rem 0 0 0;
+	font-size: .38rem;
+	color: #ffd870;
+	text-align: center;
+}
+.hongbaoPop .text5 span {
+	color: #fff;
+}
+.hongbaoPop .list {
+	position: relative;
+	float: left;
+	width: 100%;
+	margin: .4rem 0 0 0;
+}
+.hongbaoPop .list ul li {
+	position: absolute;
+	float: left;
+	width: 100%;
+	background: rgba(0, 0, 0, .7);
+	border-radius: .1rem;
+	line-height: .5rem;
+	color: #fff;
+	text-align: center;
+	opacity: 0;
+	animation: listShow 30s linear infinite;
+	-webkit-animation: listShow 30s linear infinite;
+	animation-delay: calc(var(--i)*3s);
+	-webkit-animation-delay: calc(var(--i)*3s);
+}
+@keyframes listShow {
+	0% {}
+	2%, 8% {
+		opacity: 1;
+	}
+	10%, 100% {
+		opacity: 0;
+	}
+}
+@-webkit-keyframes listShow {
+	0% {}
+	2%, 8% {
+		opacity: 1;
+	}
+	10%, 100% {
+		opacity: 0;
+	}
+}
+.hongbaoPop .time {
+	float: left;
+	width: 100%;
+	margin: .7rem 0 0 0;
+	font-size: .3rem;
+	color: #fff6d9;
+	text-align: center;
+}
+.hongbaoPop .time span {
+	display: inline-block;
+	width: .48rem;
+	height: .48rem;
+	border: solid 1px #fee6b2;
+	background: #a31400;
+	border-radius: .1rem;
+}
+.hongbaoPop .btn {
+	float: left;
+	width: 100%;
+	padding: 0 .4rem;
+}
+.hongbaoPop .btn a {
+	display: block;
+	width: 100%;
+	margin: .2rem 0 0 0;
+	border-radius: .5rem;
+	line-height: .8rem;
+	font-size: .4rem;
+	text-align: center;
+}
+.hongbaoPop .btn a:first-child {
+	background-image: linear-gradient(#ffec88, #ffb443);
+	border-bottom: solid .05rem #ff7800;
+	box-shadow: 0 0 .1rem #a7000c;
+	color: #841a00;
+}
+.hongbaoPop .btn a:last-child {
+	border: solid .02rem #ff7800;
+	color: #ffd870;
+}
+
+/**** 红包弹窗 ****/

@@ -1,0 +1,231 @@
+﻿/**** 页头弹窗模板 ****/	
+.yetouMask {
+	font-size: .32rem;
+	width: 100%;
+	max-width: 700px;
+	top: 0;
+	z-index: 999;
+	float: left;
+	border-top: 1px solid #ccc;
+}
+.yetouMask .yetou {
+	background: #d77629;
+	width: 98%;
+	margin: .12rem auto;
+	padding: 0.08rem 0;
+	padding-left: .15rem;
+	border-radius: .2rem;
+}
+.yetouMask .yetou .yetouClose {
+	width: .5rem;
+	vertical-align: middle;
+}
+.yetouMask .yetou .yttcIcon {
+	width: .7rem;
+	vertical-align: middle;
+}
+.yetouMask .yetou span {
+	color: #ffffff;
+	vertical-align: middle;
+}
+.yetouMask .yetou .yetouBtn {
+	border-radius: .2rem;
+	padding: .1rem .25rem;
+	vertical-align: middle;
+	display: inline-block;
+	background: #e7c53d;
+	color: #b05003;
+	margin-left: .15rem;
+}
+/**** 页头弹窗模板 ****/
+
+
+/**** 弹窗模板 ****/
+#tcTemp .mask {
+	position: fixed;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	background: rgba(0,0,0,.7);
+	z-index: 888888;
+}
+#tcTemp .tcTemp_child {
+	position: fixed;
+	z-index: 888889;
+	top: 1.08rem;
+	left: 0.48rem;
+	right: 0.48rem;
+	bottom: 2.05333rem;
+	margin: 0;
+	overflow-y: auto;
+	font-size: .32rem;
+	-webkit-overflow-scrolling: touch;
+	max-width: 570px;
+	margin: 0 auto;
+}
+#tcTemp .tcTemp_child .tc1 {
+	background: #ffffff;
+	font-size: .32rem;
+	line-height: 1.6;
+	overflow: hidden;
+	border-radius: 0.2rem;
+}
+#tcTemp .tcTemp_child .tc1 .title {
+	background: #cb7530;
+	text-align: center;
+	position: relative;
+	color: #ffffff;
+	font-size: 0.34rem;
+	padding: .2rem 0;
+}
+#tcTemp .tcTemp_child .tc1 .title span {
+}
+#tcTemp .tcTemp_child .tc1 .title img.tcTempClose {
+	position: absolute;
+	width: 0.6rem;
+	height: 0.6rem;
+	top: 0.12rem;
+	right: 0.12rem;
+}
+#tcTemp .tcTemp_child .tc1 .content {
+	padding: .2rem .3rem .4rem .3rem;
+}
+#tcTemp .tcTemp_child .tc1 .content .hang1 {
+}
+#tcTemp .tcTemp_child .tc1 .content .hang2 {
+	border-top: 1px dotted #ccc;
+	margin: .4rem 0 0 0;
+	text-align: center;
+	padding: .3rem 0;
+	font-size: 0.4rem;
+	color: #ff5959;
+}
+#tcTemp .tcTemp_child .tcBtn {
+	width: 80%;
+	margin: 0 auto;
+	text-align: center;
+	background: #e04c4c;
+	color: #ffffff;
+	border-radius: .1rem;
+	padding: .2rem;
+	display: block;
+}
+/**** 弹窗模板 ****/
+
+
+/**** 支付 ****/
+#xm_payBank .payway {
+/*border: none;*/
+}
+#xm_payBank .prodinfor {
+	padding: 0;
+	/*border: 0;*/
+	overflow: hidden;
+}
+.prodinfor_txtTitle {
+	text-align: center;
+	background: #cb7530;
+	padding: .12rem 0;
+	color: #fff;
+	font-size: .33rem;
+}
+.prodinfor_txtTitle .yellowName {
+	color: #fffcb4;
+}
+#xm_payBank .prodinfor_txt span.huodongRed {
+	background: #e04c4c;
+	border-radius: .08rem;
+	padding: .05rem .08rem;
+	color: #ffffff;
+}
+#xm_payBank .prodinfor_txt {
+	padding: .2rem;
+	line-height: 1.8;
+}
+#xm_payBank .prodinfor_txt .fl {
+}
+#xm_payBank .prodinfor_txt .fr strong {
+	display: inline-block;
+}
+#xm_payBank .prodinfor_txt .fr span {
+	color: #e1474a;
+}
+#xm_payBank .payway {
+	overflow: hidden;
+}
+#xm_payBank .payway_title {
+	text-align: center;
+	background: #cb7530;
+	padding: .12rem 0;
+	color: #fff;
+	line-height: normal;
+}
+#xm_payBank .payway_box .ljzfFr {
+	border: 1px solid #e04c4c;
+	color: #e04c4c;
+	text-align: center;
+	padding: .06rem .2rem;
+	line-height: 1.6;
+	border-radius: .08rem;
+	vertical-align: middle;
+}
+#xm_payBank .payway_box .frHidden {
+	visibility: hidden;
+	vertical-align: middle;
+}
+/**** 支付 ****/
+			 
+
+/**** 免费页支付提示弹窗20200324 ****/
+.popBg {
+	width: 100%;
+	height: 100%;
+	float: left;
+	background: #000;
+	opacity: .85;
+	position: fixed;
+	left: 0;
+	top: 0; 
+	/*max-width:700px;*/
+	z-index: 99;
+}
+.popBox {
+	width: 6rem;
+	position: fixed;
+	left: 50%;
+	top: 35%;
+	margin: 0 0 0 -3rem;
+	z-index: 999;
+	background: #fff;
+	border-radius: .1rem;
+}
+.popBox .title_pay {
+	width: 100%;
+	float: left;
+	line-height: 1.1rem;
+	font-size: .32rem;
+	color: #333;
+	text-align: center;
+}
+.popBox .link {
+	width: 100%;
+	float: left;
+	border-top: solid 1px #ccc;
+	line-height: .85rem;
+	font-size: .3rem;
+	text-align: center;
+}
+.popBox .link a {
+	display: block;
+}
+.popBox .link a.color1 {
+	color: #fd485f;
+}
+.popBox .link a.color2 {
+	color: #999;
+}
+/**** 免费页支付提示弹窗20200324 ****/
+
+
+
