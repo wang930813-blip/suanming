@@ -7,6 +7,7 @@
 </div>
 
 <script src="/ffsm/statics/ffsm/kmmb/layui/layui.js"></script>
+<script src="/static/js/admin-menu-active.js"></script>
 <script>
 layui.use(['element', 'layer', 'form'], function(){
     var element = layui.element;
@@ -101,6 +102,10 @@ function showError(msg) {
         icon: 2,
         time: 2000
     });
+}
+
+if (window.AdminMenuActive) {
+    window.AdminMenuActive.init();
 }
 </script>
 </body>

@@ -216,5 +216,11 @@ if (window.top !== window.self && window.location.pathname.indexOf('/acs/') !== 
     }
 }
 </script>
+<script src="/static/js/admin-menu-active.js"></script>
+<script>
+if (window.AdminMenuActive) {
+    window.AdminMenuActive.init();
+}
+</script>
 </body>
 </html>
