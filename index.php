@@ -19,7 +19,7 @@ $h5_actions = array(
 	'jrys_ajax', 'shengxiao', 'taluowenda', 'xingzuo', 'zejiri', 'ziwei',
 	'bazijp'
 );
-if(req::item('ct') == '' && in_array(req::item('ac'), $h5_actions)){
+if(in_array(req::item('ct'), array('', 'index')) && in_array(req::item('ac'), $h5_actions)){
 	$cts = 'ffsm_h5_index';
 }
 
