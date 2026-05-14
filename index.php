@@ -11,6 +11,18 @@ $page_start_time = microtime(true);
 require dirname(__FILE__) . '/core/init.php';
 $config_pool_name = $config_appname  =  $config_cp_url = '';
 
+// Legacy H5 templates and DB links often point to /?ac=xxx while the H5
+// frontend is mounted at /ffsm/. Route those root-level requests to the H5
+// controller so old links do not fall through to ctl_index and render blank.
+$h5_actions = array(
+	'bazi', 'bazizh', 'bzyy', 'dashi', 'ffqm', 'hehun', 'history', 'jrys',
+	'jrys_ajax', 'shengxiao', 'taluowenda', 'xingzuo', 'zejiri', 'ziwei',
+	'bazijp'
+);
+if(req::item('ct') == '' && in_array(req::item('ac'), $h5_actions)){
+	$cts = 'ffsm_h5_index';
+}
+
 // 商城路由：允许通过 /?ac=shop 访问
 if(req::item('ac') == 'shop' && (req::item('ct') == '' || req::item('ct') == 'index')){
 	$cts = 'shop';
